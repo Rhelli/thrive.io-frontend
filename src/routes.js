@@ -2,7 +2,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import {
   UserListContainer, SignUpContainer, SignInContainer, QuizContainer, PropertyListContainer,
   PropertyContainer, ProfileSettingsContainer, ProfileContainer, HomePageContainer
-} from '/.src/pages/index';
+} from './pages/index';
+
 
 const Routes = () => {
   <BrowserRouter>

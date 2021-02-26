@@ -1,4 +1,4 @@
-export { default as navbarReducer } from '/navbar/navbarReducer';
+export { default as navbarReducer } from './navbar/navbarReducer';
 export { default as profileReducer} from './profile/profileReducer';
 export { default as profileSettingsReducer } from './profileSettings/profileSettingsReducer';
 export { default as propertyReducer } from './property/propertyReducer';
