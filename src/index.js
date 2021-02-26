@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowswerRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import './index.css';
-import App from './App';
+import Routes from './routes';
+import './index.css';;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Routes />
   </React.StrictMode>,
   document.getElementById('root')
 );
