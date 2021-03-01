@@ -1,0 +1,34 @@
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import {
+  navbarReducer, profileReducer, profileSettingsReducer, propertyReducer,
+  quizReducer, userListReducer
+} from './index';
+
+const rootReducer = combineReducers({
+  navbarStore: navbarReducer,
+  profileStore: profileReducer,
+  profileSettingsStore: profileSettingsReducer,
+  propertyStore: propertyReducer,
+  quizStore: quizReducer,
+  userListStore: userListReducer
+});
+
+export default function setupStore(initialState = {}) {
+  let middleware = [];
+
+  if (process.env.NODE_ENV === 'development') {
+    const logger = createLogger({ collapsed: true })
+    middleware.push(logger);
+  }
+  middleware.push(thunk)
+
+  const store = createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(...middleware)
+  )
+
+  return store;
+}
