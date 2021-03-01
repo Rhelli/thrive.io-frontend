@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import {
   navbarReducer, profileReducer, profileSettingsReducer, propertyReducer,
-  quizReducer, userListReducer
+  quizReducer, userListReducer,
 } from './index';
 
 const rootReducer = combineReducers({
@@ -12,23 +12,23 @@ const rootReducer = combineReducers({
   profileSettingsStore: profileSettingsReducer,
   propertyStore: propertyReducer,
   quizStore: quizReducer,
-  userListStore: userListReducer
+  userListStore: userListReducer,
 });
 
 export default function setupStore(initialState = {}) {
-  let middleware = [];
+  const middleware = [];
 
   if (process.env.NODE_ENV === 'development') {
-    const logger = createLogger({ collapsed: true })
+    const logger = createLogger({ collapsed: true });
     middleware.push(logger);
   }
-  middleware.push(thunk)
+  middleware.push(thunk);
 
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(...middleware)
-  )
+    applyMiddleware(...middleware),
+  );
 
   return store;
 }

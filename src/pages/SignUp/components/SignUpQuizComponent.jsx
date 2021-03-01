@@ -1,6 +1,21 @@
 import React from 'react';
+import API from '../../../api/api';
 
-const SignUpQuizComponent = () => {
+const submitSignUpForm = event => {
+  return API.post("/users/", {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: event.target.name,
+      email: event.target.email,
+      password: event.target.password,
+      user_type: event.target.userType,
+    })
+  })
+}
+
+const SignUpQuizComponent = () => (
   <div>
     <form>
       <div>
@@ -31,9 +46,11 @@ const SignUpQuizComponent = () => {
         </div>
         
         <div>
-          <button type="submit">Create Account</button>
+          <button onClick={submitSignUpForm} type="submit">Create Account</button>
         </div>
       </div>
     </form>
   </div>
-}
+)
+
+export default SignUpQuizComponent;

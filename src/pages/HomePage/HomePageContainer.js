@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchBarComponent from './components/SearchBarComponent';
+import NavbarComponent from '../../common/NavbarComponent';
 
-const HomePageContainer = () => {
-  return (
-    <div>
-      <SearchBarComponent />
-    </div>
-  )
-}
+const HomePageContainer = () => (
+  <div>
+    <NavbarComponent />
+    <SearchBarComponent />
+  </div>
+);
 
 export default HomePageContainer;

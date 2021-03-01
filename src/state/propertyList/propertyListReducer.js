@@ -1,9 +1,7 @@
 const initialState = {
 
-}
+};
 
-const propertyListReducer = (state = initialState, actions) => {
-  return state;
-}
+const propertyListReducer = (state = initialState, actions) => state;
 
 export default propertyListReducer;
