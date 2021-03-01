@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import Routes from './routes';
 import setupStore from './state/store';
 import './index.css';
+require('dotenv').config();
 
 const store = setupStore();
 
