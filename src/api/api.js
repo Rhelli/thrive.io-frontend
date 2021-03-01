@@ -10,4 +10,7 @@ const API = axios.create({
     data => humps.decamelizeKeys(data),
     ...axios.defaults.transformRequest, 
   ],
-})
+});
+
+
+export default API;
