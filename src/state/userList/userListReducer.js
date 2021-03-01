@@ -1,7 +1,7 @@
-const initialState = {
+// const initialState = {
 
-};
+// };
 
-const userListReducer = (state = initialState, actions) => state;
+// const userListReducer = (state = initialState, actions) => state;
 
-export default userListReducer;
+// export default userListReducer;

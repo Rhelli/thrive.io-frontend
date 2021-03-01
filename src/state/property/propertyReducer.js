@@ -1,7 +1,7 @@
-const initialState = {
+// const initialState = {
 
-};
+// };
 
-const propertyReducer = (state = initialState, actions) => state;
+// const propertyReducer = (state = initialState, actions) => state;
 
-export default propertyReducer;
+// export default propertyReducer;

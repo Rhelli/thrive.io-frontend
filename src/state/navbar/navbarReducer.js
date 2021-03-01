@@ -1,7 +1,7 @@
-const initialState = {
+// const initialState = {
 
-};
+// };
 
-const navbarReducer = (state = initialState, action) => state;
+// const navbarReducer = (state = initialState, action) => state;
 
-export default navbarReducer;
+// export default navbarReducer;
