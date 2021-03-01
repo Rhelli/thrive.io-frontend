@@ -1,5 +1,10 @@
+import React from 'react';
+import SignUpQuizComponent from './components/SignUpQuizComponent';
+
 const SignUpContainer = () => (
-  <h2>SignUpContainer</h2>
+  <div>
+    <SignUpQuizComponent />
+  </div>
 );
 
 export default SignUpContainer;

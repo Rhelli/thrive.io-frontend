@@ -1,56 +1,64 @@
 import React from 'react';
-import API from '../../../api/api';
+import { apiPost } from '../../../api/api';
 
-const submitSignUpForm = event => {
-  return API.post("/users/", {
-    headers: {
-      'Content-Type': 'application/json',
+const createUser = event => {
+  const data = JSON.stringify({
+    user: {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+      user_type: event.target.userType.value,
     },
-    body: JSON.stringify({
-      name: event.target.name,
-      email: event.target.email,
-      password: event.target.password,
-      user_type: event.target.userType,
-    })
-  })
-}
+  });
+  apiPost.post('/users', data);
+};
 
 const SignUpQuizComponent = () => (
   <div>
-    <form>
+    <form onSubmit={event => createUser(event)}>
       <div>
         <h1>Sign Up</h1>
         <p>Please complete this form to create a Thrive account</p>
-        <hr></hr>
-        
-        <label htmlFor="name">Name</label>
-        <input id="name" type="text" required />
+        <hr />
 
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" required />
+        <label htmlFor="name">
+          Name
+          <input id="name" type="text" required />
+        </label>
 
-        <label htmlFor="password">Password</label>
-        <input id="password" type="text" required />
-        <hr></hr>
+        <label htmlFor="email">
+          Email
+          <input id="email" type="text" required />
+        </label>
+
+        <label htmlFor="password">
+          Password
+          <input id="password" type="password" required />
+        </label>
+        <hr />
 
         <h3>Are you looking or advertising for a place?</h3>
         <div>
           <span>
-            <label htmlFor="looking">Looking</label>
-            <input type="radio" id="looking" name="userType" value="Looking" />
+            <label htmlFor="looking">
+              Looking
+              <input type="radio" id="looking" name="userType" value="Looking" />
+            </label>
           </span>
           <span>
-            <label htmlFor="advertising">Advertising</label>
-            <input type="radio" id="advertising" name="userType" value="Advertising" />
+            <label htmlFor="advertising">
+              Advertising
+              <input type="radio" id="advertising" name="userType" value="Advertising" />
+            </label>
           </span>
         </div>
-        
+
         <div>
-          <button onClick={submitSignUpForm} type="submit">Create Account</button>
+          <button type="submit">Create Account</button>
         </div>
       </div>
     </form>
   </div>
-)
+);
 
 export default SignUpQuizComponent;
