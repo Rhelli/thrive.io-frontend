@@ -1,9 +1,9 @@
 import React from 'react';
-import { createUser } from '../../../api/authApi';
+import PropTypes from 'prop-types';
 
-const SignUpQuizComponent = () => (
+const SignUpQuizComponent = ({ createUserRequest }) => (
   <div>
-    <form onSubmit={event => createUser(event)}>
+    <form onSubmit={event => createUserRequest(event)}>
       <div>
         <h1>Sign Up</h1>
         <p>Please complete this form to create a Thrive account</p>
@@ -48,5 +48,9 @@ const SignUpQuizComponent = () => (
     </form>
   </div>
 );
+
+SignUpQuizComponent.propTypes = {
+  createUserRequest: PropTypes.func.isRequired,
+};
 
 export default SignUpQuizComponent;

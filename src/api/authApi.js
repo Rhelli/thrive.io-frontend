@@ -1,6 +1,6 @@
 import { setUser, authError } from '../state/auth/authActions';
 
-const createUserRequest = event => dispatch => {
+const createUserRequest = user => dispatch => {
   fetch('http://localhost:3001/api/v1/users/', {
     method: 'POST',
     headers: {
@@ -9,10 +9,10 @@ const createUserRequest = event => dispatch => {
     },
     body: JSON.stringify({
       user: {
-        name: event.target.name.value,
-        email: event.target.email.value,
-        password: event.target.password.value,
-        user_type: event.target.userType.value,
+        name: user.target.name.value,
+        email: user.target.email.value,
+        password: user.target.password.value,
+        user_type: user.target.userType.value,
       },
     }),
   })

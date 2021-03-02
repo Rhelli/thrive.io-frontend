@@ -8,11 +8,13 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER: return {
-      signedIn: true,
-      user: { ...action.payload },
-      error: '',
-    };
+    case SET_USER:
+      console.log('setting user...');
+      return {
+        signedIn: true,
+        user: { ...action.payload },
+        error: '',
+      };
 
     case SIGN_OUT:
       localStorage.clear();

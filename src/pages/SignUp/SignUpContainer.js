@@ -1,10 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createUserRequest } from '../../api/authApi';
 import SignUpQuizComponent from './components/SignUpQuizComponent';
 
-const SignUpContainer = () => (
+const SignUpContainer = ({ createUserRequest }) => (
   <div>
-    <SignUpQuizComponent />
+    <SignUpQuizComponent createUserRequest={createUserRequest} />
   </div>
 );
 
-export default SignUpContainer;
+SignUpContainer.propTypes = {
+  createUserRequest: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  authStatus: state.authStore,
+});
+
+const mapDispatchToProps = dispatch => ({
+  createUserRequest: user => dispatch(createUserRequest(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpContainer);

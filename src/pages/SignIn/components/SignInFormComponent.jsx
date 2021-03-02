@@ -1,9 +1,9 @@
 import React from 'react';
-import { signIn } from '../../../api/authApi';
+import { signInRequest } from '../../../api/authApi';
 
 const SignInFormComponent = () => (
   <div>
-    <form onSubmit={event => signIn(event)}>
+    <form onSubmit={event => signInRequest(event)}>
       <div>
         <h1>Sign In</h1>
 
