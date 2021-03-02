@@ -1,17 +1,5 @@
 import React from 'react';
-import { apiPost } from '../../../api/api';
-
-const createUser = event => {
-  const data = JSON.stringify({
-    user: {
-      name: event.target.name.value,
-      email: event.target.email.value,
-      password: event.target.password.value,
-      user_type: event.target.userType.value,
-    },
-  });
-  apiPost.post('/users', data);
-};
+import createUser from '../../../api/api';
 
 const SignUpQuizComponent = () => (
   <div>
