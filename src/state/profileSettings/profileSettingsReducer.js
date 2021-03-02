@@ -1,9 +1,7 @@
-const initialState = {
+// const initialState = {
 
-}
+// };
 
-const profileSettingsReducer = (state = initialState, actions) => {
-  return state;
-}
+// const profileSettingsReducer = (state = initialState, actions) => state;
 
-export default profileSettingsReducer;
+// export default profileSettingsReducer;

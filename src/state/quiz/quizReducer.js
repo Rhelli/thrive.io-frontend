@@ -1,9 +1,7 @@
-const initialState = {
+// const initialState = {
+//   info: '',
+// };
 
-}
+// const quizReducer = (state = initialState, actions) => state;
 
-const quizReducer = (state = initialState, actions) => {
-  return state;
-}
-
-export default quizReducer;
+// export default quizReducer;
