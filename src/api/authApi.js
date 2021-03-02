@@ -1,7 +1,7 @@
 import { setUser, authError } from '../state/auth/authActions';
 
 const createUserRequest = user => dispatch => {
-  fetch('http://localhost:3001/api/v1/users/', {
+  fetch('http://localhost:3001/api/v1/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -16,14 +16,13 @@ const createUserRequest = user => dispatch => {
       },
     }),
   })
-    .then(response => response.json())
     .then(data => {
       localStorage.setItem('token', data.token);
       dispatch(setUser(data.user));
     });
 };
 
-const signInRequest = event => dispatch => {
+const signInRequest = user => dispatch => {
   fetch('http://localhost:3001/api/v1/signin', {
     method: 'POST',
     headers: {
@@ -32,12 +31,11 @@ const signInRequest = event => dispatch => {
     },
     body: JSON.stringify({
       user: {
-        email: event.target.email.value,
-        password: event.target.password.value,
+        email: user.target.email.value,
+        password: user.target.password.value,
       },
     }),
   })
-    .then(response => response.json())
     .then(data => {
       localStorage.setItem('token', data.token);
       dispatch(setUser(data.user));
@@ -52,7 +50,6 @@ const autoLoginRequest = () => dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   })
-    .then(response => response.json())
     .then(data => {
       localStorage.setItem('token', data.token);
       dispatch(setUser(data.user));

@@ -1,7 +1,7 @@
 import React from 'react';
-import { signInRequest } from '../../../api/authApi';
+import PropTypes from 'prop-types';
 
-const SignInFormComponent = () => (
+const SignInFormComponent = ({ signInRequest }) => (
   <div>
     <form onSubmit={event => signInRequest(event)}>
       <div>
@@ -24,5 +24,9 @@ const SignInFormComponent = () => (
     </form>
   </div>
 );
+
+SignInFormComponent.propTypes = {
+  signInRequest: PropTypes.func.isRequired,
+};
 
 export default SignInFormComponent;

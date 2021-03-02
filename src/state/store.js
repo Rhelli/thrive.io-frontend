@@ -20,7 +20,7 @@ export default function setupStore(initialState = {}) {
   const middleware = [];
 
   if (process.env.NODE_ENV === 'development') {
-    const logger = createLogger({ collapsed: false });
+    const logger = createLogger({ collapsed: true });
     middleware.push(logger);
   }
   middleware.push(thunk);
