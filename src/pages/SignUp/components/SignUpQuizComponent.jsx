@@ -1,5 +1,5 @@
 import React from 'react';
-import createUser from '../../../api/api';
+import { createUser } from '../../../api/authApi';
 
 const SignUpQuizComponent = () => (
   <div>

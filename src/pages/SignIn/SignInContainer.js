@@ -1,5 +1,10 @@
+import React from 'react';
+import SignInFormComponent from './components/SignInFormComponent';
+
 const SignInContainer = () => (
-  <h2>SignInContainer</h2>
+  <div>
+    <SignInFormComponent />
+  </div>
 );
 
 export default SignInContainer;
