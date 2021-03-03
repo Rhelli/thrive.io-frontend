@@ -5,9 +5,8 @@ export const setUser = payload => ({
   payload,
 });
 
-export const signOut = payload => ({
+export const signOut = () => ({
   type: SIGN_OUT,
-  payload,
 });
 
 export const authError = payload => ({

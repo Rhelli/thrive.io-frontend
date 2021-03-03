@@ -61,8 +61,9 @@ const autoLoginRequest = () => dispatch => {
   })
     .then(data => data.json())
     .then(data => {
-      localStorage.setItem('token', data.jwt);
-      dispatch(setUser(data.user));
+      if (!data.error) {
+        dispatch(setUser(data));
+      }
     })
     .catch(error => {
       dispatch(authError(error.message));

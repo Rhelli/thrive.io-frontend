@@ -3,8 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './SignInOutComponent.module.scss';
 
-const SignInOutComponent = ({ authInfo }) => {
+const SignInOutComponent = ({ authInfo, signOut }) => {
   const { signedIn, user } = authInfo;
+
+  const logUserOut = () => {
+    signOut();
+  };
 
   return (
     <div className={styles.signInOutContainer}>
@@ -12,7 +16,7 @@ const SignInOutComponent = ({ authInfo }) => {
         signedIn ? (
           <div>
             <a href="/profile">{user.name}</a>
-            <a href="">Sign Out</a>
+            <a href="" onClick={logUserOut}>Sign Out</a>
           </div>
         ) : (
           <div>
@@ -36,6 +40,7 @@ SignInOutComponent.propTypes = {
     }),
     error: PropTypes.string.isRequired,
   }).isRequired,
+  signOut: PropTypes.func.isRequired,
 };
 
 export default SignInOutComponent;
