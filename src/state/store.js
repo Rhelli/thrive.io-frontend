@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import {
   navbarReducer, profileReducer, profileSettingsReducer, propertyReducer,
-  quizReducer, userListReducer,
+  quizReducer, userListReducer, authReducer,
 } from './index';
 
 const rootReducer = combineReducers({
@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
   propertyStore: propertyReducer,
   quizStore: quizReducer,
   userListStore: userListReducer,
+  authStore: authReducer,
 });
 
 export default function setupStore(initialState = {}) {

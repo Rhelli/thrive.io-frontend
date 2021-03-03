@@ -4,3 +4,4 @@ export { default as profileSettingsReducer } from './profileSettings/profileSett
 export { default as propertyReducer } from './property/propertyReducer';
 export { default as quizReducer } from './quiz/quizReducer';
 export { default as userListReducer } from './userList/userListReducer';
+export { default as authReducer } from './auth/authReducer';
