@@ -4,23 +4,24 @@ import { connect } from 'react-redux';
 import SignInFormComponent from './components/SignInFormComponent';
 import { signInRequest } from '../../api/authApi';
 
-const SignInContainer = ({ signInRequest, authStatus }) => (
+const SignInContainer = ({ authInfo, signInRequest }) => (
   <div>
     <SignInFormComponent
       signInRequest={signInRequest}
-      authStatus={authStatus}
+      authInfo={authInfo}
     />
   </div>
 );
 
 SignInContainer.propTypes = {
   signInRequest: PropTypes.func.isRequired,
-  authStatus: PropTypes.shape({
+  authInfo: PropTypes.shape({
+    signedIn: PropTypes.bool.isRequired,
     user: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      userType: PropTypes.string.isRequired,
+      id: PropTypes.number,
+      name: PropTypes.string,
+      email: PropTypes.string,
+      userType: PropTypes.string,
       avatar: PropTypes.string,
       about: PropTypes.string,
       occupation: PropTypes.string,
@@ -31,13 +32,13 @@ SignInContainer.propTypes = {
       minBudget: PropTypes.number,
       maxBudget: PropTypes.number,
       areasLooking: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
+    }),
     error: PropTypes.string,
   }).isRequired,
 };
 
 const mapStateToProps = state => ({
-  authStatus: state.authStore,
+  authInfo: state.authStore,
 });
 
 const mapDispatchToProps = dispatch => ({

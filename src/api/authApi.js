@@ -20,8 +20,10 @@ const createUserRequest = user => dispatch => {
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {
-      localStorage.setItem('token', data.jwt);
-      dispatch(setUser(data.user));
+      if (!data.error) {
+        localStorage.setItem('token', data.jwt);
+        dispatch(setUser(data.user));
+      }
     })
     .catch(error => {
       dispatch(authError(error.message));
@@ -46,8 +48,10 @@ const signInRequest = user => dispatch => {
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {
-      localStorage.setItem('token', data.jwt);
-      dispatch(setUser(data.user));
+      if (!data.error) {
+        localStorage.setItem('token', data.jwt);
+        dispatch(setUser(data.user));
+      }
     })
     .catch(error => {
       dispatch(authError(error.messages));

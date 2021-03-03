@@ -1,16 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const SignInFormComponent = ({ signInRequest, authStatus }) => {
-  const { signedIn } = authStatus;
-
+const SignInFormComponent = ({ signInRequest, authInfo }) => {
+  const { signedIn } = authInfo;
   const history = useHistory();
+
+  useEffect(() => {
+    if (signedIn === true) {
+      history.push('/');
+    }
+  }, [signedIn]);
 
   const fireSignInRequest = event => {
     signInRequest(event);
-    console.log(signedIn);
   };
 
   return (
@@ -40,7 +44,25 @@ const SignInFormComponent = ({ signInRequest, authStatus }) => {
 
 SignInFormComponent.propTypes = {
   signInRequest: PropTypes.func.isRequired,
-  authStatus: PropTypes.objectOf([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+  authInfo: PropTypes.shape({
+    signedIn: PropTypes.bool.isRequired,
+    user: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      userType: PropTypes.string,
+      avatar: PropTypes.string,
+      about: PropTypes.string,
+      occupation: PropTypes.string,
+      gender: PropTypes.string,
+      couple: PropTypes.string,
+      pets: PropTypes.arrayOf(PropTypes.string),
+      smoking: PropTypes.bool,
+      minBudget: PropTypes.number,
+      maxBudget: PropTypes.number,
+      areasLooking: PropTypes.arrayOf(PropTypes.string),
+    }),
+    error: PropTypes.string,
+  }).isRequired,
 };
 
 export default SignInFormComponent;
