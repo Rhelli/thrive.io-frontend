@@ -5,21 +5,22 @@ import styles from './NavbarContainer.module.scss';
 import SignInOutComponent from './components/SignInOutComponent';
 import NavbarLinksComponent from './components/NavbarLinksComponent';
 
-const NavbarContainer = ({ authInfo }) => {
-  const { user } = authInfo;
-
-  return (
-    <div className={styles.navbarContainer}>
-      <NavbarLinksComponent />
-      <SignInOutComponent user={user} />
-    </div>
-  );
-};
+const NavbarContainer = ({ authInfo }) => (
+  <div className={styles.navbarContainer}>
+    <NavbarLinksComponent />
+    <SignInOutComponent authInfo={authInfo} />
+  </div>
+);
 
 NavbarContainer.propTypes = {
   authInfo: PropTypes.shape({
     signedIn: PropTypes.bool.isRequired,
-    user: PropTypes.objectOf(PropTypes.string).isRequired,
+    user: PropTypes.shape({
+      id: PropTypes.number,
+      email: PropTypes.string,
+      name: PropTypes.string,
+      user_type: PropTypes.string,
+    }),
     error: PropTypes.string.isRequired,
   }).isRequired,
 };

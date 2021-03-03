@@ -27,6 +27,7 @@ const createUserRequest = user => dispatch => {
 };
 
 const signInRequest = user => dispatch => {
+  user.preventDefault();
   fetch('http://localhost:3001/api/v1/signin', {
     method: 'POST',
     headers: {
