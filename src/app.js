@@ -1,22 +1,17 @@
-import React, { useLayoutEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Routes from './routes';
-import NavbarComponent from './common/NavbarComponent';
+import NavbarContainer from './common/Navbar/NavbarContainer';
 import { autoLoginRequest } from './api/authApi';
 
-const App = ({ autoLoginRequest }) => {
-  useLayoutEffect(() => {
-    autoLoginRequest();
-  }, []);
-
-  return (
-    <>
-      <NavbarComponent />
-      <Routes />
-    </>
-  );
-};
+const App = ({ autoLoginRequest }) => (
+  <>
+    <NavbarContainer />
+    <Routes />
+  </>
+);
 
 App.propTypes = {
   autoLoginRequest: PropTypes.func.isRequired,

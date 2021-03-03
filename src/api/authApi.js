@@ -16,9 +16,13 @@ const createUserRequest = user => dispatch => {
       },
     }),
   })
+    .then(data => data.json())
     .then(data => {
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token', data.jwt);
       dispatch(setUser(data.user));
+    })
+    .catch(error => {
+      dispatch(authError(error.message));
     });
 };
 
@@ -36,9 +40,13 @@ const signInRequest = user => dispatch => {
       },
     }),
   })
+    .then(data => data.json())
     .then(data => {
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token', data.jwt);
       dispatch(setUser(data.user));
+    })
+    .catch(error => {
+      dispatch(authError(error.messages));
     });
 };
 
@@ -50,8 +58,9 @@ const autoLoginRequest = () => dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   })
+    .then(data => data.json())
     .then(data => {
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token', data.jwt);
       dispatch(setUser(data.user));
     })
     .catch(error => {

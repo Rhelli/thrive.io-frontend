@@ -1,0 +1,13 @@
+.signInOutContainer {
+  display: flex;
+  height: 100%;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid darkred;
+  margin-left: auto;
+
+  a {
+    margin-left: 10px;
+  }
+}
