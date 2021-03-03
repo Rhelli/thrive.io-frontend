@@ -22,12 +22,8 @@ App.propTypes = {
   autoLoginRequest: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  authStatus: state.authStore,
-});
-
 const mapDispatchToProps = dispatch => ({
   autoLoginRequest: () => dispatch(autoLoginRequest()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

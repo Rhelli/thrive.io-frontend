@@ -1,3 +1,4 @@
+import humps from 'humps';
 import { setUser, authError } from '../state/auth/authActions';
 
 const createUserRequest = user => dispatch => {
@@ -17,6 +18,7 @@ const createUserRequest = user => dispatch => {
     }),
   })
     .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
     .then(data => {
       localStorage.setItem('token', data.jwt);
       dispatch(setUser(data.user));
@@ -42,6 +44,7 @@ const signInRequest = user => dispatch => {
     }),
   })
     .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
     .then(data => {
       localStorage.setItem('token', data.jwt);
       dispatch(setUser(data.user));
@@ -60,6 +63,7 @@ const autoLoginRequest = () => dispatch => {
     },
   })
     .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
     .then(data => {
       if (!data.error) {
         dispatch(setUser(data));
