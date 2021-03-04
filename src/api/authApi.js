@@ -59,7 +59,7 @@ const signInRequest = user => dispatch => {
 };
 
 const autoLoginRequest = () => dispatch => {
-  fetch('http://localhost:3001/api/v1/auto_login', {
+  fetch('http://localhost:3001/api/v1/auto-login', {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
