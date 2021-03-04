@@ -13,7 +13,7 @@ const SignInOutComponent = ({ authInfo, signOut }) => {
   return (
     <div className={styles.signInOutContainer}>
       {
-        signedIn ? (
+        signedIn === true ? (
           <div>
             <a href="/profile">{user.name}</a>
             <a href="" onClick={logUserOut}>Sign Out</a>
