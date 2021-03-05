@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -12,11 +13,18 @@ const PropertyListContainer = ({ propertyData, fetchAllPropertiesRequest }) => {
 
   console.log(propertyData);
 
-  return (
+  return propertyData.loading ? (
+    <div>
+      <h1>Data Loading...</h1>
+    </div>
+  ) : propertyData.error ? (
+    <div>
+      <h1>{propertyData.error}</h1>
+    </div>
+  ) : (
     <div>
       {
-        // eslint-disable-next-line react/prop-types
-        propertyData.map(property => (
+        propertyData.properties.propertiesList.map(property => (
           <PropertyListItemComponent
             key={uuidv4()}
             title={property.title}
@@ -34,18 +42,46 @@ const PropertyListContainer = ({ propertyData, fetchAllPropertiesRequest }) => {
 
 PropertyListContainer.propTypes = {
   propertyData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    town: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    bills: PropTypes.bool.isRequired,
-    occupantCount: PropTypes.number.isRequired,
-    roomCount: PropTypes.number.isRequired,
+    properties: PropTypes.shape({
+      propertiesList: PropTypes.arrayOf(
+        PropTypes.shape({
+          address: PropTypes.string.isRequired,
+          aggregateId: PropTypes.number,
+          bills: PropTypes.string,
+          blurb: PropTypes.string,
+          createdAt: PropTypes.string,
+          deposit: PropTypes.number,
+          disabledAccess: PropTypes.string,
+          furnished: PropTypes.string,
+          genders: PropTypes.arrayOf(PropTypes.string),
+          id: PropTypes.number,
+          internet: PropTypes.string,
+          maxAge: PropTypes.number,
+          minAge: PropTypes.number,
+          occupantCount: PropTypes.number,
+          roomCount: PropTypes.number,
+          occupations: PropTypes.arrayOf(PropTypes.string),
+          outsideArea: PropTypes.string,
+          ownerId: PropTypes.number,
+          parking: PropTypes.string,
+          pets: PropTypes.arrayOf(PropTypes.string),
+          postcode: PropTypes.string,
+          price: PropTypes.number,
+          smoking: PropTypes.string,
+          title: PropTypes.string,
+          town: PropTypes.string,
+          updatedAt: PropTypes.string,
+        }),
+      ).isRequired,
+    }),
+    error: PropTypes.string,
+    loading: PropTypes.bool,
   }).isRequired,
   fetchAllPropertiesRequest: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  propertyData: state.propertyStore.properties,
+  propertyData: state.propertyStore,
 });
 
 const mapDispatchToProps = dispatch => ({
