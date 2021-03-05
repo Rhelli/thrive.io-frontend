@@ -1,4 +1,4 @@
-export { default as UserListContainer } from './UserList/UserListContainer';
+export { default as UserListContainer } from './Flatmates/FlatmatesListContainer';
 export { default as SignUpContainer } from './SignUp/SignUpContainer';
 export { default as SignInContainer } from './SignIn/SignInContainer';
 export { default as QuizContainer } from './Quiz/QuizContainer';
