@@ -1,0 +1,23 @@
+.propertyListItemContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: auto;
+  border: 1px solid blue;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+
+  .propertyListItemTopInfo {
+
+  }
+
+  .propertyListItemMiddleInfo {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 10px 0;
+    
+    h5 {
+      margin-right: 20px;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Routes from './routes';
 import NavbarContainer from './common/Navbar/NavbarContainer';
 import { autoLoginRequest } from './api/authApi';
+import styles from './app.module.scss';
 
 const App = ({ autoLoginRequest }) => {
   useLayoutEffect(() => {
@@ -11,10 +12,10 @@ const App = ({ autoLoginRequest }) => {
   }, []);
 
   return (
-    <>
+    <div className={styles.appContainer}>
       <NavbarContainer />
       <Routes />
-    </>
+    </div>
   );
 };
 

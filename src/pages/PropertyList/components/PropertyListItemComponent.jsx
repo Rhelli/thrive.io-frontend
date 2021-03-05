@@ -1,30 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './PropertyListItemComponent.module.scss';
 
 const PropertyListItemComponent = props => {
   const {
-    title, town, price, bills, occupantCount, roomCount,
+    town, price, occupantCount, roomCount, propertyClickThrough,
   } = props;
 
   return (
-    <div>
-      <h3>{title}</h3>
-      <h5>{town}</h5>
-      <p>{price}</p>
-      <p>{bills}</p>
-      <p>{occupantCount}</p>
-      <p>{roomCount}</p>
+    <div className={styles.propertyListItemContainer} role="button" onClick={propertyClickThrough} onKeyUp={propertyClickThrough} tabIndex="-1">
+      <div className={styles.propertyListItemTopInfo}>
+        <h3>
+          £&nbsp;
+          {price}
+          &nbsp;
+          per month
+        </h3>
+      </div>
+      <div className={styles.propertyListItemMiddleInfo}>
+        <h5>
+          Current Occupants:&nbsp;
+          {occupantCount}
+        </h5>
+        <h5>
+          Number of Rooms:&nbsp;
+          {roomCount}
+        </h5>
+      </div>
+      <div className={styles.propertyListItemBottomInfo}>
+        <h5>{town}</h5>
+      </div>
     </div>
   );
 };
 
 PropertyListItemComponent.propTypes = {
-  title: PropTypes.string.isRequired,
   town: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  bills: PropTypes.bool.isRequired,
   occupantCount: PropTypes.number.isRequired,
   roomCount: PropTypes.number.isRequired,
+  propertyClickThrough: PropTypes.func.isRequired,
 };
 
 export default PropertyListItemComponent;

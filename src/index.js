@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import setupStore from './state/store';
 import App from './app';
-import './index.css';
+import './index.scss';
 
 require('dotenv').config();
 

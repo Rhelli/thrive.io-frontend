@@ -1,17 +1,27 @@
 /* eslint-disable no-nested-ternary */
 import React, { useLayoutEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import PropertyListItemComponent from './components/PropertyListItemComponent';
 import { fetchAllPropertiesRequest } from '../../api/propertiesApi';
+import { fetchSingleProperty } from '../../state/property/propertyActions';
+import styles from './PropertyListContainer.module.scss';
 
-const PropertyListContainer = ({ propertyData, fetchAllPropertiesRequest }) => {
+const PropertyListContainer = ({
+  propertyData, fetchAllPropertiesRequest, fetchSingleProperty,
+}) => {
   useLayoutEffect(() => {
     fetchAllPropertiesRequest();
   }, []);
 
-  console.log(propertyData);
+  const history = useHistory();
+
+  const propertyClickThrough = property => {
+    fetchSingleProperty(property);
+    history.push(`/property/${property.id}`);
+  };
 
   return propertyData.loading ? (
     <div>
@@ -22,7 +32,7 @@ const PropertyListContainer = ({ propertyData, fetchAllPropertiesRequest }) => {
       <h1>{propertyData.error}</h1>
     </div>
   ) : (
-    <div>
+    <div className={styles.propertyListContainer}>
       {
         propertyData.properties.propertiesList.map(property => (
           <PropertyListItemComponent
@@ -33,6 +43,7 @@ const PropertyListContainer = ({ propertyData, fetchAllPropertiesRequest }) => {
             bills={property.bills}
             occupantCount={property.occupantCount}
             roomCount={property.roomCount}
+            propertyClickThrough={() => propertyClickThrough(property)}
           />
         ))
       }
@@ -78,6 +89,7 @@ PropertyListContainer.propTypes = {
     loading: PropTypes.bool,
   }).isRequired,
   fetchAllPropertiesRequest: PropTypes.func.isRequired,
+  fetchSingleProperty: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -86,6 +98,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllPropertiesRequest: () => dispatch(fetchAllPropertiesRequest()),
+  fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyListContainer);
