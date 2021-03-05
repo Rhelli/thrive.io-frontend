@@ -2,9 +2,11 @@
 import React, { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import fetchFlatmatesApiRequest from '../../api/flatmatesApi';
 import { fetchSingleFlatmate } from '../../state/flatmates/flatmatesActions';
+import FlatmatesListItemComponent from './components/FlatmatesListItemComponent';
 
 const FlatmatesListContainer = ({
   flatmateData, fetchSingleFlatmate, fetchFlatmatesApiRequest,
@@ -32,7 +34,13 @@ const FlatmatesListContainer = ({
     </h2>
   ) : (
     <div>
-      <h2>Heres where the data goes</h2>
+      {
+        flatmateData.flatmates.users.map(user => (
+          <FlatmatesListItemComponent
+            key
+          />
+        ))
+      }
     </div>
   );
 };
