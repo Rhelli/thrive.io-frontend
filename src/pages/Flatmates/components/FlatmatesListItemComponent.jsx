@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBriefcase, faTransgenderAlt, faMoneyBillWave, faUserFriends,
+} from '@fortawesome/free-solid-svg-icons';
+import styles from './FlatmatesListItemComponent.module.scss';
 
 const FlatmatesListItemComponent = props => {
   const {
@@ -7,38 +12,39 @@ const FlatmatesListItemComponent = props => {
   } = props;
 
   return (
-    <div onClick={flatmateClickThrough} onKeyDown={flatmateClickThrough} role="button" tabIndex="-1">
-      <div>
+    <div className={styles.flatmatesListItemContainer} onClick={flatmateClickThrough} onKeyDown={flatmateClickThrough} role="button" tabIndex="-1">
+      <div className={styles.flatmatesAvatar}>
         <p>{avatar}</p>
       </div>
-      <div>
-        <div>
+      <div className={styles.flatmatesInfoContainer}>
+        <div className={styles.flatmatesInfoInnerContainer}>
           <h4>{name}</h4>
-          <p>
-            Occupation:
+          <div>
+            <FontAwesomeIcon icon={faBriefcase} />
             &nbsp;
-            {occupation}
-          </p>
-          <p>
-            Gender:
+            <p>{occupation}</p>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faTransgenderAlt} />
             &nbsp;
-            {gender}
-          </p>
-          <p>
-            Minimum Budget:
+            <p>{gender}</p>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faMoneyBillWave} />
             &nbsp;
-            {minBudget}
-          </p>
-          <p>
-            Maximum Budget:
+            <p>
+              {minBudget}
+              &nbsp;
+              -
+              &nbsp;
+              {maxBudget}
+            </p>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faUserFriends} />
             &nbsp;
-            {maxBudget}
-          </p>
-          <p>
-            Couple:
-            &nbsp;
-            {couple}
-          </p>
+            <p>{couple}</p>
+          </div>
         </div>
       </div>
     </div>

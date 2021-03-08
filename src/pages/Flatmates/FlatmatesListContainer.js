@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import fetchFlatmatesApiRequest from '../../api/flatmatesApi';
 import { fetchSingleFlatmate } from '../../state/flatmates/flatmatesActions';
 import FlatmatesListItemComponent from './components/FlatmatesListItemComponent';
+import styles from './FlatmatesListContainer.module.scss';
 
 const FlatmatesListContainer = ({
   flatmateData, fetchSingleFlatmate, fetchFlatmatesApiRequest,
@@ -32,7 +33,7 @@ const FlatmatesListContainer = ({
       {flatmateData.error}
     </h2>
   ) : (
-    <div>
+    <div className={styles.flatmatesListContainer}>
       {
         flatmateData.flatmates.map(user => (
           <FlatmatesListItemComponent
