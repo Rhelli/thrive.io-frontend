@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   loading: true,
-  properties: [],
+  properties: {},
   singleProperty: [],
   error: '',
   message: '',

@@ -83,7 +83,7 @@ PropertyListContainer.propTypes = {
           town: PropTypes.string,
           updatedAt: PropTypes.string,
         }),
-      ).isRequired,
+      ),
     }),
     error: PropTypes.string,
     loading: PropTypes.bool,

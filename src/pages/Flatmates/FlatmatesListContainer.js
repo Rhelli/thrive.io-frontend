@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -37,7 +38,7 @@ const FlatmatesListContainer = ({
       {
         flatmateData.flatmates.users.map(user => (
           <FlatmatesListItemComponent
-            key
+            key={uuidv4()}
           />
         ))
       }
