@@ -2,6 +2,7 @@ import humps from 'humps';
 import { setUser, authError } from '../state/auth/authActions';
 
 const createUserRequest = user => dispatch => {
+  user.preventDefault();
   fetch('http://localhost:3001/api/v1/users', {
     method: 'POST',
     headers: {
@@ -20,6 +21,7 @@ const createUserRequest = user => dispatch => {
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {
+      console.log(data);
       if (!data.error) {
         localStorage.setItem('token', data.jwt);
         dispatch(setUser(data.user));
@@ -59,7 +61,7 @@ const signInRequest = user => dispatch => {
 };
 
 const autoLoginRequest = () => dispatch => {
-  fetch('http://localhost:3001/api/v1/auto_login', {
+  fetch('http://localhost:3001/api/v1/auto-login', {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',

@@ -1,0 +1,39 @@
+.flatmatesListItemContainer {
+  display: flex;
+  width: 45%;
+  height: auto;
+  flex-flow: column nowrap;
+  margin: 10px 0;
+  border: 1px solid red;
+  padding: 20px;
+}
+
+.flatmatesAvatar {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  p {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.flatmatesInfoContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+
+  .flatmatesInfoInnerContainer {
+    h4 {
+      font-size: 20px;
+      padding: 10px 0;
+    }
+
+    div {
+      display: flex;
+      flex-flow: row nowrap;
+      padding: 8px 0;
+    }
+  }
+}
