@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   loading: false,
-  flatmates: {},
+  flatmates: [],
   singleFlatmate: [],
   error: '',
   message: '',

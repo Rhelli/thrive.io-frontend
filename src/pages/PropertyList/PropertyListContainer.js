@@ -34,7 +34,7 @@ const PropertyListContainer = ({
   ) : (
     <div className={styles.propertyListContainer}>
       {
-        propertyData.properties.propertiesList.map(property => (
+        propertyData.properties.map(property => (
           <PropertyListItemComponent
             key={uuidv4()}
             title={property.title}
@@ -53,38 +53,36 @@ const PropertyListContainer = ({
 
 PropertyListContainer.propTypes = {
   propertyData: PropTypes.shape({
-    properties: PropTypes.shape({
-      propertiesList: PropTypes.arrayOf(
-        PropTypes.shape({
-          address: PropTypes.string.isRequired,
-          aggregateId: PropTypes.number,
-          bills: PropTypes.string,
-          blurb: PropTypes.string,
-          createdAt: PropTypes.string,
-          deposit: PropTypes.number,
-          disabledAccess: PropTypes.string,
-          furnished: PropTypes.string,
-          genders: PropTypes.arrayOf(PropTypes.string),
-          id: PropTypes.number,
-          internet: PropTypes.string,
-          maxAge: PropTypes.number,
-          minAge: PropTypes.number,
-          occupantCount: PropTypes.number,
-          roomCount: PropTypes.number,
-          occupations: PropTypes.arrayOf(PropTypes.string),
-          outsideArea: PropTypes.string,
-          ownerId: PropTypes.number,
-          parking: PropTypes.string,
-          pets: PropTypes.arrayOf(PropTypes.string),
-          postcode: PropTypes.string,
-          price: PropTypes.number,
-          smoking: PropTypes.string,
-          title: PropTypes.string,
-          town: PropTypes.string,
-          updatedAt: PropTypes.string,
-        }),
-      ),
-    }),
+    properties: PropTypes.arrayOf(
+      PropTypes.shape({
+        address: PropTypes.string.isRequired,
+        aggregateId: PropTypes.number,
+        bills: PropTypes.string,
+        blurb: PropTypes.string,
+        createdAt: PropTypes.string,
+        deposit: PropTypes.number,
+        disabledAccess: PropTypes.string,
+        furnished: PropTypes.string,
+        genders: PropTypes.arrayOf(PropTypes.string),
+        id: PropTypes.number,
+        internet: PropTypes.string,
+        maxAge: PropTypes.number,
+        minAge: PropTypes.number,
+        occupantCount: PropTypes.number,
+        roomCount: PropTypes.number,
+        occupations: PropTypes.arrayOf(PropTypes.string),
+        outsideArea: PropTypes.string,
+        ownerId: PropTypes.number,
+        parking: PropTypes.string,
+        pets: PropTypes.arrayOf(PropTypes.string),
+        postcode: PropTypes.string,
+        price: PropTypes.number,
+        smoking: PropTypes.string,
+        title: PropTypes.string,
+        town: PropTypes.string,
+        updatedAt: PropTypes.string,
+      }),
+    ),
     error: PropTypes.string,
     loading: PropTypes.bool,
   }).isRequired,

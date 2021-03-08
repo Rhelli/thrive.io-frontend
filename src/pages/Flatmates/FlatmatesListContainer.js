@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -33,8 +32,23 @@ const FlatmatesListContainer = ({
       {flatmateData.error}
     </h2>
   ) : (
-    <>
-    </>
+    <div>
+      {
+        flatmateData.flatmates.map(user => (
+          <FlatmatesListItemComponent
+            key={uuidv4()}
+            name={user.name}
+            avatar={user.avatar}
+            gender={user.gender}
+            occupation={user.occupation}
+            maxBudget={user.maxBudget}
+            minBudget={user.minBudget}
+            couple={user.couple}
+            flatmateClickThrough={() => flatmateClickThrough(user)}
+          />
+        ))
+      }
+    </div>
   );
 };
 
@@ -46,6 +60,23 @@ FlatmatesListContainer.propTypes = {
   flatmateData: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
     error: PropTypes.string,
+    flatmates: PropTypes.arrayOf(
+      PropTypes.shape({
+        about: PropTypes.string,
+        areasLooking: PropTypes.arrayOf(PropTypes.string),
+        avatar: PropTypes.string,
+        couple: PropTypes.string,
+        email: PropTypes.string,
+        gender: PropTypes.string,
+        id: PropTypes.number,
+        maxBudget: PropTypes.number,
+        minBudget: PropTypes.number,
+        name: PropTypes.string,
+        occupation: PropTypes.string,
+        smoking: PropTypes.string,
+        userType: PropTypes.string,
+      }).isRequired,
+    ),
   }).isRequired,
   fetchFlatmatesApiRequest: PropTypes.func.isRequired,
   fetchSingleFlatmate: PropTypes.func.isRequired,
