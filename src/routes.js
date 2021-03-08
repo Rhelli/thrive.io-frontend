@@ -11,11 +11,12 @@ const Routes = () => (
       <Route path="/signup" component={SignUpContainer} />
       <Route path="/signin" component={SignInContainer} />
       <Route path="/looking" component={UserListContainer} />
-      <Route path="/profile/" component={ProfileContainer} />
+      <Route path="/profile" component={ProfileContainer} />
+      <Route path="/flatmates/:id" component={ProfileContainer} />
       <Route path="/settings/" component={ProfileSettingsContainer} />
       <Route path="/advertising" component={PropertyListContainer} />
-      <Route path="/property/" component={PropertyContainer} />
-      <Route path="/personality-assessment/" component={QuizContainer} />
+      <Route path="/property" component={PropertyContainer} />
+      <Route path="/personality-assessment" component={QuizContainer} />
     </Switch>
   </BrowserRouter>
 );
