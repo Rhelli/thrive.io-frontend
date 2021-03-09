@@ -5,9 +5,9 @@ import {
   faUser, faUserFriends, faVenus, faMars, faTransgender, faSmoking, faSmokingBan, faBan,
   faCat, faDog, faFish, faFrog, faDove, faPaw, faGenderless, faQuestion,
 } from '@fortawesome/free-solid-svg-icons';
-import styles from './ProfileInfoComponent.module.scss';
+import styles from './FlatmateProfileInfoComponent.module.scss';
 
-const ProfileInfoComponent = ({
+const FlatmateProfileInfoComponent = ({
   minBudget, maxBudget, areasLooking, couple, gender, smoking, pets,
 }) => (
   <div className={styles.profileInfoContainer}>
@@ -145,7 +145,7 @@ const ProfileInfoComponent = ({
   </div>
 );
 
-ProfileInfoComponent.defaultProps = {
+FlatmateProfileInfoComponent.defaultProps = {
   minBudget: 0,
   maxBudget: 0,
   areasLooking: '',
@@ -155,7 +155,7 @@ ProfileInfoComponent.defaultProps = {
   pets: '',
 };
 
-ProfileInfoComponent.propTypes = {
+FlatmateProfileInfoComponent.propTypes = {
   minBudget: PropTypes.number,
   maxBudget: PropTypes.number,
   areasLooking: PropTypes.arrayOf(PropTypes.string),
@@ -165,4 +165,4 @@ ProfileInfoComponent.propTypes = {
   pets: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default ProfileInfoComponent;
+export default FlatmateProfileInfoComponent;

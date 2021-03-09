@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './ProfileAboutComponent.module.scss';
+import styles from './FlatmateProfileAboutComponent.module.scss';
 
-const ProfileAboutComponent = ({
+const FlatmateProfileAboutComponent = ({
   name, userType, occupation, about,
 }) => (
   <div className={styles.profileAboutContainer}>
@@ -29,11 +29,11 @@ const ProfileAboutComponent = ({
   </div>
 );
 
-ProfileAboutComponent.propTypes = {
+FlatmateProfileAboutComponent.propTypes = {
   name: PropTypes.string.isRequired,
   userType: PropTypes.string.isRequired,
   occupation: PropTypes.string.isRequired,
   about: PropTypes.string.isRequired,
 };
 
-export default ProfileAboutComponent;
+export default FlatmateProfileAboutComponent;

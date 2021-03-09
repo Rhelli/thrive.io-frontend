@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './ProfileImageComponent.module.scss';
+import styles from './FlatmateProfileImageComponent.module.scss';
 
-const ProfileImageComponent = ({ email, avatar }) => (
+const FlatmateProfileImageComponent = ({ email, avatar }) => (
   <div className={styles.profileImageContainer}>
     <div className={styles.profileImageContact}>
       <p>{email}</p>
@@ -13,9 +13,9 @@ const ProfileImageComponent = ({ email, avatar }) => (
   </div>
 );
 
-ProfileImageComponent.propTypes = {
+FlatmateProfileImageComponent.propTypes = {
   email: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
 };
 
-export default ProfileImageComponent;
+export default FlatmateProfileImageComponent;

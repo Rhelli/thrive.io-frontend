@@ -5,5 +5,6 @@ export { default as QuizContainer } from './Quiz/QuizContainer';
 export { default as PropertyListContainer } from './PropertyList/PropertyListContainer';
 export { default as PropertyContainer } from './Property/PropertyContainer';
 export { default as ProfileSettingsContainer } from './ProfileSettings/ProfileSettingsContainer';
-export { default as ProfileContainer } from './Profile/ProfileContainer';
+export { default as FlatmateProfileContainer } from './FlatmateProfile/FlatmateProfileContainer';
+export { default as UserProfileContainer } from './UserProfile/UserProfileContainer';
 export { default as HomePageContainer } from './HomePage/HomePageContainer';

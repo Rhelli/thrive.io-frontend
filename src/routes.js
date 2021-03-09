@@ -1,7 +1,8 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import {
   UserListContainer, SignUpContainer, SignInContainer, QuizContainer, PropertyListContainer,
-  PropertyContainer, ProfileSettingsContainer, ProfileContainer, HomePageContainer,
+  PropertyContainer, ProfileSettingsContainer, FlatmateProfileContainer, HomePageContainer,
+  UserProfileContainer,
 } from './pages/index';
 
 const Routes = () => (
@@ -11,8 +12,8 @@ const Routes = () => (
       <Route path="/signup" component={SignUpContainer} />
       <Route path="/signin" component={SignInContainer} />
       <Route path="/looking" component={UserListContainer} />
-      <Route path="/profile" component={ProfileContainer} />
-      <Route path="/flatmates/:id" component={ProfileContainer} />
+      <Route path="/profile" component={UserProfileContainer} />
+      <Route path="/flatmates/:id" component={FlatmateProfileContainer} />
       <Route path="/settings/" component={ProfileSettingsContainer} />
       <Route path="/advertising" component={PropertyListContainer} />
       <Route path="/property" component={PropertyContainer} />
