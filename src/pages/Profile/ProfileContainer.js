@@ -7,7 +7,6 @@ import ProfileAboutComponent from './components/ProfileAboutComponent';
 import ProfileInfoComponent from './components/ProfileInfoComponent';
 import styles from './ProfileContainer.module.scss';
 
-// eslint-disable-next-line react/prop-types
 const ProfileContainer = ({ flatmatesInfo, authInfo }) => {
   const {
     name, email, userType, avatar, about, areasLooking, couple, gender, maxBudget, minBudget,
