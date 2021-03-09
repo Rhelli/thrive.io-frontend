@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ProfileImageComponent from './components/ProfileImageComponent';
 import ProfileAboutComponent from './components/ProfileAboutComponent';
 import ProfileInfoComponent from './components/ProfileInfoComponent';
+import styles from './ProfileContainer.module.scss';
 
 const ProfileContainer = ({ profileInfo }) => {
   const {
@@ -12,7 +13,7 @@ const ProfileContainer = ({ profileInfo }) => {
   } = profileInfo;
 
   return (
-    <div>
+    <div className={styles.profileContainer}>
       <ProfileImageComponent
         email={email}
         avatar={avatar}

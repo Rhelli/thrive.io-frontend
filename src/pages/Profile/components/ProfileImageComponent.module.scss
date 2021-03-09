@@ -1,0 +1,24 @@
+.profileImageContainer {
+  display: flex;
+  width: 100%;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+.profileImageContact {
+  font-size: 12px;
+  margin-left: auto;
+  border: 1px solid purple;
+}
+
+.profileImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+}
