@@ -12,8 +12,8 @@ const ProfileInfoComponent = ({
 }) => (
   <div className={styles.profileInfoContainer}>
     <div className={styles.profileInfoBudget}>
+      <h4>Budget</h4>
       <p>
-        Budget:
         £
         {minBudget}
         -
@@ -21,9 +21,16 @@ const ProfileInfoComponent = ({
       </p>
     </div>
     <div className={styles.profileInfoAreas}>
-      Areas Looking:
-      &nbsp;
-      {areasLooking.join(', ')}
+      <h4>Areas Looking</h4>
+      <p>
+        {
+          areasLooking ? (
+            areasLooking.join(', ')
+          ) : (
+            null
+          )
+        }
+      </p>
     </div>
     <div className={styles.profileInfoGenderCouple}>
       <div className={styles.profileInfoCouple}>
@@ -61,8 +68,9 @@ const ProfileInfoComponent = ({
           )
         }
       </div>
+    </div>
+    <div className={styles.profileInfoSmokingPets}>
       <div className={styles.profileInfoSmoking}>
-        <h4>Smoking</h4>
         {
           smoking === 'Non-Smoking' ? (
             <div>
@@ -78,7 +86,6 @@ const ProfileInfoComponent = ({
         }
       </div>
       <div className={styles.profileInfoPets}>
-        <h4>Pets</h4>
         {
           pets.length === 0 ? (
             <div>
