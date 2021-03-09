@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser, faUserFriends, faVenus, faMars, faTransgender, faSmoking, faSmokingBan, faBan,
-  faCat, faDog, faFish, faFrog, faDove, faPaw,
+  faCat, faDog, faFish, faFrog, faDove, faPaw, faGenderless, faQuestion,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './ProfileInfoComponent.module.scss';
 
@@ -13,21 +13,27 @@ const ProfileInfoComponent = ({
   <div className={styles.profileInfoContainer}>
     <div className={styles.profileInfoBudget}>
       <h4>Budget</h4>
-      <p>
-        £
-        {minBudget}
-        -
-        {maxBudget}
-      </p>
+      {
+        minBudget && maxBudget ? (
+          <p>
+            £
+            {minBudget}
+            -
+            {maxBudget}
+          </p>
+        ) : (
+          <p>This user hasn&apos;t set a budget yet!</p>
+        )
+      }
     </div>
     <div className={styles.profileInfoAreas}>
       <h4>Areas Looking</h4>
       <p>
         {
-          areasLooking ? (
+          areasLooking.length > 0 ? (
             areasLooking.join(', ')
           ) : (
-            null
+            <p>This user hasn&apos;t decided where they are looking yet!</p>
           )
         }
       </p>
@@ -60,10 +66,15 @@ const ProfileInfoComponent = ({
               <FontAwesomeIcon icon={faVenus} />
               <p>Female</p>
             </div>
-          ) : (
+          ) : gender === 'Transgender' ? (
             <div>
               <FontAwesomeIcon icon={faTransgender} />
               <p>Transgender</p>
+            </div>
+          ) : (
+            <div>
+              <FontAwesomeIcon icon={faGenderless} />
+              <p>No Gender Set</p>
             </div>
           )
         }
@@ -77,10 +88,15 @@ const ProfileInfoComponent = ({
               <FontAwesomeIcon icon={faSmokingBan} />
               <p>Non-Smoking</p>
             </div>
-          ) : (
+          ) : smoking === 'Smoking' || smoking === 'Occassionally' ? (
             <div>
               <FontAwesomeIcon icon={faSmoking} />
               <p>{smoking}</p>
+            </div>
+          ) : (
+            <div>
+              <FontAwesomeIcon icon={faQuestion} />
+              <p>No Smoking Status</p>
             </div>
           )
         }

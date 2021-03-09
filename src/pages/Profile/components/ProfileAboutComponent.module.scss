@@ -18,7 +18,7 @@
     font-size: 28px;
   }
 
-  div {
+  .profileWithOccupation {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -34,5 +34,14 @@
     h4:last-child {
       padding-left: 10px;
     }
+  }
+
+  .profileWithoutOccupation {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 300;
   }
 }

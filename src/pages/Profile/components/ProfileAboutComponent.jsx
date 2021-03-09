@@ -8,10 +8,18 @@ const ProfileAboutComponent = ({
   <div className={styles.profileAboutContainer}>
     <div className={styles.profileAboutMainInfo}>
       <h2>{name}</h2>
-      <div>
-        <h4>{userType}</h4>
-        <h4>{occupation}</h4>
-      </div>
+      {
+        occupation ? (
+          <div className={styles.profileWithOccupation}>
+            <h4>{userType}</h4>
+            <h4>{occupation}</h4>
+          </div>
+        ) : (
+          <div className={styles.profileWithoutOccupation}>
+            <h4>{userType}</h4>
+          </div>
+        )
+      }
     </div>
     <div className={styles.profileAbout}>
       <div>

@@ -41,14 +41,20 @@
       div {
         display: flex;
         align-items: center;
+        justify-content: center;
         padding: 12px 14px;
         border: 1px solid pink;
         font-size: 16px;
         max-width: 92%;
 
+        p {
+          line-height: 20px;
+        }
+
         svg {
-          font-size: 16px;
+          font-size: 20px;
           margin-right: 10px;
+          margin-bottom: 2px;
         }
       }
     }
