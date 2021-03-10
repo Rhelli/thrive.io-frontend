@@ -18,6 +18,8 @@ const fetchUserProfileApiRequest = () => dispatch => {
     .then(data => {
       if (!data.error) {
         dispatch(fetchCurrentUserProfileSuccess(data));
+      } else {
+        dispatch(fetchCurrentUserProfileError(data.error));
       }
     })
     .catch(error => {

@@ -8,3 +8,4 @@ export { default as ProfileSettingsContainer } from './ProfileSettings/ProfileSe
 export { default as FlatmateProfileContainer } from './FlatmateProfile/FlatmateProfileContainer';
 export { default as UserProfileContainer } from './UserProfile/UserProfileContainer';
 export { default as HomePageContainer } from './HomePage/HomePageContainer';
+export { default as NavbarContainer } from '../common/Navbar/NavbarContainer';

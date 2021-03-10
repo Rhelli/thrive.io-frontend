@@ -21,7 +21,6 @@ const createUserRequest = user => dispatch => {
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {
-      console.log(data);
       if (!data.error) {
         localStorage.setItem('token', data.jwt);
         dispatch(setUser(data.user));

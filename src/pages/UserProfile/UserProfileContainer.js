@@ -1,12 +1,22 @@
-import React, { useLayoutEffect } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import PropTypes from 'prop-types';
+import fetchUserProfileApiRequest from '../../api/userProfileApi';
 
-const UserProfileContainer = ({ fetchUserProfileApiRequest }) => {
-  
+const UserProfileContainer = ({
+  fetchUserProfileApiRequest, profileInfo, authInfo,
+}) => {
+  const history = useHistory();
 
-  
+  useEffect(() => {
+    fetchUserProfileApiRequest();
+    if (profileInfo.error && authInfo.signedIn === false) {
+      history.push('/signin');
+    }
+  }, [authInfo]);
+
   return (
     <div>
       Hello
@@ -14,13 +24,17 @@ const UserProfileContainer = ({ fetchUserProfileApiRequest }) => {
   );
 };
 
+UserProfileContainer.propTypes = {
+  fetchUserProfileApiRequest: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => ({
+  profileInfo: state.profileStore,
   authInfo: state.authStore,
-  userInfo: state.authStore.user,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserProfileApiRequest: dispatch(fetchUserProfileApiRequest()),
+  fetchUserProfileApiRequest: () => dispatch(fetchUserProfileApiRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfileContainer);

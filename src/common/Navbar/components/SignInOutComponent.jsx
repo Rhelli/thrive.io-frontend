@@ -15,7 +15,7 @@ const SignInOutComponent = ({ authInfo, signOut }) => {
       {
         signedIn === true ? (
           <div>
-            <a href="/profile">{user.name}</a>
+            <a href="/myaccount">{user.name}</a>
             <a href="" onClick={logUserOut}>Sign Out</a>
           </div>
         ) : (
