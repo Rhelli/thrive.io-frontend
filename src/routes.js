@@ -1,27 +1,39 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+/* eslint-disable react/jsx-boolean-value */
+import React from 'react';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import PublicRoute from './routes/PublicRoute';
+import PrivateRoute from './routes/PrivateRoute';
 import {
   UserListContainer, SignUpContainer, SignInContainer, QuizContainer, PropertyListContainer,
   PropertyContainer, ProfileSettingsContainer, FlatmateProfileContainer, HomePageContainer,
-  UserProfileContainer, NavbarContainer,
+  UserProfileContainer,
 } from './pages/index';
-import history from './history';
 
-const Routes = () => (
-  <BrowserRouter history={history}>
+const Routes = ({ signedIn }) => (
+  <BrowserRouter>
     <Switch>
-      <Route path="/navbar" component={NavbarContainer} />
-      <Route exact path="/" component={HomePageContainer} />
-      <Route path="/signup" component={SignUpContainer} />
-      <Route path="/signin" component={SignInContainer} />
-      <Route path="/looking" component={UserListContainer} />
-      <Route path="/myaccount" component={UserProfileContainer} />
-      <Route path="/flatmates/:id" component={FlatmateProfileContainer} />
-      <Route path="/settings/" component={ProfileSettingsContainer} />
-      <Route path="/advertising" component={PropertyListContainer} />
-      <Route path="/property" component={PropertyContainer} />
-      <Route path="/personality-assessment" component={QuizContainer} />
+      <PublicRoute restricted={false} signedIn={signedIn} component={HomePageContainer} path="/" exact />
+      <PublicRoute restricted={false} signedIn={signedIn} component={SignUpContainer} path="/signup" exact />
+      <PublicRoute restricted={true} signedIn={signedIn} component={SignInContainer} path="/signin" exact />
+      <PublicRoute restricted={false} signedIn={signedIn} component={UserListContainer} path="/looking" exact />
+      <PrivateRoute signedIn={signedIn} component={UserProfileContainer} path="/myaccount" exact />
+      <PublicRoute restricted={false} signedIn={signedIn} component={FlatmateProfileContainer} path="/flatmates/:id" />
+      <PrivateRoute signedIn={signedIn} component={ProfileSettingsContainer} path="/settings" exact />
+      <PublicRoute restricted={false} signedIn={signedIn} component={PropertyListContainer} path="/advertising" exact />
+      <PublicRoute restricted={false} signedIn={signedIn} component={PropertyContainer} path="/property" exact />
+      <PrivateRoute signedIn={signedIn} component={QuizContainer} path="/personality-assessment" />
     </Switch>
   </BrowserRouter>
 );
 
-export default Routes;
+Routes.propTypes = {
+  signedIn: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+  signedIn: state.authStore.signedIn,
+});
+
+export default connect(mapStateToProps, null)(Routes);

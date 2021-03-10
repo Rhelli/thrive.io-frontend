@@ -2,9 +2,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-const PublicRoute = ({ component: Component, restricted, signedIn, ...rest }) => (
+const PublicRoute = ({
+  component: Component, restricted, signedIn, ...rest
+}) => (
   <Route
     {...rest}
     render={props => (
@@ -17,8 +18,4 @@ const PublicRoute = ({ component: Component, restricted, signedIn, ...rest }) =>
   />
 );
 
-const mapStateToProps = state => ({
-  signedIn: state.authInfo.signedIn,
-});
-
-export default connect(mapStateToProps, null)(PublicRoute);
+export default PublicRoute;
