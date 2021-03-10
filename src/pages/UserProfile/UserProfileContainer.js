@@ -14,7 +14,6 @@ const UserProfileContainer = ({
   return (
     <div>
       {profileInfo.name}
-      <p>Motherfucker Jones</p>
     </div>
   );
 };
