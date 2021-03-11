@@ -1,6 +1,6 @@
 const flatmateDisplay = occupations => {
-  let proCount = 0; let studCount = 0;
-  if (occupations.length < 1) return 'No resident information yet.';
+  let proCount = 0; let studCount = 0; let message = '';
+  if (occupations.length < 1) message = 'No resident information yet.';
   occupations.forEach(occ => {
     if (occ === 'Professional') {
       proCount++;
@@ -9,12 +9,21 @@ const flatmateDisplay = occupations => {
     }
   });
   if (proCount < 1) {
-    return `Student House: ${studCount} students live here.`;
+    message = 'Student House';
   }
   if (studCount < 1) {
-    return `Professional House: ${proCount} professionals live here.`;
+    message = 'Professional House';
   }
-  return `Mixed House: ${proCount} professionals and ${studCount} students live here.`;
+  if (proCount > studCount) {
+    message = 'Mostly Professional House';
+  }
+  if (proCount < studCount) {
+    message = 'Mostly Student House';
+  }
+  if (proCount === studCount) {
+    message = 'Mixed Student & Professional House';
+  }
+  return message;
 };
 
 export default flatmateDisplay;

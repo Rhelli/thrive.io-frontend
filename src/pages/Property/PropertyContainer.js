@@ -17,6 +17,10 @@ const PropertyContainer = ({ propertyData }) => {
   ) : (
     <div className={styles.propertyContainer}>
       <PropertyImageComponent propertyData={propertyData} />
+      <PropertyInfoComponent
+        singleProperty={propertyData.singleProperty}
+        propertyData={propertyData}
+      />
     </div>
   );
 };

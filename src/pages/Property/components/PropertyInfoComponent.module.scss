@@ -1,0 +1,83 @@
+.propertyInfoContainer {
+  display: flex;
+  width: 100%;
+  flex-flow: column nowrap;
+  padding: 15px 20px;
+}
+
+.propertyInfoPrice {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  border: 1px solid green;
+  padding: 10px 0;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+  span:last-child {
+    position: relative;
+    top: 2px;
+    margin-left: 5px;
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+.propertyInfoFirstRow {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+
+  .ages,
+  .flatmateCount {
+    margin-right: 10px;
+  }
+
+  .ages,
+  .flatmateCount,
+  .roomCount {
+    padding: 10px 8px;
+    border: 1px solid green;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+}
+
+.propertyInfoOccupations {
+  border: 1px solid green;
+  padding: 10px 0;
+}
+
+.propertyInfoInfoButtons {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  padding: 10px;
+  border: 1px solid red;
+
+  .locationButton,
+  .includedButton,
+  .infoButton,
+  .matchButton {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid gold;
+
+    button {
+      height: 65px;
+      width: 65px;
+      margin-bottom: 10px;
+      border: 1px solid #404040;
+      outline: none;
+      border-radius: 10px;
+
+      svg {
+        font-size: 30px;
+      }
+    }
+  }
+}

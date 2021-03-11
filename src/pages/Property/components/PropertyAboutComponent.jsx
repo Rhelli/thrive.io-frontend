@@ -1,43 +1,38 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PropertyAboutComponent = ({ singleProperty, propertyData }) => {
-  const {
-    address, bills, blurb, deposit, disabledAccess, furnished, genders, internet, maxAge, minAge,
-    occupantCount, occupations, outsideArea, parking, pets, postcode, price, roomCount, smoking, title, town,
-  } = singleProperty;
-  const { loading, error } = propertyData;
+const PropertyAboutComponent = ({ singleProperty }) => {
+  const { title, blurb } = singleProperty;
 
-  return loading ? (
-    <div>
-      <p>Loading. Please wait.</p>
-    </div>
-  ) : error ? (
-    <div>
-      <p>
-        Error:
-        {error.message}
-      </p>
-    </div>
-  ) : (
+  return (
     <div>
       <div>
-        <h3>
-          £
-          {bills}
-          Per Month
-        </h3>
-      </div>
-      <div>
-        <p>
-          {}
-        </p>
+        <h2>About</h2>
+        <div>
+          <h3>
+            {title}
+          </h3>
+          <p>
+            {blurb}
+          </p>
+        </div>
       </div>
     </div>
   );
+};
+
+PropertyAboutComponent.defaultProps = {
+  singleProperty: {
+    title: '',
+    blurb: '',
+  },
+};
+
+PropertyAboutComponent.propTypes = {
+  singleProperty: PropTypes.shape({
+    title: PropTypes.string,
+    blurb: PropTypes.string,
+  }),
 };
 
 export default PropertyAboutComponent;
