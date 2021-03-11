@@ -2,9 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import PropertyAboutComponent from './components/PropertyAboutComponent';
-import PropertyImageComponent from './components/PropertyImageComponent';
 import PropertyInfoComponent from './components/PropertyInfoComponent';
+import PropertyImageComponent from './components/PropertyImageComponent';
+import PropertyAboutComponent from './components/PropertyAboutComponent';
 import styles from './PropertyContainer.module.scss';
 
 const PropertyContainer = ({ propertyData }) => {
@@ -21,6 +21,7 @@ const PropertyContainer = ({ propertyData }) => {
         singleProperty={propertyData.singleProperty}
         propertyData={propertyData}
       />
+      <PropertyAboutComponent singleProperty={propertyData.singleProperty} />
     </div>
   );
 };

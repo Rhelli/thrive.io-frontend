@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './PropertyAboutComponent.module.scss';
 
 const PropertyAboutComponent = ({ singleProperty }) => {
   const { title, blurb } = singleProperty;
 
   return (
-    <div>
-      <div>
-        <h2>About</h2>
-        <div>
-          <h3>
-            {title}
-          </h3>
+    <div className={styles.propertyAboutContainer}>
+      <h2>About</h2>
+      <div className={styles.propertyAboutTitleBlurb}>
+        <h3>
+          {title}
+        </h3>
+        <div className={styles.propertyAboutBlurb}>
           <p>
             {blurb}
           </p>

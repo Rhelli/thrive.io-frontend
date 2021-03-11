@@ -15,20 +15,8 @@ const PropertyInfoComponent = ({ singleProperty, propertyData }) => {
     address, bills, blurb, deposit, disabledAccess, furnished, genders, internet, maxAge, minAge,
     occupantCount, occupations, outsideArea, parking, pets, postcode, price, roomCount, smoking, title, town,
   } = singleProperty;
-  const { loading, error } = propertyData;
 
-  return loading ? (
-    <div>
-      <p>Loading. Please wait.</p>
-    </div>
-  ) : error ? (
-    <div>
-      <p>
-        Error:
-        {error.message}
-      </p>
-    </div>
-  ) : (
+  return (
     <div className={styles.propertyInfoContainer}>
       <div className={styles.propertyInfoPrice}>
         <span>

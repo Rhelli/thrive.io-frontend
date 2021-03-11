@@ -1,0 +1,26 @@
+.propertyAboutContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  padding: 0 20px;
+
+  h2 {
+    font-size: 26px;
+    padding: 10px 0;
+    border: 1px solid red;
+  }
+}
+
+.propertyAboutTitleBlurb {
+  h3 {
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px 0;
+    border: 1px solid green;
+  }
+
+  .propertyAboutBlurb {
+    border: 1px solid magenta;
+    padding: 20px 0;
+  }
+}
