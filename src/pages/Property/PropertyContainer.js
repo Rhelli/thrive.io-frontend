@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PropertyInfoComponent from './components/PropertyInfoComponent';
 import PropertyImageComponent from './components/PropertyImageComponent';
 import PropertyAboutComponent from './components/PropertyAboutComponent';
+import PropertyMoreInfoComponent from './components/PropertyMoreInfoComponent';
 import styles from './PropertyContainer.module.scss';
 
 const PropertyContainer = ({ propertyData }) => {
@@ -22,6 +22,7 @@ const PropertyContainer = ({ propertyData }) => {
         propertyData={propertyData}
       />
       <PropertyAboutComponent singleProperty={propertyData.singleProperty} />
+      <PropertyMoreInfoComponent singleProperty={propertyData.singleProperty} />
     </div>
   );
 };

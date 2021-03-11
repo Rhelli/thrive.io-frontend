@@ -1,19 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCaretUp, faCaretDown, faMapMarkerAlt, faBox, faInfoCircle, faUsers,
-} from '@fortawesome/free-solid-svg-icons';
-import flatmateDisplay from '../../../utils/propertyProfileUtils';
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { flatmateDisplay, gendersDisplay } from '../../../utils/propertyProfileUtils';
 import styles from './PropertyInfoComponent.module.scss';
 
-const PropertyInfoComponent = ({ singleProperty, propertyData }) => {
+const PropertyInfoComponent = ({ singleProperty }) => {
   const {
-    address, bills, blurb, deposit, disabledAccess, furnished, genders, internet, maxAge, minAge,
-    occupantCount, occupations, outsideArea, parking, pets, postcode, price, roomCount, smoking, title, town,
+    deposit, genders, maxAge, minAge, occupantCount, occupations, price, roomCount,
   } = singleProperty;
 
   return (
@@ -83,82 +77,43 @@ const PropertyInfoComponent = ({ singleProperty, propertyData }) => {
         </span>
       </div>
       <div className={styles.propertyInfoOccupations}>
-        <p>
-          {
-            flatmateDisplay(occupations)
-          }
-        </p>
+        <p>{flatmateDisplay(occupations) }</p>
       </div>
-      <div className={styles.propertyInfoInfoButtons}>
-        <div className={styles.locationButton}>
-          <button type="button">
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
-          </button>
-          <p>Location</p>
-        </div>
-        <div className={styles.includedButton}>
-          <button type="button">
-            <FontAwesomeIcon icon={faBox} />
-          </button>
-          <p>Included</p>
-        </div>
-        <div className={styles.infoButton}>
-          <button type="button">
-            <FontAwesomeIcon icon={faInfoCircle} />
-          </button>
-          <p>More</p>
-        </div>
-        <div className={styles.matchButton}>
-          <button type="button">
-            <FontAwesomeIcon icon={faUsers} />
-          </button>
-          <p>Match</p>
-        </div>
-      </div>
-      <div>
-        <div>
+      <div className={styles.propertyInfoGenders}>
+        {
+        gendersDisplay(genders)[1] ? (
           <div>
-            <span>Close</span>
-            <div>
+            <span>
+              <FontAwesomeIcon icon={gendersDisplay(genders)[1]} />
+            </span>
+            <span>
               <p>
-                {address}
+                {gendersDisplay(genders)[0]}
               </p>
-              <p>
-                {town}
-              </p>
-              <p>
-                {postcode}
-              </p>
-            </div>
+            </span>
           </div>
-        </div>
-        <div>
+        ) : (
           <div>
-            <span>Close</span>
-            <div>
-
-            </div>
+            <p>{gendersDisplay(genders)[0]}</p>
           </div>
-        </div>
-        <div>
-          <div>
-            <span>Close</span>
-            <div>
-
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <span>Close</span>
-            <div>
-
-            </div>
-          </div>
-        </div>
+        )
+      }
       </div>
     </div>
   );
+};
+
+PropertyInfoComponent.propTypes = {
+  singleProperty: PropTypes.shape({
+    deposit: PropTypes.number,
+    genders: PropTypes.arrayOf(PropTypes.string),
+    maxAge: PropTypes.number,
+    minAge: PropTypes.number,
+    occupantCount: PropTypes,
+    occupations: PropTypes.arrayOf(PropTypes.string),
+    price: PropTypes.number,
+    roomCount: PropTypes.number,
+  }).isRequired,
 };
 
 export default PropertyInfoComponent;

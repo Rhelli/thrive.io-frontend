@@ -49,36 +49,3 @@
   padding: 10px 0;
   margin-bottom: 10px;
 }
-
-.propertyInfoInfoButtons {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
-  padding: 10px;
-  border: 1px solid red;
-
-  .locationButton,
-  .includedButton,
-  .infoButton,
-  .matchButton {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid gold;
-
-    button {
-      height: 65px;
-      width: 65px;
-      margin-bottom: 10px;
-      border: 1px solid #404040;
-      outline: none;
-      border-radius: 10px;
-
-      svg {
-        font-size: 30px;
-      }
-    }
-  }
-}
