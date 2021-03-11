@@ -115,6 +115,48 @@ const PropertyInfoComponent = ({ singleProperty, propertyData }) => {
           <p>Match</p>
         </div>
       </div>
+      <div>
+        <div>
+          <div>
+            <span>Close</span>
+            <div>
+              <p>
+                {address}
+              </p>
+              <p>
+                {town}
+              </p>
+              <p>
+                {postcode}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <span>Close</span>
+            <div>
+
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <span>Close</span>
+            <div>
+
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <span>Close</span>
+            <div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
