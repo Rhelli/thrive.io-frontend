@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,23 +13,39 @@ const PropertyMoreInfoComponent = ({ singleProperty }) => {
     outsideArea, pets, smoking, disabledAccess,
   } = singleProperty;
 
+  const [locationModal, setLocationModal] = useState(false);
+  const [includedModal, setIncludedModal] = useState(false);
+  const [moreInfoModal, setMoreInfoModal] = useState(false);
+
+  const modalSwitch = modal => {
+    if (modal === 'locationModal') {
+      locationModal === false ? setLocationModal(true) : setLocationModal(false);
+    }
+    if (modal === 'includedModal') {
+      includedModal === false ? setIncludedModal(true) : setIncludedModal(false);
+    }
+    if (modal === 'moreInfoModal') {
+      moreInfoModal === false ? setMoreInfoModal(true) : setMoreInfoModal(false);
+    }
+  };
+
   return (
     <div className={styles.propertyMoreInfoContainer}>
       <div className={styles.propertyMoreInfoButtons}>
         <div className={styles.locationButton}>
-          <button type="button">
+          <button type="button" onClick={() => modalSwitch('locationModal')}>
             <FontAwesomeIcon icon={faMapMarkerAlt} />
           </button>
           <p>Location</p>
         </div>
         <div className={styles.includedButton}>
-          <button type="button">
+          <button type="button" onClick={() => modalSwitch('includedModal')}>
             <FontAwesomeIcon icon={faBox} />
           </button>
           <p>Included</p>
         </div>
         <div className={styles.infoButton}>
-          <button type="button">
+          <button type="button" onClick={() => modalSwitch('moreInfoModal')}>
             <FontAwesomeIcon icon={faInfoCircle} />
           </button>
           <p>More</p>
@@ -41,49 +58,67 @@ const PropertyMoreInfoComponent = ({ singleProperty }) => {
         </div>
       </div>
       <div className={styles.propertyMoreInfoModalsContainer}>
-        <div className={styles.locationModalContainer}>
-          <div className={styles.locationModalContent}>
-            <span className={styles.modalClose}>
-              <FontAwesomeIcon icon={faTimesCircle} />
-            </span>
-            <div>
-              <p>
-                {address}
-              </p>
-              <p>
-                {town}
-              </p>
-              <p>
-                {postcode}
-              </p>
+        {
+          locationModal ? (
+            <div className={styles.locationModalContainer}>
+              <div className={styles.locationModalContent}>
+                <span className={styles.modalClose} onClick={() => modalSwitch('locationModal')} role="button" onKeyUp={() => modalSwitch('locationModal')} tabIndex="-1">
+                  <FontAwesomeIcon icon={faTimesCircle} />
+                </span>
+                <div>
+                  <p>
+                    {address}
+                  </p>
+                  <p>
+                    {town}
+                  </p>
+                  <p>
+                    {postcode}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.includedModalContainer}>
-          <div className={styles.includedModelContent}>
-            <span className={styles.modalClose}>
-              <FontAwesomeIcon icon={faTimesCircle} />
-            </span>
-            <div>
-              <p>{bills}</p>
-              <p>{internet}</p>
-              <p>{furnished}</p>
-              <p>{outsideArea}</p>
+          ) : (
+            null
+          )
+        }
+        {
+          includedModal ? (
+            <div className={styles.includedModalContainer}>
+              <div className={styles.includedModelContent}>
+                <span className={styles.modalClose} onClick={() => modalSwitch('includedModal')} role="button" onKeyUp={() => modalSwitch('includedModal')} tabIndex="-1">
+                  <FontAwesomeIcon icon={faTimesCircle} />
+                </span>
+                <div>
+                  <p>{bills}</p>
+                  <p>{internet}</p>
+                  <p>{furnished}</p>
+                  <p>{outsideArea}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={styles.moreInfoModalContainer}>
-          <div className={styles.moreInfoModalContent}>
-            <span className={styles.modalClose}>
-              <FontAwesomeIcon icon={faTimesCircle} />
-            </span>
-            <div>
-              <p>{pets}</p>
-              <p>{smoking}</p>
-              <p>{disabledAccess}</p>
+          ) : (
+            null
+          )
+        }
+        {
+          moreInfoModal ? (
+            <div className={styles.moreInfoModalContainer}>
+              <div className={styles.moreInfoModalContent}>
+                <span className={styles.modalClose} onClick={() => modalSwitch('moreInfoModal')} role="button" onKeyUp={() => modalSwitch('moreInfoModal')} tabIndex="-1">
+                  <FontAwesomeIcon icon={faTimesCircle} />
+                </span>
+                <div>
+                  <p>{pets}</p>
+                  <p>{smoking}</p>
+                  <p>{disabledAccess}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          ) : (
+            null
+          )
+        }
       </div>
     </div>
   );

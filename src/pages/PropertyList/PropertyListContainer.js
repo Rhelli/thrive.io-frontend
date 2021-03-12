@@ -23,6 +23,8 @@ const PropertyListContainer = ({
     history.push(`/property/${property.id}`);
   };
 
+  console.log(propertyData);
+
   return propertyData.loading ? (
     <div>
       <h1>Data Loading...</h1>

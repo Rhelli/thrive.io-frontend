@@ -29,8 +29,17 @@ const PropertyContainer = ({ propertyData }) => {
 
 PropertyContainer.propTypes = {
   propertyData: PropTypes.shape({
-    properties: PropTypes.objectOf([PropTypes.string, PropTypes.array, PropTypes.number]),
-    singleProperty: PropTypes.arrayOf([PropTypes.string, PropTypes.array, PropTypes.number]),
+    properties: PropTypes.arrayOf(PropTypes.object),
+    singleProperty: PropTypes.shape({
+      deposit: PropTypes.number,
+      genders: PropTypes.arrayOf(PropTypes.string),
+      maxAge: PropTypes.number,
+      minAge: PropTypes.number,
+      occupantCount: PropTypes,
+      occupations: PropTypes.arrayOf(PropTypes.string),
+      price: PropTypes.number,
+      roomCount: PropTypes.number,
+    }).isRequired,
     error: PropTypes.string,
     loading: PropTypes.bool.isRequired,
   }).isRequired,
