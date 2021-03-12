@@ -56,11 +56,15 @@
   .locationModalContent,
   .includedModalContent,
   .moreInfoModalContent {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid red;
-    width: 80%;
+    width: 100%;
   }
 
   .modalClose {

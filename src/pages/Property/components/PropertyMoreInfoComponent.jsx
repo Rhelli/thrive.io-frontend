@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import React, { useState, useCallback } from 'react';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -6,11 +9,35 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './PropertyMoreInfoComponent.module.scss';
 
-const PropertyMoreInfoComponent = ({ singleProperty }) => {
+const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) => {
   const {
     address, town, postcode, bills, furnished, internet,
     outsideArea, pets, smoking, disabledAccess,
   } = singleProperty;
+
+  const { lat, lng } = singlePropertyLocation;
+  const containerStyle = {
+    width: '300px',
+    height: '300px',
+  };
+  const center = {
+    lat: parseFloat(lat.toFixed(3)),
+    lng: parseFloat(lng.toFixed(3)),
+  };
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: 'AIzaSyD_ig2ignYmsjrvH6PPPWBMr-Fv0TW0O8s',
+  });
+  const [map, setMap] = useState(null);
+  const onLoad = useCallback(map => {
+    const bounds = new window.google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+    setMap(map);
+  }, []);
+
+  const onUnmount = useCallback(map => {
+    setMap(null);
+  }, []);
 
   const [locationModal, setLocationModal] = useState(false);
   const [includedModal, setIncludedModal] = useState(false);
@@ -70,19 +97,36 @@ const PropertyMoreInfoComponent = ({ singleProperty }) => {
           locationModal ? (
             <div className={styles.locationModalContainer}>
               <div className={styles.locationModalContent}>
-                <span className={styles.modalClose} onClick={() => modalSwitch('locationModal')} role="button" onKeyUp={() => modalSwitch('locationModal')} tabIndex="-1">
+                <span className={styles.modalClose} onClick={() => setLocationModal(false)} role="button" onKeyUp={() => setLocationModal(false)} tabIndex="-1">
                   <FontAwesomeIcon icon={faTimesCircle} />
                 </span>
                 <div>
-                  <p>
-                    {address}
-                  </p>
-                  <p>
-                    {town}
-                  </p>
-                  <p>
-                    {postcode}
-                  </p>
+                  <div>
+                    {
+                    isLoaded ? (
+                      <GoogleMap
+                        mapContainerStyle={containerStyle}
+                        center={center}
+                        zoom={14}
+                        onLoad={onLoad}
+                        onUnmount={onUnmount}
+                      />
+                    ) : (
+                      null
+                    )
+                  }
+                  </div>
+                  <div>
+                    <p>
+                      {address}
+                    </p>
+                    <p>
+                      {town}
+                    </p>
+                    <p>
+                      {postcode}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -145,6 +189,20 @@ PropertyMoreInfoComponent.propTypes = {
     genders: PropTypes.arrayOf(PropTypes.string),
     smoking: PropTypes.string,
     disabledAccess: PropTypes.string,
+  }).isRequired,
+  singlePropertyLocation: PropTypes.shape({
+    results: PropTypes.shape([
+      PropTypes.shape({
+        locations: PropTypes.shape([
+          PropTypes.shape({
+            displayLatLng: PropTypes.shape({
+              lat: PropTypes.number.isRequired,
+              lng: PropTypes.number.isRequired,
+            }),
+          }),
+        ]),
+      }),
+    ]),
   }).isRequired,
 };
 

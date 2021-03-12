@@ -1,20 +1,15 @@
-import React, { useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import fetchPropertyLocation from '../../api/locationApi';
 import PropertyInfoComponent from './components/PropertyInfoComponent';
 import PropertyImageComponent from './components/PropertyImageComponent';
 import PropertyAboutComponent from './components/PropertyAboutComponent';
 import PropertyMoreInfoComponent from './components/PropertyMoreInfoComponent';
 import styles from './PropertyContainer.module.scss';
 
-const PropertyContainer = ({ propertyData, fetchPropertyLocation }) => {
-  const { address, town, postcode } = propertyData.singleProperty;
-  const propertyAddress = `${address},${town},${postcode}`;
-
-  useEffect(() => {
-    fetchPropertyLocation(propertyAddress);
-  }, []);
+const PropertyContainer = ({ propertyData }) => {
+  const { displayLatLng } = propertyData.singlePropertyLocation.results[0].locations[0];
 
   return propertyData.loading ? (
     <p>Wait a sec.</p>
@@ -28,7 +23,10 @@ const PropertyContainer = ({ propertyData, fetchPropertyLocation }) => {
         propertyData={propertyData}
       />
       <PropertyAboutComponent singleProperty={propertyData.singleProperty} />
-      <PropertyMoreInfoComponent singleProperty={propertyData.singleProperty} />
+      <PropertyMoreInfoComponent
+        singleProperty={propertyData.singleProperty}
+        singlePropertyLocation={displayLatLng}
+      />
     </div>
   );
 };
@@ -49,18 +47,14 @@ PropertyContainer.propTypes = {
       price: PropTypes.number,
       roomCount: PropTypes.number,
     }).isRequired,
+    singlePropertyLocation: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     error: PropTypes.string,
     loading: PropTypes.bool.isRequired,
   }).isRequired,
-  fetchPropertyLocation: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   propertyData: state.propertyStore,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchPropertyLocation: propertyAddress => dispatch(fetchPropertyLocation(propertyAddress)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyContainer);
+export default connect(mapStateToProps, null)(PropertyContainer);
