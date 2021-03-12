@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,13 +18,22 @@ const PropertyMoreInfoComponent = ({ singleProperty }) => {
 
   const modalSwitch = modal => {
     if (modal === 'locationModal') {
-      locationModal === false ? setLocationModal(true) : setLocationModal(false);
+      if (locationModal) {
+        setLocationModal(false);
+      }
+      setLocationModal(true);
     }
     if (modal === 'includedModal') {
-      includedModal === false ? setIncludedModal(true) : setIncludedModal(false);
+      if (includedModal) {
+        setIncludedModal(false);
+      }
+      setIncludedModal(true);
     }
     if (modal === 'moreInfoModal') {
-      moreInfoModal === false ? setMoreInfoModal(true) : setMoreInfoModal(false);
+      if (moreInfoModal) {
+        setMoreInfoModal(false);
+      }
+      setMoreInfoModal(true);
     }
   };
 
