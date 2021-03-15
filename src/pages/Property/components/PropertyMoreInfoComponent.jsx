@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState, useCallback } from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -24,20 +24,6 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
     lat: parseFloat(lat.toFixed(3)),
     lng: parseFloat(lng.toFixed(3)),
   };
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyD_ig2ignYmsjrvH6PPPWBMr-Fv0TW0O8s',
-  });
-  const [map, setMap] = useState(null);
-  const onLoad = useCallback(map => {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-
-  const onUnmount = useCallback(map => {
-    setMap(null);
-  }, []);
 
   const [locationModal, setLocationModal] = useState(false);
   const [includedModal, setIncludedModal] = useState(false);
@@ -102,19 +88,15 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
                 </span>
                 <div>
                   <div>
-                    {
-                    isLoaded ? (
+                    <LoadScript
+                      googleMapsApiKey="AIzaSyD_ig2ignYmsjrvH6PPPWBMr-Fv0TW0O8s"
+                    >
                       <GoogleMap
                         mapContainerStyle={containerStyle}
                         center={center}
-                        zoom={14}
-                        onLoad={onLoad}
-                        onUnmount={onUnmount}
+                        zoom={15}
                       />
-                    ) : (
-                      null
-                    )
-                  }
+                    </LoadScript>
                   </div>
                   <div>
                     <p>
