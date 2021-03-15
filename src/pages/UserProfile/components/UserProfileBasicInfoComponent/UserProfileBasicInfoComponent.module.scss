@@ -1,0 +1,26 @@
+.userProfileBasicContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  margin-top: 40px;
+  border: 1px solid purple;
+}
+
+.userProfileName {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.userProfileOccupationType {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .userProfileBasicMidSpan {
+    margin: 0 5px;
+  }
+}
