@@ -20,7 +20,6 @@ const PropertyListContainer = ({
   const history = useHistory();
 
   const propertyClickThrough = property => {
-    console.log(property);
     const propertyAddress = `${property.address},${property.town},${property.postcode}`;
     fetchSingleProperty(property);
     fetchPropertyLocation(propertyAddress);

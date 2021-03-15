@@ -18,8 +18,8 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
   const { lat, lng } = singlePropertyLocation;
   const containerStyle = {
-    width: '300px',
-    height: '300px',
+    width: '350px',
+    height: '350px',
   };
   const center = {
     lat: parseFloat(lat.toFixed(3)),
@@ -39,17 +39,11 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
           </button>
           <p>Location</p>
         </div>
-        <div className={styles.includedButton}>
-          <button type="button" onClick={() => setIncludedModal(true)}>
-            <FontAwesomeIcon icon={faBox} />
-          </button>
-          <p>Included</p>
-        </div>
         <div className={styles.infoButton}>
           <button type="button" onClick={() => setMoreInfoModal(true)}>
             <FontAwesomeIcon icon={faInfoCircle} />
           </button>
-          <p>More</p>
+          <p>More Info</p>
         </div>
         <div className={styles.matchButton}>
           <button type="button">
@@ -66,7 +60,7 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
                 <span className={styles.modalClose} onClick={() => setLocationModal(false)} role="button" onKeyUp={() => setLocationModal(false)} tabIndex="-1">
                   <FontAwesomeIcon icon={faTimesCircle} />
                 </span>
-                <div>
+                <div className={styles.locationMapContainer}>
                   <div>
                     <LoadScript
                       googleMapsApiKey={REACT_APP_GOOGLE_MAPS_API_KEY}
@@ -78,36 +72,22 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
                       />
                     </LoadScript>
                   </div>
+                </div>
+                <div className={styles.locationAddressContainer}>
                   <div>
+                    <h3>Address</h3>
                     <p>
                       {address}
+                      ,
                     </p>
                     <p>
                       {town}
+                      ,
                     </p>
                     <p>
                       {postcode}
                     </p>
                   </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            null
-          )
-        }
-        {
-          includedModal ? (
-            <div className={styles.includedModalContainer}>
-              <div className={styles.includedModelContent}>
-                <span className={styles.modalClose} onClick={() => setIncludedModal(false)} role="button" onKeyUp={() => setIncludedModal(false)} tabIndex="-1">
-                  <FontAwesomeIcon icon={faTimesCircle} />
-                </span>
-                <div>
-                  <p>{bills}</p>
-                  <p>{internet}</p>
-                  <p>{furnished}</p>
-                  <p>{outsideArea}</p>
                 </div>
               </div>
             </div>
@@ -122,10 +102,35 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
                 <span className={styles.modalClose} onClick={() => setMoreInfoModal(false)} role="button" onKeyUp={() => setMoreInfoModal(false)} tabIndex="-1">
                   <FontAwesomeIcon icon={faTimesCircle} />
                 </span>
-                <div>
-                  <p>{pets}</p>
-                  <p>{smoking}</p>
-                  <p>{disabledAccess}</p>
+                <div className={styles.moreInfoModalInnerContainer}>
+                  <div>
+                    <h3>Bills?</h3>
+                    <p>{bills}</p>
+                  </div>
+                  <div>
+                    <h3>Internet?</h3>
+                    <p>{internet}</p>
+                  </div>
+                  <div>
+                    <h3>Furnished?</h3>
+                    <p>{furnished}</p>
+                  </div>
+                  <div>
+                    <h3>Outside Areas:</h3>
+                    <p>{outsideArea}</p>
+                  </div>
+                  <div>
+                    <h3>Pets?</h3>
+                    <p>{pets}</p>
+                  </div>
+                  <div>
+                    <h3>Smoking?</h3>
+                    <p>{smoking}</p>
+                  </div>
+                  <div>
+                    <h3>Disabled Access?</h3>
+                    <p>{disabledAccess}</p>
+                  </div>
                 </div>
               </div>
             </div>

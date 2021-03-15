@@ -22,9 +22,6 @@ const FlatmatesListContainer = ({
     history.push(`/flatmates/${flatmate.id}`);
   };
 
-  console.log(flatmateData);
-
-  // eslint-disable-next-line no-nested-ternary
   return flatmateData.loading ? (
     <h2>Loading flatmate data...</h2>
   ) : flatmateData.error ? (

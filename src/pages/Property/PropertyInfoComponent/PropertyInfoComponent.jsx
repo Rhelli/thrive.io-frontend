@@ -85,7 +85,7 @@ const PropertyInfoComponent = ({ singleProperty }) => {
       <div className={styles.propertyInfoGenders}>
         {
         gendersDisplay(genders)[1] ? (
-          <div>
+          <div className={styles.propertyInfoGendersInnerContainer}>
             <span>
               <FontAwesomeIcon icon={gendersDisplay(genders)[1]} />
             </span>
@@ -112,7 +112,7 @@ PropertyInfoComponent.propTypes = {
     genders: PropTypes.arrayOf(PropTypes.string),
     maxAge: PropTypes.number,
     minAge: PropTypes.number,
-    occupantCount: PropTypes,
+    occupantCount: PropTypes.number,
     occupations: PropTypes.arrayOf(PropTypes.string),
     price: PropTypes.number,
     roomCount: PropTypes.number,

@@ -1,3 +1,7 @@
+import {
+  faMars, faVenus, faTransgender, faTransgenderAlt,
+} from '@fortawesome/free-solid-svg-icons';
+
 export const flatmateDisplay = occupations => {
   let proCount = 0; let studCount = 0; let message = '';
   if (occupations.length < 1) message = 'No resident information yet.';
@@ -40,16 +44,16 @@ export const gendersDisplay = genders => {
   });
   if ((tCount + fCount + oCount) === 0) {
     message = `Male Household. ${mCount} male flatmates`;
-    icon = 'faMars';
+    icon = faMars;
   } else if ((mCount + fCount + oCount) === 0) {
     message = `Trans Household. ${tCount} trans flatmates`;
-    icon = 'faTransgender';
+    icon = faTransgender;
   } else if ((mCount + tCount + oCount) === 0) {
     message = `Female Household. ${fCount} female flatmates`;
-    icon = 'faVenus';
+    icon = faVenus;
   } else if ((mCount + tCount + fCount) === 0) {
     message = `Other Gender Household. ${oCount} other gendered flatmates`;
-    icon = 'faTransgenderAlt';
+    icon = faTransgenderAlt;
   } else {
     if (mCount) message.concat(`${mCount} men, `);
     if (fCount) message.concat(`${fCount} women, `);

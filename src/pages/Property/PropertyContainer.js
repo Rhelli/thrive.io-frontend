@@ -2,10 +2,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import PropertyInfoComponent from './components/PropertyInfoComponent';
-import PropertyImageComponent from './components/PropertyImageComponent';
-import PropertyAboutComponent from './components/PropertyAboutComponent';
-import PropertyMoreInfoComponent from './components/PropertyMoreInfoComponent';
+import PropertyInfoComponent from './PropertyInfoComponent/PropertyInfoComponent';
+import PropertyImageComponent from './PropertyImageComponent/PropertyImageComponent';
+import PropertyAboutComponent from './PropertyAboutComponent/PropertyAboutComponent';
+import PropertyMoreInfoComponent from './PropertyMoreInfoComponent/PropertyMoreInfoComponent';
 import styles from './PropertyContainer.module.scss';
 
 const PropertyContainer = ({ propertyData }) => (
@@ -42,7 +42,7 @@ PropertyContainer.propTypes = {
       genders: PropTypes.arrayOf(PropTypes.string),
       maxAge: PropTypes.number,
       minAge: PropTypes.number,
-      occupantCount: PropTypes,
+      occupantCount: PropTypes.number,
       occupations: PropTypes.arrayOf(PropTypes.string),
       price: PropTypes.number,
       roomCount: PropTypes.number,
