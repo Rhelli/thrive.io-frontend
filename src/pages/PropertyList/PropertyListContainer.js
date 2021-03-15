@@ -23,9 +23,7 @@ const PropertyListContainer = ({
     const propertyAddress = `${property.address},${property.town},${property.postcode}`;
     fetchSingleProperty(property);
     fetchPropertyLocation(propertyAddress);
-    setTimeout(() => {
-      history.push(`/property/${property.id}`);
-    }, 800);
+    history.push(`/property/${property.id}`);
   };
 
   console.log(propertyData);

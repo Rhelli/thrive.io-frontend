@@ -8,10 +8,8 @@ import PropertyAboutComponent from './components/PropertyAboutComponent';
 import PropertyMoreInfoComponent from './components/PropertyMoreInfoComponent';
 import styles from './PropertyContainer.module.scss';
 
-const PropertyContainer = ({ propertyData }) => {
-  const { displayLatLng } = propertyData.singlePropertyLocation.results[0].locations[0];
-
-  return propertyData.loading ? (
+const PropertyContainer = ({ propertyData }) => (
+  propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
     <p>Wait a sec.</p>
   ) : propertyData.error ? (
     <p>Wait a million years</p>
@@ -25,11 +23,13 @@ const PropertyContainer = ({ propertyData }) => {
       <PropertyAboutComponent singleProperty={propertyData.singleProperty} />
       <PropertyMoreInfoComponent
         singleProperty={propertyData.singleProperty}
-        singlePropertyLocation={displayLatLng}
+        singlePropertyLocation={
+          propertyData.singlePropertyLocation.results[0].locations[0].displayLatLng
+        }
       />
     </div>
-  );
-};
+  )
+);
 
 PropertyContainer.propTypes = {
   propertyData: PropTypes.shape({
