@@ -4,9 +4,11 @@ import {
   fetchCurrentUserProfileError,
 } from '../state/userProfile/userProfileActions';
 
+const { REACT_APP_REST_API_LOCATION } = process.env;
+
 const fetchUserProfileApiRequest = () => dispatch => {
   dispatch(fetchCurrentUserProfileRequest);
-  fetch('http://localhost:3001/api/v1/myaccount', {
+  fetch(`${REACT_APP_REST_API_LOCATION}/myaccount`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',

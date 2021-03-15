@@ -2,7 +2,8 @@ import {
   FETCH_PROPERTIES_REQUEST, FETCH_PROPERTIES_SUCCESS, FETCH_PROPERTIES_ERROR,
   UPDATE_PROPERTY_REQUEST, UPDATE_PROPERTY_SUCCESS, UPDATE_PROPERTY_ERROR, CREATE_PROPERTY_REQUEST,
   CREATE_PROPERTY_SUCCESS, CREATE_PROPERTY_ERROR, DELETE_PROPERTY_REQUEST, DELETE_PROPERTY_SUCCESS,
-  DELETE_PROPERTY_ERROR, FETCH_SINGLE_PROPERTY,
+  DELETE_PROPERTY_ERROR, FETCH_SINGLE_PROPERTY, FETCH_SINGLE_PROPERTY_LOCATION_REQUEST,
+  FETCH_SINGLE_PROPERTY_LOCATION_SUCCESS, FETCH_SINGLE_PROPERTY_LOCATION_ERROR,
 } from './propertyTypes';
 
 export const fetchPropertiesRequest = () => ({
@@ -64,4 +65,18 @@ export const deletePropertyError = error => ({
 export const fetchSingleProperty = property => ({
   type: FETCH_SINGLE_PROPERTY,
   payload: property,
+});
+
+export const fetchSinglePropertyLocationRequest = () => ({
+  type: FETCH_SINGLE_PROPERTY_LOCATION_REQUEST,
+});
+
+export const fetchSinglePropertyLocationSuccess = location => ({
+  type: FETCH_SINGLE_PROPERTY_LOCATION_SUCCESS,
+  payload: location,
+});
+
+export const fetchSinglePropertyLocationError = error => ({
+  type: FETCH_SINGLE_PROPERTY_LOCATION_ERROR,
+  payload: error,
 });

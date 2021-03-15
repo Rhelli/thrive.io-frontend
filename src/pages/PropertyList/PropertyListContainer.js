@@ -6,11 +6,12 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import PropertyListItemComponent from './components/PropertyListItemComponent';
 import { fetchAllPropertiesRequest } from '../../api/propertiesApi';
+import fetchPropertyLocation from '../../api/locationApi';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
 import styles from './PropertyListContainer.module.scss';
 
 const PropertyListContainer = ({
-  propertyData, fetchAllPropertiesRequest, fetchSingleProperty,
+  propertyData, fetchAllPropertiesRequest, fetchSingleProperty, fetchPropertyLocation,
 }) => {
   useLayoutEffect(() => {
     fetchAllPropertiesRequest();
@@ -19,7 +20,9 @@ const PropertyListContainer = ({
   const history = useHistory();
 
   const propertyClickThrough = property => {
+    const propertyAddress = `${property.address},${property.town},${property.postcode}`;
     fetchSingleProperty(property);
+    fetchPropertyLocation(propertyAddress);
     history.push(`/property/${property.id}`);
   };
 
@@ -88,6 +91,7 @@ PropertyListContainer.propTypes = {
   }).isRequired,
   fetchAllPropertiesRequest: PropTypes.func.isRequired,
   fetchSingleProperty: PropTypes.func.isRequired,
+  fetchPropertyLocation: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -97,6 +101,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchAllPropertiesRequest: () => dispatch(fetchAllPropertiesRequest()),
   fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
+  fetchPropertyLocation: propertyAddress => dispatch(fetchPropertyLocation(propertyAddress)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyListContainer);

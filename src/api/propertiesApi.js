@@ -5,9 +5,11 @@ import {
   createPropertyError, deletePropertyRequest, deletePropertySuccess, deletePropertyError,
 } from '../state/property/propertyActions';
 
+const { REACT_APP_REST_API_LOCATION } = process.env;
+
 export const fetchAllPropertiesRequest = () => dispatch => {
   dispatch(fetchPropertiesRequest);
-  fetch('http://localhost:3001/api/v1/properties', {
+  fetch(`${REACT_APP_REST_API_LOCATION}/properties`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -28,7 +30,7 @@ export const fetchAllPropertiesRequest = () => dispatch => {
 export const createNewPropertyRequest = property => dispatch => {
   dispatch(createPropertyRequest);
   const formattedProperty = humps.decamelizeKeys(property);
-  fetch('https://localhost:3001/api/v1/new-property', {
+  fetch(`${REACT_APP_REST_API_LOCATION}/new-property`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -55,7 +57,7 @@ export const updatePropertyDetailsRequest = property => dispatch => {
   dispatch(updatePropertyRequest);
   const { id } = property;
   const formattedProperty = humps.decamelizeKeys(property);
-  fetch(`https://localhost:3001/api/v1/edit-property/${id}`, {
+  fetch(`${REACT_APP_REST_API_LOCATION}/edit-property/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
@@ -81,7 +83,7 @@ export const deletePropertyApiRequest = property => dispatch => {
   dispatch(deletePropertyRequest);
   const { id } = property;
   const formattedProperty = humps.decamelizeKeys(property);
-  fetch(`https://localhost:3001/api/v1/delete-property/${id}`, {
+  fetch(`${REACT_APP_REST_API_LOCATION}/delete-property/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

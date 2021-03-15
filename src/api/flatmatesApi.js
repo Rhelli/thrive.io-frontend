@@ -3,9 +3,11 @@ import {
   fetchFlatmatesRequest, fetchFlatmatesSuccess, fetchFlatmatesError,
 } from '../state/flatmates/flatmatesActions';
 
+const { REACT_APP_REST_API_LOCATION } = process.env;
+
 const fetchFlatmatesApiRequest = () => dispatch => {
   dispatch(fetchFlatmatesRequest);
-  fetch('http://localhost:3001/api/v1/flatmates', {
+  fetch(`${REACT_APP_REST_API_LOCATION}/flatmates`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
