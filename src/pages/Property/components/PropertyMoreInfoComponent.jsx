@@ -15,6 +15,7 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
     outsideArea, pets, smoking, disabledAccess,
   } = singleProperty;
 
+  const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
   const { lat, lng } = singlePropertyLocation;
   const containerStyle = {
     width: '300px',
@@ -29,44 +30,23 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
   const [includedModal, setIncludedModal] = useState(false);
   const [moreInfoModal, setMoreInfoModal] = useState(false);
 
-  const modalSwitch = modal => {
-    if (modal === 'locationModal') {
-      if (locationModal) {
-        setLocationModal(false);
-      }
-      setLocationModal(true);
-    }
-    if (modal === 'includedModal') {
-      if (includedModal) {
-        setIncludedModal(false);
-      }
-      setIncludedModal(true);
-    }
-    if (modal === 'moreInfoModal') {
-      if (moreInfoModal) {
-        setMoreInfoModal(false);
-      }
-      setMoreInfoModal(true);
-    }
-  };
-
   return (
     <div className={styles.propertyMoreInfoContainer}>
       <div className={styles.propertyMoreInfoButtons}>
         <div className={styles.locationButton}>
-          <button type="button" onClick={() => modalSwitch('locationModal')}>
+          <button type="button" onClick={() => setLocationModal(true)}>
             <FontAwesomeIcon icon={faMapMarkerAlt} />
           </button>
           <p>Location</p>
         </div>
         <div className={styles.includedButton}>
-          <button type="button" onClick={() => modalSwitch('includedModal')}>
+          <button type="button" onClick={() => setIncludedModal(true)}>
             <FontAwesomeIcon icon={faBox} />
           </button>
           <p>Included</p>
         </div>
         <div className={styles.infoButton}>
-          <button type="button" onClick={() => modalSwitch('moreInfoModal')}>
+          <button type="button" onClick={() => setMoreInfoModal(true)}>
             <FontAwesomeIcon icon={faInfoCircle} />
           </button>
           <p>More</p>
@@ -89,7 +69,7 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
                 <div>
                   <div>
                     <LoadScript
-                      googleMapsApiKey="AIzaSyD_ig2ignYmsjrvH6PPPWBMr-Fv0TW0O8s"
+                      googleMapsApiKey={REACT_APP_GOOGLE_MAPS_API_KEY}
                     >
                       <GoogleMap
                         mapContainerStyle={containerStyle}
@@ -120,7 +100,7 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
           includedModal ? (
             <div className={styles.includedModalContainer}>
               <div className={styles.includedModelContent}>
-                <span className={styles.modalClose} onClick={() => modalSwitch('includedModal')} role="button" onKeyUp={() => modalSwitch('includedModal')} tabIndex="-1">
+                <span className={styles.modalClose} onClick={() => setIncludedModal(false)} role="button" onKeyUp={() => setIncludedModal(false)} tabIndex="-1">
                   <FontAwesomeIcon icon={faTimesCircle} />
                 </span>
                 <div>
@@ -139,7 +119,7 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
           moreInfoModal ? (
             <div className={styles.moreInfoModalContainer}>
               <div className={styles.moreInfoModalContent}>
-                <span className={styles.modalClose} onClick={() => modalSwitch('moreInfoModal')} role="button" onKeyUp={() => modalSwitch('moreInfoModal')} tabIndex="-1">
+                <span className={styles.modalClose} onClick={() => setMoreInfoModal(false)} role="button" onKeyUp={() => setMoreInfoModal(false)} tabIndex="-1">
                   <FontAwesomeIcon icon={faTimesCircle} />
                 </span>
                 <div>

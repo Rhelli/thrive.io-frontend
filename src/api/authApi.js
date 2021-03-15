@@ -1,9 +1,11 @@
 import humps from 'humps';
 import { setUser, authError } from '../state/auth/authActions';
 
+const { REACT_APP_REST_API_LOCATION } = process.env;
+
 const createUserRequest = user => dispatch => {
   user.preventDefault();
-  fetch('http://localhost:3001/api/v1/users', {
+  fetch(`${REACT_APP_REST_API_LOCATION}/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ const createUserRequest = user => dispatch => {
 
 const signInRequest = user => dispatch => {
   user.preventDefault();
-  fetch('http://localhost:3001/api/v1/signin', {
+  fetch(`${REACT_APP_REST_API_LOCATION}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -60,7 +62,7 @@ const signInRequest = user => dispatch => {
 };
 
 const autoLoginRequest = () => dispatch => {
-  fetch('http://localhost:3001/api/v1/auto-login', {
+  fetch(`${REACT_APP_REST_API_LOCATION}/auto-login`, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',

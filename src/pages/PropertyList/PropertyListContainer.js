@@ -20,13 +20,12 @@ const PropertyListContainer = ({
   const history = useHistory();
 
   const propertyClickThrough = property => {
+    console.log(property);
     const propertyAddress = `${property.address},${property.town},${property.postcode}`;
     fetchSingleProperty(property);
     fetchPropertyLocation(propertyAddress);
     history.push(`/property/${property.id}`);
   };
-
-  console.log(propertyData);
 
   return propertyData.loading ? (
     <div>
