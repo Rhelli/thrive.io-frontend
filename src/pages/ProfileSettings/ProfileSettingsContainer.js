@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ProfileSettingsNavbarComponent from './components/ProfileSettingsNavbarComponent/ProfileSettingsNavbarComponent';
+import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
 import ProfileSettingsButtonsComponent from './components/ProfileSettingsButtonsComponent/ProfileSettingsButtonsComponent';
 import styles from './ProfileSettingsContainer.module.scss';
 
@@ -17,7 +17,7 @@ const ProfileSettingsContainer = ({ userProfile }) => {
 
   return (
     <div className={styles.profileSettingsContainer}>
-      <ProfileSettingsNavbarComponent handleBackButtonClick={handleBackButtonClick} />
+      <ProfileSettingsNavbar handleBackButtonClick={handleBackButtonClick} />
       <ProfileSettingsButtonsComponent
         handleEditProfileClick={handleEditProfileClick}
         handleChangePasswordClick={handleChangePasswordClick}

@@ -2,9 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { faChevronLeft, faUser } from '@fortawesome/free-solid-svg-icons';
-import styles from './ProfileSettingsNavbarComponent.module.scss';
+import styles from './ProfileSettingsNavbar.module.scss';
 
-const ProfileSettingsNavbarComponent = ({ handleBackButtonClick }) => (
+const ProfileSettingsNavbar = ({ handleBackButtonClick }) => (
   <div className={styles.profileSettingsNavbarContainer}>
     <div className={styles.profileSettingsNavbarBackButton}>
       <button type="button" onClick={handleBackButtonClick} onKeyUp={handleBackButtonClick}>
@@ -22,8 +22,8 @@ const ProfileSettingsNavbarComponent = ({ handleBackButtonClick }) => (
   </div>
 );
 
-ProfileSettingsNavbarComponent.propTypes = {
+ProfileSettingsNavbar.propTypes = {
   handleBackButtonClick: PropTypes.func.isRequired,
 };
 
-export default ProfileSettingsNavbarComponent;
+export default ProfileSettingsNavbar;
