@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import UserProfileHeaderComponent from './components/UserProfileHeaderComponent/UserProfileHeaderComponent';
 import UserProfileBasicInfoComponent from './components/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
+import UserProfileAboutComponent from './components/UserProfileAboutComponent/UserProfileAboutComponent';
 
 const UserProfileContainer = ({
   fetchUserProfileApiRequest, profileInfo,
@@ -28,6 +29,7 @@ const UserProfileContainer = ({
     <div>
       <UserProfileHeaderComponent />
       <UserProfileBasicInfoComponent userProfile={userProfile} />
+      <UserProfileAboutComponent userProfile={userProfile} />
     </div>
   );
 };

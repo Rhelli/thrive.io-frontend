@@ -1,0 +1,55 @@
+.userProfileAboutContainer {
+  border: 1px solid orange;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.userProfileAboutTopSection {
+  h2 {
+    margin: 10px 0;
+  }
+
+  .userProfileAbout {
+    margin-bottom: 20px;
+    line-height: 120%;
+    border: 1px solid blue;
+  }
+
+  .userProfileAreas {
+    border: 1px solid magenta;
+    margin-bottom: 10px;
+
+    p {
+      line-height: 120%;
+    }
+  }
+}
+
+.userProfileAboutBottomSection {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  div {
+    display: flex;
+    flex-flow: row nowrap;
+    border: 1px solid red;
+    border-radius: 4px;
+    padding: 12px 12px;
+    font-size: 14px;
+    margin: 0 10px 10px 0;
+
+    span:first-child {
+      margin-right: 6px;
+    }
+  }
+
+  .userProfileGenderBox {
+    display: flex;
+    flex-flow: row nowrap;
+
+    p:first-child {
+      margin-right: 4px;
+    }
+  }
+}
