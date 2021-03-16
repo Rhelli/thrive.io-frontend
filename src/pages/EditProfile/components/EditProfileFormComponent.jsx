@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import { areasOptions } from '../data';
+import styles from './EditProfileFormComponent.module.scss';
 
-const EditProfileFormComponent = () => {
+const EditProfileFormComponent = ({ userProfile }) => {
+  const {
+    about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
+    smoking, userType,
+  } = userProfile;
   const petsOptions = [
     { value: 'Dogs', label: 'Dogs' },
     { value: 'Cats', label: 'Cats' },
@@ -21,47 +25,67 @@ const EditProfileFormComponent = () => {
   ];
 
   return (
-    <div>
-      <form>
-        <div>
-        <label htmlFor="name">
-          Your Name
-          <input id="name" type="text" required />
-        </label>
-      </div>
-        <div>
-        <label htmlFor="age">
-          Date Of Birth
-          <input id="dob" type="date" />
-        </label>
-      </div>
-        <div>
-        <span>
-          <label htmlFor="male">
-            <input type="radio" id="male" name="gender" value="Male" />
-            <span>Male</span>
+    <div className={styles.editProfileFormContainer}>
+      <form className={styles.editProfileForm}>
+        <div className={styles.editProfileName}>
+          <label htmlFor="name">
+            Your Name
+            <input id="name" type="text" placeholder={name} required />
           </label>
-        </span>
-        <span>
-          <label htmlFor="female">
-            <input type="radio" id="female" name="gender" value="Female" />
-            <span>Female</span>
+        </div>
+        <div className={styles.editProfileDob}>
+          <label htmlFor="age">
+            Date Of Birth
+            <input id="dob" type="date" />
           </label>
-        </span>
-        <span>
-          <label htmlFor="transgender">
-            <input type="radio" id="transgender" name="gender" value="Transgender" />
-            <span>Transgender</span>
+        </div>
+        <div className={styles.editProfileAbout}>
+          <label htmlFor="about">
+            About You
+            <input id="about" type="text" />
           </label>
-        </span>
-        <span>
-          <label htmlFor="other">
-            <input type="radio" id="other" name="gender" value="Other" />
-            <span>Other</span>
-          </label>
-        </span>
-      </div>
-        <div>
+        </div>
+        <div className={styles.editProfileUserType}>
+          <span>
+            <label htmlFor="looking">
+              <input type="radio" id="looking" name="userType" value="Looking" />
+              <span>Looking</span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="advertising">
+              <input type="radio" id="advertising" name="userType" value="Advertising" />
+              <span>Advertising</span>
+            </label>
+          </span>
+        </div>
+        <div className={styles.editProfileGender}>
+          <span>
+            <label htmlFor="male">
+              <input type="radio" id="male" name="gender" value="Male" />
+              <span>Male</span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="female">
+              <input type="radio" id="female" name="gender" value="Female" />
+              <span>Female</span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="transgender">
+              <input type="radio" id="transgender" name="gender" value="Transgender" />
+              <span>Transgender</span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="other">
+              <input type="radio" id="other" name="gender" value="Other" />
+              <span>Other</span>
+            </label>
+          </span>
+        </div>
+        <div className={styles.editProfileOccupation}>
           <span>
             <label htmlFor="professional">
               <input type="radio" id="professional" name="occupation" value="Professional" />
@@ -75,58 +99,58 @@ const EditProfileFormComponent = () => {
             </label>
           </span>
         </div>
-        <div>
-        <span>
-          <label htmlFor="non-couple">
-            <input type="radio" id="non-couple" name="couple" value="non-couple" />
-            <span>Non-Couple</span>
-          </label>
-        </span>
-        <span>
-          <label htmlFor="couple">
-            <input type="radio" id="couple" name="couple" value="couple" />
-            <span>Couple</span>
-          </label>
-        </span>
-      </div>
-        <div>
-        <span>
-          <label htmlFor="minBudget">
-            Minimum Budget
-            <input id="minBudget" type="number" />
-          </label>
-        </span>
-        <span>
-          <label htmlFor="maxBudget">
-            Maximum Budget
-            <input id="maxBudget" type="number" />
-          </label>
-        </span>
-      </div>
-        <div>
-        <span>
-          <label htmlFor="non-smoking">
-            <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" />
-            <span>Non-Smoking</span>
-          </label>
-        </span>
-        <span>
-          <label htmlFor="occasionally">
-            <input type="radio" id="occasionally" name="smoking" value="Occasionally" />
-            <span>Occasionally</span>
-          </label>
-        </span>
-        <span>
-          <label htmlFor="smoking">
-            <input type="radio" id="smoking" name="smoking" value="Smoking" />
-            <span>Smoking</span>
-          </label>
-        </span>
-      </div>
-        <div>
+        <div className={styles.editProfileCouple}>
+          <span>
+            <label htmlFor="non-couple">
+              <input type="radio" id="non-couple" name="couple" value="non-couple" />
+              <span>Non-Couple</span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="couple">
+              <input type="radio" id="couple" name="couple" value="couple" />
+              <span>Couple</span>
+            </label>
+          </span>
+        </div>
+        <div className={styles.editProfileBudget}>
+          <span>
+            <label htmlFor="minBudget">
+              Minimum Budget
+              <input id="minBudget" type="number" />
+            </label>
+          </span>
+          <span>
+            <label htmlFor="maxBudget">
+              Maximum Budget
+              <input id="maxBudget" type="number" />
+            </label>
+          </span>
+        </div>
+        <div className={styles.editProfileSmoking}>
+          <span>
+            <label htmlFor="non-smoking">
+              <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" />
+              <span>Non-Smoking</span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="occasionally">
+              <input type="radio" id="occasionally" name="smoking" value="Occasionally" />
+              <span>Occasionally</span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="smoking">
+              <input type="radio" id="smoking" name="smoking" value="Smoking" />
+              <span>Smoking</span>
+            </label>
+          </span>
+        </div>
+        <div className={styles.editProfilePets}>
           <Select options={petsOptions} />
         </div>
-        <div>
+        <div className={styles.editProfileAreas}>
           <CreatableSelect
             isMulti
             options={areasOptions}
@@ -135,6 +159,23 @@ const EditProfileFormComponent = () => {
       </form>
     </div>
   );
+};
+
+EditProfileFormComponent.propTypes = {
+  userProfile: PropTypes.shape({
+    about: PropTypes.string,
+    areasLooking: PropTypes.arrayOf(PropTypes.string),
+    avatar: PropTypes.string,
+    couple: PropTypes.string,
+    gender: PropTypes.string,
+    maxBudget: PropTypes.number,
+    minBudget: PropTypes.number,
+    name: PropTypes.string.isRequired,
+    occupation: PropTypes.string,
+    pets: PropTypes.arrayOf(PropTypes.string),
+    smoking: PropTypes.string,
+    userType: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default EditProfileFormComponent;

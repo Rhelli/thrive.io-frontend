@@ -6,11 +6,6 @@ import { connect } from 'react-redux';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
 
 const EditProfileContainer = ({ userProfile }) => {
-  const {
-    about, areasLooking, avatar, couple, gender, maxBudget, minBudget, name, occupation, pets,
-    smoking, userType,
-  } = userProfile;
-
   const history = useHistory();
   const handleBackButtonClick = () => history.push('/myaccount/settings/edit-profile');
 
