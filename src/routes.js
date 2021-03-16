@@ -20,7 +20,7 @@ const Routes = ({ signedIn }) => (
       <PublicRoute restricted={false} signedIn={signedIn} component={UserListContainer} path="/looking" exact />
       <PrivateRoute signedIn={signedIn} component={UserProfileContainer} path="/myaccount" exact />
       <PublicRoute restricted={false} signedIn={signedIn} component={FlatmateProfileContainer} path="/flatmates/:id" />
-      <PrivateRoute signedIn={signedIn} component={ProfileSettingsContainer} path="/settings" exact />
+      <PrivateRoute signedIn={signedIn} component={ProfileSettingsContainer} path="/myaccount/settings" exact />
       <PublicRoute restricted={false} signedIn={signedIn} component={PropertyListContainer} path="/advertising" exact />
       <PublicRoute restricted={false} signedIn={signedIn} component={PropertyContainer} path="/property/:id" />
       <PrivateRoute signedIn={signedIn} component={QuizContainer} path="/personality-assessment" />

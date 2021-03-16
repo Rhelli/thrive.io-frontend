@@ -1,8 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
+import UserProfileHeaderComponent from './components/UserProfileHeaderComponent/UserProfileHeaderComponent';
+import UserProfileBasicInfoComponent from './components/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
+import UserProfileAboutComponent from './components/UserProfileAboutComponent/UserProfileAboutComponent';
 
 const UserProfileContainer = ({
   fetchUserProfileApiRequest, profileInfo,
@@ -11,11 +13,30 @@ const UserProfileContainer = ({
     fetchUserProfileApiRequest();
   }, []);
 
-  return (
+  const { userProfile } = profileInfo;
+
+  console.log(userProfile);
+
+  return profileInfo.loading ? (
     <div>
-      {profileInfo.name}
+      <h3>Loading Profile, Please Wait.</h3>
+    </div>
+  ) : profileInfo.error ? (
+    <div>
+      <h3>{profileInfo.error}</h3>
+    </div>
+  ) : (
+    <div>
+      <UserProfileHeaderComponent />
+      <UserProfileBasicInfoComponent userProfile={userProfile} />
+      <UserProfileAboutComponent userProfile={userProfile} />
     </div>
   );
+};
+
+UserProfileContainer.propTypes = {
+  profileInfo: PropTypes.objectOf([PropTypes.string, PropTypes.number]).isRequired,
+  fetchUserProfileApiRequest: PropTypes.func.isRequired,
 };
 
 UserProfileContainer.propTypes = {
