@@ -1,0 +1,38 @@
+.profileSettingsButtonsContainer {
+  border: 1px solid red;
+  display: flex;
+  width: 100%;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+
+  h3 {
+    border: 1px solid yellow;
+    padding: 15px 0;
+    width: 100%;
+  }
+
+  button {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 15px 5px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;
+
+    span:last-child {
+      margin-left: auto;
+    }
+  }
+
+  button:last-child {
+    span:last-child {
+      margin-left: 10px;
+    }
+
+    .emailPlaceholder {
+      margin-left: auto;
+      color: grey;
+    }
+  }
+}

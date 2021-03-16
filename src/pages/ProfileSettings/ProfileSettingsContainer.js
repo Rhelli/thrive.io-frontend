@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProfileSettingsNavbarComponent from './components/ProfileSettingsNavbarComponent/ProfileSettingsNavbarComponent';
 import ProfileSettingsButtonsComponent from './components/ProfileSettingsButtonsComponent/ProfileSettingsButtonsComponent';
+import styles from './ProfileSettingsContainer.module.scss';
 
 const ProfileSettingsContainer = ({ userProfile }) => {
   const { email } = userProfile;
@@ -15,7 +16,7 @@ const ProfileSettingsContainer = ({ userProfile }) => {
   const handleBackButtonClick = () => history.push('/myaccount');
 
   return (
-    <div>
+    <div className={styles.profileSettingsContainer}>
       <ProfileSettingsNavbarComponent handleBackButtonClick={handleBackButtonClick} />
       <ProfileSettingsButtonsComponent
         handleEditProfileClick={handleEditProfileClick}

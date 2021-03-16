@@ -1,0 +1,50 @@
+.profileSettingsNavbarContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 5px 0;
+  border: 1px solid green;
+}
+
+.profileSettingsNavbarBackButton {
+  height: 100%;
+  width: 40px;
+
+  button {
+    height: 100%;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+
+    svg {
+      font-size: 18px;
+    }
+  }
+}
+
+.profileSettingsNavbarTitle {
+  margin: 0 auto;
+}
+
+.profileSettingsNavbarUser {
+  width: 40px;
+  height: 100%;
+  
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid grey;
+
+    svg {
+      font-size: 18px;
+    }
+  }
+}
