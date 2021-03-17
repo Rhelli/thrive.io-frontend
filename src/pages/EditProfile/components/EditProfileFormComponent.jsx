@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -46,74 +47,6 @@ const EditProfileFormComponent = ({ userProfile }) => {
             <textarea id="about" type="text" placeholder={about} />
           </label>
         </div>
-        <div className={styles.editProfileUserType}>
-          <span>
-            <label htmlFor="looking">
-              <input type="radio" id="looking" name="userType" value="Looking" />
-              <span>Looking</span>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="advertising">
-              <input type="radio" id="advertising" name="userType" value="Advertising" />
-              <span>Advertising</span>
-            </label>
-          </span>
-        </div>
-        <div className={styles.editProfileGender}>
-          <span>
-            <label htmlFor="male">
-              <input type="radio" id="male" name="gender" value="Male" />
-              <span>Male</span>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="female">
-              <input type="radio" id="female" name="gender" value="Female" />
-              <span>Female</span>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="transgender">
-              <input type="radio" id="transgender" name="gender" value="Transgender" />
-              <span>Transgender</span>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="other">
-              <input type="radio" id="other" name="gender" value="Other" />
-              <span>Other</span>
-            </label>
-          </span>
-        </div>
-        <div className={styles.editProfileOccupation}>
-          <span>
-            <label htmlFor="professional">
-              <input type="radio" id="professional" name="occupation" value="Professional" />
-              <span>Professional</span>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="student">
-              <input type="radio" id="student" name="occupation" value="Student" />
-              <span>Student</span>
-            </label>
-          </span>
-        </div>
-        <div className={styles.editProfileCouple}>
-          <span>
-            <label htmlFor="non-couple">
-              <input type="radio" id="non-couple" name="couple" value="non-couple" />
-              <span>Non-Couple</span>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="couple">
-              <input type="radio" id="couple" name="couple" value="couple" />
-              <span>Couple</span>
-            </label>
-          </span>
-        </div>
         <div className={styles.editProfileBudget}>
           <span>
             <label htmlFor="minBudget">
@@ -128,24 +61,71 @@ const EditProfileFormComponent = ({ userProfile }) => {
             </label>
           </span>
         </div>
+        <div className={styles.editProfileUserType}>
+          <h3>User Type</h3>
+          <span className={styles.looking}>
+            <input type="radio" id="looking" name="userType" value="Looking" />
+            <label htmlFor="looking">Looking</label>
+          </span>
+          <span className={styles.advertising}>
+            <input type="radio" id="advertising" name="userType" value="Advertising" />
+            <label htmlFor="advertising">Advertising</label>
+          </span>
+        </div>
+        <div className={styles.editProfileGender}>
+          <h3>Your Gender</h3>
+          <span>
+            <input type="radio" id="male" name="gender" value="Male" />
+            <label htmlFor="male">Male</label>
+          </span>
+          <span>
+            <input type="radio" id="female" name="gender" value="Female" />
+            <label htmlFor="female">Female</label>
+          </span>
+          <span>
+            <input type="radio" id="transgender" name="gender" value="Transgender" />
+            <label htmlFor="transgender">Transgender</label>
+          </span>
+          <span>
+            <input type="radio" id="other" name="gender" value="Other" />
+            <label htmlFor="other">Other</label>
+          </span>
+        </div>
+        <div className={styles.editProfileOccupation}>
+          <h3>Your Occupation</h3>
+          <span>
+            <input type="radio" id="professional" name="occupation" value="Professional" />
+            <label htmlFor="professional">Professional</label>
+          </span>
+          <span>
+            <input type="radio" id="student" name="occupation" value="Student" />
+            <label htmlFor="student">Student</label>
+          </span>
+        </div>
+        <div className={styles.editProfileCouple}>
+          <h3>Couple Or Non-Couple</h3>
+          <span>
+            <input type="radio" id="non-couple" name="couple" value="non-couple" />
+            <label htmlFor="non-couple">Non-Couple</label>
+          </span>
+          <span>
+            <input type="radio" id="couple" name="couple" value="couple" />
+            <label htmlFor="couple">Couple</label>
+          </span>
+        </div>
         <div className={styles.editProfileSmoking}>
+          <h3>Smoking Status</h3>
           <span>
-            <label htmlFor="non-smoking">
-              <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" />
-              <span>Non-Smoking</span>
-            </label>
+            <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" />
+            <label htmlFor="non-smoking">Non-Smoking</label>
           </span>
           <span>
-            <label htmlFor="occasionally">
-              <input type="radio" id="occasionally" name="smoking" value="Occasionally" />
-              <span>Occasionally</span>
-            </label>
+            <input type="radio" id="occasionally" name="smoking" value="Occasionally" />
+            <label htmlFor="occasionally">Occasionally</label>
           </span>
           <span>
-            <label htmlFor="smoking">
-              <input type="radio" id="smoking" name="smoking" value="Smoking" />
-              <span>Smoking</span>
-            </label>
+            <input type="radio" id="smoking" name="smoking" value="Smoking" />
+            <label htmlFor="smoking">Smoking</label>
           </span>
         </div>
         <div className={styles.editProfilePets}>
