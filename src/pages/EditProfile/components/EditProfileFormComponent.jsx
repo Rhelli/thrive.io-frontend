@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
@@ -29,20 +30,20 @@ const EditProfileFormComponent = ({ userProfile }) => {
       <form className={styles.editProfileForm}>
         <div className={styles.editProfileName}>
           <label htmlFor="name">
-            Your Name
+            <h3>Your Name</h3>
             <input id="name" type="text" placeholder={name} required />
           </label>
         </div>
         <div className={styles.editProfileDob}>
           <label htmlFor="age">
-            Date Of Birth
+            <h3>Date Of Birth</h3>
             <input id="dob" type="date" />
           </label>
         </div>
         <div className={styles.editProfileAbout}>
           <label htmlFor="about">
-            About You
-            <input id="about" type="text" />
+            <h3>About You</h3>
+            <textarea id="about" type="text" placeholder={about} />
           </label>
         </div>
         <div className={styles.editProfileUserType}>
@@ -148,7 +149,11 @@ const EditProfileFormComponent = ({ userProfile }) => {
           </span>
         </div>
         <div className={styles.editProfilePets}>
-          <Select options={petsOptions} />
+          <Select
+            options={petsOptions}
+            isMulti
+            name="pets"
+          />
         </div>
         <div className={styles.editProfileAreas}>
           <CreatableSelect

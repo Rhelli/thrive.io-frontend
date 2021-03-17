@@ -1,17 +1,18 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
+import EditProfileFormComponent from './components/EditProfileFormComponent';
+import styles from './EditProfileContainer.module.scss';
 
 const EditProfileContainer = ({ userProfile }) => {
   const history = useHistory();
-  const handleBackButtonClick = () => history.push('/myaccount/settings/edit-profile');
-
+  const handleBackButtonClick = () => history.push('/myaccount/settings');
   return (
-    <div>
+    <div className={styles.editProfileContainer}>
       <ProfileSettingsNavbar handleBackButtonClick={handleBackButtonClick} />
+      <EditProfileFormComponent userProfile={userProfile} />
     </div>
   );
 };

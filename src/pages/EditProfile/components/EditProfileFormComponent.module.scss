@@ -1,0 +1,44 @@
+.editProfileFormContainer {
+  width: 100%;
+  padding: 20px;
+
+  form {
+    display: flex;
+    flex-flow: column nowrap;
+
+    .editProfileName,
+    .editProfileDob,
+    .editProfileAbout{
+      margin-bottom: 20px;
+
+      label {
+        h3 {
+          margin-bottom: 10px;
+          padding-left: 3px;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          height: 45px;
+          outline: none;
+          border: 2px solid grey;
+          border-radius: 6px;
+          padding: 0 10px;
+        }
+      }
+    }
+
+    .editProfileAbout {
+      label {
+        textarea {
+          height: 120px;
+          width: 100%;
+          padding: 10px;
+          font-size: 14px;
+          resize: none;
+        }
+      }
+    }
+  }
+}
