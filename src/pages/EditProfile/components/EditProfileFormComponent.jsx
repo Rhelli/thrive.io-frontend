@@ -48,17 +48,14 @@ const EditProfileFormComponent = ({ userProfile }) => {
           </label>
         </div>
         <div className={styles.editProfileBudget}>
+          <h3>Your Budget</h3>
           <span>
-            <label htmlFor="minBudget">
-              Minimum Budget
-              <input id="minBudget" type="number" />
-            </label>
+            <label htmlFor="minBudget">Minimum</label>
+            <input id="minBudget" type="number" />
           </span>
           <span>
-            <label htmlFor="maxBudget">
-              Maximum Budget
-              <input id="maxBudget" type="number" />
-            </label>
+            <label htmlFor="maxBudget">Maximum</label>
+            <input id="maxBudget" type="number" />
           </span>
         </div>
         <div className={styles.editProfileUserType}>
@@ -129,6 +126,7 @@ const EditProfileFormComponent = ({ userProfile }) => {
           </span>
         </div>
         <div className={styles.editProfilePets}>
+          <h3>Your Pets</h3>
           <Select
             options={petsOptions}
             isMulti
@@ -136,10 +134,18 @@ const EditProfileFormComponent = ({ userProfile }) => {
           />
         </div>
         <div className={styles.editProfileAreas}>
+          <h3>Areas You Are Interested In</h3>
           <CreatableSelect
             isMulti
             options={areasOptions}
           />
+        </div>
+      </form>
+      <form className={styles.editProfileDeleteForm}>
+        <div>
+          <button type="submit">
+            Delete Account
+          </button>
         </div>
       </form>
     </div>
