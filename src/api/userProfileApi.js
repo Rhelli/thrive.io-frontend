@@ -43,7 +43,7 @@ export const updateCurrentUserProfileApiRequest = user => dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({
-      event: {
+      user: {
         name: user.target.name.value,
         userType: user.target.userTypeControl.value,
         about: user.target.about.value,
