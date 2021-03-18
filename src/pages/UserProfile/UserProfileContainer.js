@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import fetchUserProfileApiRequest from '../../api/userProfileApi';
+import { fetchUserProfileApiRequest } from '../../api/userProfileApi';
 import UserProfileHeaderComponent from './components/UserProfileHeaderComponent/UserProfileHeaderComponent';
 import UserProfileBasicInfoComponent from './components/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
 import UserProfileAboutComponent from './components/UserProfileAboutComponent/UserProfileAboutComponent';
@@ -14,8 +14,6 @@ const UserProfileContainer = ({
   }, []);
 
   const { userProfile } = profileInfo;
-
-  console.log(userProfile);
 
   return profileInfo.loading ? (
     <div>

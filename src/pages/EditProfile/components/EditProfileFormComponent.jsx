@@ -1,12 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import styles from './EditProfileFormComponent.module.scss';
 
-const EditProfileFormComponent = ({ userProfile }) => {
+const EditProfileFormComponent = ({
+  userProfile, handleAccountUpdate, handleAccountDelete,
+}) => {
   const {
     about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
     smoking, userType,
@@ -25,6 +29,8 @@ const EditProfileFormComponent = ({ userProfile }) => {
     { value: 'Belgravia', label: 'Belgravia' },
     { value: 'Abbey Road', label: 'Abbey Road' },
   ];
+
+  const [deleteAccountModal, setDeleteAccountModal] = useState(false);
 
   return (
     <div className={styles.editProfileFormContainer}>
@@ -140,14 +146,56 @@ const EditProfileFormComponent = ({ userProfile }) => {
             options={areasOptions}
           />
         </div>
-      </form>
-      <form className={styles.editProfileDeleteForm}>
-        <div>
+        <div className={styles.editProfileSubmitButton}>
           <button type="submit">
-            Delete Account
+            Update Account
           </button>
         </div>
       </form>
+      <div className={styles.editProfileDeleteAccount}>
+        <div className={styles.editProfileDeleteButton}>
+          <button type="submit" onClick={() => setDeleteAccountModal(true)}>
+            Delete Account
+          </button>
+        </div>
+        {
+          deleteAccountModal ? (
+            <div className={styles.editProfileDeleteModal}>
+              <form className={styles.editProfileDeleteModalContent}>
+                <div>
+                  <span
+                    className={styles.modalClose}
+                    onClick={() => setDeleteAccountModal(false)}
+                    onKeyUp={() => setDeleteAccountModal(false)}
+                    role="button"
+                    tabIndex="-1"
+                  >
+                    <FontAwesomeIcon icon={faTimesCircle} />
+                  </span>
+                  <h2>Delete Account</h2>
+                  <div className={styles.modalMessage}>
+                    <p>Are you sure you want to delete your account?</p>
+                    <p><strong>This action is irreversible.</strong></p>
+                  </div>
+                </div>
+                <div className={styles.modalConfirm}>
+                  <label htmlFor="email">
+                    <h3>Confirm Your Email</h3>
+                    <input id="email" type="email" />
+                  </label>
+                </div>
+                <div className={styles.modalButton}>
+                  <button type="submit">
+                    Delete Account
+                  </button>
+                </div>
+              </form>
+            </div>
+          ) : (
+            null
+          )
+        }
+      </div>
     </div>
   );
 };
@@ -167,6 +215,8 @@ EditProfileFormComponent.propTypes = {
     smoking: PropTypes.string,
     userType: PropTypes.string.isRequired,
   }).isRequired,
+  handleAccountUpdate: PropTypes.func.isRequired,
+  handleAccountDelete: PropTypes.func.isRequired,
 };
 
 export default EditProfileFormComponent;

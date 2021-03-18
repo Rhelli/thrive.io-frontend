@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {
   FETCH_CURRENT_USER_PROFILE_REQUEST, FETCH_CURRENT_USER_PROFILE_SUCCESS,
   FETCH_CURRENT_USER_PROFILE_ERROR, UPDATE_CURRENT_USER_PROFILE_REQUEST,
@@ -37,4 +36,14 @@ export const updateCurrentUserProfileError = error => ({
 
 export const deleteCurrentUserProfileRequest = () => ({
   type: DELETE_CURRENT_USER_PROFILE_REQUEST,
+});
+
+export const deleteCurrentUserProfileSuccess = confirmation => ({
+  type: DELETE_CURRENT_USER_PROFILE_SUCCESS,
+  payload: confirmation,
+});
+
+export const deleteCurrentUserProfileError = error => ({
+  type: DELETE_CURRENT_USER_PROFILE_ERROR,
+  payload: error,
 });
