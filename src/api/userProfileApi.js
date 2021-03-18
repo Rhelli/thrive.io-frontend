@@ -36,21 +36,22 @@ export const updateCurrentUserProfileApiRequest = user => dispatch => {
   user.preventDefault();
   dispatch(updateCurrentUserProfileRequest);
   fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({
-      user: {
+      event: {
         name: user.target.name.value,
-        userType: user.target.userType.value,
+        userType: user.target.userTypeControl.value,
         about: user.target.about.value,
-        occupation: user.target.occupation.value,
-        gender: user.target.gender.value,
-        couple: user.target.couple.value,
+        occupation: user.target.occupationControl.value,
+        gender: user.target.genderControl.value,
+        couple: user.target.coupleControl.value,
         pets: user.target.pets.value,
-        smoking: user.target.smoking.value,
+        smoking: user.target.smokingControl.value,
         minBudget: user.target.minBudget.value,
         maxBudget: user.target.maxBudget.value,
         areasLooking: user.target.areasLooking.value,

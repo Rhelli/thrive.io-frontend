@@ -32,14 +32,48 @@ const EditProfileFormComponent = ({
   ];
 
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
+  const [nameOption, setNameOption] = useState(null);
+  const [userTypeOption, setUserTypeOption] = useState(null);
+  const [aboutOption, setAboutOption] = useState(null);
+  const [occupationOption, setOccupationOption] = useState(null);
+  const [genderOption, setGenderOption] = useState(null);
+  const [coupleOption, setCoupleOption] = useState(null);
+  const [smokingOption, setSmokingOption] = useState(null);
+  const [minBudgetOption, setMinBudgetOption] = useState(null);
+  const [maxBudgetOption, setMaxBudgetOption] = useState(null);
+
+  const changeName = event => setNameOption(event.target.value);
+  const changeUserType = event => setUserTypeOption(event.target.value);
+  const changeOccupation = event => setOccupationOption(event.target.value);
+  const changeGender = event => setGenderOption(event.target.value);
+  const changeCouple = event => setCoupleOption(event.target.value);
+  const changeSmoking = event => setSmokingOption(event.target.value);
+  const changeAbout = event => setAboutOption(event.target.value);
+  const changeMinBudget = event => setMinBudgetOption(event.target.value);
+  const changeMaxBudget = event => setMaxBudgetOption(event.target.value);
+
+  const accountDetails = {
+    name: nameOption,
+    userType: userTypeOption,
+    about: aboutOption,
+    occupation: occupationOption,
+    gender: genderOption,
+    couple: coupleOption,
+    smoking: smokingOption,
+    minBudget: minBudgetOption,
+    maxBudget: maxBudgetOption,
+  };
 
   return (
     <div className={styles.editProfileFormContainer}>
-      <form className={styles.editProfileForm}>
+      <form
+        className={styles.editProfileForm}
+        onSubmit={accountDetails => handleAccountUpdate(accountDetails)}
+      >
         <div className={styles.editProfileName}>
           <label htmlFor="name">
             <h3>Your Name</h3>
-            <input id="name" type="text" defaultValue={name} required />
+            <input id="name" type="text" defaultValue={name} onChange={event => changeName(event)} required />
           </label>
         </div>
         <div className={styles.editProfileDob}>
@@ -51,21 +85,26 @@ const EditProfileFormComponent = ({
         <div className={styles.editProfileAbout}>
           <label htmlFor="about">
             <h3>About You</h3>
-            <textarea id="about" type="text" defaultValue={about} />
+            <textarea id="about" type="text" defaultValue={about} onChange={event => changeAbout(event)} />
           </label>
         </div>
         <div className={styles.editProfileBudget}>
           <h3>Your Budget</h3>
           <span>
             <label htmlFor="minBudget">Minimum</label>
-            <input id="minBudget" type="number" defaultValue={minBudget} />
+            <input id="minBudget" type="number" defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
           </span>
           <span>
             <label htmlFor="maxBudget">Maximum</label>
-            <input id="maxBudget" type="number" defaultValue={maxBudget} />
+            <input id="maxBudget" type="number" defaultValue={maxBudget} onChange={event => changeMaxBudget(event)} />
           </span>
         </div>
-        <div className={styles.editProfileUserType}>
+        <div
+          className={styles.editProfileUserType}
+          onChange={event => changeUserType(event)}
+          value={userTypeOption}
+          id="userTypeControl"
+        >
           <h3>User Type</h3>
           <span className={styles.looking}>
             <input type="radio" id="looking" name="userType" value="Looking" defaultChecked={userType === 'Looking'} />
@@ -76,7 +115,10 @@ const EditProfileFormComponent = ({
             <label htmlFor="advertising">Advertising</label>
           </span>
         </div>
-        <div className={styles.editProfileGender}>
+        <div
+          className={styles.editProfileGender}
+          onChange={event => changeGender(event)}
+        >
           <h3>Your Gender</h3>
           <span>
             <input type="radio" id="male" name="gender" value="Male" defaultChecked={gender === 'Male'} />
@@ -95,7 +137,10 @@ const EditProfileFormComponent = ({
             <label htmlFor="other">Other</label>
           </span>
         </div>
-        <div className={styles.editProfileOccupation}>
+        <div
+          className={styles.editProfileOccupation}
+          onChange={event => changeOccupation(event)}
+        >
           <h3>Your Occupation</h3>
           <span>
             <input type="radio" id="professional" name="occupation" value="Professional" defaultChecked={occupation === 'Professional'} />
@@ -106,7 +151,10 @@ const EditProfileFormComponent = ({
             <label htmlFor="student">Student</label>
           </span>
         </div>
-        <div className={styles.editProfileCouple}>
+        <div
+          className={styles.editProfileCouple}
+          onChange={event => changeCouple(event)}
+        >
           <h3>Couple Or Non-Couple</h3>
           <span>
             <input type="radio" id="non-couple" name="couple" value="Non-Couple" defaultChecked={couple === 'Non-Couple'} />
@@ -117,7 +165,10 @@ const EditProfileFormComponent = ({
             <label htmlFor="couple">Couple</label>
           </span>
         </div>
-        <div className={styles.editProfileSmoking}>
+        <div
+          className={styles.editProfileSmoking}
+          onChange={event => changeSmoking(event)}
+        >
           <h3>Smoking Status</h3>
           <span>
             <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" defaultChecked={smoking === 'Non-Smoking'} />
