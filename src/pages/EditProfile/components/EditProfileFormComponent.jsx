@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
+import selectInputDefaultGen from '../../../utils/profileSettingsUtils';
 import styles from './EditProfileFormComponent.module.scss';
 
 const EditProfileFormComponent = ({
@@ -38,7 +39,7 @@ const EditProfileFormComponent = ({
         <div className={styles.editProfileName}>
           <label htmlFor="name">
             <h3>Your Name</h3>
-            <input id="name" type="text" placeholder={name} required />
+            <input id="name" type="text" value={name} required />
           </label>
         </div>
         <div className={styles.editProfileDob}>
@@ -50,90 +51,91 @@ const EditProfileFormComponent = ({
         <div className={styles.editProfileAbout}>
           <label htmlFor="about">
             <h3>About You</h3>
-            <textarea id="about" type="text" placeholder={about} />
+            <textarea id="about" type="text" value={about} />
           </label>
         </div>
         <div className={styles.editProfileBudget}>
           <h3>Your Budget</h3>
           <span>
             <label htmlFor="minBudget">Minimum</label>
-            <input id="minBudget" type="number" />
+            <input id="minBudget" type="number" value={minBudget} />
           </span>
           <span>
             <label htmlFor="maxBudget">Maximum</label>
-            <input id="maxBudget" type="number" />
+            <input id="maxBudget" type="number" value={maxBudget} />
           </span>
         </div>
         <div className={styles.editProfileUserType}>
           <h3>User Type</h3>
           <span className={styles.looking}>
-            <input type="radio" id="looking" name="userType" value="Looking" />
+            <input type="radio" id="looking" name="userType" value="Looking" checked={userType === 'Looking'} />
             <label htmlFor="looking">Looking</label>
           </span>
           <span className={styles.advertising}>
-            <input type="radio" id="advertising" name="userType" value="Advertising" />
+            <input type="radio" id="advertising" name="userType" value="Advertising" checked={userType === 'Advertising'} />
             <label htmlFor="advertising">Advertising</label>
           </span>
         </div>
         <div className={styles.editProfileGender}>
           <h3>Your Gender</h3>
           <span>
-            <input type="radio" id="male" name="gender" value="Male" />
+            <input type="radio" id="male" name="gender" value="Male" checked={gender === 'Male'} />
             <label htmlFor="male">Male</label>
           </span>
           <span>
-            <input type="radio" id="female" name="gender" value="Female" />
+            <input type="radio" id="female" name="gender" value="Female" checked={gender === 'Female'} />
             <label htmlFor="female">Female</label>
           </span>
           <span>
-            <input type="radio" id="transgender" name="gender" value="Transgender" />
+            <input type="radio" id="transgender" name="gender" value="Transgender" checked={gender === 'Transgender'} />
             <label htmlFor="transgender">Transgender</label>
           </span>
           <span>
-            <input type="radio" id="other" name="gender" value="Other" />
+            <input type="radio" id="other" name="gender" value="Other" checked={gender === 'Other'} />
             <label htmlFor="other">Other</label>
           </span>
         </div>
         <div className={styles.editProfileOccupation}>
           <h3>Your Occupation</h3>
           <span>
-            <input type="radio" id="professional" name="occupation" value="Professional" />
+            <input type="radio" id="professional" name="occupation" value="Professional" checked={occupation === 'Professional'} />
             <label htmlFor="professional">Professional</label>
           </span>
           <span>
-            <input type="radio" id="student" name="occupation" value="Student" />
+            <input type="radio" id="student" name="occupation" value="Student" checked={occupation === 'Student'} />
             <label htmlFor="student">Student</label>
           </span>
         </div>
         <div className={styles.editProfileCouple}>
           <h3>Couple Or Non-Couple</h3>
           <span>
-            <input type="radio" id="non-couple" name="couple" value="non-couple" />
+            <input type="radio" id="non-couple" name="couple" value="Non-Couple" checked={couple === 'Non-Couple'} />
             <label htmlFor="non-couple">Non-Couple</label>
           </span>
           <span>
-            <input type="radio" id="couple" name="couple" value="couple" />
+            <input type="radio" id="couple" name="couple" value="Couple" checked={couple === 'Couple'} />
             <label htmlFor="couple">Couple</label>
           </span>
         </div>
         <div className={styles.editProfileSmoking}>
           <h3>Smoking Status</h3>
           <span>
-            <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" />
+            <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" checked={smoking === 'Non-Smoking'} />
             <label htmlFor="non-smoking">Non-Smoking</label>
           </span>
           <span>
-            <input type="radio" id="occasionally" name="smoking" value="Occasionally" />
+            <input type="radio" id="occasionally" name="smoking" value="Occasionally" checked={smoking === 'Occasionally'} />
             <label htmlFor="occasionally">Occasionally</label>
           </span>
           <span>
-            <input type="radio" id="smoking" name="smoking" value="Smoking" />
+            <input type="radio" id="smoking" name="smoking" value="Smoking" checked={smoking === 'Smoking'} />
             <label htmlFor="smoking">Smoking</label>
           </span>
         </div>
         <div className={styles.editProfilePets}>
           <h3>Your Pets</h3>
           <Select
+            defaultValue={selectInputDefaultGen(pets)}
             options={petsOptions}
             isMulti
             name="pets"
@@ -142,6 +144,7 @@ const EditProfileFormComponent = ({
         <div className={styles.editProfileAreas}>
           <h3>Areas You Are Interested In</h3>
           <CreatableSelect
+            defaultValue={selectInputDefaultGen(areasLooking)}
             isMulti
             options={areasOptions}
           />
