@@ -75,6 +75,7 @@ export const deleteCurrentUserProfileApiRequest = user => dispatch => {
   user.preventDefault();
   dispatch(deleteCurrentUserProfileRequest);
   fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/delete-profile`, {
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',

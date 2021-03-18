@@ -7,11 +7,10 @@ import EditProfileFormComponent from './components/EditProfileFormComponent';
 import {
   updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest,
 } from '../../api/userProfileApi';
-import { signOut } from '../../state/auth/authActions';
 import styles from './EditProfileContainer.module.scss';
 
 const EditProfileContainer = ({
-  userProfile, updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest, signOut,
+  userProfile, updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest,
 }) => {
   const history = useHistory();
 
@@ -21,9 +20,8 @@ const EditProfileContainer = ({
     updateCurrentUserProfileApiRequest(event);
   };
 
-  const handleAccountDelete = () => {
-    deleteCurrentUserProfileApiRequest();
-    signOut();
+  const handleAccountDelete = event => {
+    deleteCurrentUserProfileApiRequest(event);
   };
 
   return (
@@ -55,7 +53,6 @@ EditProfileContainer.propTypes = {
   }).isRequired,
   updateCurrentUserProfileApiRequest: PropTypes.func.isRequired,
   deleteCurrentUserProfileApiRequest: PropTypes.func.isRequired,
-  signOut: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -64,8 +61,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateCurrentUserProfileApiRequest: event => dispatch(updateCurrentUserProfileApiRequest(event)),
-  deleteCurrentUserProfileApiRequest: () => dispatch(deleteCurrentUserProfileApiRequest),
-  signOut: () => dispatch(signOut),
+  deleteCurrentUserProfileApiRequest: event => dispatch(deleteCurrentUserProfileApiRequest(event)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProfileContainer);
