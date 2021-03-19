@@ -111,20 +111,18 @@ export const deleteCurrentUserProfileApiRequest = user => dispatch => {
     });
 };
 
-export const updateCurrentUserPasswordApiRequest = event => dispatch => {
-  event.preventDefault();
+export const updateCurrentUserPasswordApiRequest = passwordData => dispatch => {
   dispatch(updateCurrentUserPasswordRequest);
-  fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
-    method: 'PUT',
+  fetch(`${REACT_APP_REST_API_LOCATION}/authenticate`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({
       user: {
-        id: event.target.id.value,
-        password: event.target.password.value,
+        email: passwordData.email,
+        password: passwordData.currentPassword,
       },
     }),
   })
@@ -132,9 +130,30 @@ export const updateCurrentUserPasswordApiRequest = event => dispatch => {
     .then(data => humps.camelizeKeys(data))
     .then(data => {
       if (!data.error) {
-        dispatch(updateCurrentUserPasswordSuccess(data));
-      } else {
-        dispatch(updateCurrentUserPasswordError(data));
+        fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Accepts: 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify({
+            user: {
+              id: passwordData.id,
+              password: passwordData.newPassword,
+            },
+          }),
+        })
+          .then(data => data.json())
+          .then(data => humps.camelizeKeys(data))
+          .then(data => {
+            if (!data.error) {
+              dispatch(updateCurrentUserPasswordSuccess(data));
+            }
+          })
+          .catch(error => {
+            dispatch(updateCurrentUserPasswordError(error));
+          });
       }
     })
     .catch(error => {

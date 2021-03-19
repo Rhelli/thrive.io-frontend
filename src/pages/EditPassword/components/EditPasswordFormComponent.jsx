@@ -5,7 +5,7 @@ import EditPasswordConfirmationModal from './EditPasswordConfirmationModal';
 import styles from './EditPasswordFormComponent.module.scss';
 
 const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
-  const { id } = userProfile;
+  const { email, id } = userProfile;
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [newPassword, setNewPassword] = useState(null);
   const [newPasswordConfirm, setNewPasswordConfirm] = useState(null);
@@ -13,14 +13,25 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
   const changePassword = event => setNewPassword(event.target.value);
   const changePasswordConfirm = event => setNewPasswordConfirm(event.target.value);
 
+  const openPasswordConfirmationModal = () => {
+    if (!newPassword || !newPasswordConfirm) {
+      return;
+    }
+    if (newPassword === newPasswordConfirm) {
+      setPasswordConfirmModal(true);
+    }
+    if (newPassword !== newPasswordConfirm) {
+      setPasswordConfirmModal(false);
+    }
+  };
+
   return (
     <div className={styles.editPasswordFormContainer}>
-      <form onSubmit={event => handlePasswordChange(event)}>
+      <form>
         <div
           className={styles.editPasswordRow}
           onChange={event => changePassword(event)}
         >
-          <input type="hidden" id="id" value={id} />
           <label htmlFor="password">
             <h3>New Password</h3>
             <input id="password" type="password" required />
@@ -36,7 +47,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
           </label>
         </div>
         <div className={styles.editPasswordSubmitButton}>
-          <button type="submit">
+          <button type="button" onClick={() => openPasswordConfirmationModal()}>
             Change Password
           </button>
         </div>
@@ -45,7 +56,11 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
         passwordConfirmModal ? (
           <EditPasswordConfirmationModal
             handlePasswordChange={handlePasswordChange}
-            
+            newPassword={newPassword}
+            newPasswordConfirm={newPasswordConfirm}
+            setPasswordConfirmModal={setPasswordConfirmModal}
+            email={email}
+            id={id}
           />
         ) : (
           null
@@ -58,6 +73,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
 EditPasswordFormComponent.propTypes = {
   handlePasswordChange: PropTypes.func.isRequired,
   userProfile: PropTypes.shape({
+    email: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }).isRequired,
 };

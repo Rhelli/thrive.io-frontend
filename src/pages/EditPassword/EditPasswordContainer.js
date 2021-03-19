@@ -13,12 +13,9 @@ const EditPasswordContainer = ({
   const history = useHistory();
   const handleBackButtonClick = () => history.push('/myaccount/settings');
 
-  const handlePasswordChange = event => {
-    if (event.target.password.value === event.target.passwordConfirm.value) {
-      updateCurrentUserPasswordApiRequest(event);
-    } else {
-      alert('Passwords do not match! Please try again');
-    }
+  const handlePasswordChange = (event, passwordData) => {
+    event.preventDefault();
+    updateCurrentUserPasswordApiRequest(passwordData);
   };
 
   return (
