@@ -16,7 +16,7 @@ const EditProfileFormComponent = ({
 }) => {
   const {
     about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
-    smoking, userType,
+    smoking, userType, email,
   } = userProfile;
   const petsOptions = [
     { value: 'Dogs', label: 'Dogs' },
@@ -64,6 +64,7 @@ const EditProfileFormComponent = ({
 
   const updatedDetails = {
     name: nameOption,
+    email,
     userType: userTypeOption,
     about: aboutOption,
     occupation: occupationOption,
@@ -285,6 +286,7 @@ EditProfileFormComponent.propTypes = {
     pets: PropTypes.arrayOf(PropTypes.string),
     smoking: PropTypes.string,
     userType: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
   }).isRequired,
   handleAccountUpdate: PropTypes.func.isRequired,
   handleAccountDelete: PropTypes.func.isRequired,

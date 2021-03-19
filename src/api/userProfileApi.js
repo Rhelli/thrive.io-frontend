@@ -55,6 +55,7 @@ export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => 
         min_budget: updatedDetails.minBudget,
         max_budget: updatedDetails.maxBudget,
         areas_looking: updatedDetails.areasLooking,
+        email: updatedDetails.email,
       },
     }),
   })
