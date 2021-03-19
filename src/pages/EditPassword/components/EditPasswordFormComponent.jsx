@@ -1,9 +1,11 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import EditPasswordConfirmationModal from './EditPasswordConfirmationModal';
 import styles from './EditPasswordFormComponent.module.scss';
 
-const EditPasswordFormComponent = () => {
+const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
+  const { id } = userProfile;
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [newPassword, setNewPassword] = useState(null);
   const [newPasswordConfirm, setNewPasswordConfirm] = useState(null);
@@ -11,25 +13,14 @@ const EditPasswordFormComponent = () => {
   const changePassword = event => setNewPassword(event.target.value);
   const changePasswordConfirm = event => setNewPasswordConfirm(event.target.value);
 
-  console.log(newPassword);
-  console.log(newPasswordConfirm);
-
-  // const handlePasswordChange = (event) => {
-  //   let password = '';
-  //   if (newPassword === newPasswordConfirm) {
-  //     password = newPassword;
-  //   } else {
-  //     alert('Passwords do not match! Please try again');
-  //   }
-  // };
-
   return (
     <div className={styles.editPasswordFormContainer}>
-      <form>
+      <form onSubmit={event => handlePasswordChange(event)}>
         <div
           className={styles.editPasswordRow}
           onChange={event => changePassword(event)}
         >
+          <input type="hidden" id="id" value={id} />
           <label htmlFor="password">
             <h3>New Password</h3>
             <input id="password" type="password" required />
@@ -45,7 +36,7 @@ const EditPasswordFormComponent = () => {
           </label>
         </div>
         <div className={styles.editPasswordSubmitButton}>
-          <button type="submit" onClick={setPasswordConfirmModal(true)}>
+          <button type="submit">
             Change Password
           </button>
         </div>
@@ -54,6 +45,7 @@ const EditPasswordFormComponent = () => {
         passwordConfirmModal ? (
           <EditPasswordConfirmationModal
             handlePasswordChange={handlePasswordChange}
+            
           />
         ) : (
           null
@@ -61,6 +53,13 @@ const EditPasswordFormComponent = () => {
       }
     </div>
   );
+};
+
+EditPasswordFormComponent.propTypes = {
+  handlePasswordChange: PropTypes.func.isRequired,
+  userProfile: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default EditPasswordFormComponent;

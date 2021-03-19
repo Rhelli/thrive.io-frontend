@@ -4,7 +4,8 @@ import {
   updateCurrentUserProfileError, deleteCurrentUserProfileRequest,
   deleteCurrentUserProfileSuccess, deleteCurrentUserProfileError,
   updateCurrentUserEmailRequest, updateCurrentUserEmailSuccess,
-  updateCurrentUserEmailError,
+  updateCurrentUserEmailError, updateCurrentUserPasswordRequest,
+  updateCurrentUserPasswordSuccess, updateCurrentUserPasswordError,
 } from '../state/profileSettings/profileSettingsActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
@@ -107,5 +108,36 @@ export const deleteCurrentUserProfileApiRequest = user => dispatch => {
     })
     .catch(error => {
       dispatch(deleteCurrentUserProfileError(error));
+    });
+};
+
+export const updateCurrentUserPasswordApiRequest = event => dispatch => {
+  event.preventDefault();
+  dispatch(updateCurrentUserPasswordRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify({
+      user: {
+        id: event.target.id.value,
+        password: event.target.password.value,
+      },
+    }),
+  })
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.error) {
+        dispatch(updateCurrentUserPasswordSuccess(data));
+      } else {
+        dispatch(updateCurrentUserPasswordError(data));
+      }
+    })
+    .catch(error => {
+      dispatch(updateCurrentUserPasswordError(error));
     });
 };
