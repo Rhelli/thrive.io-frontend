@@ -6,7 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import selectInputDefaultGen from '../../../utils/profileSettingsUtils';
+import {
+  selectInputDefaultGen, reactSelectOutputFormatter,
+} from '../../../utils/profileSettingsUtils';
 import styles from './EditProfileFormComponent.module.scss';
 
 const EditProfileFormComponent = ({
@@ -32,15 +34,17 @@ const EditProfileFormComponent = ({
   ];
 
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
-  const [nameOption, setNameOption] = useState(null);
-  const [userTypeOption, setUserTypeOption] = useState(null);
-  const [aboutOption, setAboutOption] = useState(null);
-  const [occupationOption, setOccupationOption] = useState(null);
-  const [genderOption, setGenderOption] = useState(null);
-  const [coupleOption, setCoupleOption] = useState(null);
-  const [smokingOption, setSmokingOption] = useState(null);
-  const [minBudgetOption, setMinBudgetOption] = useState(null);
-  const [maxBudgetOption, setMaxBudgetOption] = useState(null);
+  const [nameOption, setNameOption] = useState(name);
+  const [userTypeOption, setUserTypeOption] = useState(userType);
+  const [aboutOption, setAboutOption] = useState(about);
+  const [occupationOption, setOccupationOption] = useState(occupation);
+  const [genderOption, setGenderOption] = useState(gender);
+  const [coupleOption, setCoupleOption] = useState(couple);
+  const [smokingOption, setSmokingOption] = useState(smoking);
+  const [minBudgetOption, setMinBudgetOption] = useState(minBudget);
+  const [maxBudgetOption, setMaxBudgetOption] = useState(maxBudget);
+  const [petsOption, setPetsOption] = useState(pets);
+  const [areasOption, setAreasOption] = useState(areasLooking);
 
   const changeName = event => setNameOption(event.target.value);
   const changeUserType = event => setUserTypeOption(event.target.value);
@@ -51,8 +55,14 @@ const EditProfileFormComponent = ({
   const changeAbout = event => setAboutOption(event.target.value);
   const changeMinBudget = event => setMinBudgetOption(event.target.value);
   const changeMaxBudget = event => setMaxBudgetOption(event.target.value);
+  const changePets = newValue => {
+    setPetsOption(reactSelectOutputFormatter(newValue));
+  };
+  const changeAreas = newValue => {
+    setAreasOption(reactSelectOutputFormatter(newValue));
+  };
 
-  const accountDetails = {
+  const updatedDetails = {
     name: nameOption,
     userType: userTypeOption,
     about: aboutOption,
@@ -62,13 +72,15 @@ const EditProfileFormComponent = ({
     smoking: smokingOption,
     minBudget: minBudgetOption,
     maxBudget: maxBudgetOption,
+    pets: petsOption,
+    areasLooking: areasOption,
   };
 
   return (
     <div className={styles.editProfileFormContainer}>
       <form
         className={styles.editProfileForm}
-        onSubmit={accountDetails => handleAccountUpdate(accountDetails)}
+        onSubmit={event => handleAccountUpdate(event, updatedDetails)}
       >
         <div className={styles.editProfileName}>
           <label htmlFor="name">
@@ -189,6 +201,7 @@ const EditProfileFormComponent = ({
             defaultValue={selectInputDefaultGen(pets)}
             options={petsOptions}
             isMulti
+            onChange={event => changePets(event)}
             name="pets"
           />
         </div>
@@ -198,6 +211,7 @@ const EditProfileFormComponent = ({
             defaultValue={selectInputDefaultGen(areasLooking)}
             isMulti
             options={areasOptions}
+            onChange={event => changeAreas(event)}
           />
         </div>
         <div className={styles.editProfileSubmitButton}>

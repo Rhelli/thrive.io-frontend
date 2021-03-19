@@ -1,4 +1,4 @@
-const selectInputDefaultGen = petsArr => {
+export const selectInputDefaultGen = petsArr => {
   const defaultConfig = [];
   petsArr.forEach(pet => {
     const obj = {
@@ -10,4 +10,13 @@ const selectInputDefaultGen = petsArr => {
   return defaultConfig;
 };
 
-export default selectInputDefaultGen;
+export const reactSelectOutputFormatter = arr => {
+  if (arr) {
+    const result = [];
+    arr.forEach(obj => {
+      result.push(obj.value);
+    });
+    return result;
+  }
+  return arr;
+};

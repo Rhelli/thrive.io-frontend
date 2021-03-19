@@ -17,10 +17,9 @@ const EditProfileContainer = ({
 
   const handleBackButtonClick = () => history.push('/myaccount/settings');
 
-  const handleAccountUpdate = event => {
+  const handleAccountUpdate = (event, updatedDetails) => {
     event.preventDefault();
-    // updateCurrentUserProfileApiRequest(event);
-    console.log(event);
+    updateCurrentUserProfileApiRequest(updatedDetails);
   };
 
   const handleAccountDelete = event => {
@@ -63,7 +62,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateCurrentUserProfileApiRequest: event => dispatch(updateCurrentUserProfileApiRequest(event)),
+  updateCurrentUserProfileApiRequest: updatedDetails => {
+    dispatch(updateCurrentUserProfileApiRequest(updatedDetails));
+  },
   deleteCurrentUserProfileApiRequest: event => dispatch(deleteCurrentUserProfileApiRequest(event)),
 });
 

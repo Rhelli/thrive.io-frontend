@@ -32,8 +32,8 @@ export const fetchUserProfileApiRequest = () => dispatch => {
     });
 };
 
-export const updateCurrentUserProfileApiRequest = user => dispatch => {
-  user.preventDefault();
+export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => {
+  console.log('hello');
   dispatch(updateCurrentUserProfileRequest);
   fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
     method: 'PUT',
@@ -44,17 +44,17 @@ export const updateCurrentUserProfileApiRequest = user => dispatch => {
     },
     body: JSON.stringify({
       user: {
-        name: user.target.name.value,
-        userType: user.target.userTypeControl.value,
-        about: user.target.about.value,
-        occupation: user.target.occupationControl.value,
-        gender: user.target.genderControl.value,
-        couple: user.target.coupleControl.value,
-        pets: user.target.pets.value,
-        smoking: user.target.smokingControl.value,
-        minBudget: user.target.minBudget.value,
-        maxBudget: user.target.maxBudget.value,
-        areasLooking: user.target.areasLooking.value,
+        name: updatedDetails.name,
+        user_type: updatedDetails.userType,
+        about: updatedDetails.about,
+        occupation: updatedDetails.occupation,
+        gender: updatedDetails.gender,
+        couple: updatedDetails.couple,
+        pets: updatedDetails.pets,
+        smoking: updatedDetails.smoking,
+        min_budget: updatedDetails.minBudget,
+        max_budget: updatedDetails.maxBudget,
+        areas_looking: updatedDetails.areasLooking,
       },
     }),
   })
