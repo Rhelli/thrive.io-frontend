@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
@@ -20,6 +19,7 @@ const EditProfileContainer = ({
   const handleAccountUpdate = (event, updatedDetails) => {
     event.preventDefault();
     updateCurrentUserProfileApiRequest(updatedDetails);
+    history.push('/myaccount');
   };
 
   const handleAccountDelete = event => {

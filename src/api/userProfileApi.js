@@ -4,7 +4,8 @@ import {
   fetchCurrentUserProfileError, updateCurrentUserProfileRequest,
   updateCurrentUserProfileSuccess, updateCurrentUserProfileError,
   deleteCurrentUserProfileRequest, deleteCurrentUserProfileSuccess,
-  deleteCurrentUserProfileError,
+  deleteCurrentUserProfileError, updateCurrentUserEmailRequest,
+  updateCurrentUserEmailSuccess, updateCurrentUserEmailError,
 } from '../state/userProfile/userProfileActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
@@ -33,7 +34,6 @@ export const fetchUserProfileApiRequest = () => dispatch => {
 };
 
 export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => {
-  console.log('hello');
   dispatch(updateCurrentUserProfileRequest);
   fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
     method: 'PUT',
@@ -70,6 +70,36 @@ export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => 
     })
     .catch(error => {
       dispatch(updateCurrentUserProfileError(error));
+    });
+};
+
+export const updateCurrentUserEmailApiRequest = updatedEmail => dispatch => {
+  dispatch(updateCurrentUserEmailRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify({
+      user: {
+        id: updatedEmail.target.id.value,
+        email: updatedEmail.target.email.value,
+      },
+    }),
+  })
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.error) {
+        dispatch(updateCurrentUserEmailSuccess(data));
+      } else {
+        dispatch(updateCurrentUserEmailError(data.error));
+      }
+    })
+    .catch(error => {
+      dispatch(updateCurrentUserEmailError(error));
     });
 };
 
