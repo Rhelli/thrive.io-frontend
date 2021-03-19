@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
-import { updateCurrentUserEmailApiRequest } from '../../api/userProfileApi';
+import { updateCurrentUserEmailApiRequest } from '../../api/profileSettingsApi';
 import EditEmailFormComponent from './components/EditEmailFormComponent';
 
 const EditEmailContainer = ({ userProfile, updateCurrentUserEmailApiRequest }) => {
@@ -13,6 +13,7 @@ const EditEmailContainer = ({ userProfile, updateCurrentUserEmailApiRequest }) =
   const handleEmailUpdate = event => {
     event.preventDefault();
     updateCurrentUserEmailApiRequest(event);
+    history.push('/myaccount');
   };
 
   return (

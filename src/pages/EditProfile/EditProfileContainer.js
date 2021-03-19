@@ -6,7 +6,7 @@ import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSet
 import EditProfileFormComponent from './components/EditProfileFormComponent';
 import {
   updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest,
-} from '../../api/userProfileApi';
+} from '../../api/profileSettingsApi';
 import styles from './EditProfileContainer.module.scss';
 
 const EditProfileContainer = ({

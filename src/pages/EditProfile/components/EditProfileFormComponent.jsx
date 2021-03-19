@@ -16,7 +16,7 @@ const EditProfileFormComponent = ({
 }) => {
   const {
     about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
-    smoking, userType, email,
+    smoking, userType, email, id,
   } = userProfile;
   const petsOptions = [
     { value: 'Dogs', label: 'Dogs' },
@@ -75,6 +75,7 @@ const EditProfileFormComponent = ({
     maxBudget: maxBudgetOption,
     pets: petsOption,
     areasLooking: areasOption,
+    id,
   };
 
   return (
@@ -287,6 +288,7 @@ EditProfileFormComponent.propTypes = {
     smoking: PropTypes.string,
     userType: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   handleAccountUpdate: PropTypes.func.isRequired,
   handleAccountDelete: PropTypes.func.isRequired,

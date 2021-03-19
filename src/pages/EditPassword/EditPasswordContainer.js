@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -17,4 +18,8 @@ const EditPasswordContainer = () => {
   );
 };
 
-export default connect(null, null)(EditPasswordContainer);
+const mapStateToProps = state => ({
+  userProfile: state.profileStore.userProfile,
+});
+
+export default connect(mapStateToProps, null)(EditPasswordContainer);
