@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './MobileNavbarContainer.module.scss';
 import SignInOutComponent from './components/SignInOutComponent';
-import MobileNavbarLookingLinksComponent from './components/MobileNavbarLookingLinksComponent';
+import MobileNavbarLinksComponent from './components/MobileNavbarLinksComponent';
 import { signOut } from '../../state/auth/authActions';
 
 const MobileNavbarContainer = ({ authInfo, signOut }) => (
   <div className={styles.mobileNavbarContainer}>
-    <MobileNavbarLookingLinksComponent />
+    <MobileNavbarLinksComponent />
     <SignInOutComponent
       authInfo={authInfo}
       signOut={signOut}

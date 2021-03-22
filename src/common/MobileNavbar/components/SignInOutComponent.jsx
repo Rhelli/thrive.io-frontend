@@ -1,34 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUserCircle, faSignInAlt, faUserPlus, faLayerGroup, faStar,
+} from '@fortawesome/free-solid-svg-icons';
 import styles from './SignInOutComponent.module.scss';
 
-const SignInOutComponent = ({ authInfo, signOut }) => {
+const SignInOutComponent = ({ authInfo }) => {
   const { signedIn, user } = authInfo;
-
-  const logUserOut = () => {
-    signOut();
-  };
+  const { userType } = authInfo.user;
 
   return (
     <div className={styles.signInOutContainer}>
       {
         signedIn === true ? (
-          <>
-            <a href="/myaccount">
-              <FontAwesomeIcon icon={faUserCircle} />
-              <p>{user.name}</p>
-            </a>
-            <button type="button" onClick={logUserOut}>
-              <FontAwesomeIcon icon={faSignOutAlt} />
-              <p>Sign Out</p>
-            </button>
-          </>
+          userType === 'Looking' ? (
+            <>
+              <button type="button">
+                <FontAwesomeIcon icon={faStar} />
+                <p>Shortlist</p>
+              </button>
+              <a href="/myaccount">
+                <FontAwesomeIcon icon={faUserCircle} />
+                <p>{user.name}</p>
+              </a>
+            </>
+          ) : (
+            <>
+              <a className={styles.managePropertiesButton} href="/myproperties">
+                <FontAwesomeIcon icon={faLayerGroup} />
+                <p>Manage Properties</p>
+              </a>
+              <a href="/myaccount">
+                <FontAwesomeIcon icon={faUserCircle} />
+                <p className={styles.userName}>{user.name}</p>
+              </a>
+            </>
+          )
         ) : (
           <>
-            <a href="/signin">Sign In</a>
-            <a href="/signup">Create An Account</a>
+            <a href="/signin">
+              <FontAwesomeIcon icon={faSignInAlt} />
+              <p>Sign In</p>
+            </a>
+            <a href="/signup">
+              <FontAwesomeIcon icon={faUserPlus} />
+              <p>New Account</p>
+            </a>
           </>
         )
       }
@@ -43,11 +61,10 @@ SignInOutComponent.propTypes = {
       id: PropTypes.number,
       email: PropTypes.string,
       name: PropTypes.string,
-      user_type: PropTypes.string,
+      userType: PropTypes.string,
     }),
     error: PropTypes.string.isRequired,
   }).isRequired,
-  signOut: PropTypes.func.isRequired,
 };
 
 export default SignInOutComponent;

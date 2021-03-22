@@ -10,16 +10,18 @@
 
   a,
   button {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
     text-align: center;
 
     svg {
       font-size: 24px;
       margin-bottom: 4px;
+    }
+
+    .userName {
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 

@@ -1,4 +1,4 @@
-.mobileNavbarLookingLinksContainer {
+.mobileNavbarLinksContainer {
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
@@ -12,7 +12,6 @@
     flex-flow: column nowrap;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 10px;
 
     svg {
       font-size: 24px;
