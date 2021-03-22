@@ -15,8 +15,6 @@ const UserProfileContainer = ({
 
   const { userProfile } = profileInfo;
 
-  console.log(userProfile);
-
   return profileInfo.loading ? (
     <div>
       <h3>Loading Profile, Please Wait.</h3>

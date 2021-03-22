@@ -8,7 +8,7 @@ import PrivateRoute from './routes/PrivateRoute';
 import {
   UserListContainer, SignUpContainer, SignInContainer, QuizContainer, PropertyListContainer,
   PropertyContainer, ProfileSettingsContainer, FlatmateProfileContainer, HomePageContainer,
-  UserProfileContainer,
+  UserProfileContainer, EditProfileContainer, EditEmailContainer, EditPasswordContainer,
 } from './pages/index';
 
 const Routes = ({ signedIn }) => (
@@ -21,6 +21,9 @@ const Routes = ({ signedIn }) => (
       <PrivateRoute signedIn={signedIn} component={UserProfileContainer} path="/myaccount" exact />
       <PublicRoute restricted={false} signedIn={signedIn} component={FlatmateProfileContainer} path="/flatmates/:id" />
       <PrivateRoute signedIn={signedIn} component={ProfileSettingsContainer} path="/myaccount/settings" exact />
+      <PrivateRoute signedIn={signedIn} component={EditProfileContainer} path="/myaccount/settings/edit-profile" exact />
+      <PrivateRoute signedIn={signedIn} component={EditEmailContainer} path="/myaccount/settings/edit-email" exact />
+      <PrivateRoute signedIn={signedIn} component={EditPasswordContainer} path="/myaccount/settings/edit-password" exact />
       <PublicRoute restricted={false} signedIn={signedIn} component={PropertyListContainer} path="/advertising" exact />
       <PublicRoute restricted={false} signedIn={signedIn} component={PropertyContainer} path="/property/:id" />
       <PrivateRoute signedIn={signedIn} component={QuizContainer} path="/personality-assessment" />

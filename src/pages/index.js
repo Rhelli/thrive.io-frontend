@@ -9,3 +9,6 @@ export { default as FlatmateProfileContainer } from './FlatmateProfile/FlatmateP
 export { default as UserProfileContainer } from './UserProfile/UserProfileContainer';
 export { default as HomePageContainer } from './HomePage/HomePageContainer';
 export { default as NavbarContainer } from '../common/Navbar/NavbarContainer';
+export { default as EditProfileContainer } from './EditProfile/EditProfileContainer';
+export { default as EditPasswordContainer } from './EditPassword/EditPasswordContainer';
+export { default as EditEmailContainer } from './EditEmail/EditEmailContainer';
