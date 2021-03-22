@@ -19,6 +19,7 @@ const EditProfileContainer = ({
   const handleAccountUpdate = (event, updatedDetails) => {
     event.preventDefault();
     updateCurrentUserProfileApiRequest(updatedDetails);
+    window.location.reload();
     history.push('/myaccount');
   };
 

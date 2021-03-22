@@ -4,15 +4,11 @@ import { connect } from 'react-redux';
 import styles from './MobileNavbarContainer.module.scss';
 import SignInOutComponent from './components/SignInOutComponent';
 import MobileNavbarLinksComponent from './components/MobileNavbarLinksComponent';
-import { signOut } from '../../state/auth/authActions';
 
-const MobileNavbarContainer = ({ authInfo, signOut }) => (
+const MobileNavbarContainer = ({ authInfo }) => (
   <div className={styles.mobileNavbarContainer}>
     <MobileNavbarLinksComponent />
-    <SignInOutComponent
-      authInfo={authInfo}
-      signOut={signOut}
-    />
+    <SignInOutComponent authInfo={authInfo} />
   </div>
 );
 
@@ -27,15 +23,10 @@ MobileNavbarContainer.propTypes = {
     }),
     error: PropTypes.string.isRequired,
   }).isRequired,
-  signOut: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   authInfo: state.authStore,
 });
 
-const mapDispatchToProps = dispatch => ({
-  signOut: () => dispatch(signOut()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MobileNavbarContainer);
+export default connect(mapStateToProps, null)(MobileNavbarContainer);

@@ -7,6 +7,7 @@ import { signOut } from '../../state/auth/authActions';
 import UserProfileHeaderComponent from './components/UserProfileHeaderComponent/UserProfileHeaderComponent';
 import UserProfileBasicInfoComponent from './components/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
 import UserProfileAboutComponent from './components/UserProfileAboutComponent/UserProfileAboutComponent';
+import styles from './UserProfileContainer.module.scss';
 
 const UserProfileContainer = ({
   fetchUserProfileApiRequest, profileInfo, signOut,
@@ -36,7 +37,7 @@ const UserProfileContainer = ({
       <h3>{profileInfo.error}</h3>
     </div>
   ) : (
-    <div>
+    <div className={styles.userProfileContainer}>
       <UserProfileHeaderComponent
         handleSettingsClick={handleSettingsClick}
         handleSignOut={handleSignOut}
