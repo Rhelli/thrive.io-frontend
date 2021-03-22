@@ -1,6 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import styles from './SignInOutComponent.module.scss';
 
 const SignInOutComponent = ({ authInfo, signOut }) => {
@@ -14,15 +15,21 @@ const SignInOutComponent = ({ authInfo, signOut }) => {
     <div className={styles.signInOutContainer}>
       {
         signedIn === true ? (
-          <div>
-            <a href="/myaccount">{user.name}</a>
-            <a href="" onClick={logUserOut}>Sign Out</a>
-          </div>
+          <>
+            <a href="/myaccount">
+              <FontAwesomeIcon icon={faUserCircle} />
+              <p>{user.name}</p>
+            </a>
+            <button type="button" onClick={logUserOut}>
+              <FontAwesomeIcon icon={faSignOutAlt} />
+              <p>Sign Out</p>
+            </button>
+          </>
         ) : (
-          <div>
+          <>
             <a href="/signin">Sign In</a>
             <a href="/signup">Create An Account</a>
-          </div>
+          </>
         )
       }
     </div>

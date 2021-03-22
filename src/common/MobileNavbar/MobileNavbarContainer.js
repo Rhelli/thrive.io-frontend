@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styles from './NavbarContainer.module.scss';
+import styles from './MobileNavbarContainer.module.scss';
 import SignInOutComponent from './components/SignInOutComponent';
-import NavbarLinksComponent from './components/NavbarLinksComponent';
+import MobileNavbarLookingLinksComponent from './components/MobileNavbarLookingLinksComponent';
 import { signOut } from '../../state/auth/authActions';
 
-const NavbarContainer = ({ authInfo, signOut }) => (
-  <div className={styles.navbarContainer}>
-    <NavbarLinksComponent />
+const MobileNavbarContainer = ({ authInfo, signOut }) => (
+  <div className={styles.mobileNavbarContainer}>
+    <MobileNavbarLookingLinksComponent />
     <SignInOutComponent
       authInfo={authInfo}
       signOut={signOut}
@@ -16,7 +16,7 @@ const NavbarContainer = ({ authInfo, signOut }) => (
   </div>
 );
 
-NavbarContainer.propTypes = {
+MobileNavbarContainer.propTypes = {
   authInfo: PropTypes.shape({
     signedIn: PropTypes.bool.isRequired,
     user: PropTypes.shape({
@@ -38,4 +38,4 @@ const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MobileNavbarContainer);

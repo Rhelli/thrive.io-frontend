@@ -1,5 +1,9 @@
-.navbarContainer {
+.mobileNavbarContainer {
   display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;

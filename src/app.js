@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Routes from './routes';
-import NavbarContainer from './common/Navbar/NavbarContainer';
+import NavbarContainer from './common/MobileNavbar/MobileNavbarContainer';
 import { autoLoginRequest } from './api/authApi';
 import styles from './app.module.scss';
 
@@ -13,8 +13,8 @@ const App = ({ autoLoginRequest }) => {
 
   return (
     <div className={styles.appContainer}>
-      <NavbarContainer />
       <Routes />
+      <NavbarContainer />
     </div>
   );
 };

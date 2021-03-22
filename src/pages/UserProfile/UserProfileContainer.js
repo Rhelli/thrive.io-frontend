@@ -1,19 +1,31 @@
 import React, { useLayoutEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
+import { signOut } from '../../state/auth/authActions';
 import UserProfileHeaderComponent from './components/UserProfileHeaderComponent/UserProfileHeaderComponent';
 import UserProfileBasicInfoComponent from './components/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
 import UserProfileAboutComponent from './components/UserProfileAboutComponent/UserProfileAboutComponent';
 
 const UserProfileContainer = ({
-  fetchUserProfileApiRequest, profileInfo,
+  fetchUserProfileApiRequest, profileInfo, signOut,
 }) => {
   useLayoutEffect(() => {
     fetchUserProfileApiRequest();
   }, []);
 
+  const history = useHistory();
   const { userProfile } = profileInfo;
+
+  const handleSignOut = () => {
+    signOut();
+    history.push('/');
+  };
+
+  const handleSettingsClick = () => {
+    history.push('/myaccount/settings');
+  };
 
   return profileInfo.loading ? (
     <div>
@@ -25,7 +37,10 @@ const UserProfileContainer = ({
     </div>
   ) : (
     <div>
-      <UserProfileHeaderComponent />
+      <UserProfileHeaderComponent
+        handleSettingsClick={handleSettingsClick}
+        handleSignOut={handleSignOut}
+      />
       <UserProfileBasicInfoComponent userProfile={userProfile} />
       <UserProfileAboutComponent userProfile={userProfile} />
     </div>
@@ -39,6 +54,7 @@ UserProfileContainer.propTypes = {
 
 UserProfileContainer.propTypes = {
   fetchUserProfileApiRequest: PropTypes.func.isRequired,
+  signOut: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -48,6 +64,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchUserProfileApiRequest: () => dispatch(fetchUserProfileApiRequest()),
+  signOut: () => dispatch(signOut()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfileContainer);
