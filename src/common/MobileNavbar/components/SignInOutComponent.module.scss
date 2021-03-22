@@ -1,0 +1,33 @@
+.signInOutContainer {
+  display: flex;
+  height: 100%;
+  width: 40%;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid darkred;
+  margin-left: auto;
+
+  a,
+  button {
+    text-align: center;
+
+    svg {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .userName {
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  button {
+    outline: none;
+    border: none;
+    background: transparent;
+  }
+}
