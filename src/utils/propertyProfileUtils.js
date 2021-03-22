@@ -30,18 +30,42 @@ export const flatmateDisplay = occupations => {
   return message;
 };
 
+const mixedHouseParse = arr => {
+  let string = 'Mixed Household: ';
+  arr.forEach((num, i) => {
+    if (num === 0) {
+      string += '';
+    } else if (i === 0) {
+      if (num > 1) string += `${num} Men · `;
+      if (num === 1) string += `${num} Man · `;
+    } else if (i === 1) {
+      if (num > 1) string += `${num} Women · `;
+      if (num === 1) string += `${num} Woman · `;
+    } else if (i === 2) {
+      string += `${num} Trans · `;
+    } else if (i === 3) {
+      string += `${num} Other · `;
+    }
+  });
+  string = string.split('');
+  string.splice(-3);
+  string = string.join('');
+  return string;
+};
+
 export const gendersDisplay = genders => {
   let mCount = 0; let tCount = 0; let fCount = 0; let oCount = 0;
   let message = ''; let icon;
   if (genders.length < 1) {
     return ['No flatmate gender information yet.', null];
   }
-  genders.forEach(gen => {
-    if (gen === 'Male') mCount++;
-    if (gen === 'Transgender') tCount++;
-    if (gen === 'Female') fCount++;
-    if (gen === 'Other') oCount++;
-  });
+  for (let i = 0; i < genders.length; i++) {
+    if (genders[i] === 'Male') mCount++;
+    if (genders[i] === 'Transgender') tCount++;
+    if (genders[i] === 'Female') fCount++;
+    if (genders[i] === 'Other') oCount++;
+  }
+
   if ((tCount + fCount + oCount) === 0) {
     message = `Male Household. ${mCount} male flatmates`;
     icon = faMars;
@@ -55,10 +79,7 @@ export const gendersDisplay = genders => {
     message = `Other Gender Household. ${oCount} other gendered flatmates`;
     icon = faTransgenderAlt;
   } else {
-    if (mCount) message.concat(`${mCount} men, `);
-    if (fCount) message.concat(`${fCount} women, `);
-    if (tCount) message.concat(`${tCount} trans, `);
-    if (oCount) message.concat(`${oCount} other`);
+    message = mixedHouseParse([mCount, fCount, tCount, oCount]);
   }
   return [message, icon];
 };
