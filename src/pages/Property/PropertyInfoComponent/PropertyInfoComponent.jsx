@@ -12,7 +12,7 @@ const PropertyInfoComponent = ({ singleProperty }) => {
   const {
     deposit, genders, maxAge, minAge, occupantCount, occupations, price, roomCount,
   } = singleProperty;
-  console.log(genders);
+
   return (
     <div className={styles.propertyInfoContainer}>
       <div className={styles.propertyInfoPrice}>
