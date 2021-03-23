@@ -1,4 +1,10 @@
-import { SET_USER, SIGN_OUT, AUTH_ERROR } from './authTypes';
+import {
+  SET_USER, SIGN_OUT, AUTH_ERROR, LOAD_USER,
+} from './authTypes';
+
+export const loadUser = () => ({
+  type: LOAD_USER,
+});
 
 export const setUser = payload => ({
   type: SET_USER,
