@@ -1,9 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import ManagePropertiesNavbarComponent from './components/ManagePropertiesNavbarComponent/ManagePropertiesNavbarComponent';
 
-const ManagePropertiesContainer = () => (
-  <div>
-    <h2>ManagePropertiesContainer</h2>
-  </div>
-);
+const ManagePropertiesContainer = () => {
+  const history = useHistory();
+  const handleNewPropertyClick = () => history.push('/manage-properties/new');
+
+  return (
+    <div>
+      <ManagePropertiesNavbarComponent
+        handleNewPropertyClick={handleNewPropertyClick}
+      />
+    </div>
+  );
+};
 
 export default ManagePropertiesContainer;
