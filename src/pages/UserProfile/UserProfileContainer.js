@@ -22,11 +22,14 @@ const UserProfileContainer = ({
   const handleSignOut = () => {
     signOut();
     history.push('/');
+    window.location.reload();
   };
 
   const handleSettingsClick = () => {
     history.push('/myaccount/settings');
   };
+
+  console.log(profileInfo);
 
   return profileInfo.loading ? (
     <div>

@@ -12,3 +12,4 @@ export { default as MobileNavbarContainer } from '../common/MobileNavbar/MobileN
 export { default as EditProfileContainer } from './EditProfile/EditProfileContainer';
 export { default as EditPasswordContainer } from './EditPassword/EditPasswordContainer';
 export { default as EditEmailContainer } from './EditEmail/EditEmailContainer';
+export { default as ManagePropertiesContainer } from './ManageProperties/ManagePropertiesContainer';

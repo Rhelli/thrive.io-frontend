@@ -19,15 +19,17 @@ const EditProfileContainer = ({
   const handleAccountUpdate = (event, updatedDetails) => {
     event.preventDefault();
     updateCurrentUserProfileApiRequest(updatedDetails);
-    window.location.reload();
     history.push('/myaccount');
+    window.location.reload();
   };
 
   const handleAccountDelete = event => {
     deleteCurrentUserProfileApiRequest(event);
   };
 
-  return (
+  return !userProfile ? (
+    <h2>Loading. Please Wait</h2>
+  ) : (
     <div className={styles.editProfileContainer}>
       <ProfileSettingsNavbar handleBackButtonClick={handleBackButtonClick} />
       <EditProfileFormComponent

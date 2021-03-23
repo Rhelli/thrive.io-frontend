@@ -27,7 +27,7 @@ const SignInOutComponent = ({ authInfo }) => {
             </>
           ) : (
             <>
-              <a className={styles.managePropertiesButton} href="/myproperties">
+              <a className={styles.managePropertiesButton} href="/manage-properties">
                 <FontAwesomeIcon icon={faLayerGroup} />
                 <p>Manage Properties</p>
               </a>

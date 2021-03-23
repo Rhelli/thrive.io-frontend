@@ -16,6 +16,7 @@ const EditPasswordContainer = ({
   const handlePasswordChange = (event, passwordData) => {
     event.preventDefault();
     updateCurrentUserPasswordApiRequest(passwordData);
+    history.push('/myaccount');
   };
 
   return (
