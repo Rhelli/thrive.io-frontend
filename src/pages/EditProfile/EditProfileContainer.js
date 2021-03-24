@@ -25,6 +25,8 @@ const EditProfileContainer = ({
 
   const handleAccountDelete = event => {
     deleteCurrentUserProfileApiRequest(event);
+    history.push('/');
+    window.location.reload();
   };
 
   return !userProfile ? (

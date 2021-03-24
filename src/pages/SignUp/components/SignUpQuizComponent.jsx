@@ -38,7 +38,7 @@ const SignUpQuizComponent = ({ handleUserCreation }) => {
           <div onChange={event => setDob(event.target.value)}>
             <label htmlFor="dob">
               Date Of Birth
-              <input id="dob" type="date" required />
+              <input id="dob" type="date" min="1900-01-01" max="2100-01-01" required />
             </label>
           </div>
 
