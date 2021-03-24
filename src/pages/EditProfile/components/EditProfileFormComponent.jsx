@@ -153,10 +153,6 @@ const EditProfileFormComponent = ({
                 <input type="radio" id="landlord" name="advertiserType" value="Landlord" defaultChecked={advertiserType === 'Landlord'} />
                 <label htmlFor="landlord">Landlord</label>
               </span>
-              <span>
-                <input type="radio" id="noAdvertiserType" name="advertiserType" value="" defaultChecked={advertiserType === ''} />
-                <label htmlFor="noAdvertiserType">Prefer Not To Say</label>
-              </span>
             </div>
           ) : (
             null

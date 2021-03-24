@@ -29,8 +29,6 @@ const UserProfileContainer = ({
     history.push('/myaccount/settings');
   };
 
-  console.log(profileInfo);
-
   return profileInfo.loading ? (
     <div>
       <h3>Loading Profile, Please Wait.</h3>

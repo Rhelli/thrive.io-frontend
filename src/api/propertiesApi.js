@@ -1,14 +1,17 @@
 import humps from 'humps';
 import {
-  fetchPropertiesRequest, fetchPropertiesSuccess, fetchPropertiesError, updatePropertyRequest,
-  updatePropertySuccess, updatePropertyError, createPropertyRequest, createPropertySuccess,
-  createPropertyError, deletePropertyRequest, deletePropertySuccess, deletePropertyError,
+  fetchAllPropertiesRequest, fetchAllPropertiesSuccess, fetchAllPropertiesError,
+  fetchManagedPropertiesRequest, fetchManagedPropertiesSuccess,
+  fetchManagedPropertiesError, updatePropertyRequest, updatePropertySuccess,
+  updatePropertyError, createPropertyRequest, createPropertySuccess,
+  createPropertyError, deletePropertyRequest, deletePropertySuccess,
+  deletePropertyError,
 } from '../state/property/propertyActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
 
-export const fetchAllPropertiesRequest = () => dispatch => {
-  dispatch(fetchPropertiesRequest);
+export const fetchAllPropertiesListRequest = () => dispatch => {
+  dispatch(fetchAllPropertiesRequest);
   fetch(`${REACT_APP_REST_API_LOCATION}/properties`, {
     headers: {
       'Content-Type': 'application/json',
@@ -19,11 +22,34 @@ export const fetchAllPropertiesRequest = () => dispatch => {
     .then(data => humps.camelizeKeys(data))
     .then(data => {
       if (!data.error) {
-        dispatch(fetchPropertiesSuccess(data));
+        dispatch(fetchAllPropertiesSuccess(data));
       }
     })
     .catch(error => {
-      dispatch(fetchPropertiesError(error.messages));
+      dispatch(fetchAllPropertiesError(error.messages));
+    });
+};
+
+export const fetchManagedPropertiesListRequest = () => dispatch => {
+  dispatch(fetchManagedPropertiesRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/manage-properties`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.error) {
+        dispatch(fetchManagedPropertiesSuccess(data));
+      } else {
+        dispatch(fetchManagedPropertiesError(data.error));
+      }
+    })
+    .catch(error => {
+      dispatch(fetchManagedPropertiesError(error));
     });
 };
 
