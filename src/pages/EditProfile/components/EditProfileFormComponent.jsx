@@ -16,7 +16,7 @@ const EditProfileFormComponent = ({
 }) => {
   const {
     about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
-    smoking, userType, email, id,
+    smoking, userType, email, id, advertiserType, dob,
   } = userProfile;
   const petsOptions = [
     { value: 'Dogs', label: 'Dogs' },
@@ -40,6 +40,7 @@ const EditProfileFormComponent = ({
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
   const [nameOption, setNameOption] = useState(name);
   const [userTypeOption, setUserTypeOption] = useState(userType);
+  const [advertiserTypeOption, setAdvertiserTypeOption] = useState(advertiserType);
   const [aboutOption, setAboutOption] = useState(about);
   const [occupationOption, setOccupationOption] = useState(occupation);
   const [genderOption, setGenderOption] = useState(gender);
@@ -49,9 +50,11 @@ const EditProfileFormComponent = ({
   const [maxBudgetOption, setMaxBudgetOption] = useState(maxBudget);
   const [petsOption, setPetsOption] = useState(pets);
   const [areasOption, setAreasOption] = useState(areasLooking);
+  const [dobOption, setDobOption] = useState(dob);
 
   const changeName = event => setNameOption(event.target.value);
   const changeUserType = event => setUserTypeOption(event.target.value);
+  const changeAdvertiserType = event => setAdvertiserTypeOption(event.target.value);
   const changeOccupation = event => setOccupationOption(event.target.value);
   const changeGender = event => setGenderOption(event.target.value);
   const changeCouple = event => setCoupleOption(event.target.value);
@@ -59,6 +62,7 @@ const EditProfileFormComponent = ({
   const changeAbout = event => setAboutOption(event.target.value);
   const changeMinBudget = event => setMinBudgetOption(event.target.value);
   const changeMaxBudget = event => setMaxBudgetOption(event.target.value);
+  const changeDob = event => setDobOption(event.target.value);
   const changePets = newValue => {
     setPetsOption(reactSelectOutputFormatter(newValue));
   };
@@ -70,6 +74,7 @@ const EditProfileFormComponent = ({
     name: nameOption,
     email,
     userType: userTypeOption,
+    advertiserType: advertiserTypeOption,
     about: aboutOption,
     occupation: occupationOption,
     gender: genderOption,
@@ -97,7 +102,7 @@ const EditProfileFormComponent = ({
         <div className={styles.editProfileDob}>
           <label htmlFor="age">
             <h3>Date Of Birth</h3>
-            <input id="dob" type="date" />
+            <input id="dob" type="date" defaultValue={dob} onChange={event => changeDob(event)} />
           </label>
         </div>
         <div className={styles.editProfileAbout}>
@@ -133,6 +138,30 @@ const EditProfileFormComponent = ({
             <label htmlFor="advertising">Advertising</label>
           </span>
         </div>
+        {
+          userTypeOption === 'Advertising' ? (
+            <div
+              className={styles.editProfileAdvertiserType}
+              onChange={event => changeAdvertiserType(event)}
+            >
+              <h3>Advertiser Type</h3>
+              <span>
+                <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" defaultChecked={advertiserType === 'Flatmate'} />
+                <label htmlFor="flatmate">Flatmate</label>
+              </span>
+              <span>
+                <input type="radio" id="landlord" name="advertiserType" value="Landlord" defaultChecked={advertiserType === 'Landlord'} />
+                <label htmlFor="landlord">Landlord</label>
+              </span>
+              <span>
+                <input type="radio" id="noAdvertiserType" name="advertiserType" value="" defaultChecked={advertiserType === ''} />
+                <label htmlFor="noAdvertiserType">Prefer Not To Say</label>
+              </span>
+            </div>
+          ) : (
+            null
+          )
+        }
         <div
           className={styles.editProfileGender}
           onChange={event => changeGender(event)}
@@ -309,6 +338,8 @@ EditProfileFormComponent.propTypes = {
     userType: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
+    advertiserType: PropTypes.string,
+    dob: PropTypes.string.isRequired,
   }).isRequired,
   handleAccountUpdate: PropTypes.func.isRequired,
   handleAccountDelete: PropTypes.func.isRequired,

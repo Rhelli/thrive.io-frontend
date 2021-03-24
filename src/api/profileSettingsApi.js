@@ -23,6 +23,7 @@ export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => 
       user: {
         name: updatedDetails.name,
         user_type: updatedDetails.userType,
+        advertiser_type: updatedDetails.advertiserType,
         about: updatedDetails.about,
         occupation: updatedDetails.occupation,
         gender: updatedDetails.gender,
