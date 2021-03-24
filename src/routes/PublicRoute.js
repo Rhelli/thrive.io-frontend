@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 const PublicRoute = ({
@@ -22,15 +22,6 @@ const PublicRoute = ({
   ) : (
     <h2>Please wait.</h2>
   );
-};
-
-PublicRoute.propTypes = {
-  component: PropTypes.func.isRequired,
-  restricted: PropTypes.bool.isRequired,
-  authInfo: PropTypes.shape({
-    signedIn: PropTypes.bool.isRequired,
-    loading: PropTypes.bool.isRequired,
-  }).isRequired,
 };
 
 export default PublicRoute;

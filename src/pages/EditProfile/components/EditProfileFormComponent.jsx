@@ -25,12 +25,16 @@ const EditProfileFormComponent = ({
     { value: 'Rodents', label: 'Rodents' },
     { value: 'Reptiles', label: 'Reptiles' },
     { value: 'Other', label: 'Other' },
+    { value: 'None', label: 'None' },
   ];
 
   const areasOptions = [
     { value: 'Camden', label: 'Camden' },
     { value: 'Belgravia', label: 'Belgravia' },
     { value: 'Abbey Road', label: 'Abbey Road' },
+    { value: 'Maida Vale', label: 'Maida Vale' },
+    { value: 'Clapham Common', label: 'Clapham Common' },
+    { value: 'Shad Thames', lable: 'Shad Thames' },
   ];
 
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
@@ -150,6 +154,10 @@ const EditProfileFormComponent = ({
             <input type="radio" id="other" name="gender" value="Other" defaultChecked={gender === 'Other'} />
             <label htmlFor="other">Other</label>
           </span>
+          <span>
+            <input type="radio" id="no gender" name="gender" value="" />
+            <label htmlFor="no gender">Prefer Not To Say</label>
+          </span>
         </div>
         <div
           className={styles.editProfileOccupation}
@@ -164,6 +172,10 @@ const EditProfileFormComponent = ({
             <input type="radio" id="student" name="occupation" value="Student" defaultChecked={occupation === 'Student'} />
             <label htmlFor="student">Student</label>
           </span>
+          <span>
+            <input type="radio" id="no occupation" name="occupation" value="" />
+            <label htmlFor="no occupation">Prefer Not To Say</label>
+          </span>
         </div>
         <div
           className={styles.editProfileCouple}
@@ -177,6 +189,10 @@ const EditProfileFormComponent = ({
           <span>
             <input type="radio" id="couple" name="couple" value="Couple" defaultChecked={couple === 'Couple'} />
             <label htmlFor="couple">Couple</label>
+          </span>
+          <span>
+            <input type="radio" id="no couple" name="couple" value="" />
+            <label htmlFor="no couple">Prefer Not To Say</label>
           </span>
         </div>
         <div
@@ -195,6 +211,10 @@ const EditProfileFormComponent = ({
           <span>
             <input type="radio" id="smoking" name="smoking" value="Smoking" defaultChecked={smoking === 'Smoking'} />
             <label htmlFor="smoking">Smoking</label>
+          </span>
+          <span>
+            <input type="radio" id="no smoking" name="smoking" value="" />
+            <label htmlFor="no smoking">Prefer Not To Say</label>
           </span>
         </div>
         <div className={styles.editProfilePets}>

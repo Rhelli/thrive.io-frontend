@@ -3,8 +3,7 @@ import { setUser, authError, loadUser } from '../state/auth/authActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
 
-const createUserRequest = user => dispatch => {
-  user.preventDefault();
+const createUserRequest = newUser => dispatch => {
   dispatch(loadUser);
   fetch(`${REACT_APP_REST_API_LOCATION}/users`, {
     method: 'POST',
@@ -14,10 +13,12 @@ const createUserRequest = user => dispatch => {
     },
     body: JSON.stringify({
       user: {
-        name: user.target.name.value,
-        email: user.target.email.value,
-        password: user.target.password.value,
-        user_type: user.target.userType.value,
+        name: newUser.name,
+        email: newUser.email,
+        dob: newUser.dob,
+        password: newUser.password,
+        user_type: newUser.userType,
+        advertiser_type: newUser.advertiserType,
       },
     }),
   })
