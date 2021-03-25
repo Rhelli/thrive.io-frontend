@@ -13,3 +13,4 @@ export { default as EditProfileContainer } from './EditProfile/EditProfileContai
 export { default as EditPasswordContainer } from './EditPassword/EditPasswordContainer';
 export { default as EditEmailContainer } from './EditEmail/EditEmailContainer';
 export { default as ManagePropertiesContainer } from './ManageProperties/ManagePropertiesContainer';
+export { default as NewPropertyContainer } from './NewProperty/NewPropertyContainer';
