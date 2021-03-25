@@ -21,7 +21,7 @@ const ManagePropertiesLandlordInfoComponent = ({ managedProperties }) => (
       <p>Free Rooms</p>
     </span>
     <span>
-      <h4>22</h4>
+      <h4>NaN</h4>
       <p>New Likes</p>
     </span>
   </div>

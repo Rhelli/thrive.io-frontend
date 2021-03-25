@@ -99,7 +99,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllPropertiesRequest: () => dispatch(fetchAllPropertiesListRequest()),
+  fetchAllPropertiesListRequest: () => dispatch(fetchAllPropertiesListRequest()),
   fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
   fetchPropertyLocation: propertyAddress => dispatch(fetchPropertyLocation(propertyAddress)),
 });

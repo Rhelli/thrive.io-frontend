@@ -11,11 +11,18 @@ import {
 } from '../../../../utils/managePropertiesUtils';
 import styles from './ManagePropertiesLandlordListComponent.module.scss';
 
-const ManagePropertiesLandlordListComponent = ({ managedProperties }) => (
+const ManagePropertiesLandlordListComponent = ({ managedProperties, propertyClickThrough }) => (
   <div className={styles.managedPropertyListContainer}>
     {
       managedProperties.map(property => (
-        <div className={styles.managedPropertyContainer} key={uuidv4()}>
+        <div
+          className={styles.managedPropertyContainer}
+          key={uuidv4()}
+          onClick={() => propertyClickThrough(property)}
+          role="button"
+          onKeyUp={() => propertyClickThrough(property)}
+          tabIndex="-1"
+        >
           <div className={styles.managedPropertyImage}>
             <h4>IMAGE</h4>
           </div>
@@ -96,6 +103,7 @@ ManagePropertiesLandlordListComponent.propTypes = {
       town: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  propertyClickThrough: PropTypes.func.isRequired,
 };
 
 export default ManagePropertiesLandlordListComponent;

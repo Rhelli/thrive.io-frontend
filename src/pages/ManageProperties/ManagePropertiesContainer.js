@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
+import { fetchSingleProperty } from '../../state/property/propertyActions';
 import { fetchManagedPropertiesListRequest } from '../../api/propertiesApi';
+import fetchPropertyLocation from '../../api/locationApi';
 import styles from './ManagePropertiesContainer.module.scss';
 import ManagePropertiesNavbarComponent from './components/ManagePropertiesNavbarComponent/ManagePropertiesNavbarComponent';
 import ManagePropertiesFlatmateInfoComponent from './components/ManagePropertiesFlatmateInfoComponent/ManagePropertiesFlatmateInfoComponent';
@@ -13,6 +16,7 @@ import ManagePropertiesLandlordListComponent from './components/ManageProperties
 
 const ManagePropertiesContainer = ({
   userProfile, managedProperties, fetchUserProfileApiRequest, fetchManagedPropertiesListRequest,
+  fetchSingleProperty, fetchPropertyLocation,
 }) => {
   useLayoutEffect(() => {
     fetchUserProfileApiRequest();
@@ -23,7 +27,12 @@ const ManagePropertiesContainer = ({
   const handleNewPropertyClick = () => history.push('/manage-properties/new');
   const { advertiserType } = userProfile;
 
-  console.log(managedProperties);
+  const propertyClickThrough = property => {
+    const propertyAddress = `${property.address},${property.town},${property.postcode}`;
+    fetchSingleProperty(property);
+    fetchPropertyLocation(propertyAddress);
+    history.push(`/property/${property.id}`);
+  };
 
   return !userProfile ? (
     <h2>Loading. One Minute Please.</h2>
@@ -37,6 +46,7 @@ const ManagePropertiesContainer = ({
       />
       <ManagePropertiesLandlordListComponent
         managedProperties={managedProperties}
+        propertyClickThrough={propertyClickThrough}
       />
     </div>
   ) : advertiserType === 'Flatmate' ? (
@@ -44,8 +54,6 @@ const ManagePropertiesContainer = ({
       <ManagePropertiesNavbarComponent
         handleNewPropertyClick={handleNewPropertyClick}
       />
-      <ManagePropertiesFlatmateInfoComponent />
-      <ManagePropertiesFlatmateListComponent />
     </div>
   ) : (
     null
@@ -54,7 +62,7 @@ const ManagePropertiesContainer = ({
 
 ManagePropertiesContainer.propTypes = {
   userProfile: PropTypes.shape({
-    advertiserType: PropTypes.string.isRequired,
+    advertiserType: PropTypes.string,
   }).isRequired,
   managedProperties: PropTypes.arrayOf(
     PropTypes.shape({
@@ -84,6 +92,8 @@ ManagePropertiesContainer.propTypes = {
   ).isRequired,
   fetchUserProfileApiRequest: PropTypes.func.isRequired,
   fetchManagedPropertiesListRequest: PropTypes.func.isRequired,
+  fetchSingleProperty: PropTypes.func.isRequired,
+  fetchPropertyLocation: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -94,6 +104,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchUserProfileApiRequest: () => dispatch(fetchUserProfileApiRequest()),
   fetchManagedPropertiesListRequest: () => dispatch(fetchManagedPropertiesListRequest()),
+  fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
+  fetchPropertyLocation: propertyAddress => dispatch(fetchPropertyLocation(propertyAddress)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManagePropertiesContainer);
