@@ -1,14 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faCog } from '@fortawesome/free-solid-svg-icons';
 import styles from './PropertyImageComponent.module.scss';
 
-const PropertyImageComponent = () => (
+const PropertyImageComponent = ({ userType }) => (
   <div className={styles.propertyImageContainer}>
-    <button type="button" className={styles.shortlistButton}>
-      <FontAwesomeIcon icon={faStar} />
-      <p>Shortlist</p>
-    </button>
+    {
+      userType === 'Looking' ? (
+        <button type="button" className={styles.shortlistButton}>
+          <FontAwesomeIcon icon={faStar} />
+          <p>Shortlist</p>
+        </button>
+      ) : (
+        <button type="button" className={styles.settingsButton}>
+          <FontAwesomeIcon icon={faCog} />
+          <p>Settings</p>
+        </button>
+      )
+    }
     <div className={styles.propertyImageInnerContainer}>
       <p>
         IMAGE
@@ -16,5 +26,9 @@ const PropertyImageComponent = () => (
     </div>
   </div>
 );
+
+PropertyImageComponent.propTypes = {
+  userType: PropTypes.string.isRequired,
+};
 
 export default PropertyImageComponent;

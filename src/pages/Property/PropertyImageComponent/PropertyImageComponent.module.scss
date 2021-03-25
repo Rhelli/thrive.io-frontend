@@ -7,7 +7,8 @@
   position: relative;
 }
 
-.shortlistButton {
+.shortlistButton,
+.settingsButton {
   display: flex;
   flex-flow: row nowrap;
   position: absolute;
@@ -32,7 +33,12 @@
   }
 }
 
-.shortlistButton:hover {
+.settingsButton {
+  background-color: rgba(0, 100, 230, 0.5);
+}
+
+.shortlistButton:hover,
+.settingsButton:hover {
   p {
     display: inline-block;
   }

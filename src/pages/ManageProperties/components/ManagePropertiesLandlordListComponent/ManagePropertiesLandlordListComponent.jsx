@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faMapMarkerAlt, faBed, faUsers, faBriefcase,
+  faMapMarkerAlt, faBed, faUsers, faBriefcase, faCog,
 } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -24,6 +24,9 @@ const ManagePropertiesLandlordListComponent = ({ managedProperties, propertyClic
           tabIndex="-1"
         >
           <div className={styles.managedPropertyImage}>
+            <button type="button" className={styles.managedPropertySettingsButton}>
+              <FontAwesomeIcon icon={faCog} />
+            </button>
             <h4>IMAGE</h4>
           </div>
           <div className={styles.managedPropertyInfoContainer}>

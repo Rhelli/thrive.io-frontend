@@ -16,10 +16,29 @@
 
   .managedPropertyImage {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     border: 1px solid blue;
     height: 160px;
+
+    .managedPropertySettingsButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 7px;
+      outline: none;
+      border: none;
+      background-color: rgba(0, 100 , 230, 0.5); 
+      border-radius: 50%;
+
+      svg {
+        font-size: 18px;
+      }
+    }
   }
 
   .managedPropertyInfoContainer {

@@ -8,28 +8,35 @@ import PropertyAboutComponent from './PropertyAboutComponent/PropertyAboutCompon
 import PropertyMoreInfoComponent from './PropertyMoreInfoComponent/PropertyMoreInfoComponent';
 import styles from './PropertyContainer.module.scss';
 
-const PropertyContainer = ({ propertyData }) => (
-  propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
-    <p>Wait a sec.</p>
-  ) : propertyData.error ? (
-    <p>Wait a million years</p>
-  ) : (
-    <div className={styles.propertyContainer}>
-      <PropertyImageComponent propertyData={propertyData} />
-      <PropertyInfoComponent
-        singleProperty={propertyData.singleProperty}
-        propertyData={propertyData}
-      />
-      <PropertyAboutComponent singleProperty={propertyData.singleProperty} />
-      <PropertyMoreInfoComponent
-        singleProperty={propertyData.singleProperty}
-        singlePropertyLocation={
-          propertyData.singlePropertyLocation.results[0].locations[0].displayLatLng
-        }
-      />
-    </div>
-  )
-);
+const PropertyContainer = ({ propertyData, userProfile }) => {
+  const { userType } = userProfile;
+
+  return (
+    propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
+      <p>Wait a sec.</p>
+    ) : propertyData.error ? (
+      <p>Wait a million years</p>
+    ) : (
+      <div className={styles.propertyContainer}>
+        <PropertyImageComponent
+          propertyData={propertyData}
+          userType={userType}
+        />
+        <PropertyInfoComponent
+          singleProperty={propertyData.singleProperty}
+          propertyData={propertyData}
+        />
+        <PropertyAboutComponent singleProperty={propertyData.singleProperty} />
+        <PropertyMoreInfoComponent
+          singleProperty={propertyData.singleProperty}
+          singlePropertyLocation={
+            propertyData.singlePropertyLocation.results[0].locations[0].displayLatLng
+          }
+        />
+      </div>
+    )
+  );
+};
 
 PropertyContainer.propTypes = {
   propertyData: PropTypes.shape({
@@ -51,10 +58,14 @@ PropertyContainer.propTypes = {
     error: PropTypes.string,
     loading: PropTypes.bool.isRequired,
   }).isRequired,
+  userProfile: PropTypes.shape({
+    userType: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({
   propertyData: state.propertyStore,
+  userProfile: state.profileStore.userProfile,
 });
 
 export default connect(mapStateToProps, null)(PropertyContainer);
