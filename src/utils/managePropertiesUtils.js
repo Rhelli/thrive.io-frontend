@@ -25,3 +25,27 @@ export const occupationShorthand = occupations => {
   }
   return ans;
 };
+
+export const monthlyEarnings = managedProperties => {
+  if (managedProperties.length > 0) {
+    let total = 0;
+    managedProperties.forEach(property => {
+      const singlePropRent = (property.price * property.occupantCount);
+      total += singlePropRent;
+    });
+    return total;
+  }
+  return false;
+};
+
+export const availableRooms = managedProperties => {
+  if (managedProperties.length > 0) {
+    let total = 0;
+    managedProperties.forEach(property => {
+      const emptyRooms = freeRoomCalc(property.occupantCount, property.roomCount);
+      total += emptyRooms;
+    });
+    return total;
+  }
+  return false;
+};

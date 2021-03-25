@@ -32,7 +32,9 @@ const ManagePropertiesContainer = ({
       <ManagePropertiesNavbarComponent
         handleNewPropertyClick={handleNewPropertyClick}
       />
-      <ManagePropertiesLandlordInfoComponent />
+      <ManagePropertiesLandlordInfoComponent
+        managedProperties={managedProperties}
+      />
       <ManagePropertiesLandlordListComponent
         managedProperties={managedProperties}
       />
@@ -54,7 +56,32 @@ ManagePropertiesContainer.propTypes = {
   userProfile: PropTypes.shape({
     advertiserType: PropTypes.string.isRequired,
   }).isRequired,
-  managedProperties: PropTypes.func.isRequired,
+  managedProperties: PropTypes.arrayOf(
+    PropTypes.shape({
+      address: PropTypes.string.isRequired,
+      bills: PropTypes.string.isRequired,
+      blurb: PropTypes.string.isRequired,
+      deposit: PropTypes.number.isRequired,
+      disabledAccess: PropTypes.string,
+      furnished: PropTypes.string.isRequired,
+      genders: PropTypes.arrayOf(PropTypes.string),
+      id: PropTypes.number,
+      internet: PropTypes.string,
+      maxAge: PropTypes.number,
+      minAge: PropTypes.number,
+      occupantCount: PropTypes.number.isRequired,
+      occupations: PropTypes.arrayOf(PropTypes.string),
+      outsideArea: PropTypes.string,
+      parking: PropTypes.string.isRequired,
+      pets: PropTypes.arrayOf(PropTypes.string),
+      postcode: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      roomCount: PropTypes.number.isRequired,
+      smoking: PropTypes.string,
+      title: PropTypes.string.isRequired,
+      town: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
   fetchUserProfileApiRequest: PropTypes.func.isRequired,
   fetchManagedPropertiesListRequest: PropTypes.func.isRequired,
 };

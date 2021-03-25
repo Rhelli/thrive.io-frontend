@@ -75,7 +75,7 @@ ManagePropertiesLandlordListComponent.propTypes = {
       address: PropTypes.string.isRequired,
       bills: PropTypes.string.isRequired,
       blurb: PropTypes.string.isRequired,
-      deposit: PropTypes.string.isRequired,
+      deposit: PropTypes.number.isRequired,
       disabledAccess: PropTypes.string,
       furnished: PropTypes.string.isRequired,
       genders: PropTypes.arrayOf(PropTypes.string),
