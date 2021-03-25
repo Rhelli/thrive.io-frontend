@@ -1,5 +1,5 @@
 import React from 'react';
-import NewPropertyNavbarComponent from './components/NewPropertyNavbarComponent';
+import NewPropertyNavbarComponent from './components/NewPropertyNavbarComponent/NewPropertyNavbarComponent';
 import styles from './NewPropertyContainer.module.scss';
 
 const NewPropertyContainer = () => (

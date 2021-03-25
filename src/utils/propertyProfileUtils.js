@@ -83,3 +83,13 @@ export const gendersDisplay = genders => {
   }
   return [message, icon];
 };
+
+export const settingsShortlistButtonDetect = (properties, propertyId) => {
+  let ans = false;
+  properties.forEach(property => {
+    if (property.id === propertyId) {
+      ans = true;
+    }
+  });
+  return ans;
+};

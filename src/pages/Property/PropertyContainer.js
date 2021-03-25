@@ -9,7 +9,7 @@ import PropertyMoreInfoComponent from './PropertyMoreInfoComponent/PropertyMoreI
 import styles from './PropertyContainer.module.scss';
 
 const PropertyContainer = ({ propertyData, userProfile }) => {
-  const { userType } = userProfile;
+  const { singleProperty } = propertyData;
 
   return (
     propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
@@ -19,16 +19,16 @@ const PropertyContainer = ({ propertyData, userProfile }) => {
     ) : (
       <div className={styles.propertyContainer}>
         <PropertyImageComponent
-          propertyData={propertyData}
-          userType={userType}
+          singleProperty={singleProperty}
+          userProfile={userProfile}
         />
         <PropertyInfoComponent
-          singleProperty={propertyData.singleProperty}
+          singleProperty={singleProperty}
           propertyData={propertyData}
         />
-        <PropertyAboutComponent singleProperty={propertyData.singleProperty} />
+        <PropertyAboutComponent singleProperty={singleProperty} />
         <PropertyMoreInfoComponent
-          singleProperty={propertyData.singleProperty}
+          singleProperty={singleProperty}
           singlePropertyLocation={
             propertyData.singlePropertyLocation.results[0].locations[0].displayLatLng
           }
@@ -65,7 +65,7 @@ PropertyContainer.propTypes = {
 
 const mapStateToProps = state => ({
   propertyData: state.propertyStore,
-  userProfile: state.profileStore.userProfile,
+  userProfile: state.authStore.user,
 });
 
 export default connect(mapStateToProps, null)(PropertyContainer);
