@@ -33,7 +33,9 @@ const ManagePropertiesContainer = ({
         handleNewPropertyClick={handleNewPropertyClick}
       />
       <ManagePropertiesLandlordInfoComponent />
-      <ManagePropertiesLandlordListComponent />
+      <ManagePropertiesLandlordListComponent
+        managedProperties={managedProperties}
+      />
     </div>
   ) : advertiserType === 'Flatmate' ? (
     <div className={styles.managePropertiesContainer}>
