@@ -49,3 +49,20 @@ export const availableRooms = managedProperties => {
   }
   return false;
 };
+
+export const genderArrayParser = (mCount, fCount, tCount, oCount) => {
+  const genders = [];
+  for (let i = 0; i < mCount; i++) {
+    genders.push('Male');
+  }
+  for (let i = 0; i < fCount; i++) {
+    genders.push('Female');
+  }
+  for (let i = 0; i < tCount; i++) {
+    genders.push('Transgender');
+  }
+  for (let i = 0; i < oCount; i++) {
+    genders.push('Other');
+  }
+  return genders;
+};

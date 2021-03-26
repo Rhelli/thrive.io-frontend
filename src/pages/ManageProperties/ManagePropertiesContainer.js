@@ -23,6 +23,8 @@ const ManagePropertiesContainer = ({
     fetchManagedPropertiesListRequest();
   }, []);
 
+  console.log(managedProperties);
+
   const history = useHistory();
   const handleNewPropertyClick = () => history.push('/manage-properties/new');
   const { advertiserType } = userProfile;
@@ -79,7 +81,7 @@ ManagePropertiesContainer.propTypes = {
       minAge: PropTypes.number,
       occupantCount: PropTypes.number.isRequired,
       occupations: PropTypes.arrayOf(PropTypes.string),
-      outsideArea: PropTypes.string,
+      outsideArea: PropTypes.arrayOf(PropTypes.string),
       parking: PropTypes.string.isRequired,
       pets: PropTypes.arrayOf(PropTypes.string),
       postcode: PropTypes.string.isRequired,

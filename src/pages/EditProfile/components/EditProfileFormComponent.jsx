@@ -73,6 +73,7 @@ const EditProfileFormComponent = ({
   const updatedDetails = {
     name: nameOption,
     email,
+    dob: dobOption,
     userType: userTypeOption,
     advertiserType: advertiserTypeOption,
     about: aboutOption,
