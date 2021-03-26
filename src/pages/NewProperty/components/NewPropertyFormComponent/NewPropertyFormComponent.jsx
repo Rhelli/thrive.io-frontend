@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { genderArrayParser } from '../../../../utils/managePropertiesUtils';
+import { genderArrayParser, occupationArrayParser } from '../../../../utils/managePropertiesUtils';
 import { reactSelectOutputFormatter } from '../../../../utils/profileSettingsUtils';
 import styles from './NewPropertyFormComponent.module.scss';
 
@@ -18,7 +18,6 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
   const [maxAgeOption, setMaxAgeOption] = useState(null);
   const [minAgeOption, setMinAgeOption] = useState(null);
   const [occupantCountOption, setOccupantCountOption] = useState(null);
-  const [occupationsOption, setOccupationsOption] = useState(null);
   const [outsideAreaOption, setOutsideAreaOption] = useState(null);
   const [parkingOption, setParkingOption] = useState(null);
   const [petsOption, setPetsOption] = useState(null);
@@ -32,6 +31,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
   const [femaleCountOption, setFemaleCountOption] = useState(null);
   const [transCountOption, setTransCountOption] = useState(null);
   const [otherCountOption, setOtherCountOption] = useState(null);
+  const [professionalCountOption, setProfessionalCountOption] = useState(null);
+  const [studentCountOption, setStudentCountOption] = useState(null);
 
   const outsideAreaSelectOptions = [
     { value: 'Garden', label: 'Garden' },
@@ -60,6 +61,9 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
   const gendersReduced = genderArrayParser(
     maleCountOption, femaleCountOption, transCountOption, otherCountOption,
   );
+  const occupationsReduced = occupationArrayParser(
+    professionalCountOption, studentCountOption,
+  );
 
   const newPropertyDetails = {
     ownerId: id,
@@ -79,7 +83,7 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
     furnished: furnishedOption,
     disabledAccess: disabledAccessOption,
     occupantCount: occupantCountOption,
-    occupations: occupationsOption,
+    occupations: occupationsReduced,
     outsideArea: outsideAreaOption,
     pets: petsOption,
     roomCount: roomCountOption,
@@ -99,8 +103,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="title">
-            <h3>Title</h3>
-            <input type="text" id="title" placeholder="Give your property a title..." />
+            <h3>Title *</h3>
+            <input type="text" id="title" placeholder="Give your property a title..." required />
           </label>
         </div>
 
@@ -109,8 +113,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="blurb">
-            <h3>Description</h3>
-            <textarea id="blurb" placeholder="Add a short description of the property" />
+            <h3>Description *</h3>
+            <textarea id="blurb" placeholder="Add a short description of the property" required />
           </label>
         </div>
 
@@ -119,8 +123,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="address">
-            <h3>Address</h3>
-            <input type="text" id="address" placeholder="Enter the first line address..." />
+            <h3>Address *</h3>
+            <input type="text" id="address" placeholder="Enter the first line address..." required />
           </label>
         </div>
 
@@ -129,8 +133,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="town">
-            <h3>Town</h3>
-            <input type="text" id="town" placeholder="Enter the town..." />
+            <h3>Town *</h3>
+            <input type="text" id="town" placeholder="Enter the town..." required />
           </label>
         </div>
 
@@ -139,8 +143,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="postcode">
-            <h3>Postcode / ZipCode</h3>
-            <input type="text" id="postcode" placeholder="Enter the postcode for this property..." />
+            <h3>Postcode / ZipCode *</h3>
+            <input type="text" id="postcode" placeholder="Enter the postcode for this property..." required />
           </label>
         </div>
 
@@ -149,8 +153,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="price">
-            <h3>Rent</h3>
-            <input type="number" id="price" placeholder="Enter the price of rental per month..." />
+            <h3>Rent *</h3>
+            <input type="number" id="price" placeholder="Enter the price of rental per month..." required />
           </label>
         </div>
 
@@ -158,9 +162,9 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           onChange={event => setBillsOption(event.target.value)}
           className={styles.radioField}
         >
-          <h3>Are Bills Included?</h3>
+          <h3>Are Bills Included? *</h3>
           <span>
-            <input type="radio" id="included" name="bills" value="Included" />
+            <input type="radio" id="included" name="bills" value="Included" required />
             <label htmlFor="included">Included</label>
           </span>
           <span>
@@ -174,7 +178,7 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="deposit">
-            <h3>How Much Is The Deposit?</h3>
+            <h3>How Much Is The Deposit? *</h3>
             <input type="number" id="deposit" placeholder="Enter the total deposit..." />
           </label>
         </div>
@@ -183,9 +187,9 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           onChange={event => setFurnishedOption(event.target.value)}
           className={styles.radioField}
         >
-          <h3>Is The Space For Rent Furnished?</h3>
+          <h3>Is The Space For Rent Furnished? *</h3>
           <span>
-            <input type="radio" id="furnished" name="furnished" value="Furnished" />
+            <input type="radio" id="furnished" name="furnished" value="Furnished" required />
             <label htmlFor="furnished">Furnished</label>
           </span>
           <span>
@@ -198,9 +202,9 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           onChange={event => setParkingOption(event.target.value)}
           className={styles.radioField}
         >
-          <h3>Is There Parking?</h3>
+          <h3>Is There Parking? *</h3>
           <span>
-            <input type="radio" id="parking" name="parking" value="Parking" />
+            <input type="radio" id="parking" name="parking" value="Parking" required />
             <label htmlFor="parking">Parking</label>
           </span>
           <span>
@@ -214,8 +218,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="occupantCount">
-            <h3>How Many People Live Here Currently?</h3>
-            <input type="number" id="occupantCount" placeholder="Enter the number of current flatmates..." />
+            <h3>How Many People Live Here Currently? *</h3>
+            <input type="number" id="occupantCount" placeholder="Enter the number of current flatmates..." required />
           </label>
         </div>
 
@@ -224,8 +228,8 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           className={styles.textInputContainer}
         >
           <label htmlFor="roomCount">
-            <h3>How Many Rooms Are Available?</h3>
-            <input type="number" id="roomCount" placeholder="Enter the number of empty rooms..." />
+            <h3>How Many Rooms Are Available? *</h3>
+            <input type="number" id="roomCount" placeholder="Enter the number of empty rooms..." required />
           </label>
         </div>
 
@@ -305,7 +309,7 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
           </span>
         </div>
         <div className={styles.reactSelectInput}>
-          <h3>Are There Any Animals?</h3>
+          <h3>Are There Any Pets?</h3>
           <Select
             className={styles.reactSelectInput}
             options={petsSelectOptions}
@@ -317,41 +321,50 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
 
         <div className={styles.genderInputContainer}>
           <h3>How Many Of Each Gender Is There?</h3>
-          <span>
-            <label htmlFor="male">
-              <p>Male</p>
-              <input type="number" id="male" onChange={event => setMaleCountOption(event.target.value)} />
-            </label>
-          </span>
-          <span>
-            <label htmlFor="female">
-              <p>Female</p>
-              <input type="number" id="female" onChange={event => setFemaleCountOption(event.target.value)} />
-            </label>
-          </span>
-          <span>
-            <label htmlFor="trans">
-              <p>Trans</p>
-              <input type="number" id="trans" onChange={event => setTransCountOption(event.target.value)} />
-            </label>
-          </span>
-          <span>
-            <label htmlFor="other">
-              <p>Other</p>
-              <input type="number" id="other" onChange={event => setOtherCountOption(event.target.value)} />
-            </label>
-          </span>
+          <div>
+            <span>
+              <label htmlFor="male">
+                <h4>Male</h4>
+                <input type="number" id="male" min="0" onChange={event => setMaleCountOption(event.target.value)} />
+              </label>
+            </span>
+            <span>
+              <label htmlFor="female">
+                <h4>Female</h4>
+                <input type="number" id="female" min="0" onChange={event => setFemaleCountOption(event.target.value)} />
+              </label>
+            </span>
+            <span>
+              <label htmlFor="trans">
+                <h4>Trans</h4>
+                <input type="number" id="trans" min="0" onChange={event => setTransCountOption(event.target.value)} />
+              </label>
+            </span>
+            <span>
+              <label htmlFor="other">
+                <h4>Other</h4>
+                <input type="number" id="other" min="0" onChange={event => setOtherCountOption(event.target.value)} />
+              </label>
+            </span>
+          </div>
         </div>
 
-        <div className={styles.reactSelectInput}>
-          <h3>What Are The Occupations Per Flatmate?</h3>
-          <Select
-            className={styles.reactSelectInput}
-            options={occupationsSelectOptions}
-            isMulti
-            onChange={event => setOccupationsOption(reactSelectOutputFormatter(event))}
-            name="occupations"
-          />
+        <div className={styles.occupationsInputContainer}>
+          <h3>How Many Professionals & Students Are There?</h3>
+          <div>
+            <span>
+              <label htmlFor="professional">
+                <h4>Professional</h4>
+                <input type="number" id="professional" min="0" onChange={event => setProfessionalCountOption(event.target.value)} />
+              </label>
+            </span>
+            <span>
+              <label htmlFor="student">
+                <h4>Student</h4>
+                <input type="number" id="student" min="0" onChange={event => setStudentCountOption(event.target.value)} />
+              </label>
+            </span>
+          </div>
         </div>
 
         <hr className={styles.formEnd} />

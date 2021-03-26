@@ -66,3 +66,14 @@ export const genderArrayParser = (mCount, fCount, tCount, oCount) => {
   }
   return genders;
 };
+
+export const occupationArrayParser = (pCount, sCount) => {
+  const occupations = [];
+  for (let i = 0; i < pCount; i++) {
+    occupations.push('Professional');
+  }
+  for (let i = 0; i < sCount; i++) {
+    occupations.push('Student');
+  }
+  return occupations;
+};
