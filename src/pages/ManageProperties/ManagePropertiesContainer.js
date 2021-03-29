@@ -23,8 +23,6 @@ const ManagePropertiesContainer = ({
     fetchManagedPropertiesListRequest();
   }, []);
 
-  console.log(managedProperties);
-
   const history = useHistory();
   const handleNewPropertyClick = () => history.push('/manage-properties/new');
   const { advertiserType } = userProfile;

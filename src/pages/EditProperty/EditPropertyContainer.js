@@ -18,10 +18,9 @@ const EditPropertyContainer = ({
 
   const handleFormSubmission = (event, propertyDetails) => {
     event.preventDefault();
-    const { id } = propertyDetails;
+    const { propertyId } = propertyDetails;
     updatePropertyDetailsRequest(propertyDetails);
-    history.push(`/property/${id}`);
-    window.location.reload();
+    history.push(`/property/${propertyId}`);
   };
 
   const handlePropertyDelete = () => {
@@ -37,7 +36,7 @@ const EditPropertyContainer = ({
       <EditPropertyNavbarComponent handleNavbarBackButton={handleNavbarBackButton} />
       <PropertyFormComponent
         handleFormSubmission={handleFormSubmission}
-        id={singleProperty.id}
+        ownerId={userProfile.id}
         singleProperty={singleProperty}
       />
       <EditPropertyDeleteComponent handlePropertyDelete={handlePropertyDelete} />
@@ -48,6 +47,7 @@ const EditPropertyContainer = ({
 EditPropertyContainer.propTypes = {
   userProfile: PropTypes.shape({
     userType: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   singleProperty: PropTypes.shape({
     id: PropTypes.number.isRequired,

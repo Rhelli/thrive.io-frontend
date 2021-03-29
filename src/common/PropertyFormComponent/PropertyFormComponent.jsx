@@ -7,7 +7,7 @@ import { genderArrayParser, occupationArrayParser, arrayCount } from '../../util
 import { reactSelectOutputFormatter, selectInputDefaultGen } from '../../utils/profileSettingsUtils';
 import styles from './PropertyFormComponent.module.scss';
 
-const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null }) => {
+const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty = null }) => {
   const [addressOption, setAddressOption] = useState(singleProperty.address);
   const [billsOption, setBillsOption] = useState(singleProperty.bills);
   const [blurbOption, setBlurbOption] = useState(singleProperty.blurb);
@@ -26,7 +26,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
   const [smokingOption, setSmokingOption] = useState(singleProperty.smoking);
   const [titleOption, setTitleOption] = useState(singleProperty.title);
   const [townOption, setTownOption] = useState(singleProperty.town);
-  const [postcodeOption, setPostcodeOption] = useState(singleProperty.town);
+  const [postcodeOption, setPostcodeOption] = useState(singleProperty.postcode);
   const [maleCountOption, setMaleCountOption] = useState(arrayCount('Male', singleProperty.genders));
   const [femaleCountOption, setFemaleCountOption] = useState(arrayCount('Female', singleProperty.genders));
   const [transCountOption, setTransCountOption] = useState(arrayCount('Transgender', singleProperty.genders));
@@ -60,8 +60,9 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
     professionalCountOption, studentCountOption,
   );
 
-  const PropertyDetails = {
-    ownerId: id,
+  const propertyDetails = {
+    ownerId,
+    propertyId: singleProperty.id,
     title: titleOption,
     blurb: blurbOption,
     address: addressOption,
@@ -88,10 +89,9 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
   return (
     <div>
       <form
-        onSubmit={event => handleFormSubmission(event, PropertyDetails)}
+        onSubmit={event => handleFormSubmission(event, propertyDetails)}
         className={styles.newPropertyFormContainer}
       >
-        <input type="hidden" value={id} />
 
         <div
           onChange={event => setTitleOption(event.target.value)}
@@ -149,7 +149,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
         >
           <label htmlFor="price">
             <h3>Rent *</h3>
-            <input type="number" id="price" placeholder="Enter the price of rental per month..." defaultValue={priceOption} required />
+            <input type="number" id="price" placeholder="Enter the price of rental per month..." min="0" defaultValue={priceOption} required />
           </label>
         </div>
 
@@ -174,7 +174,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
         >
           <label htmlFor="deposit">
             <h3>How Much Is The Deposit? *</h3>
-            <input type="number" id="deposit" placeholder="Enter the total deposit..." defaultValue={depositOption} />
+            <input type="number" id="deposit" placeholder="Enter the total deposit..." min="0" defaultValue={depositOption} />
           </label>
         </div>
 
@@ -214,7 +214,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
         >
           <label htmlFor="occupantCount">
             <h3>How Many People Live Here Currently? *</h3>
-            <input type="number" id="occupantCount" placeholder="Enter the number of current flatmates..." defaultValue={occupantCountOption} required />
+            <input type="number" id="occupantCount" placeholder="Enter the number of current flatmates..." min="0" defaultValue={occupantCountOption} required />
           </label>
         </div>
 
@@ -224,7 +224,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
         >
           <label htmlFor="roomCount">
             <h3>How Many Rooms Are Available? *</h3>
-            <input type="number" id="roomCount" placeholder="Enter the number of empty rooms..." defaultValue={roomCountOption} required />
+            <input type="number" id="roomCount" placeholder="Enter the number of empty rooms..." min="0" defaultValue={roomCountOption} required />
           </label>
         </div>
 
@@ -411,7 +411,7 @@ PropertyFormComponent.defaultProps = {
 
 PropertyFormComponent.propTypes = {
   handleFormSubmission: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  ownerId: PropTypes.number.isRequired,
   singleProperty: PropTypes.shape({
     address: PropTypes.string,
     bills: PropTypes.string,

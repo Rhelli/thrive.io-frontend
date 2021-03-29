@@ -24,7 +24,7 @@ const NewPropertyContainer = ({ userProfile, createNewPropertyRequest }) => {
       <PropertyNavbarComponent />
       <PropertyFormComponent
         handleFormSubmission={handleFormSubmission}
-        id={id}
+        ownerId={id}
       />
     </div>
   );

@@ -5,7 +5,7 @@ import {
   fetchManagedPropertiesError, updatePropertyRequest, updatePropertySuccess,
   updatePropertyError, createPropertyRequest, createPropertySuccess,
   createPropertyError, deletePropertyRequest, deletePropertySuccess,
-  deletePropertyError,
+  deletePropertyError, fetchSingleProperty,
 } from '../state/property/propertyActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
@@ -105,23 +105,48 @@ export const createNewPropertyRequest = property => dispatch => {
 
 export const updatePropertyDetailsRequest = property => dispatch => {
   dispatch(updatePropertyRequest);
-  const { id } = property;
-  const formattedProperty = humps.decamelizeKeys(property);
-  fetch(`${REACT_APP_REST_API_LOCATION}/edit-property/${id}`, {
+  const { propertyId } = property;
+  fetch(`${REACT_APP_REST_API_LOCATION}/edit-property/${propertyId}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    body: {
-      property: { ...formattedProperty },
-    },
+    body: JSON.stringify({
+      property: {
+        id: propertyId,
+        owner_id: property.ownerId,
+        title: property.title,
+        blurb: property.blurb,
+        address: property.address,
+        town: property.town,
+        postcode: property.postcode,
+        price: property.price,
+        bills: property.bills,
+        parking: property.parking,
+        deposit: property.deposit,
+        min_age: property.minAge,
+        max_age: property.maxAge,
+        internet: property.internet,
+        genders: property.genders,
+        furnished: property.furnished,
+        disabled_access: property.disabledAccess,
+        occupant_count: property.occupantCount,
+        occupations: property.occupations,
+        outside_area: property.outsideArea,
+        pets: property.pets,
+        room_count: property.roomCount,
+        smoking: property.smoking,
+      },
+    }),
   })
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {
       if (!data.error) {
         dispatch(updatePropertySuccess(data));
+        dispatch(fetchSingleProperty(data));
       }
     })
     .catch(error => {

@@ -61,7 +61,7 @@ const ManagePropertiesLandlordListComponent = ({
               <span className={styles.managedPropertyFreeRooms}>
                 <FontAwesomeIcon icon={faBed} />
                 <p>
-                  {freeRoomCalc(property.occupantCount, property.roomCount)}
+                  {property.roomCount}
                   {' '}
                   Rooms
                 </p>
