@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import PropertyInfoComponent from './PropertyInfoComponent/PropertyInfoComponent';
 import PropertyImageComponent from './PropertyImageComponent/PropertyImageComponent';
@@ -10,6 +11,8 @@ import styles from './PropertyContainer.module.scss';
 
 const PropertyContainer = ({ propertyData, userProfile }) => {
   const { singleProperty } = propertyData;
+  const history = useHistory();
+  const handleSettingsClick = () => history.push(`/edit-properties/${singleProperty.id}`);
 
   return (
     propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
@@ -21,6 +24,7 @@ const PropertyContainer = ({ propertyData, userProfile }) => {
         <PropertyImageComponent
           singleProperty={singleProperty}
           userProfile={userProfile}
+          handleSettingsClick={handleSettingsClick}
         />
         <PropertyInfoComponent
           singleProperty={singleProperty}
@@ -42,6 +46,7 @@ PropertyContainer.propTypes = {
   propertyData: PropTypes.shape({
     properties: PropTypes.arrayOf(PropTypes.object),
     singleProperty: PropTypes.shape({
+      id: PropTypes.number,
       address: PropTypes.string,
       town: PropTypes.string,
       postcode: PropTypes.string,

@@ -5,7 +5,7 @@ import { faStar, faCog } from '@fortawesome/free-solid-svg-icons';
 import { settingsShortlistButtonDetect } from '../../../utils/propertyProfileUtils';
 import styles from './PropertyImageComponent.module.scss';
 
-const PropertyImageComponent = ({ userProfile, singleProperty }) => {
+const PropertyImageComponent = ({ userProfile, singleProperty, handleSettingsClick }) => {
   const { userType } = userProfile;
   const { id } = singleProperty;
 
@@ -18,7 +18,11 @@ const PropertyImageComponent = ({ userProfile, singleProperty }) => {
             <p>Shortlist</p>
           </button>
         ) : userType === 'Advertising' && settingsShortlistButtonDetect(userProfile.properties, id) ? (
-          <button type="button" className={styles.settingsButton}>
+          <button
+            type="button"
+            onClick={handleSettingsClick}
+            className={styles.settingsButton}
+          >
             <FontAwesomeIcon icon={faCog} />
             <p>Settings</p>
           </button>
@@ -47,6 +51,7 @@ PropertyImageComponent.propTypes = {
   singleProperty: PropTypes.shape({
     id: PropTypes.number.isRequired,
   }).isRequired,
+  handleSettingsClick: PropTypes.func.isRequired,
 };
 
 export default PropertyImageComponent;

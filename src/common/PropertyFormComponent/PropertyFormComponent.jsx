@@ -3,36 +3,36 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { genderArrayParser, occupationArrayParser } from '../../../../utils/managePropertiesUtils';
-import { reactSelectOutputFormatter } from '../../../../utils/profileSettingsUtils';
-import styles from './NewPropertyFormComponent.module.scss';
+import { genderArrayParser, occupationArrayParser, arrayCount } from '../../utils/managePropertiesUtils';
+import { reactSelectOutputFormatter } from '../../utils/profileSettingsUtils';
+import styles from './PropertyFormComponent.module.scss';
 
-const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
-  const [addressOption, setAddressOption] = useState(null);
-  const [billsOption, setBillsOption] = useState(null);
-  const [blurbOption, setBlurbOption] = useState(null);
-  const [depositOption, setDepositOption] = useState(null);
-  const [disabledAccessOption, setDisabledAccessOption] = useState(null);
-  const [furnishedOption, setFurnishedOption] = useState(null);
-  const [internetOption, setInternetOption] = useState(null);
-  const [maxAgeOption, setMaxAgeOption] = useState(null);
-  const [minAgeOption, setMinAgeOption] = useState(null);
-  const [occupantCountOption, setOccupantCountOption] = useState(null);
-  const [outsideAreaOption, setOutsideAreaOption] = useState(null);
-  const [parkingOption, setParkingOption] = useState(null);
-  const [petsOption, setPetsOption] = useState(null);
-  const [priceOption, setPriceOption] = useState(null);
-  const [roomCountOption, setRoomCountOption] = useState(null);
-  const [smokingOption, setSmokingOption] = useState(null);
-  const [titleOption, setTitleOption] = useState(null);
-  const [townOption, setTownOption] = useState(null);
-  const [postcodeOption, setPostcodeOption] = useState(null);
-  const [maleCountOption, setMaleCountOption] = useState(null);
-  const [femaleCountOption, setFemaleCountOption] = useState(null);
-  const [transCountOption, setTransCountOption] = useState(null);
-  const [otherCountOption, setOtherCountOption] = useState(null);
-  const [professionalCountOption, setProfessionalCountOption] = useState(null);
-  const [studentCountOption, setStudentCountOption] = useState(null);
+const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) => {
+  const [addressOption, setAddressOption] = useState(property.address);
+  const [billsOption, setBillsOption] = useState(property.bills);
+  const [blurbOption, setBlurbOption] = useState(property.blurb);
+  const [depositOption, setDepositOption] = useState(property.deposit);
+  const [disabledAccessOption, setDisabledAccessOption] = useState(property.disabledAccess);
+  const [furnishedOption, setFurnishedOption] = useState(property.furnished);
+  const [internetOption, setInternetOption] = useState(property.internet);
+  const [maxAgeOption, setMaxAgeOption] = useState(property.maxAge);
+  const [minAgeOption, setMinAgeOption] = useState(property.minAge);
+  const [occupantCountOption, setOccupantCountOption] = useState(property.occupantCount);
+  const [outsideAreaOption, setOutsideAreaOption] = useState(property.outsideArea);
+  const [parkingOption, setParkingOption] = useState(property.parking);
+  const [petsOption, setPetsOption] = useState(property.pets);
+  const [priceOption, setPriceOption] = useState(property.price);
+  const [roomCountOption, setRoomCountOption] = useState(property.roomCount);
+  const [smokingOption, setSmokingOption] = useState(property.smoking);
+  const [titleOption, setTitleOption] = useState(property.Title);
+  const [townOption, setTownOption] = useState(property.town);
+  const [postcodeOption, setPostcodeOption] = useState(property.town);
+  const [maleCountOption, setMaleCountOption] = useState(arrayCount('Male', property.genders));
+  const [femaleCountOption, setFemaleCountOption] = useState(arrayCount('Female', property.genders));
+  const [transCountOption, setTransCountOption] = useState(arrayCount('Transgender', property.genders));
+  const [otherCountOption, setOtherCountOption] = useState(arrayCount('Other', property.genders));
+  const [professionalCountOption, setProfessionalCountOption] = useState(arrayCount('Professional', property.occupations));
+  const [studentCountOption, setStudentCountOption] = useState(arrayCount('Student', property.occupations));
 
   const outsideAreaSelectOptions = [
     { value: 'Garden', label: 'Garden' },
@@ -53,11 +53,6 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
     { value: 'None', label: 'None' },
   ];
 
-  const occupationsSelectOptions = [
-    { value: 'Professional', label: 'Professional' },
-    { value: 'Student', label: 'Student' },
-  ];
-
   const gendersReduced = genderArrayParser(
     maleCountOption, femaleCountOption, transCountOption, otherCountOption,
   );
@@ -65,7 +60,7 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
     professionalCountOption, studentCountOption,
   );
 
-  const newPropertyDetails = {
+  const PropertyDetails = {
     ownerId: id,
     title: titleOption,
     blurb: blurbOption,
@@ -93,7 +88,7 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
   return (
     <div>
       <form
-        onSubmit={event => handleNewPropertySubmission(event, newPropertyDetails)}
+        onSubmit={event => handleFormSubmission(event, PropertyDetails)}
         className={styles.newPropertyFormContainer}
       >
         <input type="hidden" value={id} />
@@ -379,9 +374,60 @@ const NewPropertyFormComponent = ({ handleNewPropertySubmission, id }) => {
   );
 };
 
-NewPropertyFormComponent.propTypes = {
-  handleNewPropertySubmission: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+PropertyFormComponent.defaultProps = {
+  property: {
+    address: null,
+    bills: null,
+    blurb: null,
+    deposit: null,
+    disabledAccess: null,
+    furnished: null,
+    genders: null,
+    id: null,
+    internet: null,
+    maxAge: null,
+    minAge: null,
+    occupantCount: null,
+    occupations: null,
+    outsideArea: null,
+    parking: null,
+    pets: null,
+    postcode: null,
+    price: null,
+    roomCount: null,
+    smoking: null,
+    title: null,
+    town: null,
+  },
 };
 
-export default NewPropertyFormComponent;
+PropertyFormComponent.propTypes = {
+  handleFormSubmission: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  property: PropTypes.shape({
+    address: PropTypes.string,
+    bills: PropTypes.string,
+    blurb: PropTypes.string,
+    deposit: PropTypes.number,
+    disabledAccess: PropTypes.string,
+    furnished: PropTypes.string,
+    genders: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.number,
+    internet: PropTypes.string,
+    maxAge: PropTypes.number,
+    minAge: PropTypes.number,
+    occupantCount: PropTypes.number,
+    occupations: PropTypes.arrayOf(PropTypes.string),
+    outsideArea: PropTypes.arrayOf(PropTypes.string),
+    parking: PropTypes.string,
+    pets: PropTypes.arrayOf(PropTypes.string),
+    postcode: PropTypes.string,
+    price: PropTypes.number,
+    roomCount: PropTypes.number,
+    smoking: PropTypes.string,
+    title: PropTypes.string,
+    town: PropTypes.string,
+  }),
+};
+
+export default PropertyFormComponent;

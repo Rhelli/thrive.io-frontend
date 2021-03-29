@@ -55,7 +55,6 @@ export const fetchManagedPropertiesListRequest = () => dispatch => {
 
 export const createNewPropertyRequest = property => dispatch => {
   dispatch(createPropertyRequest);
-  console.log(property);
   fetch(`${REACT_APP_REST_API_LOCATION}/new-property`, {
     method: 'POST',
     headers: {

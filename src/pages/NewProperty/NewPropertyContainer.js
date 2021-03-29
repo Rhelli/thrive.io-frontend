@@ -4,25 +4,26 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createNewPropertyRequest } from '../../api/propertiesApi';
-import NewPropertyNavbarComponent from './components/NewPropertyNavbarComponent/NewPropertyNavbarComponent';
-import NewPropertyFormComponent from './components/NewPropertyFormComponent/NewPropertyFormComponent';
+import PropertyNavbarComponent from './components/NewPropertyNavbarComponent/NewPropertyNavbarComponent';
+import PropertyFormComponent from '../../common/PropertyFormComponent/PropertyFormComponent';
+
 import styles from './NewPropertyContainer.module.scss';
 
 const NewPropertyContainer = ({ userProfile, createNewPropertyRequest }) => {
   const history = useHistory();
   const { id } = userProfile;
 
-  const handleNewPropertySubmission = (event, newPropertyDetails) => {
+  const handleFormSubmission = (event, PropertyDetails) => {
     event.preventDefault();
-    createNewPropertyRequest(newPropertyDetails);
+    createNewPropertyRequest(PropertyDetails);
     history.push('/manage-properties');
   };
 
   return (
     <div className={styles.newPropertyPageContainer}>
-      <NewPropertyNavbarComponent />
-      <NewPropertyFormComponent
-        handleNewPropertySubmission={handleNewPropertySubmission}
+      <PropertyNavbarComponent />
+      <PropertyFormComponent
+        handleFormSubmission={handleFormSubmission}
         id={id}
       />
     </div>

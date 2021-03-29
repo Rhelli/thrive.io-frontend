@@ -74,7 +74,7 @@ PropertyListContainer.propTypes = {
         occupantCount: PropTypes.number,
         roomCount: PropTypes.number,
         occupations: PropTypes.arrayOf(PropTypes.string),
-        outsideArea: PropTypes.string,
+        outsideArea: PropTypes.arrayOf(PropTypes.string),
         ownerId: PropTypes.number,
         parking: PropTypes.string,
         pets: PropTypes.arrayOf(PropTypes.string),

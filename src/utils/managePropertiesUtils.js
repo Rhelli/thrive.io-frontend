@@ -77,3 +77,15 @@ export const occupationArrayParser = (pCount, sCount) => {
   }
   return occupations;
 };
+
+export const arrayCount = (gender, array) => {
+  let count = 0;
+  if (array) {
+    array.forEach(g => {
+      if (g === gender) {
+        count++;
+      }
+    });
+  }
+  return count;
+};

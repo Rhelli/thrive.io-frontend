@@ -151,7 +151,7 @@ PropertyMoreInfoComponent.propTypes = {
     bills: PropTypes.string,
     furnished: PropTypes.string,
     internet: PropTypes.string,
-    outsideArea: PropTypes.string,
+    outsideArea: PropTypes.arrayOf(PropTypes.string),
     pets: PropTypes.arrayOf(PropTypes.string),
     genders: PropTypes.arrayOf(PropTypes.string),
     smoking: PropTypes.string,
