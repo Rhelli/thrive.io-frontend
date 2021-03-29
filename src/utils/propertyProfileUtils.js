@@ -13,19 +13,15 @@ export const flatmateDisplay = occupations => {
         studCount++;
       }
     });
-    if (proCount < 1) {
+    if (proCount === 0) {
       message = 'Student House';
-    }
-    if (studCount < 1) {
+    } else if (studCount === 0) {
       message = 'Professional House';
-    }
-    if (proCount > studCount) {
+    } else if (proCount > studCount) {
       message = 'Mostly Professional House';
-    }
-    if (proCount < studCount) {
+    } else if (proCount < studCount) {
       message = 'Mostly Student House';
-    }
-    if (proCount === studCount) {
+    } else if (proCount === studCount) {
       message = 'Mixed Student & Professional House';
     }
   }
