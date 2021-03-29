@@ -7,12 +7,18 @@ import PropertyInfoComponent from './PropertyInfoComponent/PropertyInfoComponent
 import PropertyImageComponent from './PropertyImageComponent/PropertyImageComponent';
 import PropertyAboutComponent from './PropertyAboutComponent/PropertyAboutComponent';
 import PropertyMoreInfoComponent from './PropertyMoreInfoComponent/PropertyMoreInfoComponent';
+import { fetchSingleProperty } from '../../state/property/propertyActions';
 import styles from './PropertyContainer.module.scss';
 
-const PropertyContainer = ({ propertyData, userProfile }) => {
+const PropertyContainer = ({ propertyData, userProfile, fetchSingleProperty }) => {
   const { singleProperty } = propertyData;
   const history = useHistory();
   const handleSettingsClick = () => history.push(`/edit-properties/${singleProperty.id}`);
+
+  const handlePropertySettingsClick = property => {
+    fetchSingleProperty(property);
+    history.push(`/edit-property/${property.id}`);
+  };
 
   return (
     propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
@@ -24,7 +30,7 @@ const PropertyContainer = ({ propertyData, userProfile }) => {
         <PropertyImageComponent
           singleProperty={singleProperty}
           userProfile={userProfile}
-          handleSettingsClick={handleSettingsClick}
+          handlePropertySettingsClick={handlePropertySettingsClick}
         />
         <PropertyInfoComponent
           singleProperty={singleProperty}
@@ -66,6 +72,7 @@ PropertyContainer.propTypes = {
   userProfile: PropTypes.shape({
     userType: PropTypes.string.isRequired,
   }).isRequired,
+  fetchSingleProperty: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -73,4 +80,8 @@ const mapStateToProps = state => ({
   userProfile: state.authStore.user,
 });
 
-export default connect(mapStateToProps, null)(PropertyContainer);
+const mapDispatchToProps = dispatch => ({
+  fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyContainer);

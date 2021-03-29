@@ -36,6 +36,11 @@ const ManagePropertiesContainer = ({
     history.push(`/property/${property.id}`);
   };
 
+  const handlePropertySettingsClick = property => {
+    fetchSingleProperty(property);
+    history.push(`/property/${property.id}/edit`);
+  };
+
   return !userProfile ? (
     <h2>Loading. One Minute Please.</h2>
   ) : advertiserType === 'Landlord' ? (
@@ -49,6 +54,7 @@ const ManagePropertiesContainer = ({
       <ManagePropertiesLandlordListComponent
         managedProperties={managedProperties}
         propertyClickThrough={propertyClickThrough}
+        handlePropertySettingsClick={handlePropertySettingsClick}
       />
     </div>
   ) : advertiserType === 'Flatmate' ? (
