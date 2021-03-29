@@ -8,6 +8,8 @@ import {
 } from '../../api/propertiesApi';
 import EditPropertyNavbarComponent from './components/EditPropertyNavbarComponent/EditPropertyNavbarComponent';
 import PropertyFormComponent from '../../common/PropertyFormComponent/PropertyFormComponent';
+import EditPropertyDeleteComponent from './components/EditPropertyDeleteComponent/EditPropertyDeleteComponent';
+import styles from './EditPropertyContainer.module.scss';
 
 const EditPropertyContainer = ({
   userProfile, updatePropertyDetailsRequest, deletePropertyApiRequest, singleProperty,
@@ -22,8 +24,8 @@ const EditPropertyContainer = ({
     window.location.reload();
   };
 
-  const handlePropertyDelete = property => {
-    deletePropertyApiRequest(property);
+  const handlePropertyDelete = () => {
+    deletePropertyApiRequest(singleProperty);
     history.push('/manage-properties');
     window.location.reload();
   };
@@ -31,13 +33,14 @@ const EditPropertyContainer = ({
   const handleNavbarBackButton = () => history.push(`/property/${singleProperty.id}`);
 
   return (
-    <div>
+    <div className={styles.editPropertyPageContainer}>
       <EditPropertyNavbarComponent handleNavbarBackButton={handleNavbarBackButton} />
       <PropertyFormComponent
         handleFormSubmission={handleFormSubmission}
         id={singleProperty.id}
         singleProperty={singleProperty}
       />
+      <EditPropertyDeleteComponent handlePropertyDelete={handlePropertyDelete} />
     </div>
   );
 };

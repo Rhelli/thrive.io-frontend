@@ -368,7 +368,13 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
 
         <div className={styles.submitButton}>
           <button type="submit">
-            Create Property
+            {
+              singleProperty.title ? (
+                <p>Update Property</p>
+              ) : (
+                <p>Create Property</p>
+              )
+            }
           </button>
         </div>
       </form>
