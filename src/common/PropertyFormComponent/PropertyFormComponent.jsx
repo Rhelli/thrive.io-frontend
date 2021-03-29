@@ -4,35 +4,35 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { genderArrayParser, occupationArrayParser, arrayCount } from '../../utils/managePropertiesUtils';
-import { reactSelectOutputFormatter } from '../../utils/profileSettingsUtils';
+import { reactSelectOutputFormatter, selectInputDefaultGen } from '../../utils/profileSettingsUtils';
 import styles from './PropertyFormComponent.module.scss';
 
-const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) => {
-  const [addressOption, setAddressOption] = useState(property.address);
-  const [billsOption, setBillsOption] = useState(property.bills);
-  const [blurbOption, setBlurbOption] = useState(property.blurb);
-  const [depositOption, setDepositOption] = useState(property.deposit);
-  const [disabledAccessOption, setDisabledAccessOption] = useState(property.disabledAccess);
-  const [furnishedOption, setFurnishedOption] = useState(property.furnished);
-  const [internetOption, setInternetOption] = useState(property.internet);
-  const [maxAgeOption, setMaxAgeOption] = useState(property.maxAge);
-  const [minAgeOption, setMinAgeOption] = useState(property.minAge);
-  const [occupantCountOption, setOccupantCountOption] = useState(property.occupantCount);
-  const [outsideAreaOption, setOutsideAreaOption] = useState(property.outsideArea);
-  const [parkingOption, setParkingOption] = useState(property.parking);
-  const [petsOption, setPetsOption] = useState(property.pets);
-  const [priceOption, setPriceOption] = useState(property.price);
-  const [roomCountOption, setRoomCountOption] = useState(property.roomCount);
-  const [smokingOption, setSmokingOption] = useState(property.smoking);
-  const [titleOption, setTitleOption] = useState(property.Title);
-  const [townOption, setTownOption] = useState(property.town);
-  const [postcodeOption, setPostcodeOption] = useState(property.town);
-  const [maleCountOption, setMaleCountOption] = useState(arrayCount('Male', property.genders));
-  const [femaleCountOption, setFemaleCountOption] = useState(arrayCount('Female', property.genders));
-  const [transCountOption, setTransCountOption] = useState(arrayCount('Transgender', property.genders));
-  const [otherCountOption, setOtherCountOption] = useState(arrayCount('Other', property.genders));
-  const [professionalCountOption, setProfessionalCountOption] = useState(arrayCount('Professional', property.occupations));
-  const [studentCountOption, setStudentCountOption] = useState(arrayCount('Student', property.occupations));
+const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null }) => {
+  const [addressOption, setAddressOption] = useState(singleProperty.address);
+  const [billsOption, setBillsOption] = useState(singleProperty.bills);
+  const [blurbOption, setBlurbOption] = useState(singleProperty.blurb);
+  const [depositOption, setDepositOption] = useState(singleProperty.deposit);
+  const [disabledAccessOption, setDisabledAccessOption] = useState(singleProperty.disabledAccess);
+  const [furnishedOption, setFurnishedOption] = useState(singleProperty.furnished);
+  const [internetOption, setInternetOption] = useState(singleProperty.internet);
+  const [maxAgeOption, setMaxAgeOption] = useState(singleProperty.maxAge);
+  const [minAgeOption, setMinAgeOption] = useState(singleProperty.minAge);
+  const [occupantCountOption, setOccupantCountOption] = useState(singleProperty.occupantCount);
+  const [outsideAreaOption, setOutsideAreaOption] = useState(singleProperty.outsideArea);
+  const [parkingOption, setParkingOption] = useState(singleProperty.parking);
+  const [petsOption, setPetsOption] = useState(singleProperty.pets);
+  const [priceOption, setPriceOption] = useState(singleProperty.price);
+  const [roomCountOption, setRoomCountOption] = useState(singleProperty.roomCount);
+  const [smokingOption, setSmokingOption] = useState(singleProperty.smoking);
+  const [titleOption, setTitleOption] = useState(singleProperty.title);
+  const [townOption, setTownOption] = useState(singleProperty.town);
+  const [postcodeOption, setPostcodeOption] = useState(singleProperty.town);
+  const [maleCountOption, setMaleCountOption] = useState(arrayCount('Male', singleProperty.genders));
+  const [femaleCountOption, setFemaleCountOption] = useState(arrayCount('Female', singleProperty.genders));
+  const [transCountOption, setTransCountOption] = useState(arrayCount('Transgender', singleProperty.genders));
+  const [otherCountOption, setOtherCountOption] = useState(arrayCount('Other', singleProperty.genders));
+  const [professionalCountOption, setProfessionalCountOption] = useState(arrayCount('Professional', singleProperty.occupations));
+  const [studentCountOption, setStudentCountOption] = useState(arrayCount('Student', singleProperty.occupations));
 
   const outsideAreaSelectOptions = [
     { value: 'Garden', label: 'Garden' },
@@ -99,7 +99,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="title">
             <h3>Title *</h3>
-            <input type="text" id="title" placeholder="Give your property a title..." required />
+            <input type="text" id="title" placeholder="Give your property a title..." defaultValue={titleOption} required />
           </label>
         </div>
 
@@ -109,7 +109,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="blurb">
             <h3>Description *</h3>
-            <textarea id="blurb" placeholder="Add a short description of the property" required />
+            <textarea id="blurb" placeholder="Add a short description of the property" defaultValue={blurbOption} required />
           </label>
         </div>
 
@@ -119,7 +119,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="address">
             <h3>Address *</h3>
-            <input type="text" id="address" placeholder="Enter the first line address..." required />
+            <input type="text" id="address" placeholder="Enter the first line address..." defaultValue={addressOption} required />
           </label>
         </div>
 
@@ -129,7 +129,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="town">
             <h3>Town *</h3>
-            <input type="text" id="town" placeholder="Enter the town..." required />
+            <input type="text" id="town" placeholder="Enter the town..." defaultValue={townOption} required />
           </label>
         </div>
 
@@ -139,7 +139,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="postcode">
             <h3>Postcode / ZipCode *</h3>
-            <input type="text" id="postcode" placeholder="Enter the postcode for this property..." required />
+            <input type="text" id="postcode" placeholder="Enter the postcode for this singleProperty..." defaultValue={postcodeOption} required />
           </label>
         </div>
 
@@ -149,7 +149,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="price">
             <h3>Rent *</h3>
-            <input type="number" id="price" placeholder="Enter the price of rental per month..." required />
+            <input type="number" id="price" placeholder="Enter the price of rental per month..." defaultValue={priceOption} required />
           </label>
         </div>
 
@@ -159,11 +159,11 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <h3>Are Bills Included? *</h3>
           <span>
-            <input type="radio" id="included" name="bills" value="Included" required />
+            <input type="radio" id="included" name="bills" value="Included" defaultChecked={billsOption === 'Included'} required />
             <label htmlFor="included">Included</label>
           </span>
           <span>
-            <input type="radio" id="notIncluded" name="bills" value="Not Included" />
+            <input type="radio" id="notIncluded" name="bills" value="Not Included" defaultChecked={billsOption === 'Not Included'} />
             <label htmlFor="notIncluded">Not Included</label>
           </span>
         </div>
@@ -174,7 +174,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="deposit">
             <h3>How Much Is The Deposit? *</h3>
-            <input type="number" id="deposit" placeholder="Enter the total deposit..." />
+            <input type="number" id="deposit" placeholder="Enter the total deposit..." defaultValue={depositOption} />
           </label>
         </div>
 
@@ -184,11 +184,11 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <h3>Is The Space For Rent Furnished? *</h3>
           <span>
-            <input type="radio" id="furnished" name="furnished" value="Furnished" required />
+            <input type="radio" id="furnished" name="furnished" value="Furnished" defaultChecked={furnishedOption === 'Furnished'} required />
             <label htmlFor="furnished">Furnished</label>
           </span>
           <span>
-            <input type="radio" id="notFurnished" name="furnished" value="Non-Furnished" />
+            <input type="radio" id="notFurnished" name="furnished" value="Non-Furnished" defaultChecked={furnishedOption === 'Non-Furnished'} />
             <label htmlFor="notFurnished">Non-Furnished</label>
           </span>
         </div>
@@ -199,11 +199,11 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <h3>Is There Parking? *</h3>
           <span>
-            <input type="radio" id="parking" name="parking" value="Parking" required />
+            <input type="radio" id="parking" name="parking" value="Parking" defaultChecked={parkingOption === 'Parking'} required />
             <label htmlFor="parking">Parking</label>
           </span>
           <span>
-            <input type="radio" id="noParking" name="parking" value="No Parking" />
+            <input type="radio" id="noParking" name="parking" value="No Parking" defaultChecked={parkingOption === 'No Parking'} />
             <label htmlFor="noParking">No Parking</label>
           </span>
         </div>
@@ -214,7 +214,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="occupantCount">
             <h3>How Many People Live Here Currently? *</h3>
-            <input type="number" id="occupantCount" placeholder="Enter the number of current flatmates..." required />
+            <input type="number" id="occupantCount" placeholder="Enter the number of current flatmates..." defaultValue={occupantCountOption} required />
           </label>
         </div>
 
@@ -224,13 +224,14 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <label htmlFor="roomCount">
             <h3>How Many Rooms Are Available? *</h3>
-            <input type="number" id="roomCount" placeholder="Enter the number of empty rooms..." required />
+            <input type="number" id="roomCount" placeholder="Enter the number of empty rooms..." defaultValue={roomCountOption} required />
           </label>
         </div>
 
         <div className={styles.reactSelectInput}>
           <h3>Are There Any Outside Areas?</h3>
           <Select
+            defaultValue={selectInputDefaultGen(singleProperty.outsideArea)}
             className={styles.reactSelectInput}
             options={outsideAreaSelectOptions}
             isMulti
@@ -245,11 +246,11 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <h3>Is There Disabled Access?</h3>
           <span>
-            <input type="radio" id="disabledAccess" name="disabledAccess" value="Disabled Access" />
+            <input type="radio" id="disabledAccess" name="disabledAccess" value="Disabled Access" defaultChecked={disabledAccessOption === 'Disabled Access'} />
             <label htmlFor="disabledAccess">Disabled Access</label>
           </span>
           <span>
-            <input type="radio" id="noDisabledAccess" name="disabledAccess" value="No Disabled Access" />
+            <input type="radio" id="noDisabledAccess" name="disabledAccess" value="No Disabled Access" defaultChecked={disabledAccessOption === 'No Disabled Access'} />
             <label htmlFor="noDisabledAccess">No Disabled Access</label>
           </span>
         </div>
@@ -260,11 +261,11 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <h3>Is Internet Provided?</h3>
           <span>
-            <input type="radio" id="internet" name="internet" value="Internet Included" />
+            <input type="radio" id="internet" name="internet" value="Internet Included" defaultChecked={internetOption === 'Internet'} />
             <label htmlFor="internet">Internet Provided</label>
           </span>
           <span>
-            <input type="radio" id="noInternet" name="internet" value="No Internet Included" />
+            <input type="radio" id="noInternet" name="internet" value="No Internet Included" defaultChecked={internetOption === 'No Internet'} />
             <label htmlFor="noInternet">No Internet Provided</label>
           </span>
         </div>
@@ -273,14 +274,14 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
           <div onChange={event => setMinAgeOption(event.target.value)}>
             <label htmlFor="minAge">
               <h3>Lowest Age</h3>
-              <input type="number" id="minAge" />
+              <input type="number" id="minAge" defaultValue={minAgeOption} />
             </label>
           </div>
 
           <div onChange={event => setMaxAgeOption(event.target.value)}>
             <label htmlFor="maxAge">
               <h3>Highest Age</h3>
-              <input type="number" id="maxAge" />
+              <input type="number" id="maxAge" defaultValue={maxAgeOption} />
             </label>
           </div>
         </div>
@@ -291,21 +292,22 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
         >
           <h3>Is Smoking Allowed?</h3>
           <span>
-            <input type="radio" id="smoking" name="smoking" value="Smoking" />
+            <input type="radio" id="smoking" name="smoking" value="Smoking" defaultChecked={smokingOption === 'Smoking'} />
             <label htmlFor="smoking">Smoking</label>
           </span>
           <span>
-            <input type="radio" id="nonSmoking" name="smoking" value="Non-Smoking" />
+            <input type="radio" id="nonSmoking" name="smoking" value="Non-Smoking" defaultChecked={smokingOption === 'Non-Smoking'} />
             <label htmlFor="nonSmoking">Non-Smoking</label>
           </span>
           <span>
-            <input type="radio" id="anySmoking" name="smoking" value="Any" />
+            <input type="radio" id="anySmoking" name="smoking" value="Any" defaultChecked={smokingOption === 'Any'} />
             <label htmlFor="anySmoking">Any</label>
           </span>
         </div>
         <div className={styles.reactSelectInput}>
           <h3>Are There Any Pets?</h3>
           <Select
+            defaultValue={selectInputDefaultGen(singleProperty.pets)}
             className={styles.reactSelectInput}
             options={petsSelectOptions}
             isMulti
@@ -320,25 +322,25 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
             <span>
               <label htmlFor="male">
                 <h4>Male</h4>
-                <input type="number" id="male" min="0" onChange={event => setMaleCountOption(event.target.value)} />
+                <input type="number" id="male" min="0" defaultValue={maleCountOption} onChange={event => setMaleCountOption(event.target.value)} />
               </label>
             </span>
             <span>
               <label htmlFor="female">
                 <h4>Female</h4>
-                <input type="number" id="female" min="0" onChange={event => setFemaleCountOption(event.target.value)} />
+                <input type="number" id="female" min="0" defaultValue={femaleCountOption} onChange={event => setFemaleCountOption(event.target.value)} />
               </label>
             </span>
             <span>
               <label htmlFor="trans">
                 <h4>Trans</h4>
-                <input type="number" id="trans" min="0" onChange={event => setTransCountOption(event.target.value)} />
+                <input type="number" id="trans" min="0" defaultValue={transCountOption} onChange={event => setTransCountOption(event.target.value)} />
               </label>
             </span>
             <span>
               <label htmlFor="other">
                 <h4>Other</h4>
-                <input type="number" id="other" min="0" onChange={event => setOtherCountOption(event.target.value)} />
+                <input type="number" id="other" min="0" defaultValue={otherCountOption} onChange={event => setOtherCountOption(event.target.value)} />
               </label>
             </span>
           </div>
@@ -350,13 +352,13 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
             <span>
               <label htmlFor="professional">
                 <h4>Professional</h4>
-                <input type="number" id="professional" min="0" onChange={event => setProfessionalCountOption(event.target.value)} />
+                <input type="number" id="professional" min="0" defaultValue={professionalCountOption} onChange={event => setProfessionalCountOption(event.target.value)} />
               </label>
             </span>
             <span>
               <label htmlFor="student">
                 <h4>Student</h4>
-                <input type="number" id="student" min="0" onChange={event => setStudentCountOption(event.target.value)} />
+                <input type="number" id="student" min="0" defaultValue={studentCountOption} onChange={event => setStudentCountOption(event.target.value)} />
               </label>
             </span>
           </div>
@@ -375,7 +377,7 @@ const PropertyFormComponent = ({ handleFormSubmission, id, property = null }) =>
 };
 
 PropertyFormComponent.defaultProps = {
-  property: {
+  singleProperty: {
     address: null,
     bills: null,
     blurb: null,
@@ -404,7 +406,7 @@ PropertyFormComponent.defaultProps = {
 PropertyFormComponent.propTypes = {
   handleFormSubmission: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  property: PropTypes.shape({
+  singleProperty: PropTypes.shape({
     address: PropTypes.string,
     bills: PropTypes.string,
     blurb: PropTypes.string,

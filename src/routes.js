@@ -30,7 +30,7 @@ const Routes = ({ authInfo }) => (
         <PublicRoute restricted={false} authInfo={authInfo} component={PropertyListContainer} path="/advertising" exact />
         <PublicRoute restricted={false} authInfo={authInfo} component={PropertyContainer} path="/property/:id" />
         <PrivateRoute authInfo={authInfo} component={NewPropertyContainer} path="/manage-properties/new" exact />
-        <PrivateRoute authInfo={authInfo} component={EditPropertyContainer} path="/edit-properties/:id" exact />
+        <PrivateRoute authInfo={authInfo} component={EditPropertyContainer} path="/edit-property/:id" exact />
         <PrivateRoute authInfo={authInfo} component={ManagePropertiesContainer} path="/manage-properties" exact />
         <PrivateRoute authInfo={authInfo} component={QuizContainer} path="/personality-assessment" />
       </Switch>

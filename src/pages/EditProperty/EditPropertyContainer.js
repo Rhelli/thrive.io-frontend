@@ -7,9 +7,10 @@ import {
   updatePropertyDetailsRequest, deletePropertyApiRequest,
 } from '../../api/propertiesApi';
 import EditPropertyNavbarComponent from './components/EditPropertyNavbarComponent/EditPropertyNavbarComponent';
+import PropertyFormComponent from '../../common/PropertyFormComponent/PropertyFormComponent';
 
 const EditPropertyContainer = ({
-  userProfile, updatePropertyDetailsRequest, deletePropertyApiRequest,
+  userProfile, updatePropertyDetailsRequest, deletePropertyApiRequest, singleProperty,
 }) => {
   const history = useHistory();
 
@@ -27,11 +28,16 @@ const EditPropertyContainer = ({
     window.location.reload();
   };
 
-  const handleNavbarBackButton = () => history.push('/manage-properties');
+  const handleNavbarBackButton = () => history.push(`/property/${singleProperty.id}`);
 
   return (
     <div>
       <EditPropertyNavbarComponent handleNavbarBackButton={handleNavbarBackButton} />
+      <PropertyFormComponent
+        handleFormSubmission={handleFormSubmission}
+        id={singleProperty.id}
+        singleProperty={singleProperty}
+      />
     </div>
   );
 };
@@ -40,8 +46,25 @@ EditPropertyContainer.propTypes = {
   userProfile: PropTypes.shape({
     userType: PropTypes.string.isRequired,
   }).isRequired,
+  singleProperty: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
   updatePropertyDetailsRequest: PropTypes.func.isRequired,
   deletePropertyApiRequest: PropTypes.func.isRequired,
 };
 
-export default EditPropertyContainer;
+const mapStateToProps = state => ({
+  singleProperty: state.propertyStore.singleProperty,
+  userProfile: state.authStore.user,
+});
+
+const mapDispatchToProps = dispatch => ({
+  updatePropertyDetailsRequest: propertyDetails => {
+    dispatch(updatePropertyDetailsRequest(propertyDetails));
+  },
+  deletePropertyApiRequest: property => {
+    dispatch(deletePropertyApiRequest(property));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditPropertyContainer);
