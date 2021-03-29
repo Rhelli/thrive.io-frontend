@@ -274,14 +274,14 @@ const PropertyFormComponent = ({ handleFormSubmission, id, singleProperty = null
           <div onChange={event => setMinAgeOption(event.target.value)}>
             <label htmlFor="minAge">
               <h3>Lowest Age</h3>
-              <input type="number" id="minAge" defaultValue={minAgeOption} />
+              <input type="number" id="minAge" min="18" max={maxAgeOption} defaultValue={minAgeOption} />
             </label>
           </div>
 
           <div onChange={event => setMaxAgeOption(event.target.value)}>
             <label htmlFor="maxAge">
               <h3>Highest Age</h3>
-              <input type="number" id="maxAge" defaultValue={maxAgeOption} />
+              <input type="number" id="maxAge" defaultValue={maxAgeOption} min={minAgeOption} max="125" />
             </label>
           </div>
         </div>

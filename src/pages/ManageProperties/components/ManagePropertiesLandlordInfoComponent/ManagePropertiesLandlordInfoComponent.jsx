@@ -9,7 +9,7 @@ const ManagePropertiesLandlordInfoComponent = ({ managedProperties }) => (
       <h4>{managedProperties.length}</h4>
       <p>Properties</p>
     </span>
-    <span className={styles.middleInfo}>
+    <span className={styles.earningsInfo}>
       <h4>
         £
         {monthlyEarnings(managedProperties)}

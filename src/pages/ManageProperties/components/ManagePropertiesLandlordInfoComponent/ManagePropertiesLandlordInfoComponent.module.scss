@@ -4,16 +4,20 @@
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  height: auto;
-  padding: 10px 20px;
+  height: 120px;
+  padding: 10px;
   border: 1px solid yellow;
 
   span {
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     border: 1px solid green;
     padding: 10px;
+    width: 20%;
+    height: 80%;
     
     h4 {
       font-size: 26px;
@@ -25,7 +29,12 @@
     }
   }
 
-  .middleInfo {
+  .earningsInfo {
+    width: 40%;
+  }
+
+  .middleInfo,
+  .earningsInfo {
     margin: 0 4px;
   }
 }

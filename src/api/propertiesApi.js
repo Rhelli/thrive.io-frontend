@@ -132,16 +132,17 @@ export const updatePropertyDetailsRequest = property => dispatch => {
 export const deletePropertyApiRequest = property => dispatch => {
   dispatch(deletePropertyRequest);
   const { id } = property;
-  const formattedProperty = humps.decamelizeKeys(property);
   fetch(`${REACT_APP_REST_API_LOCATION}/delete-property/${id}`, {
-    method: 'POST',
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({
-      property: { ...formattedProperty },
+      property: {
+        id: property.id,
+      },
     }),
   })
     .then(data => data.json())
