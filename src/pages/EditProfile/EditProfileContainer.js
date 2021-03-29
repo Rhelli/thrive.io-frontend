@@ -14,6 +14,8 @@ const EditProfileContainer = ({
 }) => {
   const history = useHistory();
 
+  const managedPropertyCount = userProfile.properties.length;
+
   const handleBackButtonClick = () => history.push('/myaccount/settings');
 
   const handleAccountUpdate = (event, updatedDetails) => {
@@ -38,6 +40,7 @@ const EditProfileContainer = ({
         userProfile={userProfile}
         handleAccountUpdate={handleAccountUpdate}
         handleAccountDelete={handleAccountDelete}
+        managedPropertyCount={managedPropertyCount}
       />
     </div>
   );
@@ -57,6 +60,7 @@ EditProfileContainer.propTypes = {
     pets: PropTypes.arrayOf(PropTypes.string),
     smoking: PropTypes.string,
     userType: PropTypes.string.isRequired,
+    properties: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
   updateCurrentUserProfileApiRequest: PropTypes.func.isRequired,
   deleteCurrentUserProfileApiRequest: PropTypes.func.isRequired,

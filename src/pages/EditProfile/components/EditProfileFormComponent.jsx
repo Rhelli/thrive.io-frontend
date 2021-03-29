@@ -12,7 +12,7 @@ import {
 import styles from './EditProfileFormComponent.module.scss';
 
 const EditProfileFormComponent = ({
-  userProfile, handleAccountUpdate, handleAccountDelete,
+  userProfile, handleAccountUpdate, handleAccountDelete, managedPropertyCount,
 }) => {
   const {
     about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
@@ -36,6 +36,8 @@ const EditProfileFormComponent = ({
     { value: 'Clapham Common', label: 'Clapham Common' },
     { value: 'Shad Thames', lable: 'Shad Thames' },
   ];
+
+  console.log(managedPropertyCount);
 
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
   const [nameOption, setNameOption] = useState(name);
@@ -96,14 +98,14 @@ const EditProfileFormComponent = ({
       >
         <div className={styles.editProfileName}>
           <label htmlFor="name">
-            <h3>Your Name</h3>
+            <h3>Your Name *</h3>
             <input id="name" type="text" defaultValue={name} onChange={event => changeName(event)} required />
           </label>
         </div>
         <div className={styles.editProfileDob}>
           <label htmlFor="age">
-            <h3>Date Of Birth</h3>
-            <input id="dob" type="date" defaultValue={dob} onChange={event => changeDob(event)} />
+            <h3>Date Of Birth *</h3>
+            <input id="dob" type="date" min="2003-03-03" defaultValue={dob} onChange={event => changeDob(event)} />
           </label>
         </div>
         <div className={styles.editProfileAbout}>
@@ -113,14 +115,14 @@ const EditProfileFormComponent = ({
           </label>
         </div>
         <div className={styles.editProfileBudget}>
-          <h3>Your Budget</h3>
+          <h3>Your Budget *</h3>
           <span>
             <label htmlFor="minBudget">Minimum</label>
-            <input id="minBudget" type="number" defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
+            <input id="minBudget" type="number" min="0" max={maxBudgetOption} defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
           </span>
           <span>
             <label htmlFor="maxBudget">Maximum</label>
-            <input id="maxBudget" type="number" defaultValue={maxBudget} onChange={event => changeMaxBudget(event)} />
+            <input id="maxBudget" type="number" defaultValue={maxBudget} min={minBudgetOption} onChange={event => changeMaxBudget(event)} />
           </span>
         </div>
         <div
@@ -129,7 +131,7 @@ const EditProfileFormComponent = ({
           value={userTypeOption}
           id="userTypeControl"
         >
-          <h3>User Type</h3>
+          <h3>User Type *</h3>
           <span className={styles.looking}>
             <input type="radio" id="looking" name="userType" value="Looking" defaultChecked={userType === 'Looking'} />
             <label htmlFor="looking">Looking</label>
@@ -145,19 +147,69 @@ const EditProfileFormComponent = ({
               className={styles.editProfileAdvertiserType}
               onChange={event => changeAdvertiserType(event)}
             >
-              <h3>Advertiser Type</h3>
-              <span>
-                <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" defaultChecked={advertiserType === 'Flatmate'} />
-                <label htmlFor="flatmate">Flatmate</label>
-              </span>
-              <span>
-                <input type="radio" id="landlord" name="advertiserType" value="Landlord" defaultChecked={advertiserType === 'Landlord'} />
-                <label htmlFor="landlord">Landlord</label>
-              </span>
+              {
+              managedPropertyCount < 1 ? (
+                <>
+                  <h3>Advertiser Type</h3>
+                  <span>
+                    <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" defaultChecked={advertiserType === 'Flatmate'} />
+                    <label htmlFor="flatmate">Flatmate</label>
+                  </span>
+                  <span>
+                    <input type="radio" id="landlord" name="advertiserType" value="Landlord" defaultChecked={advertiserType === 'Landlord'} />
+                    <label htmlFor="landlord">Landlord</label>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <h3>Advertiser Type</h3>
+                  <span className={styles.disabledRadio}>
+                    <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" disabled defaultChecked={advertiserType === 'Flatmate'} />
+                    <label htmlFor="flatmate">Flatmate</label>
+                  </span>
+                  <span>
+                    <input type="radio" id="landlord" name="advertiserType" value="Landlord" defaultChecked={advertiserType === 'Landlord'} />
+                    <label htmlFor="landlord">Landlord</label>
+                  </span>
+                </>
+              )
+            }
             </div>
           ) : (
             null
           )
+        }
+        {
+          <div className={styles.propertyManagementWarningModal}>
+            <span className={styles.modalClose}>
+              <FontAwesomeIcon icon={faTimesCircle} />
+            </span>
+            <div className={styles.propertyManagementWarningModalContent}>
+              <h2>Warning!</h2>
+              <h4>
+                You currently have
+                {' '}
+                {managedPropertyCount}
+                {' '}
+                managed properties under your account.
+              </h4>
+              <div className={styles.propertyManagementWarningModalMessage}>
+                <p>
+                  Changing your account to
+                  {' '}
+                  <span>Looking</span>
+                  {' '}
+                  will remove all of your properties.
+                </p>
+                <p>Do you want to continue?</p>
+              </div>
+              <div className={styles.modalButton}>
+                <button type="button">
+                  Continue
+                </button>
+              </div>
+            </div>
+          </div>
         }
         <div
           className={styles.editProfileGender}
@@ -338,6 +390,7 @@ EditProfileFormComponent.propTypes = {
     advertiserType: PropTypes.string,
     dob: PropTypes.string.isRequired,
   }).isRequired,
+  managedPropertyCount: PropTypes.number.isRequired,
   handleAccountUpdate: PropTypes.func.isRequired,
   handleAccountDelete: PropTypes.func.isRequired,
 };
