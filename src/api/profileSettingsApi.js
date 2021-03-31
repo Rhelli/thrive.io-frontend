@@ -7,6 +7,9 @@ import {
   updateCurrentUserEmailError, updateCurrentUserPasswordRequest,
   updateCurrentUserPasswordSuccess, updateCurrentUserPasswordError,
 } from '../state/profileSettings/profileSettingsActions';
+import {
+  deletePropertyRequest, deletePropertySuccess, deletePropertyError,
+} from '../state/property/propertyActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
 
@@ -159,5 +162,36 @@ export const updateCurrentUserPasswordApiRequest = passwordData => dispatch => {
     })
     .catch(error => {
       dispatch(updateCurrentUserPasswordError(error));
+    });
+};
+
+export const updateCurrentUserTypeApiRequest = (updatedDetails, propertyIds) => dispatch => {
+  dispatch(deletePropertyRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/delete-managed-properties`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify({
+      properties: {
+        propertyIds,
+      },
+    }),
+  })
+    .then(data => data.json())
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.error) {
+        dispatch(deletePropertySuccess(data.message));
+      }
+    })
+    .then(
+      updateCurrentUserProfileRequest(updatedDetails),
+    )
+    .catch(error => {
+      dispatch(deletePropertyError(error.messages));
     });
 };

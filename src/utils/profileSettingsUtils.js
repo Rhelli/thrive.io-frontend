@@ -22,3 +22,13 @@ export const reactSelectOutputFormatter = arr => {
   }
   return arr;
 };
+
+export const getPropertyIds = arr => {
+  const propertyIds = [];
+  if (arr) {
+    arr.forEach(property => {
+      propertyIds.push(property.id);
+    });
+  }
+  return propertyIds;
+};

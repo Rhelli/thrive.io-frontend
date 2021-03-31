@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +15,7 @@ import styles from './EditProfileFormComponent.module.scss';
 
 const EditProfileFormComponent = ({
   userProfile, handleAccountUpdate, handleAccountDelete, managedPropertyCount,
+  handleAccountTypeChange, setProfileUpdateType,
 }) => {
   const {
     about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
@@ -37,9 +40,10 @@ const EditProfileFormComponent = ({
     { value: 'Shad Thames', lable: 'Shad Thames' },
   ];
 
-  console.log(managedPropertyCount);
-
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
+  const [changeUserWarningModal, setChangeUserWarningModal] = useState(false);
+  const deselectUserChangeRef = useRef(null);
+
   const [nameOption, setNameOption] = useState(name);
   const [userTypeOption, setUserTypeOption] = useState(userType);
   const [advertiserTypeOption, setAdvertiserTypeOption] = useState(advertiserType);
@@ -70,6 +74,18 @@ const EditProfileFormComponent = ({
   };
   const changeAreas = newValue => {
     setAreasOption(reactSelectOutputFormatter(newValue));
+  };
+
+  const handleUserChangeWarningModal = event => {
+    if (advertiserTypeOption === 'Landlord' || advertiserTypeOption === 'Flatmate') {
+      setChangeUserWarningModal(true);
+    } else {
+      changeUserType(event);
+    }
+  };
+
+  const handleUserChangeWarningModalClose = event => {
+    setChangeUserWarningModal(false);
   };
 
   const updatedDetails = {
@@ -105,7 +121,7 @@ const EditProfileFormComponent = ({
         <div className={styles.editProfileDob}>
           <label htmlFor="age">
             <h3>Date Of Birth *</h3>
-            <input id="dob" type="date" min="2003-03-03" defaultValue={dob} onChange={event => changeDob(event)} />
+            <input id="dob" type="date" max="2003-03-03" defaultValue={dob} onChange={event => changeDob(event)} />
           </label>
         </div>
         <div className={styles.editProfileAbout}>
@@ -127,13 +143,19 @@ const EditProfileFormComponent = ({
         </div>
         <div
           className={styles.editProfileUserType}
-          onChange={event => changeUserType(event)}
+          onChange={event => handleUserChangeWarningModal(event)}
           value={userTypeOption}
           id="userTypeControl"
         >
           <h3>User Type *</h3>
           <span className={styles.looking}>
-            <input type="radio" id="looking" name="userType" value="Looking" defaultChecked={userType === 'Looking'} />
+            <input
+              type="radio"
+              id="looking"
+              name="userType"
+              value="Looking"
+              defaultChecked={userType === 'Looking'}
+            />
             <label htmlFor="looking">Looking</label>
           </span>
           <span className={styles.advertising}>
@@ -180,36 +202,47 @@ const EditProfileFormComponent = ({
           )
         }
         {
-          <div className={styles.propertyManagementWarningModal}>
-            <span className={styles.modalClose}>
-              <FontAwesomeIcon icon={faTimesCircle} />
-            </span>
-            <div className={styles.propertyManagementWarningModalContent}>
-              <h2>Warning!</h2>
-              <h4>
-                You currently have
-                {' '}
-                {managedPropertyCount}
-                {' '}
-                managed properties under your account.
-              </h4>
-              <div className={styles.propertyManagementWarningModalMessage}>
-                <p>
-                  Changing your account to
+          changeUserWarningModal ? (
+            <div className={styles.propertyManagementWarningModal}>
+              <div className={styles.propertyManagementWarningModalContent}>
+                <span
+                  className={styles.modalClose}
+                  role="button"
+                  value="Advertising"
+                  onClick={handleUserChangeWarningModalClose}
+                  onKeyUp={handleUserChangeWarningModalClose}
+                  tabIndex="-1"
+                >
+                  <FontAwesomeIcon icon={faTimesCircle} />
+                </span>
+                <h2>Warning!</h2>
+                <h4>
+                  You currently have
                   {' '}
-                  <span>Looking</span>
+                  <span>{managedPropertyCount}</span>
                   {' '}
-                  will remove all of your properties.
-                </p>
-                <p>Do you want to continue?</p>
-              </div>
-              <div className={styles.modalButton}>
-                <button type="button">
-                  Continue
-                </button>
+                  managed properties under your account.
+                </h4>
+                <div className={styles.propertyManagementWarningModalMessage}>
+                  <p>
+                    Changing your account to
+                    {' '}
+                    <span>Looking</span>
+                    {' '}
+                    will remove all of your properties.
+                  </p>
+                  <p>Do you want to continue?</p>
+                </div>
+                <div className={styles.modalButton}>
+                  <button type="button">
+                    Continue
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            null
+          )
         }
         <div
           className={styles.editProfileGender}
@@ -393,6 +426,8 @@ EditProfileFormComponent.propTypes = {
   managedPropertyCount: PropTypes.number.isRequired,
   handleAccountUpdate: PropTypes.func.isRequired,
   handleAccountDelete: PropTypes.func.isRequired,
+  handleAccountTypeChange: PropTypes.func.isRequired,
+  setProfileUpdateType: PropTypes.func.isRequired,
 };
 
 export default EditProfileFormComponent;

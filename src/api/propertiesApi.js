@@ -181,3 +181,31 @@ export const deletePropertyApiRequest = property => dispatch => {
       dispatch(deletePropertyError(error.messages));
     });
 };
+
+export const deleteMultiplePropertiesApiRequest = propertyIds => dispatch => {
+  dispatch(deletePropertyRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/delete-managed-properties`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify({
+      properties: {
+        propertyIds,
+      },
+    }),
+  })
+    .then(data => data.json())
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.error) {
+        dispatch(deletePropertySuccess(data.message));
+      }
+    })
+    .catch(error => {
+      dispatch(deletePropertyError(error.messages));
+    });
+};
