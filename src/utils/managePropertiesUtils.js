@@ -89,3 +89,14 @@ export const arrayCount = (gender, array) => {
   }
   return count;
 };
+
+export const noPropertiesMessageGen = () => {
+  const messages = [
+    "Let's add some properties!",
+    "Let's get the ball rolling!",
+    'Try adding a new property.',
+    "Let's get building!",
+  ];
+  const chosenMessage = messages[Math.floor(Math.random() * messages.length)];
+  return chosenMessage;
+};

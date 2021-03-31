@@ -12,12 +12,12 @@ const ManagePropertiesLandlordInfoComponent = ({ managedProperties }) => (
     <span className={styles.earningsInfo}>
       <h4>
         £
-        {monthlyEarnings(managedProperties)}
+        {managedProperties.length ? monthlyEarnings(managedProperties) : 0}
       </h4>
       <p>Last month</p>
     </span>
     <span className={styles.middleInfo}>
-      <h4>{availableRooms(managedProperties)}</h4>
+      <h4>{managedProperties.length ? availableRooms(managedProperties) : 0}</h4>
       <p>Free Rooms</p>
     </span>
     <span>
