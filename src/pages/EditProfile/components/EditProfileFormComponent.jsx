@@ -42,7 +42,7 @@ const EditProfileFormComponent = ({
 
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
   const [changeUserWarningModal, setChangeUserWarningModal] = useState(false);
-  const deselectUserChangeRef = useRef(null);
+  const userTypeRef = useRef(null);
 
   const [nameOption, setNameOption] = useState(name);
   const [userTypeOption, setUserTypeOption] = useState(userType);
@@ -77,7 +77,8 @@ const EditProfileFormComponent = ({
   };
 
   const handleUserChangeWarningModal = event => {
-    if (advertiserTypeOption === 'Landlord' || advertiserTypeOption === 'Flatmate') {
+    console.log(event.target.value);
+    if (event.target.value === 'Looking' && userTypeOption === 'Advertising') {
       setChangeUserWarningModal(true);
     } else {
       changeUserType(event);
@@ -85,6 +86,7 @@ const EditProfileFormComponent = ({
   };
 
   const handleUserChangeWarningModalClose = event => {
+    userTypeRef.current.click();
     setChangeUserWarningModal(false);
   };
 
@@ -159,7 +161,7 @@ const EditProfileFormComponent = ({
             <label htmlFor="looking">Looking</label>
           </span>
           <span className={styles.advertising}>
-            <input type="radio" id="advertising" name="userType" value="Advertising" defaultChecked={userType === 'Advertising'} />
+            <input type="radio" id="advertising" name="userType" value="Advertising" defaultChecked={userType === 'Advertising'} ref={userTypeRef} />
             <label htmlFor="advertising">Advertising</label>
           </span>
         </div>
@@ -208,11 +210,11 @@ const EditProfileFormComponent = ({
                 <span
                   className={styles.modalClose}
                   role="button"
-                  value="Advertising"
-                  onClick={handleUserChangeWarningModalClose}
-                  onKeyUp={handleUserChangeWarningModalClose}
+                  onClick={event => handleUserChangeWarningModalClose(event)}
+                  onKeyUp={event => handleUserChangeWarningModalClose(event)}
                   tabIndex="-1"
                 >
+                  <input type="hidden" value="Advertising" />
                   <FontAwesomeIcon icon={faTimesCircle} />
                 </span>
                 <h2>Warning!</h2>
