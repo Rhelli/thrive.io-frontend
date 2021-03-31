@@ -90,6 +90,7 @@
         position: relative;
         margin: 10px 0;
         background-color: #fff;
+        z-index: 5;
 
         input[type="radio"]:checked ~ label {
           color: #fff;
@@ -327,7 +328,7 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    z-index: 4;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%;
@@ -359,6 +360,14 @@
         line-height: 24px;
         text-align: center;
         margin-bottom: 20px;
+
+        span {
+          font-weight: 700;
+          background-color: darkred;
+          padding: 2px 8px;
+          border-radius: 25px;
+          border: 2px solid black;
+        }
       }
 
       .propertyManagementWarningModalMessage {
@@ -370,8 +379,16 @@
 
         p {
           font-size: 18px;
-          line-height: 1.2;
+          line-height: 1.4;
           text-align: center;
+
+          span {
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 8px;
+            border: 2px solid black;
+            background-color: purple;
+          }
         }
       }
 
@@ -405,28 +422,22 @@
         display: flex;
         width: 100%;
         padding: 10px 0;
-        justify-content: center;
+        justify-content: space-evenly;
 
-        button {
+        .confirmButton,
+        .goBackButton {
           height: 50px;
-          width: 200px;
+          width: 45%;
           outline: none;
           border: none;
           background-color: darkred;
           font-size: 16px;
           border-radius: 6px;
         }
-      }
-    }
 
-    .modalClose {
-      color: #aaa;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-
-      svg {
-        font-size: 28px;
+        .goBackButton {
+          background-color: teal;
+        }
       }
     }
   }

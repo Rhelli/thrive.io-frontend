@@ -15,7 +15,7 @@ import styles from './EditProfileFormComponent.module.scss';
 
 const EditProfileFormComponent = ({
   userProfile, handleAccountUpdate, handleAccountDelete, managedPropertyCount,
-  handleAccountTypeChange, setProfileUpdateType,
+  setProfileUpdateType,
 }) => {
   const {
     about, areasLooking, couple, gender, maxBudget, minBudget, name, occupation, pets,
@@ -77,7 +77,6 @@ const EditProfileFormComponent = ({
   };
 
   const handleUserChangeWarningModal = event => {
-    console.log(event.target.value);
     if (event.target.value === 'Looking' && userTypeOption === 'Advertising') {
       setChangeUserWarningModal(true);
     } else {
@@ -87,6 +86,12 @@ const EditProfileFormComponent = ({
 
   const handleUserChangeWarningModalClose = event => {
     userTypeRef.current.click();
+    setChangeUserWarningModal(false);
+  };
+
+  const handleUserChangeWarningModalSubmit = () => {
+    setProfileUpdateType('profileTypeChange');
+    setUserTypeOption('Looking');
     setChangeUserWarningModal(false);
   };
 
@@ -108,11 +113,16 @@ const EditProfileFormComponent = ({
     id,
   };
 
+  const handleFormSubmission = event => {
+    event.preventDefault();
+    handleAccountUpdate(updatedDetails);
+  };
+
   return (
     <div className={styles.editProfileFormContainer}>
       <form
         className={styles.editProfileForm}
-        onSubmit={event => handleAccountUpdate(event, updatedDetails)}
+        onSubmit={handleFormSubmission}
       >
         <div className={styles.editProfileName}>
           <label htmlFor="name">
@@ -151,13 +161,7 @@ const EditProfileFormComponent = ({
         >
           <h3>User Type *</h3>
           <span className={styles.looking}>
-            <input
-              type="radio"
-              id="looking"
-              name="userType"
-              value="Looking"
-              defaultChecked={userType === 'Looking'}
-            />
+            <input type="radio" id="looking" name="userType" value="Looking" defaultChecked={userType === 'Looking'} />
             <label htmlFor="looking">Looking</label>
           </span>
           <span className={styles.advertising}>
@@ -207,16 +211,6 @@ const EditProfileFormComponent = ({
           changeUserWarningModal ? (
             <div className={styles.propertyManagementWarningModal}>
               <div className={styles.propertyManagementWarningModalContent}>
-                <span
-                  className={styles.modalClose}
-                  role="button"
-                  onClick={event => handleUserChangeWarningModalClose(event)}
-                  onKeyUp={event => handleUserChangeWarningModalClose(event)}
-                  tabIndex="-1"
-                >
-                  <input type="hidden" value="Advertising" />
-                  <FontAwesomeIcon icon={faTimesCircle} />
-                </span>
                 <h2>Warning!</h2>
                 <h4>
                   You currently have
@@ -231,12 +225,19 @@ const EditProfileFormComponent = ({
                     {' '}
                     <span>Looking</span>
                     {' '}
-                    will remove all of your properties.
+                    will remove
+                    {' '}
+                    <strong>all</strong>
+                    {' '}
+                    of your properties.
                   </p>
                   <p>Do you want to continue?</p>
                 </div>
                 <div className={styles.modalButton}>
-                  <button type="button">
+                  <button className={styles.goBackButton} type="button" onClick={handleUserChangeWarningModalClose}>
+                    Go Back
+                  </button>
+                  <button className={styles.confirmButton} type="button" onClick={handleUserChangeWarningModalSubmit}>
                     Continue
                   </button>
                 </div>
@@ -428,7 +429,6 @@ EditProfileFormComponent.propTypes = {
   managedPropertyCount: PropTypes.number.isRequired,
   handleAccountUpdate: PropTypes.func.isRequired,
   handleAccountDelete: PropTypes.func.isRequired,
-  handleAccountTypeChange: PropTypes.func.isRequired,
   setProfileUpdateType: PropTypes.func.isRequired,
 };
 

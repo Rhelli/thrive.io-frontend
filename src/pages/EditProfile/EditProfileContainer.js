@@ -18,6 +18,7 @@ const EditProfileContainer = ({
   const history = useHistory();
 
   const managedPropertyCount = userProfile.properties.length;
+  const managedPropertyIds = getPropertyIds(userProfile.properties);
 
   const [profileUpdateType, setProfileUpdateType] = useState('profileUpdate');
 
@@ -37,18 +38,16 @@ const EditProfileContainer = ({
   //   window.location.reload();
   // };
 
-  const handleAccountUpdate = (event, updatedDetails) => {
+  const handleAccountUpdate = updatedDetails => {
     switch (profileUpdateType) {
       case 'profileUpdate':
-        event.preventDefault();
         updateCurrentUserProfileApiRequest(updatedDetails);
         history.push('/myaccount');
         window.location.reload();
         break;
 
       case 'profileTypeChange':
-        event.preventDefault();
-        updateCurrentUserTypeApiRequest(updatedDetails, getPropertyIds(userProfile.properties));
+        updateCurrentUserTypeApiRequest(updatedDetails, managedPropertyIds);
         history.push('/myaccount');
         window.location.reload();
         break;
