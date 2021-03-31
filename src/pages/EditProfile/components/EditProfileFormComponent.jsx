@@ -77,7 +77,7 @@ const EditProfileFormComponent = ({
   };
 
   const handleUserChangeWarningModal = event => {
-    if (event.target.value === 'Looking' && userTypeOption === 'Advertising') {
+    if (event.target.value === 'Looking' && userTypeOption === 'Advertising' && managedPropertyCount > 0) {
       setChangeUserWarningModal(true);
     } else {
       changeUserType(event);

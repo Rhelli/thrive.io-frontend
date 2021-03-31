@@ -185,6 +185,7 @@ export const updateCurrentUserTypeApiRequest = (updatedDetails, propertyIds) => 
     .then(data => {
       if (!data.errors) {
         dispatch(deletePropertySuccess(data));
+        dispatch(updateCurrentUserProfileRequest);
         fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
           method: 'PUT',
           headers: {
@@ -216,6 +217,7 @@ export const updateCurrentUserTypeApiRequest = (updatedDetails, propertyIds) => 
           .then(data => {
             if (!data.error) {
               dispatch(updateCurrentUserProfileSuccess(data));
+              window.location.reload();
             } else {
               dispatch(updateCurrentUserProfileError(data.error));
             }

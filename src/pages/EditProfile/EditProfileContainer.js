@@ -43,13 +43,11 @@ const EditProfileContainer = ({
       case 'profileUpdate':
         updateCurrentUserProfileApiRequest(updatedDetails);
         history.push('/myaccount');
-        window.location.reload();
         break;
 
       case 'profileTypeChange':
         updateCurrentUserTypeApiRequest(updatedDetails, managedPropertyIds);
         history.push('/myaccount');
-        window.location.reload();
         break;
 
       default: break;
