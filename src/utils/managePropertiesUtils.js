@@ -107,3 +107,20 @@ export const rentShareCalc = managedProperties => {
   );
   return totalRent / managedProperties.occupantCount;
 };
+
+export const arrayToString = arr => {
+  let string = '';
+  if (arr) {
+    if (arr.length === 1) {
+      return arr[0];
+    }
+    arr.forEach((word, i) => {
+      if (i === arr.length - 1) {
+        string += `${word}.`;
+      } else {
+        string += `${word}, `;
+      }
+    });
+  }
+  return string;
+};

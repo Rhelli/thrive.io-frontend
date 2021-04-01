@@ -19,8 +19,8 @@ const ManagePropertiesContainer = ({
   fetchSingleProperty, fetchPropertyLocation,
 }) => {
   useLayoutEffect(() => {
-    fetchUserProfileApiRequest();
     fetchManagedPropertiesListRequest();
+    fetchUserProfileApiRequest();
   }, []);
 
   const history = useHistory();
@@ -40,7 +40,7 @@ const ManagePropertiesContainer = ({
     history.push(`/property/${property.id}/edit`);
   };
 
-  return !userProfile ? (
+  return !managedProperties || !userProfile ? (
     <h2>Loading. One Minute Please.</h2>
   ) : advertiserType === 'Landlord' ? (
     <div className={styles.managePropertiesContainer}>
@@ -66,6 +66,9 @@ const ManagePropertiesContainer = ({
       <ManagePropertiesFlatmateInfoComponent
         managedProperties={managedProperties}
       />
+      <ManagePropertiesFlatmateListComponent
+        managedProperties={managedProperties}
+      />
     </div>
   ) : (
     null
@@ -75,6 +78,7 @@ const ManagePropertiesContainer = ({
 ManagePropertiesContainer.propTypes = {
   userProfile: PropTypes.shape({
     advertiserType: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
   }).isRequired,
   managedProperties: PropTypes.arrayOf(
     PropTypes.shape({

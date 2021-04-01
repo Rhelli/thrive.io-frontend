@@ -1,38 +1,135 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { rentShareCalc } from '../../../../utils/managePropertiesUtils';
-import styles from '../ManagePropertiesLandlordInfoComponent/ManagePropertiesLandlordInfoComponent.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faEdit, faMoneyBillWaveAlt, faWifi, faChair, faLeaf, faCat, faSmoking, faWheelchair,
+} from '@fortawesome/free-solid-svg-icons';
+import { arrayToString } from '../../../../utils/managePropertiesUtils';
+import PropertyInfoComponent from '../../../Property/PropertyInfoComponent/PropertyInfoComponent';
+import PropertyAboutComponent from '../../../Property/PropertyAboutComponent/PropertyAboutComponent';
+import styles from './ManagePropertiesFlatmateListComponent.module.scss';
 
-const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => (
-  <div className={styles.managedPropertiesInfoContainer}>
-    <span>
-      <h4>{managedProperties[0].occupantCount}</h4>
-      <p>Current</p>
-      <p>Flatmates</p>
-    </span>
-    <span>
-      <h4>{managedProperties[0].roomCount}</h4>
-      <p>Free rooms</p>
-    </span>
-    <span className={styles.earningsInfo}>
-      <h4>
-        £
-        {rentShareCalc(managedProperties[0])}
-      </h4>
-      <p>Current Rent Share</p>
-      <p>
-        £
-        {managedProperties[0].price}
-        {' '}
-        per room
-      </p>
-    </span>
-    <span>
-      <h4>NaN</h4>
-      <p>New Likes</p>
-    </span>
-  </div>
-);
+const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => {
+  const {
+    address, bills, blurb, deposit, disabledAccess, furnished, genders, internet,
+    maxAge, minAge, occupantCount, occupations, outsideArea, parking, pets, postcode,
+    price, roomCount, smoking, title, town,
+  } = managedProperties[0];
+
+  return (
+    <div className={styles.managePropertiesFlatmatesListContainer}>
+      <div className={styles.mpFlatmatesImage}>
+        <button type="button">
+          <FontAwesomeIcon icon={faEdit} />
+          <p>Edit</p>
+        </button>
+        <div>
+          <p>IMAGE</p>
+        </div>
+        <div className={styles.imageCounter}>
+          <p>1/6</p>
+        </div>
+      </div>
+
+      <PropertyInfoComponent singleProperty={managedProperties[0]} />
+      <PropertyAboutComponent singleProperty={managedProperties[0]} />
+
+      <div className={styles.additionalInfoContainer}>
+        <h2>Additional Information</h2>
+        <div className={styles.infoSegmentsContainer}>
+          <div>
+            <span>
+              <FontAwesomeIcon icon={faMoneyBillWaveAlt} />
+              <h4>Bills?</h4>
+              {
+                bills === 'Included' ? (
+                  <p className={styles.greenText}>{bills}</p>
+                ) : (
+                  <p className={styles.redText}>{bills}</p>
+                )
+              }
+            </span>
+            <span>
+              <FontAwesomeIcon icon={faWifi} />
+              <h4>Internet?</h4>
+              {
+                internet === 'Internet Included' ? (
+                  <p className={styles.greenText}>{internet}</p>
+                ) : (
+                  <p className={styles.redText}>{internet}</p>
+                )
+              }
+            </span>
+          </div>
+          <div>
+            <span>
+              <FontAwesomeIcon icon={faChair} />
+              <h4>Furnished?</h4>
+              {
+                furnished === 'Furnished' ? (
+                  <p className={styles.greenText}>{furnished}</p>
+                ) : (
+                  <p className={styles.redText}>{furnished}</p>
+                )
+              }
+            </span>
+            <span>
+              <FontAwesomeIcon icon={faLeaf} />
+              <h4>Outside Areas?</h4>
+              {
+                !outsideArea.length ? (
+                  <p className={styles.redText}>None</p>
+                ) : (
+                  <p className={styles.greenText}>{arrayToString(outsideArea)}</p>
+                )
+              }
+            </span>
+          </div>
+          <div>
+            <span>
+              <FontAwesomeIcon icon={faCat} />
+              <h4>Pets?</h4>
+              {
+                pets.length === 1 && pets[0] === 'None' ? (
+                  <p className={styles.redText}>None</p>
+                ) : (
+                  <p className={styles.greenText}>{arrayToString(pets)}</p>
+                )
+              }
+            </span>
+            <span>
+              <FontAwesomeIcon icon={faSmoking} />
+              <h4>Smoking?</h4>
+              {
+                smoking === 'Smoking' ? (
+                  <p className={styles.redText}>{smoking}</p>
+                ) : smoking === 'Any' ? (
+                  <p className={styles.neutralText}>{smoking}</p>
+                ) : (
+                  <p className={styles.greenText}>{smoking}</p>
+                )
+              }
+            </span>
+          </div>
+          <div>
+            <span className={styles.disabledSpan}>
+              <FontAwesomeIcon icon={faWheelchair} />
+              <h4>Disabled Access?</h4>
+              {
+                disabledAccess === 'Disabled Access' ? (
+                  <p className={styles.greenText}>{disabledAccess}</p>
+                ) : (
+                  <p className={styles.neutralText}>{disabledAccess}</p>
+                )
+              }
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 ManagePropertiesFlatmateListComponent.propTypes = {
   managedProperties: PropTypes.arrayOf(
