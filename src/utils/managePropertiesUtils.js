@@ -100,3 +100,10 @@ export const noPropertiesMessageGen = () => {
   const chosenMessage = messages[Math.floor(Math.random() * messages.length)];
   return chosenMessage;
 };
+
+export const rentShareCalc = managedProperties => {
+  const totalRent = (
+    managedProperties.price * (managedProperties.roomCount + managedProperties.occupantCount)
+  );
+  return totalRent / managedProperties.occupantCount;
+};

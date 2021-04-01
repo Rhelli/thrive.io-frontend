@@ -152,17 +152,36 @@ const EditProfileFormComponent = ({
             <textarea id="about" type="text" defaultValue={about} onChange={event => changeAbout(event)} />
           </label>
         </div>
-        <div className={styles.editProfileBudget}>
-          <h3>Your Budget *</h3>
-          <span>
-            <label htmlFor="minBudget">Minimum</label>
-            <input id="minBudget" type="number" min="0" max={maxBudgetOption} defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
-          </span>
-          <span>
-            <label htmlFor="maxBudget">Maximum</label>
-            <input id="maxBudget" type="number" defaultValue={maxBudget} min={minBudgetOption} onChange={event => changeMaxBudget(event)} />
-          </span>
-        </div>
+        {
+          advertiserTypeOption === 'Looking' ? (
+            <>
+              <div className={styles.editProfileBudget}>
+                <h3>Your Budget *</h3>
+                <span>
+                  <label htmlFor="minBudget">Minimum</label>
+                  <input id="minBudget" type="number" min="0" max={maxBudgetOption} defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
+                </span>
+                <span>
+                  <label htmlFor="maxBudget">Maximum</label>
+                  <input id="maxBudget" type="number" defaultValue={maxBudget} min={minBudgetOption} onChange={event => changeMaxBudget(event)} />
+                </span>
+              </div>
+              <div className={styles.editProfileBudget}>
+                <h3>Your Budget *</h3>
+                <span>
+                  <label htmlFor="minBudget">Minimum</label>
+                  <input id="minBudget" type="number" min="0" max={maxBudgetOption} defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
+                </span>
+                <span>
+                  <label htmlFor="maxBudget">Maximum</label>
+                  <input id="maxBudget" type="number" defaultValue={maxBudget} min={minBudgetOption} onChange={event => changeMaxBudget(event)} />
+                </span>
+              </div>
+            </>
+          ) : (
+            null
+          )
+        }
         <div
           className={styles.editProfileUserType}
           onChange={event => handleUserChangeWarningModal(event)}
@@ -283,83 +302,91 @@ const EditProfileFormComponent = ({
             <label htmlFor="no gender">Prefer Not To Say</label>
           </span>
         </div>
-        <div
-          className={styles.editProfileOccupation}
-          onChange={event => changeOccupation(event)}
-        >
-          <h3>Your Occupation</h3>
-          <span>
-            <input type="radio" id="professional" name="occupation" value="Professional" defaultChecked={occupation === 'Professional'} />
-            <label htmlFor="professional">Professional</label>
-          </span>
-          <span>
-            <input type="radio" id="student" name="occupation" value="Student" defaultChecked={occupation === 'Student'} />
-            <label htmlFor="student">Student</label>
-          </span>
-          <span>
-            <input type="radio" id="no occupation" name="occupation" value="" />
-            <label htmlFor="no occupation">Prefer Not To Say</label>
-          </span>
-        </div>
-        <div
-          className={styles.editProfileCouple}
-          onChange={event => changeCouple(event)}
-        >
-          <h3>Couple Or Non-Couple</h3>
-          <span>
-            <input type="radio" id="non-couple" name="couple" value="Non-Couple" defaultChecked={couple === 'Non-Couple'} />
-            <label htmlFor="non-couple">Non-Couple</label>
-          </span>
-          <span>
-            <input type="radio" id="couple" name="couple" value="Couple" defaultChecked={couple === 'Couple'} />
-            <label htmlFor="couple">Couple</label>
-          </span>
-          <span>
-            <input type="radio" id="no couple" name="couple" value="" />
-            <label htmlFor="no couple">Prefer Not To Say</label>
-          </span>
-        </div>
-        <div
-          className={styles.editProfileSmoking}
-          onChange={event => changeSmoking(event)}
-        >
-          <h3>Smoking Status</h3>
-          <span>
-            <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" defaultChecked={smoking === 'Non-Smoking'} />
-            <label htmlFor="non-smoking">Non-Smoking</label>
-          </span>
-          <span>
-            <input type="radio" id="occasionally" name="smoking" value="Occasionally" defaultChecked={smoking === 'Occasionally'} />
-            <label htmlFor="occasionally">Occasionally</label>
-          </span>
-          <span>
-            <input type="radio" id="smoking" name="smoking" value="Smoking" defaultChecked={smoking === 'Smoking'} />
-            <label htmlFor="smoking">Smoking</label>
-          </span>
-          <span>
-            <input type="radio" id="no smoking" name="smoking" value="" />
-            <label htmlFor="no smoking">Prefer Not To Say</label>
-          </span>
-        </div>
-        <div className={styles.editProfilePets}>
-          <h3>Your Pets</h3>
-          <Select
-            defaultValue={selectInputDefaultGen(pets)}
-            options={petsOptions}
-            isMulti
-            onChange={event => changePets(event)}
-            name="pets"
-          />
-        </div>
-        <div className={styles.editProfileAreas}>
-          <h3>Areas You Are Interested In</h3>
-          <CreatableSelect
-            defaultValue={selectInputDefaultGen(areasLooking)}
-            isMulti
-            options={areasOptions}
-            onChange={event => changeAreas(event)}
-          />
-        </div>
+        {
+          advertiserTypeOption !== 'Landlord' ? (
+            <>
+              <div
+                className={styles.editProfileOccupation}
+                onChange={event => changeOccupation(event)}
+              >
+                <h3>Your Occupation</h3>
+                <span>
+                  <input type="radio" id="professional" name="occupation" value="Professional" defaultChecked={occupation === 'Professional'} />
+                  <label htmlFor="professional">Professional</label>
+                </span>
+                <span>
+                  <input type="radio" id="student" name="occupation" value="Student" defaultChecked={occupation === 'Student'} />
+                  <label htmlFor="student">Student</label>
+                </span>
+                <span>
+                  <input type="radio" id="no occupation" name="occupation" value="" />
+                  <label htmlFor="no occupation">Prefer Not To Say</label>
+                </span>
+              </div>
+              <div
+                className={styles.editProfileCouple}
+                onChange={event => changeCouple(event)}
+              >
+                <h3>Couple Or Non-Couple</h3>
+                <span>
+                  <input type="radio" id="non-couple" name="couple" value="Non-Couple" defaultChecked={couple === 'Non-Couple'} />
+                  <label htmlFor="non-couple">Non-Couple</label>
+                </span>
+                <span>
+                  <input type="radio" id="couple" name="couple" value="Couple" defaultChecked={couple === 'Couple'} />
+                  <label htmlFor="couple">Couple</label>
+                </span>
+                <span>
+                  <input type="radio" id="no couple" name="couple" value="" />
+                  <label htmlFor="no couple">Prefer Not To Say</label>
+                </span>
+              </div>
+              <div
+                className={styles.editProfileSmoking}
+                onChange={event => changeSmoking(event)}
+              >
+                <h3>Smoking Status</h3>
+                <span>
+                  <input type="radio" id="non-smoking" name="smoking" value="Non-Smoking" defaultChecked={smoking === 'Non-Smoking'} />
+                  <label htmlFor="non-smoking">Non-Smoking</label>
+                </span>
+                <span>
+                  <input type="radio" id="occasionally" name="smoking" value="Occasionally" defaultChecked={smoking === 'Occasionally'} />
+                  <label htmlFor="occasionally">Occasionally</label>
+                </span>
+                <span>
+                  <input type="radio" id="smoking" name="smoking" value="Smoking" defaultChecked={smoking === 'Smoking'} />
+                  <label htmlFor="smoking">Smoking</label>
+                </span>
+                <span>
+                  <input type="radio" id="no smoking" name="smoking" value="" />
+                  <label htmlFor="no smoking">Prefer Not To Say</label>
+                </span>
+              </div>
+              <div className={styles.editProfilePets}>
+                <h3>Your Pets</h3>
+                <Select
+                  defaultValue={selectInputDefaultGen(pets)}
+                  options={petsOptions}
+                  isMulti
+                  onChange={event => changePets(event)}
+                  name="pets"
+                />
+              </div>
+              <div className={styles.editProfileAreas}>
+                <h3>Areas You Are Interested In</h3>
+                <CreatableSelect
+                  defaultValue={selectInputDefaultGen(areasLooking)}
+                  isMulti
+                  options={areasOptions}
+                  onChange={event => changeAreas(event)}
+                />
+              </div>
+            </>
+          ) : (
+            null
+          )
+        }
         <div className={styles.editProfileSubmitButton}>
           <button type="submit">
             Update Account

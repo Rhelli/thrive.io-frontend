@@ -26,6 +26,7 @@ const ManagePropertiesContainer = ({
   const history = useHistory();
   const handleNewPropertyClick = () => history.push('/manage-properties/new');
   const { advertiserType } = userProfile;
+  const managedPropertiesCount = managedProperties.length;
 
   const propertyClickThrough = property => {
     const propertyAddress = `${property.address},${property.town},${property.postcode}`;
@@ -59,6 +60,11 @@ const ManagePropertiesContainer = ({
     <div className={styles.managePropertiesContainer}>
       <ManagePropertiesNavbarComponent
         handleNewPropertyClick={handleNewPropertyClick}
+        advertiserType={advertiserType}
+        managedPropertiesCount={managedPropertiesCount}
+      />
+      <ManagePropertiesFlatmateListComponent
+        managedProperties={managedProperties}
       />
     </div>
   ) : (
