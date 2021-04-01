@@ -1,0 +1,17 @@
+.shortlistComponentNavbar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  border: 1px solid red;
+  text-align: center;
+  position: relative;
+
+  svg {
+    position: relative;
+    font-size: 24px;
+    left: 10px;
+    bottom: 2px;
+  }
+}
