@@ -11,17 +11,21 @@ import PropertyInfoComponent from '../../../Property/PropertyInfoComponent/Prope
 import PropertyAboutComponent from '../../../Property/PropertyAboutComponent/PropertyAboutComponent';
 import styles from './ManagePropertiesFlatmateListComponent.module.scss';
 
-const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => {
+const ManagePropertiesFlatmateListComponent = ({
+  managedProperties, handlePropertySettingsClick,
+}) => {
   const {
-    address, bills, blurb, deposit, disabledAccess, furnished, genders, internet,
-    maxAge, minAge, occupantCount, occupations, outsideArea, parking, pets, postcode,
-    price, roomCount, smoking, title, town,
+    bills, disabledAccess, furnished, internet, outsideArea, parking, pets, smoking,
   } = managedProperties[0];
+  const property = managedProperties[0];
 
   return (
     <div className={styles.managePropertiesFlatmatesListContainer}>
       <div className={styles.mpFlatmatesImage}>
-        <button type="button">
+        <button
+          type="button"
+          onClick={property => handlePropertySettingsClick(property)}
+        >
           <FontAwesomeIcon icon={faEdit} />
           <p>Edit</p>
         </button>
@@ -170,6 +174,7 @@ ManagePropertiesFlatmateListComponent.propTypes = {
       town: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  handlePropertySettingsClick: PropTypes.func.isRequired,
 };
 
 export default ManagePropertiesFlatmateListComponent;

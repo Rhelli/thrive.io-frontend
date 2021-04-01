@@ -68,6 +68,7 @@ const ManagePropertiesContainer = ({
       />
       <ManagePropertiesFlatmateListComponent
         managedProperties={managedProperties}
+        handlePropertySettingsClick={handlePropertySettingsClick}
       />
     </div>
   ) : (
