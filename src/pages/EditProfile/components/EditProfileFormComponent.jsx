@@ -58,6 +58,8 @@ const EditProfileFormComponent = ({
   const [areasOption, setAreasOption] = useState(areasLooking);
   const [dobOption, setDobOption] = useState(dob);
 
+  console.log(advertiserTypeOption);
+
   const changeName = event => setNameOption(event.target.value);
   const changeUserType = event => setUserTypeOption(event.target.value);
   const changeAdvertiserType = event => setAdvertiserTypeOption(event.target.value);
@@ -79,6 +81,9 @@ const EditProfileFormComponent = ({
   const handleUserChangeWarningModal = event => {
     if (event.target.value === 'Looking' && userTypeOption === 'Advertising' && managedPropertyCount > 0) {
       setChangeUserWarningModal(true);
+    } else if (event.target.value === 'Looking' && userTypeOption === 'Advertising' && !managedPropertyCount) {
+      setAdvertiserTypeOption(null);
+      changeUserType(event);
     } else {
       changeUserType(event);
     }
@@ -92,6 +97,7 @@ const EditProfileFormComponent = ({
   const handleUserChangeWarningModalSubmit = () => {
     setProfileUpdateType('profileTypeChange');
     setUserTypeOption('Looking');
+    setAdvertiserTypeOption(null);
     setChangeUserWarningModal(false);
   };
 

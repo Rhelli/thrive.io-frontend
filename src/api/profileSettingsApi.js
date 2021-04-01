@@ -46,6 +46,7 @@ export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => 
     .then(data => {
       if (!data.error) {
         dispatch(updateCurrentUserProfileSuccess(data));
+        window.location.reload();
       } else {
         dispatch(updateCurrentUserProfileError(data.error));
       }
@@ -215,11 +216,11 @@ export const updateCurrentUserTypeApiRequest = (updatedDetails, propertyIds) => 
           .then(data => data.json())
           .then(data => humps.camelizeKeys(data))
           .then(data => {
-            if (!data.error) {
+            if (!data.errors) {
               dispatch(updateCurrentUserProfileSuccess(data));
               window.location.reload();
             } else {
-              dispatch(updateCurrentUserProfileError(data.error));
+              dispatch(updateCurrentUserProfileError(data.errors));
             }
           })
           .catch(error => {
