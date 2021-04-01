@@ -63,7 +63,7 @@ const ManagePropertiesContainer = ({
         advertiserType={advertiserType}
         managedPropertiesCount={managedPropertiesCount}
       />
-      <ManagePropertiesFlatmateListComponent
+      <ManagePropertiesFlatmateInfoComponent
         managedProperties={managedProperties}
       />
     </div>
