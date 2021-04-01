@@ -43,6 +43,7 @@ const EditProfileFormComponent = ({
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
   const [changeUserWarningModal, setChangeUserWarningModal] = useState(false);
   const userTypeRef = useRef(null);
+  const advertiserTypeRef = useRef(null);
 
   const [nameOption, setNameOption] = useState(name);
   const [userTypeOption, setUserTypeOption] = useState(userType);
@@ -86,6 +87,9 @@ const EditProfileFormComponent = ({
       changeUserType(event);
     } else {
       changeUserType(event);
+      setTimeout(() => {
+        advertiserTypeRef.current.click();
+      }, 100);
     }
   };
 
@@ -186,7 +190,7 @@ const EditProfileFormComponent = ({
                 <>
                   <h3>Advertiser Type</h3>
                   <span>
-                    <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" defaultChecked={advertiserType === 'Flatmate'} />
+                    <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" defaultChecked={advertiserType === 'Flatmate'} ref={advertiserTypeRef} />
                     <label htmlFor="flatmate">Flatmate</label>
                   </span>
                   <span>
