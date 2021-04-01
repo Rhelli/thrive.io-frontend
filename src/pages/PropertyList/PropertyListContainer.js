@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import PropertyListItemComponent from './components/PropertyListItemComponent';
-import { fetchAllPropertiesRequest } from '../../api/propertiesApi';
+import { fetchAllPropertiesListRequest } from '../../api/propertiesApi';
 import fetchPropertyLocation from '../../api/locationApi';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
 import styles from './PropertyListContainer.module.scss';
 
 const PropertyListContainer = ({
-  propertyData, fetchAllPropertiesRequest, fetchSingleProperty, fetchPropertyLocation,
+  propertyData, fetchAllPropertiesListRequest, fetchSingleProperty, fetchPropertyLocation,
 }) => {
   useLayoutEffect(() => {
-    fetchAllPropertiesRequest();
+    fetchAllPropertiesListRequest();
   }, []);
 
   const history = useHistory();
@@ -74,7 +74,7 @@ PropertyListContainer.propTypes = {
         occupantCount: PropTypes.number,
         roomCount: PropTypes.number,
         occupations: PropTypes.arrayOf(PropTypes.string),
-        outsideArea: PropTypes.string,
+        outsideArea: PropTypes.arrayOf(PropTypes.string),
         ownerId: PropTypes.number,
         parking: PropTypes.string,
         pets: PropTypes.arrayOf(PropTypes.string),
@@ -89,7 +89,7 @@ PropertyListContainer.propTypes = {
     error: PropTypes.string,
     loading: PropTypes.bool,
   }).isRequired,
-  fetchAllPropertiesRequest: PropTypes.func.isRequired,
+  fetchAllPropertiesListRequest: PropTypes.func.isRequired,
   fetchSingleProperty: PropTypes.func.isRequired,
   fetchPropertyLocation: PropTypes.func.isRequired,
 };
@@ -99,7 +99,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllPropertiesRequest: () => dispatch(fetchAllPropertiesRequest()),
+  fetchAllPropertiesListRequest: () => dispatch(fetchAllPropertiesListRequest()),
   fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
   fetchPropertyLocation: propertyAddress => dispatch(fetchPropertyLocation(propertyAddress)),
 });

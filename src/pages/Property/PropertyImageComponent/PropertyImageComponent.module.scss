@@ -4,6 +4,44 @@
   height: 220px;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.shortlistButton,
+.settingsButton {
+  display: flex;
+  flex-flow: row nowrap;
+  position: absolute;
+  align-items: center;
+  top: 10px;
+  right: 10px;
+  outline: none;
+  border: none;
+  background: rgba(230, 0, 0, 0.5);
+  padding: 6px 8px;
+  border-radius: 25px;
+
+  svg {
+    font-size: 20px;
+  }
+
+  p {
+    display: none;
+    font-size: 14px;
+    margin-left: 3px;
+    padding-bottom: none;
+  }
+}
+
+.settingsButton {
+  background-color: rgba(0, 100, 230, 0.5);
+}
+
+.shortlistButton:hover,
+.settingsButton:hover {
+  p {
+    display: inline-block;
+  }
 }
 
 .propertyImageInnerContainer {

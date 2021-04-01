@@ -7,6 +7,9 @@ import {
   updateCurrentUserEmailError, updateCurrentUserPasswordRequest,
   updateCurrentUserPasswordSuccess, updateCurrentUserPasswordError,
 } from '../state/profileSettings/profileSettingsActions';
+import {
+  deletePropertyRequest, deletePropertySuccess, deletePropertyError,
+} from '../state/property/propertyActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
 
@@ -23,6 +26,7 @@ export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => 
       user: {
         name: updatedDetails.name,
         user_type: updatedDetails.userType,
+        advertiser_type: updatedDetails.advertiserType,
         about: updatedDetails.about,
         occupation: updatedDetails.occupation,
         gender: updatedDetails.gender,
@@ -42,6 +46,7 @@ export const updateCurrentUserProfileApiRequest = updatedDetails => dispatch => 
     .then(data => {
       if (!data.error) {
         dispatch(updateCurrentUserProfileSuccess(data));
+        window.location.reload();
       } else {
         dispatch(updateCurrentUserProfileError(data.error));
       }
@@ -158,5 +163,74 @@ export const updateCurrentUserPasswordApiRequest = passwordData => dispatch => {
     })
     .catch(error => {
       dispatch(updateCurrentUserPasswordError(error));
+    });
+};
+
+export const updateCurrentUserTypeApiRequest = (updatedDetails, propertyIds) => dispatch => {
+  dispatch(deletePropertyRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/delete-managed-properties`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify({
+      property: {
+        ids: propertyIds,
+      },
+    }),
+  })
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.errors) {
+        dispatch(deletePropertySuccess(data));
+        dispatch(updateCurrentUserProfileRequest);
+        fetch(`${REACT_APP_REST_API_LOCATION}/myaccount/settings/edit-profile`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify({
+            user: {
+              name: updatedDetails.name,
+              user_type: updatedDetails.userType,
+              advertiser_type: updatedDetails.advertiserType,
+              about: updatedDetails.about,
+              occupation: updatedDetails.occupation,
+              gender: updatedDetails.gender,
+              couple: updatedDetails.couple,
+              pets: updatedDetails.pets,
+              smoking: updatedDetails.smoking,
+              min_budget: updatedDetails.minBudget,
+              max_budget: updatedDetails.maxBudget,
+              areas_looking: updatedDetails.areasLooking,
+              email: updatedDetails.email,
+              id: updatedDetails.id,
+            },
+          }),
+        })
+          .then(data => data.json())
+          .then(data => humps.camelizeKeys(data))
+          .then(data => {
+            if (!data.errors) {
+              dispatch(updateCurrentUserProfileSuccess(data));
+              window.location.reload();
+            } else {
+              dispatch(updateCurrentUserProfileError(data.errors));
+            }
+          })
+          .catch(error => {
+            dispatch(updateCurrentUserProfileError(error));
+          });
+      } else {
+        dispatch(deletePropertyError(data.errors));
+      }
+    })
+    .catch(error => {
+      dispatch(deletePropertyError(error.messages));
     });
 };

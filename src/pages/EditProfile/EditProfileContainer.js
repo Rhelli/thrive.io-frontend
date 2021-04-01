@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -6,34 +6,71 @@ import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSet
 import EditProfileFormComponent from './components/EditProfileFormComponent';
 import {
   updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest,
+  updateCurrentUserTypeApiRequest,
 } from '../../api/profileSettingsApi';
+import { getPropertyIds } from '../../utils/profileSettingsUtils';
 import styles from './EditProfileContainer.module.scss';
 
 const EditProfileContainer = ({
   userProfile, updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest,
+  updateCurrentUserTypeApiRequest,
 }) => {
   const history = useHistory();
 
+  const managedPropertyCount = userProfile.properties.length;
+  const managedPropertyIds = getPropertyIds(userProfile.properties);
+
+  const [profileUpdateType, setProfileUpdateType] = useState('profileUpdate');
+
   const handleBackButtonClick = () => history.push('/myaccount/settings');
 
-  const handleAccountUpdate = (event, updatedDetails) => {
-    event.preventDefault();
-    updateCurrentUserProfileApiRequest(updatedDetails);
-    window.location.reload();
-    history.push('/myaccount');
+  // const handleAccountUpdate = (event, updatedDetails) => {
+  //   event.preventDefault();
+  //   updateCurrentUserProfileApiRequest(updatedDetails);
+  //   history.push('/myaccount');
+  //   window.location.reload();
+  // };
+
+  // const handleAccountTypeChange = (event, updatedDetails) => {
+  //   event.preventDefault();
+  //   updateCurrentUserTypeApiRequest(updatedDetails, getPropertyIds(userProfile.properties));
+  //   history.push('/myaccount');
+  //   window.location.reload();
+  // };
+
+  const handleAccountUpdate = updatedDetails => {
+    switch (profileUpdateType) {
+      case 'profileUpdate':
+        updateCurrentUserProfileApiRequest(updatedDetails);
+        history.push('/myaccount');
+        break;
+
+      case 'profileTypeChange':
+        updateCurrentUserTypeApiRequest(updatedDetails, managedPropertyIds);
+        history.push('/myaccount');
+        break;
+
+      default: break;
+    }
   };
 
   const handleAccountDelete = event => {
     deleteCurrentUserProfileApiRequest(event);
+    history.push('/');
+    window.location.reload();
   };
 
-  return (
+  return !userProfile ? (
+    <h2>Loading. Please Wait</h2>
+  ) : (
     <div className={styles.editProfileContainer}>
       <ProfileSettingsNavbar handleBackButtonClick={handleBackButtonClick} />
       <EditProfileFormComponent
         userProfile={userProfile}
+        setProfileUpdateType={setProfileUpdateType}
         handleAccountUpdate={handleAccountUpdate}
         handleAccountDelete={handleAccountDelete}
+        managedPropertyCount={managedPropertyCount}
       />
     </div>
   );
@@ -53,9 +90,11 @@ EditProfileContainer.propTypes = {
     pets: PropTypes.arrayOf(PropTypes.string),
     smoking: PropTypes.string,
     userType: PropTypes.string.isRequired,
+    properties: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
   updateCurrentUserProfileApiRequest: PropTypes.func.isRequired,
   deleteCurrentUserProfileApiRequest: PropTypes.func.isRequired,
+  updateCurrentUserTypeApiRequest: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -67,6 +106,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateCurrentUserProfileApiRequest(updatedDetails));
   },
   deleteCurrentUserProfileApiRequest: event => dispatch(deleteCurrentUserProfileApiRequest(event)),
+  updateCurrentUserTypeApiRequest: (updatedDetails, propertyIds) => {
+    dispatch(updateCurrentUserTypeApiRequest(updatedDetails, propertyIds));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProfileContainer);

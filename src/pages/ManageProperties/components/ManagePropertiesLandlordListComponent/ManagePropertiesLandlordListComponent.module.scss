@@ -1,0 +1,144 @@
+.managedPropertyListContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: auto;
+  padding: 20px 20px 80px 20px;
+  border: 1px solid green;
+}
+
+.managedPropertyContainer {
+  display: flex;
+  width: 100%;
+  flex-flow: column nowrap;
+  border: 1px solid red;
+  margin-bottom: 20px;
+
+  .managedPropertyImage {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid blue;
+    height: 160px;
+
+    .managedPropertySettingsButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 7px;
+      outline: none;
+      border: none;
+      background-color: rgba(0, 100 , 230, 0.5); 
+      border-radius: 50%;
+      z-index: 10;
+
+      svg {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .managedPropertyInfoContainer {
+    .managedPropertyTitle {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+
+      h3 {
+        width: 85%;
+        font-size: 18px;
+        line-height: 1.2;
+        border: 1px solid red;
+        padding: 10px 0;
+      }
+
+      span {
+        display: flex;
+        padding: 10px 0;
+        font-size: 18px;
+      }
+    }
+
+    .managedPropertyLocation {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      padding: 10px 0;
+      border: 1px solid green;
+
+      .managedPropertyLocationIcon {
+        svg {
+          font-size: 18px;
+        }
+        margin-right: 5px;
+      }
+
+      .managedPropertyAddress {
+        font-size: 16px;
+      }
+
+      .managedPropertyPrice {
+        margin-left: auto;
+      }
+    }
+
+    .managedPropertyDetails {
+      border: 1px solid red;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 10px 0;
+
+      span {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        margin-right: 10px;
+
+        svg {
+          position: relative;
+          bottom: 3px;
+          font-size: 18px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.managedPropertyListContainer {
+  .noPropertiesMessages {
+    display: flex;
+    width: 100%;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    padding: 40px 20px;
+    
+    h2,
+    h4 {
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 200;
+      font-style: italic;
+    }
+  
+  }
+}

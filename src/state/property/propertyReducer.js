@@ -1,9 +1,11 @@
 import {
-  FETCH_PROPERTIES_REQUEST, FETCH_PROPERTIES_SUCCESS, FETCH_PROPERTIES_ERROR,
-  UPDATE_PROPERTY_REQUEST, UPDATE_PROPERTY_SUCCESS, UPDATE_PROPERTY_ERROR, CREATE_PROPERTY_REQUEST,
-  CREATE_PROPERTY_SUCCESS, CREATE_PROPERTY_ERROR, DELETE_PROPERTY_REQUEST, DELETE_PROPERTY_SUCCESS,
-  DELETE_PROPERTY_ERROR, FETCH_SINGLE_PROPERTY, FETCH_SINGLE_PROPERTY_LOCATION_REQUEST,
-  FETCH_SINGLE_PROPERTY_LOCATION_SUCCESS, FETCH_SINGLE_PROPERTY_LOCATION_ERROR,
+  FETCH_ALL_PROPERTIES_REQUEST, FETCH_ALL_PROPERTIES_SUCCESS, FETCH_ALL_PROPERTIES_ERROR,
+  FETCH_MANAGED_PROPERTIES_REQUEST, FETCH_MANAGED_PROPERTIES_SUCCESS,
+  FETCH_MANAGED_PROPERTIES_ERROR, UPDATE_PROPERTY_REQUEST, UPDATE_PROPERTY_SUCCESS,
+  UPDATE_PROPERTY_ERROR, CREATE_PROPERTY_REQUEST, CREATE_PROPERTY_SUCCESS, CREATE_PROPERTY_ERROR,
+  DELETE_PROPERTY_REQUEST, DELETE_PROPERTY_SUCCESS, DELETE_PROPERTY_ERROR, FETCH_SINGLE_PROPERTY,
+  FETCH_SINGLE_PROPERTY_LOCATION_REQUEST, FETCH_SINGLE_PROPERTY_LOCATION_SUCCESS,
+  FETCH_SINGLE_PROPERTY_LOCATION_ERROR,
 } from './propertyTypes';
 
 const initialState = {
@@ -11,28 +13,48 @@ const initialState = {
   properties: [],
   singleProperty: {},
   singlePropertyLocation: {},
+  managedProperties: [],
   error: '',
   message: '',
 };
 
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_PROPERTIES_REQUEST: return {
+    case FETCH_ALL_PROPERTIES_REQUEST: return {
       ...state,
       loading: true,
     };
 
-    case FETCH_PROPERTIES_SUCCESS: return {
+    case FETCH_ALL_PROPERTIES_SUCCESS: return {
       ...state,
       loading: false,
       properties: action.payload,
       error: '',
     };
 
-    case FETCH_PROPERTIES_ERROR: return {
+    case FETCH_ALL_PROPERTIES_ERROR: return {
       ...state,
       loading: false,
       properties: [],
+      error: action.payload,
+    };
+
+    case FETCH_MANAGED_PROPERTIES_REQUEST: return {
+      ...state,
+      loading: true,
+    };
+
+    case FETCH_MANAGED_PROPERTIES_SUCCESS: return {
+      ...state,
+      loading: false,
+      managedProperties: action.payload,
+      error: '',
+    };
+
+    case FETCH_MANAGED_PROPERTIES_ERROR: return {
+      ...state,
+      loading: false,
+      managedProperties: [],
       error: action.payload,
     };
 

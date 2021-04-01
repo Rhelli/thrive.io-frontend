@@ -1,6 +1,9 @@
-import { SET_USER, SIGN_OUT, AUTH_ERROR } from './authTypes';
+import {
+  SET_USER, SIGN_OUT, AUTH_ERROR, LOAD_USER,
+} from './authTypes';
 
 const initialState = {
+  loading: true,
   signedIn: false,
   user: {},
   error: '',
@@ -8,8 +11,14 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_USER: return {
+      ...state,
+      loading: true,
+    };
+
     case SET_USER:
       return {
+        loading: false,
         signedIn: true,
         user: { ...action.payload },
         error: '',
@@ -25,6 +34,7 @@ const authReducer = (state = initialState, action) => {
 
     case AUTH_ERROR: return {
       ...state,
+      loading: false,
       error: action.payload,
     };
 

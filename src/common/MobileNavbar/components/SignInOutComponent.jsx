@@ -2,19 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUserCircle, faSignInAlt, faUserPlus, faLayerGroup, faStar,
+  faUserCircle, faSignInAlt, faUserPlus, faLayerGroup, faStar, faHouseUser,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './SignInOutComponent.module.scss';
 
 const SignInOutComponent = ({ authInfo }) => {
   const { signedIn, user } = authInfo;
   const { userType } = authInfo.user;
+  const { advertiserType } = authInfo.user;
 
   return (
     <div className={styles.signInOutContainer}>
       {
         signedIn === true ? (
-          userType === 'Looking' ? (
+          userType === 'Advertising' && advertiserType === 'Landlord' ? (
+            <>
+              <a className={styles.managePropertiesButton} href="/manage-properties">
+                <FontAwesomeIcon icon={faLayerGroup} />
+                <p>Manage Properties</p>
+              </a>
+              <a href="/myaccount">
+                <FontAwesomeIcon icon={faUserCircle} />
+                <p className={styles.userName}>{user.name}</p>
+              </a>
+            </>
+          ) : userType === 'Advertising' && advertiserType === 'Flatmate' ? (
+            <>
+              <a className={styles.managePropertiesButton} href="/manage-properties">
+                <FontAwesomeIcon icon={faHouseUser} />
+                <p>Manage House</p>
+              </a>
+              <a href="/myaccount">
+                <FontAwesomeIcon icon={faUserCircle} />
+                <p className={styles.userName}>{user.name}</p>
+              </a>
+            </>
+          ) : (
             <>
               <button type="button">
                 <FontAwesomeIcon icon={faStar} />
@@ -23,17 +46,6 @@ const SignInOutComponent = ({ authInfo }) => {
               <a href="/myaccount">
                 <FontAwesomeIcon icon={faUserCircle} />
                 <p>{user.name}</p>
-              </a>
-            </>
-          ) : (
-            <>
-              <a className={styles.managePropertiesButton} href="/myproperties">
-                <FontAwesomeIcon icon={faLayerGroup} />
-                <p>Manage Properties</p>
-              </a>
-              <a href="/myaccount">
-                <FontAwesomeIcon icon={faUserCircle} />
-                <p className={styles.userName}>{user.name}</p>
               </a>
             </>
           )
@@ -62,6 +74,7 @@ SignInOutComponent.propTypes = {
       email: PropTypes.string,
       name: PropTypes.string,
       userType: PropTypes.string,
+      advertiserType: PropTypes.string,
     }),
     error: PropTypes.string.isRequired,
   }).isRequired,

@@ -1,0 +1,23 @@
+.newPropertyNavbarContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 100%;
+  border: 1px solid red;
+  position: relative;
+
+  button {
+    position: absolute;
+    left: 10px;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+
+    svg {
+      font-size: 22px;
+    }
+  }
+}

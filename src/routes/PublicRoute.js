@@ -4,18 +4,24 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 const PublicRoute = ({
-  component: Component, restricted, signedIn, ...rest
-}) => (
-  <Route
-    {...rest}
-    render={props => (
-      signedIn && restricted ? (
-        <Redirect to="/myaccount" />
-      ) : (
-        <Component {...props} />
-      )
-    )}
-  />
-);
+  component: Component, restricted, authInfo, ...rest
+}) => {
+  const { signedIn, loading } = authInfo;
+
+  return !loading ? (
+    <Route
+      {...rest}
+      render={props => (
+        signedIn && restricted ? (
+          <Redirect to="/myaccount" />
+        ) : (
+          <Component {...props} />
+        )
+      )}
+    />
+  ) : (
+    <h2>Please wait.</h2>
+  );
+};
 
 export default PublicRoute;

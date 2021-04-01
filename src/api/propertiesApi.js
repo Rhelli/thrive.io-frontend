@@ -1,14 +1,17 @@
 import humps from 'humps';
 import {
-  fetchPropertiesRequest, fetchPropertiesSuccess, fetchPropertiesError, updatePropertyRequest,
-  updatePropertySuccess, updatePropertyError, createPropertyRequest, createPropertySuccess,
-  createPropertyError, deletePropertyRequest, deletePropertySuccess, deletePropertyError,
+  fetchAllPropertiesRequest, fetchAllPropertiesSuccess, fetchAllPropertiesError,
+  fetchManagedPropertiesRequest, fetchManagedPropertiesSuccess,
+  fetchManagedPropertiesError, updatePropertyRequest, updatePropertySuccess,
+  updatePropertyError, createPropertyRequest, createPropertySuccess,
+  createPropertyError, deletePropertyRequest, deletePropertySuccess,
+  deletePropertyError, fetchSingleProperty,
 } from '../state/property/propertyActions';
 
 const { REACT_APP_REST_API_LOCATION } = process.env;
 
-export const fetchAllPropertiesRequest = () => dispatch => {
-  dispatch(fetchPropertiesRequest);
+export const fetchAllPropertiesListRequest = () => dispatch => {
+  dispatch(fetchAllPropertiesRequest);
   fetch(`${REACT_APP_REST_API_LOCATION}/properties`, {
     headers: {
       'Content-Type': 'application/json',
@@ -19,17 +22,39 @@ export const fetchAllPropertiesRequest = () => dispatch => {
     .then(data => humps.camelizeKeys(data))
     .then(data => {
       if (!data.error) {
-        dispatch(fetchPropertiesSuccess(data));
+        dispatch(fetchAllPropertiesSuccess(data));
       }
     })
     .catch(error => {
-      dispatch(fetchPropertiesError(error.messages));
+      dispatch(fetchAllPropertiesError(error.messages));
+    });
+};
+
+export const fetchManagedPropertiesListRequest = () => dispatch => {
+  dispatch(fetchManagedPropertiesRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/manage-properties`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.error) {
+        dispatch(fetchManagedPropertiesSuccess(data));
+      } else {
+        dispatch(fetchManagedPropertiesError(data.error));
+      }
+    })
+    .catch(error => {
+      dispatch(fetchManagedPropertiesError(error));
     });
 };
 
 export const createNewPropertyRequest = property => dispatch => {
   dispatch(createPropertyRequest);
-  const formattedProperty = humps.decamelizeKeys(property);
   fetch(`${REACT_APP_REST_API_LOCATION}/new-property`, {
     method: 'POST',
     headers: {
@@ -38,14 +63,39 @@ export const createNewPropertyRequest = property => dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({
-      property: { ...formattedProperty },
+      property: {
+        owner_id: property.ownerId,
+        title: property.title,
+        blurb: property.blurb,
+        address: property.address,
+        town: property.town,
+        postcode: property.postcode,
+        price: property.price,
+        bills: property.bills,
+        parking: property.parking,
+        deposit: property.deposit,
+        min_age: property.minAge,
+        max_age: property.maxAge,
+        internet: property.internet,
+        genders: property.genders,
+        furnished: property.furnished,
+        disabled_access: property.disabledAccess,
+        occupant_count: property.occupantCount,
+        occupations: property.occupations,
+        outside_area: property.outsideArea,
+        pets: property.pets,
+        room_count: property.roomCount,
+        smoking: property.smoking,
+      },
     }),
   })
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {
-      if (!data.error) {
+      if (!data.errors) {
         dispatch(createPropertySuccess(data));
+      } else {
+        dispatch(createPropertyError(data.errors));
       }
     })
     .catch(error => {
@@ -55,23 +105,48 @@ export const createNewPropertyRequest = property => dispatch => {
 
 export const updatePropertyDetailsRequest = property => dispatch => {
   dispatch(updatePropertyRequest);
-  const { id } = property;
-  const formattedProperty = humps.decamelizeKeys(property);
-  fetch(`${REACT_APP_REST_API_LOCATION}/edit-property/${id}`, {
+  const { propertyId } = property;
+  fetch(`${REACT_APP_REST_API_LOCATION}/edit-property/${propertyId}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    body: {
-      property: { ...formattedProperty },
-    },
+    body: JSON.stringify({
+      property: {
+        id: propertyId,
+        owner_id: property.ownerId,
+        title: property.title,
+        blurb: property.blurb,
+        address: property.address,
+        town: property.town,
+        postcode: property.postcode,
+        price: property.price,
+        bills: property.bills,
+        parking: property.parking,
+        deposit: property.deposit,
+        min_age: property.minAge,
+        max_age: property.maxAge,
+        internet: property.internet,
+        genders: property.genders,
+        furnished: property.furnished,
+        disabled_access: property.disabledAccess,
+        occupant_count: property.occupantCount,
+        occupations: property.occupations,
+        outside_area: property.outsideArea,
+        pets: property.pets,
+        room_count: property.roomCount,
+        smoking: property.smoking,
+      },
+    }),
   })
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {
       if (!data.error) {
         dispatch(updatePropertySuccess(data));
+        dispatch(fetchSingleProperty(data));
       }
     })
     .catch(error => {
@@ -82,18 +157,47 @@ export const updatePropertyDetailsRequest = property => dispatch => {
 export const deletePropertyApiRequest = property => dispatch => {
   dispatch(deletePropertyRequest);
   const { id } = property;
-  const formattedProperty = humps.decamelizeKeys(property);
   fetch(`${REACT_APP_REST_API_LOCATION}/delete-property/${id}`, {
-    method: 'POST',
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({
-      property: { ...formattedProperty },
+      property: {
+        id: property.id,
+      },
     }),
   })
+    .then(data => data.json())
+    .then(data => humps.camelizeKeys(data))
+    .then(data => {
+      if (!data.error) {
+        dispatch(deletePropertySuccess(data.message));
+      }
+    })
+    .catch(error => {
+      dispatch(deletePropertyError(error.messages));
+    });
+};
+
+export const deleteMultiplePropertiesApiRequest = propertyIds => dispatch => {
+  dispatch(deletePropertyRequest);
+  fetch(`${REACT_APP_REST_API_LOCATION}/delete-managed-properties`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify({
+      properties: {
+        propertyIds,
+      },
+    }),
+  })
+    .then(data => data.json())
     .then(data => data.json())
     .then(data => humps.camelizeKeys(data))
     .then(data => {

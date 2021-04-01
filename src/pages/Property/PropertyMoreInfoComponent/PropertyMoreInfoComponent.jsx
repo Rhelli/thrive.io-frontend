@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMapMarkerAlt, faBox, faInfoCircle, faUsers, faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import PropertyMoreInfoGrid from '../../../common/PropertyMoreInfoGrid/PropertyMoreInfoGrid';
 import styles from './PropertyMoreInfoComponent.module.scss';
 
 const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) => {
@@ -103,34 +104,7 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
                   <FontAwesomeIcon icon={faTimesCircle} />
                 </span>
                 <div className={styles.moreInfoModalInnerContainer}>
-                  <div>
-                    <h3>Bills?</h3>
-                    <p>{bills}</p>
-                  </div>
-                  <div>
-                    <h3>Internet?</h3>
-                    <p>{internet}</p>
-                  </div>
-                  <div>
-                    <h3>Furnished?</h3>
-                    <p>{furnished}</p>
-                  </div>
-                  <div>
-                    <h3>Outside Areas:</h3>
-                    <p>{outsideArea}</p>
-                  </div>
-                  <div>
-                    <h3>Pets?</h3>
-                    <p>{pets}</p>
-                  </div>
-                  <div>
-                    <h3>Smoking?</h3>
-                    <p>{smoking}</p>
-                  </div>
-                  <div>
-                    <h3>Disabled Access?</h3>
-                    <p>{disabledAccess}</p>
-                  </div>
+                  <PropertyMoreInfoGrid property={singleProperty} />
                 </div>
               </div>
             </div>
@@ -151,7 +125,7 @@ PropertyMoreInfoComponent.propTypes = {
     bills: PropTypes.string,
     furnished: PropTypes.string,
     internet: PropTypes.string,
-    outsideArea: PropTypes.string,
+    outsideArea: PropTypes.arrayOf(PropTypes.string),
     pets: PropTypes.arrayOf(PropTypes.string),
     genders: PropTypes.arrayOf(PropTypes.string),
     smoking: PropTypes.string,

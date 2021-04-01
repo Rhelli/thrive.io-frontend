@@ -22,6 +22,7 @@ const UserProfileContainer = ({
   const handleSignOut = () => {
     signOut();
     history.push('/');
+    window.location.reload();
   };
 
   const handleSettingsClick = () => {

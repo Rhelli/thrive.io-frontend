@@ -15,9 +15,14 @@ const SignUpContainer = ({ createUserRequest, authInfo }) => {
     }
   }, [signedIn]);
 
+  const handleUserCreation = (event, newUser) => {
+    event.preventDefault();
+    createUserRequest(newUser);
+  };
+
   return (
     <div>
-      <SignUpQuizComponent createUserRequest={createUserRequest} />
+      <SignUpQuizComponent handleUserCreation={handleUserCreation} />
     </div>
   );
 };
@@ -34,7 +39,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createUserRequest: user => dispatch(createUserRequest(user)),
+  createUserRequest: newUser => dispatch(createUserRequest(newUser)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpContainer);
