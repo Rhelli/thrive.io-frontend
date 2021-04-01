@@ -37,12 +37,12 @@ const ManagePropertiesContainer = ({
 
   const handlePropertySettingsClick = property => {
     fetchSingleProperty(property);
-    history.push(`/property/${property.id}/edit`);
+    history.push(`/edit-property/${property.id}`);
   };
 
-  return !managedProperties || !userProfile ? (
+  return !managedProperties ? (
     <h2>Loading. One Minute Please.</h2>
-  ) : advertiserType === 'Landlord' ? (
+  ) : managedProperties && advertiserType === 'Landlord' ? (
     <div className={styles.managePropertiesContainer}>
       <ManagePropertiesNavbarComponent
         handleNewPropertyClick={handleNewPropertyClick}
@@ -56,7 +56,7 @@ const ManagePropertiesContainer = ({
         handlePropertySettingsClick={handlePropertySettingsClick}
       />
     </div>
-  ) : advertiserType === 'Flatmate' ? (
+  ) : managedProperties && advertiserType === 'Flatmate' ? (
     <div className={styles.managePropertiesContainer}>
       <ManagePropertiesNavbarComponent
         handleNewPropertyClick={handleNewPropertyClick}
@@ -79,7 +79,6 @@ const ManagePropertiesContainer = ({
 ManagePropertiesContainer.propTypes = {
   userProfile: PropTypes.shape({
     advertiserType: PropTypes.string,
-    loading: PropTypes.bool.isRequired,
   }).isRequired,
   managedProperties: PropTypes.arrayOf(
     PropTypes.shape({

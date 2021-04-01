@@ -29,7 +29,7 @@ const EditPropertyContainer = ({
     window.location.reload();
   };
 
-  const handleNavbarBackButton = () => history.push(`/property/${singleProperty.id}`);
+  const handleNavbarBackButton = () => history.push('/manage-properties');
 
   return (
     <div className={styles.editPropertyPageContainer}>
