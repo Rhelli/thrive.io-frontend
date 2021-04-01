@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEdit, faMoneyBillWaveAlt, faWifi, faChair, faLeaf, faCat, faSmoking, faWheelchair,
+  faParking,
 } from '@fortawesome/free-solid-svg-icons';
 import { arrayToString } from '../../../../utils/managePropertiesUtils';
 import PropertyInfoComponent from '../../../Property/PropertyInfoComponent/PropertyInfoComponent';
@@ -92,7 +93,7 @@ const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => {
               <h4>Pets?</h4>
               {
                 pets.length === 1 && pets[0] === 'None' ? (
-                  <p className={styles.redText}>None</p>
+                  <p className={styles.neutralText}>None</p>
                 ) : (
                   <p className={styles.greenText}>{arrayToString(pets)}</p>
                 )
@@ -113,7 +114,7 @@ const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => {
             </span>
           </div>
           <div>
-            <span className={styles.disabledSpan}>
+            <span>
               <FontAwesomeIcon icon={faWheelchair} />
               <h4>Disabled Access?</h4>
               {
@@ -121,6 +122,17 @@ const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => {
                   <p className={styles.greenText}>{disabledAccess}</p>
                 ) : (
                   <p className={styles.neutralText}>{disabledAccess}</p>
+                )
+              }
+            </span>
+            <span>
+              <FontAwesomeIcon icon={faParking} />
+              <h4>Parking?</h4>
+              {
+                parking === 'No Parking' ? (
+                  <p className={styles.redText}>{parking}</p>
+                ) : (
+                  <p className={styles.redText}>{parking}</p>
                 )
               }
             </span>
