@@ -10,7 +10,7 @@ import {
   UserListContainer, SignUpContainer, SignInContainer, QuizContainer, PropertyListContainer,
   PropertyContainer, ProfileSettingsContainer, FlatmateProfileContainer, HomePageContainer,
   UserProfileContainer, EditProfileContainer, EditEmailContainer, EditPasswordContainer,
-  ManagePropertiesContainer, NewPropertyContainer, EditPropertyContainer,
+  ManagePropertiesContainer, NewPropertyContainer, EditPropertyContainer, ShortlistContainer,
 } from './pages/index';
 
 const Routes = ({ authInfo }) => (
@@ -21,6 +21,7 @@ const Routes = ({ authInfo }) => (
         <PublicRoute restricted={false} authInfo={authInfo} component={SignUpContainer} path="/signup" exact />
         <PublicRoute restricted={true} authInfo={authInfo} component={SignInContainer} path="/signin" exact />
         <PublicRoute restricted={false} authInfo={authInfo} component={UserListContainer} path="/looking" exact />
+        <PrivateRoute authInfo={authInfo} component={ShortlistContainer} path="/shortlist" exact />
         <PrivateRoute authInfo={authInfo} component={UserProfileContainer} path="/myaccount" exact />
         <PublicRoute restricted={false} authInfo={authInfo} component={FlatmateProfileContainer} path="/flatmates/:id" />
         <PrivateRoute authInfo={authInfo} component={ProfileSettingsContainer} path="/myaccount/settings" exact />

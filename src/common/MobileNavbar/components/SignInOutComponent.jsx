@@ -39,10 +39,10 @@ const SignInOutComponent = ({ authInfo }) => {
             </>
           ) : (
             <>
-              <button type="button">
+              <a href="/shortlist">
                 <FontAwesomeIcon icon={faStar} />
                 <p>Shortlist</p>
-              </button>
+              </a>
               <a href="/myaccount">
                 <FontAwesomeIcon icon={faUserCircle} />
                 <p>{user.name}</p>
