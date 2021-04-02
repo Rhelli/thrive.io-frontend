@@ -15,3 +15,4 @@ export { default as EditEmailContainer } from './EditEmail/EditEmailContainer';
 export { default as ManagePropertiesContainer } from './ManageProperties/ManagePropertiesContainer';
 export { default as NewPropertyContainer } from './NewProperty/NewPropertyContainer';
 export { default as EditPropertyContainer } from './EditProperty/EditPropertyContainer';
+export { default as ShortlistContainer } from './Shortlist/ShortlistContainer';

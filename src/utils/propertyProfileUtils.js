@@ -97,3 +97,13 @@ export const settingsShortlistButtonDetect = (properties, propertyId) => {
   }
   return ans;
 };
+
+export const shortlistedPropertyIdGen = properties => {
+  const arr = [];
+  if (properties) {
+    properties.forEach(property => {
+      arr.push(property.id);
+    });
+  }
+  return arr;
+};

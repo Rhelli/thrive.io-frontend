@@ -205,7 +205,7 @@ const EditProfileFormComponent = ({
               onChange={event => changeAdvertiserType(event)}
             >
               {
-              managedPropertyCount < 1 ? (
+              managedPropertyCount <= 1 ? (
                 <>
                   <h3>Advertiser Type</h3>
                   <span>

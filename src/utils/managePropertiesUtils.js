@@ -124,3 +124,13 @@ export const arrayToString = arr => {
   }
   return string;
 };
+
+export const propertyLikesGen = managedProperties => {
+  let count = 0;
+  if (managedProperties) {
+    managedProperties.forEach(property => {
+      count += property.userLikes.length;
+    });
+  }
+  return count;
+};

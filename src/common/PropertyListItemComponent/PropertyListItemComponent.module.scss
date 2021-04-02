@@ -1,20 +1,21 @@
-.managedPropertyListContainer {
+.propertyListItemContainer {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
   height: auto;
   padding: 20px 20px 80px 20px;
   border: 1px solid green;
+  z-index: 1;
 }
 
-.managedPropertyContainer {
+.propertyContainer {
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
   border: 1px solid red;
-  margin-bottom: 20px;
+  z-index: 3;
 
-  .managedPropertyImage {
+  .propertyImage {
     display: flex;
     position: relative;
     justify-content: center;
@@ -22,14 +23,15 @@
     border: 1px solid blue;
     height: 160px;
 
-    .managedPropertySettingsButton {
+    .propertySettingsButton,
+    .propertyDeleteButton {
       display: flex;
       justify-content: center;
       align-items: center;
       position: absolute;
       top: 0;
       right: 0;
-      padding: 7px;
+      padding: 8px 9px;
       outline: none;
       border: none;
       background-color: rgba(0, 100 , 230, 0.5); 
@@ -40,10 +42,14 @@
         font-size: 18px;
       }
     }
+
+    .propertyDeleteButton {
+      background-color: rgba(230, 0, 0, 0.5);
+    }
   }
 
-  .managedPropertyInfoContainer {
-    .managedPropertyTitle {
+  .propertyInfoContainer {
+    .propertyTitle {
       display: flex;
       flex-flow: row nowrap;
       width: 100%;
@@ -63,30 +69,30 @@
       }
     }
 
-    .managedPropertyLocation {
+    .propertyLocation {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
       padding: 10px 0;
       border: 1px solid green;
 
-      .managedPropertyLocationIcon {
+      .propertyLocationIcon {
         svg {
           font-size: 18px;
         }
         margin-right: 5px;
       }
 
-      .managedPropertyAddress {
+      .propertyAddress {
         font-size: 16px;
       }
 
-      .managedPropertyPrice {
+      .propertyPrice {
         margin-left: auto;
       }
     }
 
-    .managedPropertyDetails {
+    .propertyDetails {
       border: 1px solid red;
       display: flex;
       flex-flow: row nowrap;
@@ -111,7 +117,7 @@
   }
 }
 
-.managedPropertyListContainer {
+.propertyListItemContainer {
   .noPropertiesMessages {
     display: flex;
     width: 100%;
@@ -140,5 +146,38 @@
       font-style: italic;
     }
   
+  }
+}
+
+.shortlistDeleteButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px 0 15px 0;
+
+  button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 4px 4px 25px 25px;
+    background-color: darkred;
+    margin-bottom: 20px;
+
+    p {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+
+    svg {
+      position: relative;
+      font-size: 18px;
+      bottom: 2px
+    }
   }
 }
