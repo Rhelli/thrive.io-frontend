@@ -12,7 +12,7 @@ import ManagePropertiesNavbarComponent from './components/ManagePropertiesNavbar
 import ManagePropertiesFlatmateInfoComponent from './components/ManagePropertiesFlatmateInfoComponent/ManagePropertiesFlatmateInfoComponent';
 import ManagePropertiesLandlordInfoComponent from './components/ManagePropertiesLandlordInfoComponent/ManagePropertiesLandlordInfoComponent';
 import ManagePropertiesFlatmateListComponent from './components/ManagePropertiesFlatmateListComponent/ManagePropertiesFlatmateListComponent';
-import ManagePropertiesLandlordListComponent from './components/ManagePropertiesLandlordListComponent/ManagePropertiesLandlordListComponent';
+import PropertyListItemComponent from '../../common/PropertyListItemComponent/PropertyListItemComponent';
 
 const ManagePropertiesContainer = ({
   userProfile, managedProperties, fetchUserProfileApiRequest, fetchManagedPropertiesListRequest,
@@ -50,10 +50,11 @@ const ManagePropertiesContainer = ({
       <ManagePropertiesLandlordInfoComponent
         managedProperties={managedProperties}
       />
-      <ManagePropertiesLandlordListComponent
-        managedProperties={managedProperties}
+      <PropertyListItemComponent
+        properties={managedProperties}
+        handlePropertyOptionButton={handlePropertySettingsClick}
         propertyClickThrough={propertyClickThrough}
-        handlePropertySettingsClick={handlePropertySettingsClick}
+        listItemType="manage"
       />
     </div>
   ) : managedProperties && advertiserType === 'Flatmate' ? (

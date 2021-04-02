@@ -32,10 +32,15 @@ const ManagePropertiesNavbarComponent = ({
   </div>
 );
 
+ManagePropertiesNavbarComponent.defaultProps = {
+  advertiserType: '',
+  managedPropertiesCount: 0,
+};
+
 ManagePropertiesNavbarComponent.propTypes = {
   handleNewPropertyClick: PropTypes.func.isRequired,
-  advertiserType: PropTypes.string.isRequired,
-  managedPropertiesCount: PropTypes.number.isRequired,
+  advertiserType: PropTypes.string,
+  managedPropertiesCount: PropTypes.number,
 };
 
 export default ManagePropertiesNavbarComponent;

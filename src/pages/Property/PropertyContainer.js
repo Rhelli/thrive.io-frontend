@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
@@ -19,6 +20,9 @@ const PropertyContainer = ({ propertyData, userProfile, fetchSingleProperty }) =
     fetchSingleProperty(property);
     history.push(`/edit-property/${property.id}`);
   };
+
+  console.log(singleProperty.id);
+  console.log(singleProperty.userLikes);
 
   return (
     propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (

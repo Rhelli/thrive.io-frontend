@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import {
   navbarReducer, userProfileReducer, profileSettingsReducer, propertyReducer,
-  quizReducer, flatmatesReducer, authReducer,
+  quizReducer, flatmatesReducer, authReducer, shortlistReducer,
 } from './index';
 
 const rootReducer = combineReducers({
@@ -12,6 +12,7 @@ const rootReducer = combineReducers({
   profileSettingsStore: profileSettingsReducer,
   propertyStore: propertyReducer,
   quizStore: quizReducer,
+  shortlistStore: shortlistReducer,
   flatmateStore: flatmatesReducer,
   authStore: authReducer,
 });
