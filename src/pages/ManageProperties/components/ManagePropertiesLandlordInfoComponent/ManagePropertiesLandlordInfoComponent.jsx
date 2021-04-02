@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { monthlyEarnings, availableRooms } from '../../../../utils/managePropertiesUtils';
+import { monthlyEarnings, availableRooms, propertyLikesGen } from '../../../../utils/managePropertiesUtils';
 import styles from './ManagePropertiesLandlordInfoComponent.module.scss';
 
 const ManagePropertiesLandlordInfoComponent = ({ managedProperties }) => (
@@ -21,7 +21,7 @@ const ManagePropertiesLandlordInfoComponent = ({ managedProperties }) => (
       <p>Free Rooms</p>
     </span>
     <span>
-      <h4>NaN</h4>
+      <h4>{propertyLikesGen(managedProperties)}</h4>
       <p>New Likes</p>
     </span>
   </div>

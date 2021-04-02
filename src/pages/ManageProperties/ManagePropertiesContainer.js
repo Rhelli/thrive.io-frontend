@@ -40,6 +40,8 @@ const ManagePropertiesContainer = ({
     history.push(`/edit-property/${property.id}`);
   };
 
+  console.log(managedProperties);
+
   return !managedProperties ? (
     <h2>Loading. One Minute Please.</h2>
   ) : managedProperties && advertiserType === 'Landlord' ? (

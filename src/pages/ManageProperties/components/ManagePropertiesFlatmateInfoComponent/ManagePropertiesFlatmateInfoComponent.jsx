@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { rentShareCalc } from '../../../../utils/managePropertiesUtils';
+import { rentShareCalc, propertyLikesGen } from '../../../../utils/managePropertiesUtils';
 import styles from '../ManagePropertiesLandlordInfoComponent/ManagePropertiesLandlordInfoComponent.module.scss';
 
 const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => (
@@ -28,7 +28,7 @@ const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => (
       </p>
     </span>
     <span>
-      <h4>NaN</h4>
+      <h4>{propertyLikesGen(managedProperties[0])}</h4>
       <p>New Likes</p>
     </span>
   </div>
