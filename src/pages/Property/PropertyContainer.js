@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { createShortlistedProperty, deleteShortlistedProperty } from '../../api/shortlistApi';
+import { shortlistedPropertyIdGen } from '../../utils/propertyProfileUtils';
 import PropertyInfoComponent from './PropertyInfoComponent/PropertyInfoComponent';
 import PropertyImageComponent from './PropertyImageComponent/PropertyImageComponent';
 import PropertyAboutComponent from './PropertyAboutComponent/PropertyAboutComponent';
@@ -11,18 +13,30 @@ import PropertyMoreInfoComponent from './PropertyMoreInfoComponent/PropertyMoreI
 import { fetchSingleProperty } from '../../state/property/propertyActions';
 import styles from './PropertyContainer.module.scss';
 
-const PropertyContainer = ({ propertyData, userProfile, fetchSingleProperty }) => {
+const PropertyContainer = ({
+  propertyData, userProfile, fetchSingleProperty, createShortlistedProperty,
+  deleteShortlistedProperty,
+}) => {
   const { singleProperty } = propertyData;
+  const { userType } = userProfile;
+  const { shortlistedProperties } = userProfile;
+  const shortlistedIds = shortlistedPropertyIdGen(shortlistedProperties);
   const history = useHistory();
-  const handleSettingsClick = () => history.push(`/edit-properties/${singleProperty.id}`);
 
   const handlePropertySettingsClick = property => {
     fetchSingleProperty(property);
     history.push(`/edit-property/${property.id}`);
   };
 
-  console.log(singleProperty.id);
-  console.log(singleProperty.userLikes);
+  const addPropertyToShortlistClick = () => {
+    fetchSingleProperty(singleProperty);
+    createShortlistedProperty(singleProperty);
+  };
+
+  const deleteShortlistedPropertyClick = property => {
+    fetchSingleProperty(property);
+    deleteShortlistedProperty(property);
+  };
 
   return (
     propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
@@ -31,11 +45,23 @@ const PropertyContainer = ({ propertyData, userProfile, fetchSingleProperty }) =
       <p>Wait a million years</p>
     ) : (
       <div className={styles.propertyContainer}>
-        <PropertyImageComponent
-          singleProperty={singleProperty}
-          userProfile={userProfile}
-          handlePropertySettingsClick={handlePropertySettingsClick}
-        />
+        {
+          userType === 'Advertising' ? (
+            <PropertyImageComponent
+              singleProperty={singleProperty}
+              userProfile={userProfile}
+              handlePropertySettingsClick={handlePropertySettingsClick}
+            />
+          ) : (
+            <PropertyImageComponent
+              singleProperty={singleProperty}
+              userProfile={userProfile}
+              addPropertyToShortlistClick={addPropertyToShortlistClick}
+              deleteShortlistedPropertyClick={deleteShortlistedPropertyClick}
+              shortlistedIds={shortlistedIds}
+            />
+          )
+        }
         <PropertyInfoComponent
           singleProperty={singleProperty}
           propertyData={propertyData}
@@ -77,6 +103,8 @@ PropertyContainer.propTypes = {
     userType: PropTypes.string.isRequired,
   }).isRequired,
   fetchSingleProperty: PropTypes.func.isRequired,
+  createShortlistedProperty: PropTypes.func.isRequired,
+  deleteShortlistedProperty: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -86,6 +114,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
+  createShortlistedProperty: property => dispatch(createShortlistedProperty(property)),
+  deleteShortlistedProperty: property => dispatch(deleteShortlistedProperty(property)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyContainer);

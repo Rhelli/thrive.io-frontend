@@ -101,10 +101,17 @@ const PropertyListItemComponent = ({
           </div>
         ))
       ) : (
-        <div className={styles.noPropertiesMessages}>
-          <h2>There isn&apos;t anything here!</h2>
-          <h4>{noPropertiesMessageGen()}</h4>
-        </div>
+        listItemType === 'Manage' ? (
+          <div className={styles.noPropertiesMessages}>
+            <h2>There isn&apos;t anything here!</h2>
+            <h4>{noPropertiesMessageGen()}</h4>
+          </div>
+        ) : (
+          <div className={styles.noPropertiesMessages}>
+            <h2>There isn&apos;t anything here!</h2>
+            <h4>Have a browse of the available properties.</h4>
+          </div>
+        )
       )
     }
   </div>

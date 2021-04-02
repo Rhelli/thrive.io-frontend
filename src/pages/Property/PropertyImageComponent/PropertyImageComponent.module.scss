@@ -8,7 +8,9 @@
 }
 
 .shortlistButton,
-.settingsButton {
+.shortlistCheckedButton,
+.settingsButton,
+.deleteButton {
   display: flex;
   flex-flow: row nowrap;
   position: absolute;
@@ -33,15 +35,25 @@
   }
 }
 
+.shortlistCheckedButton {
+  background-color: rgba(30, 230, 10, 0.5);
+}
+
 .settingsButton {
   background-color: rgba(0, 100, 230, 0.5);
 }
 
-.shortlistButton:hover,
-.settingsButton:hover {
+.deleteButton {
+  background-color: rgba(230, 10, 0, 0.5);
+}
+
+.shortlistButton:focus,
+.settingsButton:focus,
+.deleteButton:focus {
   p {
     display: inline-block;
   }
+  background-color: rgba(200, 200, 250, 0.4);
 }
 
 .propertyImageInnerContainer {
