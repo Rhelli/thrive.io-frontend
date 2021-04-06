@@ -75,11 +75,3 @@ export const likesSuggestion = likesCount => {
   }
   return statement;
 };
-
-export const createdAtFormatter = string => {
-  const split = string.split('');
-  split.splice(19, split.length);
-  split.splice(10, 1);
-  split.splice(10, 0, ' ');
-  return split.join('');
-};

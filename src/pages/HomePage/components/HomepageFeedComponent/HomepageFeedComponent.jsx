@@ -23,7 +23,7 @@ const HomepageFeedComponent = ({ properties }) => {
                 <p>
                   {like.name}
                   {' '}
-                  liked your property
+                  shortlisted your property
                   {' '}
                 </p>
               </span>

@@ -7,6 +7,7 @@ import { fetchManagedPropertiesListRequest } from '../../api/propertiesApi';
 import WelcomeComponent from './components/WelcomeComponent/WelcomeComponent';
 import LandlordHomepageComponent from './components/LandlordHomepageStatsComponent/LandlordHomepageStatsComponent';
 import HomepageFeedComponent from './components/HomepageFeedComponent/HomepageFeedComponent';
+import styles from './HomepageContainer.module.scss';
 
 const HomePageContainer = ({
   profileStore, fetchUserProfileApiRequest, fetchManagedPropertiesListRequest,
@@ -58,9 +59,10 @@ const HomePageContainer = ({
       <WelcomeComponent userProfile={user} />
     </div>
   ) : userType === 'Advertising' && advertiserType === 'Landlord' ? (
-    <div>
+    <div className={styles.landlordHomepageContainer}>
       <WelcomeComponent userProfile={user} />
       <LandlordHomepageComponent managedProperties={managedProperties} />
+      <h3 className={styles.recentActivities}>Recent Activity</h3>
       <HomepageFeedComponent properties={managedProperties} />
     </div>
   ) : (
