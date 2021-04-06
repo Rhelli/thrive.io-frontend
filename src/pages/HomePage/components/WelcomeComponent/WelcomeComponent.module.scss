@@ -1,0 +1,33 @@
+.welcomeComponentContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  border: 1px solid red;
+  padding: 20px;
+
+  .welcomeBackMessage {
+    h3,
+    h4 {
+      line-height: 1.4;
+    }
+    
+    h3 {
+      font-size: 20px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+  }
+
+  .welcomeLogoContainer {
+    margin-left: auto;
+    border: 1px solid green;
+
+    img {
+      width: 60px;
+      height: auto;
+    }
+  }
+}

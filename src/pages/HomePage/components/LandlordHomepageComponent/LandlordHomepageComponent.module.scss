@@ -1,0 +1,33 @@
+.landlordHomepageContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid blue;
+
+  .freeRoomsRow,
+  .monthlyEarningsRow {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    .rowIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+
+      svg {
+        font-size: 42px;
+      }
+      
+      border: 1px solid red;
+    }
+
+    .rowInfo {
+      display: flex;
+      flex-flow: column nowrap;
+      padding: 16px;
+    }
+  }
+}
