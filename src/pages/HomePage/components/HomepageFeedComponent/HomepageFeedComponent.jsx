@@ -9,9 +9,7 @@ import en from 'javascript-time-ago/locale/en';
 import styles from './HomepageFeedComponent.module.scss';
 
 const HomepageFeedComponent = ({ properties, handleActivityFeedNavigation }) => {
-  console.log(properties);
   TimeAgo.addLocale(en);
-  const timeAgo = new TimeAgo('en-US');
 
   return properties.length ? (
     <div className={styles.feedContainer}>

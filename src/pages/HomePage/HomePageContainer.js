@@ -10,6 +10,7 @@ import fetchPropertyLocation from '../../api/locationApi';
 import WelcomeComponent from './components/WelcomeComponent/WelcomeComponent';
 import LandlordHomepageComponent from './components/LandlordHomepageStatsComponent/LandlordHomepageStatsComponent';
 import HomepageFeedComponent from './components/HomepageFeedComponent/HomepageFeedComponent';
+import UnsignedHomepageComponent from './components/UnsignedHomepageComponent/UnsignedHomepageComponent';
 import styles from './HomepageContainer.module.scss';
 
 const HomePageContainer = ({
@@ -60,26 +61,32 @@ const HomePageContainer = ({
       <h2>No user profile detected.</h2>
     );
   }
-  return propertyStore.loading ? (
-    <h2>Homepage  Advertising - Loading. Please Wait...</h2>
-  ) : propertyStore.error ? (
-    <h2>An Error Occurred. Please try again later.</h2>
-  ) : userType === 'Advertising' && advertiserType === 'Flatmate' ? (
-    <div>
-      <WelcomeComponent userProfile={user} />
-    </div>
-  ) : userType === 'Advertising' && advertiserType === 'Landlord' ? (
-    <div className={styles.landlordHomepageContainer}>
-      <WelcomeComponent userProfile={user} />
-      <LandlordHomepageComponent managedProperties={managedProperties} />
-      <h3 className={styles.recentActivities}>Recent Activity</h3>
-      <HomepageFeedComponent
-        properties={managedProperties}
-        handleActivityFeedNavigation={handleActivityFeedNavigation}
-      />
-    </div>
-  ) : (
-    <h2>No user profile detected.</h2>
+  if (userType === 'Advertising') {
+    return propertyStore.loading ? (
+      <h2>Homepage  Advertising - Loading. Please Wait...</h2>
+    ) : propertyStore.error ? (
+      <h2>An Error Occurred. Please try again later.</h2>
+    ) : userType === 'Advertising' && advertiserType === 'Flatmate' ? (
+      <div>
+        <WelcomeComponent userProfile={user} />
+      </div>
+    ) : userType === 'Advertising' && advertiserType === 'Landlord' ? (
+      <div className={styles.landlordHomepageContainer}>
+        <WelcomeComponent userProfile={user} />
+        <LandlordHomepageComponent managedProperties={managedProperties} />
+        <h3 className={styles.recentActivities}>Recent Activity</h3>
+        <HomepageFeedComponent
+          properties={managedProperties}
+          handleActivityFeedNavigation={handleActivityFeedNavigation}
+        />
+      </div>
+    ) : (
+      <h2>No user profile detected.</h2>
+    );
+  }
+
+  return (
+    <UnsignedHomepageComponent />
   );
 };
 
