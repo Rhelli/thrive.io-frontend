@@ -2,10 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBed, faMoneyBillWaveAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faMoneyBillWaveAlt, faStar } from '@fortawesome/free-solid-svg-icons';
 import { monthlyEarnings, availableRooms, propertyLikesGen } from '../../../../utils/managePropertiesUtils';
 import {
-  totalRooms, missingRent, totalFilledRooms, totalSpareRooms,
+  totalRooms, missingRent, totalFilledRooms, totalSpareRooms, totalLikes, likesSuggestion,
 } from '../../../../utils/homepageUtils';
 import styles from './LandlordHomepageComponent.module.scss';
 
@@ -15,6 +15,7 @@ const LandlordHomepageComponent = ({ managedProperties }) => {
   const totalEmptyRooms = totalSpareRooms(managedProperties);
   const lastMonthsEarnings = monthlyEarnings(managedProperties);
   const lostRent = missingRent(managedProperties);
+  const totalLikeCount = totalLikes(managedProperties);
 
   console.log(managedProperties);
 
@@ -71,11 +72,11 @@ const LandlordHomepageComponent = ({ managedProperties }) => {
                 £
                 {lostRent}
                 {' '}
-                rental lost from unfilled rooms.
+                in unutilised property space.
               </p>
             </span>
           ) : managedProperties.length && totalEmptyRooms === 0 ? (
-            <span>
+            <span className={styles.rowInfo}>
               <h3>
                 £
                 {' '}
@@ -86,7 +87,7 @@ const LandlordHomepageComponent = ({ managedProperties }) => {
               <p>Good Job! No rental was lost due to unfilled rooms!</p>
             </span>
           ) : (
-            <span>
+            <span className={styles.rowInfo}>
               <h3>£0 total last month</h3>
               <p>
                 Create properties and collect rental to get your monthly financial averages here.
@@ -95,9 +96,26 @@ const LandlordHomepageComponent = ({ managedProperties }) => {
           )
         }
       </div>
-      <div>
+      <div className={styles.likesRow}>
+        <span className={styles.rowIcon}>
+          <FontAwesomeIcon icon={faStar} />
+        </span>
         {
-          managedProperties.length
+          managedProperties.length ? (
+            <span className={styles.rowInfo}>
+              <h3>
+                {totalLikeCount}
+                {' '}
+                shortlists.
+              </h3>
+              <p>{likesSuggestion(totalLikeCount)}</p>
+            </span>
+          ) : (
+            <span className={styles.rowInfo}>
+              <h3>No Likes</h3>
+              <p>Register a new property to start generating likes.</p>
+            </span>
+          )
         }
       </div>
     </div>
