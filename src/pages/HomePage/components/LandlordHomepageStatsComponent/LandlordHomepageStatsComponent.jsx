@@ -1,23 +1,19 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBed, faMoneyBillWaveAlt, faStar } from '@fortawesome/free-solid-svg-icons';
-import { monthlyEarnings, availableRooms, propertyLikesGen } from '../../../../utils/managePropertiesUtils';
+import { monthlyEarnings } from '../../../../utils/managePropertiesUtils';
 import {
-  totalRooms, missingRent, totalFilledRooms, totalSpareRooms, totalLikes, likesSuggestion,
+  totalRooms, missingRent, totalSpareRooms, totalLikes, likesSuggestion,
 } from '../../../../utils/homepageUtils';
-import styles from './LandlordHomepageComponent.module.scss';
+import styles from './LandlordHomepageStatsComponent.module.scss';
 
-const LandlordHomepageComponent = ({ managedProperties }) => {
+const LandlordHomepageStatsComponent = ({ managedProperties }) => {
   const totalAllRooms = totalRooms(managedProperties);
-  const totalOccupiedRooms = totalFilledRooms(managedProperties);
   const totalEmptyRooms = totalSpareRooms(managedProperties);
   const lastMonthsEarnings = monthlyEarnings(managedProperties);
   const lostRent = missingRent(managedProperties);
   const totalLikeCount = totalLikes(managedProperties);
-
-  console.log(managedProperties);
 
   return (
     <div className={styles.landlordHomepageContainer}>
@@ -63,7 +59,6 @@ const LandlordHomepageComponent = ({ managedProperties }) => {
             <span className={styles.rowInfo}>
               <h3>
                 £
-                {' '}
                 {lastMonthsEarnings}
                 {' '}
                 total last month
@@ -122,7 +117,7 @@ const LandlordHomepageComponent = ({ managedProperties }) => {
   );
 };
 
-LandlordHomepageComponent.propTypes = {
+LandlordHomepageStatsComponent.propTypes = {
   managedProperties: PropTypes.arrayOf(
     PropTypes.shape({
       price: PropTypes.number,
@@ -130,4 +125,4 @@ LandlordHomepageComponent.propTypes = {
   ).isRequired,
 };
 
-export default LandlordHomepageComponent;
+export default LandlordHomepageStatsComponent;

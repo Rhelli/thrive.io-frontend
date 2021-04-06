@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import { fetchManagedPropertiesListRequest } from '../../api/propertiesApi';
 import WelcomeComponent from './components/WelcomeComponent/WelcomeComponent';
-import LandlordHomepageComponent from './components/LandlordHomepageComponent/LandlordHomepageComponent';
+import LandlordHomepageComponent from './components/LandlordHomepageStatsComponent/LandlordHomepageStatsComponent';
+import HomepageFeedComponent from './components/HomepageFeedComponent/HomepageFeedComponent';
 
 const HomePageContainer = ({
   profileStore, fetchUserProfileApiRequest, fetchManagedPropertiesListRequest,
@@ -60,6 +61,7 @@ const HomePageContainer = ({
     <div>
       <WelcomeComponent userProfile={user} />
       <LandlordHomepageComponent managedProperties={managedProperties} />
+      <HomepageFeedComponent properties={managedProperties} />
     </div>
   ) : (
     <h2>No user profile detected.</h2>
