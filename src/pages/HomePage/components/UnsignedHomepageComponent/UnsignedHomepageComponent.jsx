@@ -6,7 +6,7 @@ import 'swiper/swiper.scss';
 import 'swiper/components/effect-fade/effect-fade.scss';
 import thriveLogo from '../../../../assets/img/thrive-full-transparent.png';
 import findFriends from '../../../../assets/img/find-friends-transparent-crop.png';
-import findHouses from '../../../../assets/img/houses-transparent.png';
+import findHouses from '../../../../assets/img/find-houses-transparent.png';
 import manageHouses from '../../../../assets/img/management-transparent-crop.png';
 import styles from './UnsignedHomepageComponent.module.scss';
 
@@ -45,7 +45,7 @@ const UnsignedHomepageComponent = () => {
               <img className={styles.findHousesImage} src={findHouses} alt="Find Houseshares" />
             </div>
             <p className={styles.swiperText}>
-              Find Houseshares To Join Based Off Your Own Living Preferences
+              Find Properties, Rooms And Houseshares To Join Based Off Your Own Living Preferences
             </p>
           </SwiperSlide>
           <SwiperSlide>
