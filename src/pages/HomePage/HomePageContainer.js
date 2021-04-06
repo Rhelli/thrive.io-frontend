@@ -2,8 +2,11 @@
 import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import { fetchManagedPropertiesListRequest } from '../../api/propertiesApi';
+import { fetchSingleProperty } from '../../state/property/propertyActions';
+import fetchPropertyLocation from '../../api/locationApi';
 import WelcomeComponent from './components/WelcomeComponent/WelcomeComponent';
 import LandlordHomepageComponent from './components/LandlordHomepageStatsComponent/LandlordHomepageStatsComponent';
 import HomepageFeedComponent from './components/HomepageFeedComponent/HomepageFeedComponent';
@@ -11,12 +14,13 @@ import styles from './HomepageContainer.module.scss';
 
 const HomePageContainer = ({
   profileStore, fetchUserProfileApiRequest, fetchManagedPropertiesListRequest,
-  propertyStore, authStore,
+  propertyStore, authStore, fetchSingleProperty, fetchPropertyLocation,
 }) => {
   const { userType } = authStore.user;
   const { advertiserType } = authStore.user;
   const { managedProperties } = propertyStore;
   const { user } = authStore;
+  const history = useHistory();
 
   useLayoutEffect(() => {
     if (userType === 'Looking') {
@@ -25,7 +29,13 @@ const HomePageContainer = ({
       fetchManagedPropertiesListRequest();
     }
   }, []);
-  console.log(propertyStore);
+
+  const handleActivityFeedNavigation = property => {
+    const propertyAddress = `${property.address},${property.town},${property.postcode}`;
+    fetchSingleProperty(property);
+    fetchPropertyLocation(propertyAddress);
+    history.push(`/property/${property.id}`);
+  };
 
   if (userType === 'Looking') {
     const { userProfile } = profileStore;
@@ -63,7 +73,10 @@ const HomePageContainer = ({
       <WelcomeComponent userProfile={user} />
       <LandlordHomepageComponent managedProperties={managedProperties} />
       <h3 className={styles.recentActivities}>Recent Activity</h3>
-      <HomepageFeedComponent properties={managedProperties} />
+      <HomepageFeedComponent
+        properties={managedProperties}
+        handleActivityFeedNavigation={handleActivityFeedNavigation}
+      />
     </div>
   ) : (
     <h2>No user profile detected.</h2>
@@ -94,6 +107,8 @@ HomePageContainer.propTypes = {
   }).isRequired,
   fetchUserProfileApiRequest: PropTypes.func.isRequired,
   fetchManagedPropertiesListRequest: PropTypes.func.isRequired,
+  fetchSingleProperty: PropTypes.func.isRequired,
+  fetchPropertyLocation: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -105,6 +120,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchUserProfileApiRequest: () => dispatch(fetchUserProfileApiRequest()),
   fetchManagedPropertiesListRequest: () => dispatch(fetchManagedPropertiesListRequest()),
+  fetchSingleProperty: property => dispatch(fetchSingleProperty(property)),
+  fetchPropertyLocation: propertyAddress => dispatch(fetchPropertyLocation(propertyAddress)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);

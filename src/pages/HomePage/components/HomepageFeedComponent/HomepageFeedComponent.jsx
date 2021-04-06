@@ -8,7 +8,7 @@ import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import styles from './HomepageFeedComponent.module.scss';
 
-const HomepageFeedComponent = ({ properties }) => {
+const HomepageFeedComponent = ({ properties, handleActivityFeedNavigation }) => {
   console.log(properties);
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo('en-US');
@@ -23,7 +23,11 @@ const HomepageFeedComponent = ({ properties }) => {
                 <p>
                   {like.name}
                   {' '}
-                  shortlisted your property
+                  shortlisted
+                  {' '}
+                  <button type="button" onClick={() => handleActivityFeedNavigation(property)}>
+                    <p>{property.title}</p>
+                  </button>
                   {' '}
                 </p>
               </span>
@@ -53,6 +57,7 @@ HomepageFeedComponent.propTypes = {
       ),
     }),
   ).isRequired,
+  handleActivityFeedNavigation: PropTypes.func.isRequired,
 };
 
 export default HomepageFeedComponent;
