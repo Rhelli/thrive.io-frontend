@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay, EffectFade } from 'swiper';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import 'swiper/swiper.scss';
 import 'swiper/components/effect-fade/effect-fade.scss';
 import thriveLogo from '../../../../assets/img/thrive-full-transparent-alt.png';
@@ -17,6 +17,7 @@ const UnsignedHomepageComponent = () => {
   SwiperCore.use([Autoplay, EffectFade]);
   const history = useHistory();
   const handleGetStartedClick = () => history.push('/signup');
+  const handleLoginClick = () => history.push('/signin');
 
   return (
     <div className={styles.unsignedHomepageContainer}>
@@ -66,20 +67,20 @@ const UnsignedHomepageComponent = () => {
         </Swiper>
       </div>
       <div className={styles.ctoButtons}>
-        <button type="button">
-          <span>
-            <p>Learn More</p>
-          </span>
-          <span>
-            <FontAwesomeIcon icon={faInfoCircle} />
-          </span>
-        </button>
-        <button onClick={handleGetStartedClick} disabled type="button">
+        <button onClick={handleGetStartedClick} type="button">
           <span>
             <p>Get Started</p>
           </span>
           <span>
             <FontAwesomeIcon icon={faUserPlus} />
+          </span>
+        </button>
+        <button type="button" onClick={handleLoginClick}>
+          <span>
+            <p>Sign In</p>
+          </span>
+          <span>
+            <FontAwesomeIcon icon={faSignInAlt} />
           </span>
         </button>
       </div>

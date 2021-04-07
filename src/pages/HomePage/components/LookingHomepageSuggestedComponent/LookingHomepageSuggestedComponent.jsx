@@ -22,7 +22,14 @@ const LookingHomepageSuggestedComponent = ({ userProfile, handlePropertyNavigati
       <div className={styles.lookingSuggestedPropertyList}>
         {
           suggestedProperties.map(property => (
-            <div key={uuidv4()} className={styles.suggestedProperty}>
+            <div
+              key={uuidv4()}
+              className={styles.suggestedProperty}
+              role="button"
+              onClick={() => handlePropertyNavigation(property)}
+              onKeyUp={() => handlePropertyNavigation(property)}
+              tabIndex="-1"
+            >
               <div className={styles.propertyImage}>
                 <p>IMAGE</p>
               </div>

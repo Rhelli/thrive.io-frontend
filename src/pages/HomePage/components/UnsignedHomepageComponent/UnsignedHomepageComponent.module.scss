@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column nowrap;
   width: 95%;
+  min-height: 100vh;
   height: auto;
   overflow: hidden;
   padding: 20px;
@@ -82,17 +83,16 @@
       flex-flow: row nowrap;
       justify-content: center;
       align-items: center;
-      height: 40px;
+      background-color:#F2D319;
+      border: 1px solid #D4B916;
+      font-weight: 700;
+      color: #303030;
+      height: 45px;
       width: 70%;
-      border: none;
       outline: none;
-      background-color:#8C53F5;
       border-radius: 30px;
-      border: 2px solid #7936F4;
       transition-duration: 0.2s;
-
       font-size: 16px;
-      color: white;
 
       span:last-child {
         position: relative;
@@ -105,19 +105,14 @@
 
       &:focus,
       &:hover {
-        background-color: #7936F4;
-        border: 2px solid #8C53F5;
+        background-color: #D4B916;
+        color: #606060;
         transition-duration: 0.15s;
       }
     }
 
-    button:first-child {
-      margin-bottom: 20px;
-    }
-
     button:last-child {
-      background-color:rgba(89, 22, 212, 0.4);
-      border: none;
+      margin-top: 10px;
     }
   }
 }
