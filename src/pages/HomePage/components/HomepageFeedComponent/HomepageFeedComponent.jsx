@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTimeAgo from 'react-time-ago';
 import TimeAgo from 'javascript-time-ago';
+import { v4 as uuidv4 } from 'uuid';
 import en from 'javascript-time-ago/locale/en';
 import styles from './HomepageFeedComponent.module.scss';
 
@@ -16,7 +16,7 @@ const HomepageFeedComponent = ({ properties, handleActivityFeedNavigation }) => 
       {
         properties.map(property => (
           property.userLikes.map(like => (
-            <div>
+            <div key={uuidv4()}>
               <span className={styles.userInfo}>
                 <p>
                   {like.name}

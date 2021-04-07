@@ -11,6 +11,7 @@ import WelcomeComponent from './components/WelcomeComponent/WelcomeComponent';
 import LandlordHomepageComponent from './components/LandlordHomepageStatsComponent/LandlordHomepageStatsComponent';
 import HomepageFeedComponent from './components/HomepageFeedComponent/HomepageFeedComponent';
 import UnsignedHomepageComponent from './components/UnsignedHomepageComponent/UnsignedHomepageComponent';
+import LookingHomepageStatsComponent from './components/LookingHomepageStatsComponent/LookingHomepageStatsComponent';
 import styles from './HomepageContainer.module.scss';
 
 const HomePageContainer = ({
@@ -45,17 +46,12 @@ const HomePageContainer = ({
     ) : profileStore.error ? (
       <h2>An Error Occurred. Please try again later.</h2>
     ) : userProfile.userType === 'Looking' ? (
-      <div>
+      <div className={styles.lookingHomepageContainer}>
         <WelcomeComponent userProfile={userProfile} />
-      </div>
-    ) : userProfile.userType === 'Advertising' && userProfile.advertiserType === 'Flatmate' ? (
-      <div>
-        <WelcomeComponent userProfile={userProfile} />
-      </div>
-    ) : userProfile.userType === 'Advertising' && userProfile.advertiserType === 'Landlord' ? (
-      <div>
-        <WelcomeComponent userProfile={userProfile} />
-        <LandlordHomepageComponent managedProperties={managedProperties} />
+        <LookingHomepageStatsComponent
+          handlePropertyNavigation={handleActivityFeedNavigation}
+          userProfile={userProfile}
+        />
       </div>
     ) : (
       <h2>No user profile detected.</h2>

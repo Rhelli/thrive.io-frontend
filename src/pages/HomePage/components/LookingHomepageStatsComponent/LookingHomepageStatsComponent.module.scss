@@ -1,0 +1,184 @@
+.lookingHomepageStatsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+
+  .shortlistStats {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+
+    .shortlistIcon {
+      display: flex;
+      height: 80px;
+      width: 80px;
+      justify-content: center;
+      align-items: center;
+      background-color: #26E4C9;
+      background-image: url('../../../../assets/img/dark-matter.png');
+      -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+      -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+      box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+      border: 1px solid #33D5BE;
+      border-radius: 6px;
+      margin-right: 10px;
+      margin-bottom: auto;
+      margin-top: 10px;
+
+      svg {
+        color: white;
+        font-size: 48px;
+      }
+    }
+
+    .shortlistInfo {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 75%;
+
+
+      .shortlistTitle {
+        padding: 10px 0;
+        text-align: center;
+        h3 {
+          font-size: 22px;
+        }
+      }
+
+      .shortlistList {
+        height: auto;
+        max-height: 100px;
+        overflow: hidden;
+        overflow-y: scroll;
+
+        .shortlistItem {
+          display: flex;
+          flex-flow: column nowrap;
+          width: 100%;
+          margin-bottom: 6px;
+
+          .shortlistItemTitle {
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+            padding: 4px 8px;
+            background-color: #ECE2FD;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            border-top: 1px solid #FAE2FD;
+            outline: none;
+
+            button {
+              width: 100%;
+              border: none;
+              outline: none;
+              background: transparent;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              text-decoration: underline;
+            }
+          }
+
+          .townAddedRow {
+            display: flex;
+            flex-flow: row nowrap;
+
+            span {
+              font-size: 12px;
+              padding: 4px 8px;
+              width: 50%;
+            }
+
+            .shortlistItemTown {
+              background-color: #C6A9FA;
+              border-bottom-left-radius: 2px;
+            }
+
+            .shortlistItemDate {
+              background-color: #D9C6FC;
+              border-bottom-left-radius: 2px;;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .shortlistProfileCompletion {
+    width: 100%;
+
+    .shortlistProfileInfoContainer {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+
+      .shortlistIcon {
+        display: flex;
+        height: 80px;
+        width: 80px;
+        justify-content: center;
+        align-items: center;
+        background-color: #B5132A;
+        background-image: url('../../../../assets/img/dark-matter.png');
+        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+        -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+        box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+        border: 1px solid #971023;
+        border-radius: 6px;
+        margin-right: 10px;
+        margin-bottom: auto;
+  
+        svg {
+          color: white;
+          font-size: 48px;
+        }
+      }
+    }
+
+    .shortlistProfileInfo {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 78%;
+
+      .shortlistProfileInfoTitle {
+        h3 {
+          font-size: 18px;
+          line-height: 20px;
+          margin-bottom: 4px;
+        }
+  
+        p {
+          text-align: center;
+          font-size: 14px;
+          background-color: #ECE2FD;
+          border-top-right-radius: 6px;
+          border-top-left-radius: 6px;
+        }
+      }
+
+      .completionGrid {
+        display: flex;
+        flex-flow: row nowrap;
+
+        span {
+          width: 50%;
+          padding: 4px 8px;
+          font-size: 13px;
+        }
+
+        .toComplete {
+          background-color: #C6A9FA;
+          border-bottom-left-radius: 2px;
+        }
+
+        .completionList {
+          background-color: #D9C6FC;
+          border-bottom-right-radius: 2px;
+        }
+      }
+    }
+  }
+}

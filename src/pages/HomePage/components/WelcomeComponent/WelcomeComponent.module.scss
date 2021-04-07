@@ -3,17 +3,26 @@
   flex-flow: row nowrap;
   align-items: center;
   width: 100%;
-  border: 1px solid red;
+  height: 120px;
   padding: 20px;
+  background-color: rgba(89, 22, 212, 1);
+  background-image: url('../../../../assets/img/dark-matter.png');
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+  box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+  border: 1px solid #4D13B5;
+  border-radius: 6px;
 
   .welcomeBackMessage {
+    color: white;
     h3,
     h4 {
-      line-height: 1.4;
+      line-height: 1.1;
     }
     
     h3 {
-      font-size: 20px;
+      font-size: 24px;
+      margin-bottom: 10px;
     }
 
     h4 {
@@ -23,10 +32,9 @@
 
   .welcomeLogoContainer {
     margin-left: auto;
-    border: 1px solid green;
 
     img {
-      width: 60px;
+      width: 80px;
       height: auto;
     }
   }

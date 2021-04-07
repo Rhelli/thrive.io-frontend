@@ -8,6 +8,7 @@ import PropertyListItemComponent from './components/PropertyListItemComponent';
 import { fetchAllPropertiesListRequest } from '../../api/propertiesApi';
 import fetchPropertyLocation from '../../api/locationApi';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
+import tLogo from '../../assets/img/thrive-t-transparent.png';
 import styles from './PropertyListContainer.module.scss';
 
 const PropertyListContainer = ({
@@ -38,6 +39,14 @@ const PropertyListContainer = ({
     </div>
   ) : (
     <div className={styles.propertyListContainer}>
+      <div className={styles.brandingHeader}>
+        <span className={styles.titleSpan}>
+          <h1>Properties</h1>
+        </span>
+        <span className={styles.imageSpan}>
+          <img src={tLogo} alt="Thrive" />
+        </span>
+      </div>
       {
         propertyData.properties.map(property => (
           <PropertyListItemComponent

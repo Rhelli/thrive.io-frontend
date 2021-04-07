@@ -75,3 +75,28 @@ export const likesSuggestion = likesCount => {
   }
   return statement;
 };
+
+export const profileCompleter = userProfile => {
+  const unfinished = [];
+  if (userProfile) {
+    Object.keys(userProfile).map(keyName => {
+      if (keyName !== 'advertiserType' && keyName !== 'properties' && userProfile[keyName].length < 1) {
+        unfinished.push(keyName);
+      }
+      return unfinished;
+    });
+  }
+  return unfinished;
+};
+
+export const sentenceCapitaliser = string => {
+  let newString = [];
+  if (string) {
+    const split = string.split(' ');
+    split.forEach(word => {
+      newString.push(word.charAt(0).toUpperCase() + word.slice(1));
+    });
+    newString = newString.join(' ');
+  }
+  return newString;
+};
