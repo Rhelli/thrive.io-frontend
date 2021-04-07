@@ -17,16 +17,26 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-
-    h2 {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 16px;
-      line-height: 20px;
-    }
+    background-color: rgba(89, 22, 212, 1);
+    background-image: url('../../../../assets/img/dark-matter.png');
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+    -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+    box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+    border: 1px solid #4D13B5;
+    border-radius: 6px;
+    padding: 10px 0;
 
     img {
-      width: 80%;
+      width: 70%;
+    }
+  }
+
+  .brandingText {
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 18px;
+      line-height: 20px;
     }
   }
 
@@ -68,7 +78,11 @@
     border-bottom-right-radius: 6px;
 
     button {
-      height: 50px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
       width: 70%;
       border: none;
       outline: none;
@@ -80,6 +94,15 @@
       font-size: 16px;
       color: white;
 
+      span:last-child {
+        position: relative;
+        left: 10px;
+        
+        svg {
+          font-size: 20px;
+        }
+      }
+
       &:focus,
       &:hover {
         background-color: #7936F4;
@@ -90,6 +113,11 @@
 
     button:first-child {
       margin-bottom: 20px;
+    }
+
+    button:last-child {
+      background-color:rgba(89, 22, 212, 0.4);
+      border: none;
     }
   }
 }

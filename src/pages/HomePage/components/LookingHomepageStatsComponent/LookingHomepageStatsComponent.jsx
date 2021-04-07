@@ -21,6 +21,8 @@ const LookingHomepageStatsComponent = ({ userProfile, handlePropertyNavigation }
   const handleShortlistNavigation = () => history.push('/shortlist');
   const handleProfileNavigation = () => history.push('/myaccount');
 
+  console.log(userProfile);
+
   return (
     <div className={styles.lookingHomepageStatsContainer}>
       <div className={styles.shortlistStats}>
