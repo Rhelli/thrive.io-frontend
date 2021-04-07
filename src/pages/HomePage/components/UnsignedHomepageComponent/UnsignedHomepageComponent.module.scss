@@ -2,11 +2,15 @@
   display: flex;
   flex-flow: column nowrap;
   width: 95%;
-  height: 98vh;
+  height: 97vh;
   overflow: hidden;
   padding: 20px;
   background-color: #fefafe;
   border-radius: 4px;
+  z-index: 3;
+  -webkit-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
+  -moz-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
+  box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
 
   .brandingLogo {
     display: flex;
@@ -34,6 +38,7 @@
       display: flex;
       justify-content: center;
       height: auto;
+      margin-bottom: 20px;
     }
 
     .swiperImage,
@@ -42,18 +47,49 @@
       height: auto;
     }
 
-    .findHousesImage {
-      margin-bottom: 10px;
-    }
-
     .swiperText {
       font-size: 20px;
       line-height: 20px;
       text-align: center;
-      background-color: rgba(102, 25, 242, 0.8);
+      background-color: rgba(102, 25, 242, 1);
       border-radius: 6px;
       color: #fafafa;
       padding: 20px;
+    }
+  }
+
+  .ctoButtons {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 20px;
+    background-color: #ECE2FD;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    button {
+      height: 50px;
+      width: 70%;
+      border: none;
+      outline: none;
+      background-color:#8C53F5;
+      border-radius: 30px;
+      border: 2px solid #7936F4;
+      transition-duration: 0.2s;
+
+      font-size: 16px;
+      color: white;
+
+      &:focus,
+      &:hover {
+        background-color: #7936F4;
+        border: 2px solid #8C53F5;
+        transition-duration: 0.15s;
+      }
+    }
+
+    button:first-child {
+      margin-bottom: 20px;
     }
   }
 }

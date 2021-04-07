@@ -58,6 +58,14 @@ const UnsignedHomepageComponent = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+      <div className={styles.ctoButtons}>
+        <button type="button">
+          Learn More
+        </button>
+        <button type="button">
+          Get Started
+        </button>
+      </div>
     </div>
   );
 };
