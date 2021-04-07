@@ -12,6 +12,7 @@ import LandlordHomepageComponent from './components/LandlordHomepageStatsCompone
 import HomepageFeedComponent from './components/HomepageFeedComponent/HomepageFeedComponent';
 import UnsignedHomepageComponent from './components/UnsignedHomepageComponent/UnsignedHomepageComponent';
 import LookingHomepageStatsComponent from './components/LookingHomepageStatsComponent/LookingHomepageStatsComponent';
+import LookingHomepageSuggestedComponent from './components/LookingHomepageSuggestedComponent/LookingHomepageSuggestedComponent';
 import styles from './HomepageContainer.module.scss';
 
 const HomePageContainer = ({
@@ -23,6 +24,8 @@ const HomePageContainer = ({
   const { managedProperties } = propertyStore;
   const { user } = authStore;
   const history = useHistory();
+
+  console.log(propertyStore);
 
   useLayoutEffect(() => {
     if (userType === 'Looking') {
@@ -51,6 +54,10 @@ const HomePageContainer = ({
         <LookingHomepageStatsComponent
           handlePropertyNavigation={handleActivityFeedNavigation}
           userProfile={userProfile}
+        />
+        <LookingHomepageSuggestedComponent
+          userProfile={user}
+          handlePropertyNavigation={handleActivityFeedNavigation}
         />
       </div>
     ) : (

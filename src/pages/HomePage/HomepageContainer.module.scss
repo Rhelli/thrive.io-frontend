@@ -13,13 +13,14 @@
   display: flex;
   flex-flow: column nowrap;
   width: 95%;
-  height: 97vh;
+  height: auto;
   overflow: hidden;
   padding: 20px;
   background-color: #fefafe;
   border-radius: 4px;
   z-index: 3;
   margin-top: 10px;
+  padding-bottom: 80px;
   -webkit-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
   -moz-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
   box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);

@@ -14,14 +14,12 @@ import { arrayToString } from '../../../../utils/managePropertiesUtils';
 import styles from './LookingHomepageStatsComponent.module.scss';
 
 const LookingHomepageStatsComponent = ({ userProfile, handlePropertyNavigation }) => {
-  const { shortlistedProperties, areasLooking } = userProfile;
+  const { shortlistedProperties } = userProfile;
   TimeAgo.addLocale(en);
   const history = useHistory();
   const profileCompletion = profileCompleter(userProfile);
   const handleShortlistNavigation = () => history.push('/shortlist');
   const handleProfileNavigation = () => history.push('/myaccount');
-
-  console.log(userProfile);
 
   return (
     <div className={styles.lookingHomepageStatsContainer}>
@@ -118,7 +116,6 @@ LookingHomepageStatsComponent.propTypes = {
         title: PropTypes.string,
       }),
     ).isRequired,
-    areasLooking: PropTypes.string.isRequired,
   }).isRequired,
   handlePropertyNavigation: PropTypes.func.isRequired,
 };
