@@ -22,6 +22,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    width: 100%;
 
     .suggestedProperty {
       display: flex;
@@ -71,11 +72,11 @@
 
         span:first-child {
           font-size: 14px;
-          width: 85%;
+          width: 80%;
         }
 
         span:last-child {
-          width: 15%;
+          width: 20%;
           font-size: 16px;
           font-weight: 700;
           text-align: right;

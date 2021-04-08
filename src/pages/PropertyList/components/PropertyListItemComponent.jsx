@@ -4,37 +4,54 @@ import styles from './PropertyListItemComponent.module.scss';
 
 const PropertyListItemComponent = props => {
   const {
-    town, price, occupantCount, roomCount, propertyClickThrough,
+    town, price, occupantCount, roomCount, propertyClickThrough, title,
   } = props;
 
   return (
     <div className={styles.propertyListItemContainer} role="button" onClick={propertyClickThrough} onKeyUp={propertyClickThrough} tabIndex="-1">
-      <div className={styles.propertyListItemTopInfo}>
-        <h3>
-          £&nbsp;
-          {price}
-          &nbsp;
-          per month
-        </h3>
+      <div className={styles.propertyListItemImage}>
+        <p>IMAGE</p>
       </div>
-      <div className={styles.propertyListItemMiddleInfo}>
-        <h5>
-          Current Occupants:&nbsp;
-          {occupantCount}
-        </h5>
-        <h5>
-          Number of Rooms:&nbsp;
-          {roomCount}
-        </h5>
-      </div>
-      <div className={styles.propertyListItemBottomInfo}>
-        <h5>{town}</h5>
+      <div className={styles.propertyListItemInfoContainer}>
+        <div className={styles.propertyListItemTopInfo}>
+          <span>
+            <h3>
+              {title}
+            </h3>
+          </span>
+          <span>
+            <p>
+              £
+              {price}
+            </p>
+          </span>
+        </div>
+        <div className={styles.propertyListItemMiddleInfo}>
+          <span>
+            <p>
+              Flatmates:
+              {' '}
+              {occupantCount}
+            </p>
+          </span>
+          <span>
+            <p>
+              Free Rooms:
+              {' '}
+              {roomCount}
+            </p>
+          </span>
+        </div>
+        <div className={styles.propertyListItemBottomInfo}>
+          <p>{town}</p>
+        </div>
       </div>
     </div>
   );
 };
 
 PropertyListItemComponent.propTypes = {
+  title: PropTypes.string.isRequired,
   town: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   occupantCount: PropTypes.number.isRequired,
