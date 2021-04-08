@@ -1,3 +1,16 @@
 .userProfileContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 95%;
+  height: auto;
+  margin-top: 10px;
+  overflow: hidden;
   padding-bottom: 80px;
+  background-color: #fefafe;
+  border-radius: 4px;
+  z-index: 3;
+  -webkit-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
+  -moz-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
+  box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
 }
