@@ -1,23 +1,30 @@
 .userProfileAboutContainer {
-  border: 1px solid orange;
   width: 100%;
-  padding: 0 20px;
+  padding: 20px;
 }
 
 .userProfileAboutTopSection {
+  background-color: #ECE2FD;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+
   h2 {
-    margin: 10px 0;
+    padding-top: 10px;
   }
 
   .userProfileAbout {
-    margin-bottom: 20px;
+    padding: 10px 0;
     line-height: 120%;
-    border: 1px solid blue;
+    border-bottom: 3px solid #D9C6FC;
   }
 
   .userProfileAreas {
-    border: 1px solid magenta;
-    margin-bottom: 10px;
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
 
     p {
       line-height: 120%;
@@ -33,7 +40,8 @@
   div {
     display: flex;
     flex-flow: row nowrap;
-    border: 1px solid red;
+    background-color: #FCC6CD;
+    border-left: 4px solid #F43651;
     border-radius: 4px;
     padding: 12px 12px;
     font-size: 14px;

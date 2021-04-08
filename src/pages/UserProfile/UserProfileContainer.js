@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import { signOut } from '../../state/auth/authActions';
 import UserProfileHeaderComponent from './components/UserProfileHeaderComponent/UserProfileHeaderComponent';
-import UserProfileBasicInfoComponent from './components/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
-import UserProfileAboutComponent from './components/UserProfileAboutComponent/UserProfileAboutComponent';
+import UserProfileBasicInfoComponent from '../../common/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
+import UserProfileAboutComponent from '../../common/UserProfileAboutComponent/UserProfileAboutComponent';
 import styles from './UserProfileContainer.module.scss';
 
 const UserProfileContainer = ({
