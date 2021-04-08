@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import fetchFlatmatesApiRequest from '../../api/flatmatesApi';
 import { fetchSingleFlatmate } from '../../state/flatmates/flatmatesActions';
+import thriveLogo from '../../assets/img/thrive-t-transparent.png';
 import FlatmatesListItemComponent from './components/FlatmatesListItemComponent';
 import styles from './FlatmatesListContainer.module.scss';
 
@@ -31,6 +32,14 @@ const FlatmatesListContainer = ({
     </h2>
   ) : (
     <div className={styles.flatmatesListContainer}>
+      <div className={styles.brandingHeader}>
+        <span className={styles.titleSpan}>
+          <h1>Flatmates</h1>
+        </span>
+        <span className={styles.imageSpan}>
+          <img src={thriveLogo} alt="Thrive" />
+        </span>
+      </div>
       {
         flatmateData.flatmates.map(user => (
           <FlatmatesListItemComponent
@@ -42,6 +51,7 @@ const FlatmatesListContainer = ({
             maxBudget={user.maxBudget}
             minBudget={user.minBudget}
             couple={user.couple}
+            dob={user.dob}
             flatmateClickThrough={() => flatmateClickThrough(user)}
           />
         ))
