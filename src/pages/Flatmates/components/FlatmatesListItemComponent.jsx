@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import getAge from 'get-age';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBriefcase, faTransgenderAlt, faMoneyBillWave, faUserFriends,
@@ -8,7 +9,7 @@ import styles from './FlatmatesListItemComponent.module.scss';
 
 const FlatmatesListItemComponent = props => {
   const {
-    name, avatar, gender, occupation, maxBudget, minBudget, couple, flatmateClickThrough,
+    name, avatar, gender, occupation, maxBudget, minBudget, couple, flatmateClickThrough, dob,
   } = props;
 
   return (
@@ -18,32 +19,41 @@ const FlatmatesListItemComponent = props => {
       </div>
       <div className={styles.flatmatesInfoContainer}>
         <div className={styles.flatmatesInfoInnerContainer}>
-          <h4>{name}</h4>
-          <div>
-            <FontAwesomeIcon icon={faBriefcase} />
-            &nbsp;
+          <div className={styles.nameAge}>
+            <span>
+              <h4>
+                {name}
+              </h4>
+            </span>
+            <span>
+              <p>
+                {`(${getAge(dob)})`}
+              </p>
+            </span>
+          </div>
+          <div className={styles.occupation}>
             <p>{occupation}</p>
+            <FontAwesomeIcon icon={faBriefcase} />
           </div>
-          <div>
-            <FontAwesomeIcon icon={faTransgenderAlt} />
-            &nbsp;
+          <div className={styles.gender}>
             <p>{gender}</p>
+            <FontAwesomeIcon icon={faTransgenderAlt} />
           </div>
-          <div>
-            <FontAwesomeIcon icon={faMoneyBillWave} />
-            &nbsp;
+          <div className={styles.budget}>
             <p>
+              £
               {minBudget}
-              &nbsp;
+              {' '}
               -
-              &nbsp;
+              {' '}
+              £
               {maxBudget}
             </p>
+            <FontAwesomeIcon icon={faMoneyBillWave} />
           </div>
-          <div>
-            <FontAwesomeIcon icon={faUserFriends} />
-            &nbsp;
+          <div className={styles.couple}>
             <p>{couple}</p>
+            <FontAwesomeIcon icon={faUserFriends} />
           </div>
         </div>
       </div>
@@ -60,6 +70,7 @@ FlatmatesListItemComponent.propTypes = {
   name: PropTypes.string.isRequired,
   occupation: PropTypes.string,
   flatmateClickThrough: PropTypes.func.isRequired,
+  dob: PropTypes.string.isRequired,
 };
 
 FlatmatesListItemComponent.defaultProps = {

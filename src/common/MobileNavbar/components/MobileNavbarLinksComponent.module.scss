@@ -5,7 +5,7 @@
   width: 60%;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid red;
+  border-right: 2px solid #303030;
 
   a {
     display: flex;
@@ -20,6 +20,20 @@
 
     p {
       margin-top: auto;
+    }
+  }
+
+  a,
+  p,
+  svg {
+    &:focus {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
   }
 }

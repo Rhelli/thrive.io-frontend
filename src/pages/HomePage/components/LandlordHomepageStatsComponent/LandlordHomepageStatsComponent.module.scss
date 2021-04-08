@@ -1,0 +1,48 @@
+.landlordHomepageContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid blue;
+
+  .freeRoomsRow,
+  .monthlyEarningsRow,
+  .likesRow {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    border: 1px solid green;
+
+    .rowIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20%;
+      height: 100%;
+      margin-right: 10px;
+
+      svg {
+        font-size: 42px;
+      }
+      
+    }
+
+    .rowInfo {
+      display: flex;
+      flex-flow: column nowrap;
+      padding: 10px 10px 10px 0;
+      width: 80%;
+
+      h3 {
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}

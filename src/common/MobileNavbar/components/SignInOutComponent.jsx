@@ -21,7 +21,7 @@ const SignInOutComponent = ({ authInfo }) => {
                 <FontAwesomeIcon icon={faLayerGroup} />
                 <p>Manage Properties</p>
               </a>
-              <a href="/myaccount">
+              <a className={styles.accountNav} href="/myaccount">
                 <FontAwesomeIcon icon={faUserCircle} />
                 <p className={styles.userName}>{user.name}</p>
               </a>
@@ -32,18 +32,18 @@ const SignInOutComponent = ({ authInfo }) => {
                 <FontAwesomeIcon icon={faHouseUser} />
                 <p>Manage House</p>
               </a>
-              <a href="/myaccount">
+              <a className={styles.accountNav} href="/myaccount">
                 <FontAwesomeIcon icon={faUserCircle} />
                 <p className={styles.userName}>{user.name}</p>
               </a>
             </>
           ) : (
             <>
-              <a href="/shortlist">
+              <a className={styles.shortlistNav} href="/shortlist">
                 <FontAwesomeIcon icon={faStar} />
                 <p>Shortlist</p>
               </a>
-              <a href="/myaccount">
+              <a className={styles.accountNav} href="/myaccount">
                 <FontAwesomeIcon icon={faUserCircle} />
                 <p>{user.name}</p>
               </a>

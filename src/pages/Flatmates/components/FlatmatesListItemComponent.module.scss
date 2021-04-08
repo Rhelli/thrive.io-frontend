@@ -4,36 +4,105 @@
   height: auto;
   flex-flow: column nowrap;
   margin: 10px 0;
-  border: 1px solid red;
-  padding: 20px;
+  background-color: #FCC6CD;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  transition-duration: 0.15s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+    transition-duration: 0.2s;
+    outline: none;
+  }
 }
 
 .flatmatesAvatar {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: auto;
-
-  p {
-    height: 100%;
-    width: 100%;
-  }
+  height: 150px;
 }
 
 .flatmatesInfoContainer {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-
+  border-top: 1px solid #F43651;
+  background-color: #FAA9B4;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  
   .flatmatesInfoInnerContainer {
-    h4 {
-      font-size: 20px;
-      padding: 10px 0;
-    }
 
     div {
       display: flex;
       flex-flow: row nowrap;
-      padding: 8px 0;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      font-size: 16px;
+      font-weight: 700;
+
+      svg {
+        font-size: 32px;
+        margin-left: auto;
+        position: relative;
+        bottom: 2px;
+        background-color: #6619F2;
+        background-image: url('../../../assets/img/dark-matter.png');
+        color: white;
+        border-radius: 20px;
+        padding: 8px;
+      }
+    }
+
+    .nameAge {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-start;
+
+      span {
+        h4 {
+          font-size: 24px;
+          line-height: 24px;
+        }
+  
+        p {
+          font-size: 14px;
+          line-height: 24px;
+          position: relative;
+          top: 2px;
+        }
+      }
+
+      span:first-child {
+        margin-right: 4px;
+      }
+    }
+
+    .occupation {
+      border-top: 1px solid #FAA9B4;
+      background-color: #F88C9B;
+    }
+
+    .gender {
+      border-top: 1px solid #F88C9B;
+      background-color: #F76F83;
+    }
+
+    .budget {
+      border-top: 1px solid #F76F83;
+      background-color: #F5536A;
+    }
+
+    .couple {
+      border-top: 1px solid #F5536A;
+      background-color: #F43651;
     }
   }
 }

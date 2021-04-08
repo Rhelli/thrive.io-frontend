@@ -1,0 +1,50 @@
+.feedContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 20%;
+  padding: 0px 20px;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  div {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 6px;
+
+    .userInfo,
+    .timeInfo {
+      padding: 6px 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .userInfo {
+      background-color: rgba(0, 230, 30, 0.6);
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      font-size: 14px;
+      width: 75%;
+
+      button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+
+        p {
+          font-size: inherit;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .timeInfo {
+      background-color: rgba(230, 50, 0, 0.7);
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      width: 25%;
+      font-size: 12px;
+    }
+  }
+}

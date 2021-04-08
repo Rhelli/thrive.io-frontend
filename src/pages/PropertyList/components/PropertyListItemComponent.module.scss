@@ -1,23 +1,84 @@
 .propertyListItemContainer {
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
-  height: auto;
-  border: 1px solid blue;
-  margin-bottom: 20px;
-  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ECE2FD;
+  margin-bottom: 12px;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-bottom: 6px solid #EFA9FA;
+  transition: 0.2s;
 
-  .propertyListItemTopInfo {
-
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+    transition: 0.15s;
   }
 
-  .propertyListItemMiddleInfo {
+  .propertyListItemImage {
     display: flex;
-    flex-flow: row nowrap;
-    margin: 10px 0;
-    
-    h5 {
-      margin-right: 20px;
+    width: 100%;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .propertyListItemInfoContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+
+    .propertyListItemTopInfo {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+      background-color: #C6A9FA;
+      border-bottom: 1px solid #9F6FF7;
+
+      span {
+        display: flex;
+        align-items: center;
+        height: auto;
+        padding: 10px;
+        background-color: #C6A9FA;
+        border-top: 1px solid #B38CF8;
+      }
+
+      span:first-child {
+        font-size: 14px;
+        width: 80%;
+      }
+
+      span:last-child {
+        width: 20%;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: right;
+        background-color: #B38CF8;
+        border-left: 1px solid #9F6FF7;
+        border-bottom-left-radius: 10px;
+      }
+    }
+
+    .propertyListItemMiddleInfo {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+
+      span {
+        width: 50%;
+        padding: 10px;
+      }
+
+      span:last-child {
+        text-align: right;
+      }
+    }
+
+    .propertyListItemBottomInfo {
+      width: 100%;
+      padding: 10px;
     }
   }
 }
