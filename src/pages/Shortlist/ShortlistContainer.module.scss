@@ -1,6 +1,16 @@
 .shortlistMainContainer {
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
-  padding-bottom: 80px;
+  justify-content: center;
+  width: 95%;
+  height: auto;
+  margin-top: 10px;
+  overflow: hidden;
+  padding: 20px 20px 80px 20px;
+  background-color: #fefafe;
+  border-radius: 4px;
+  z-index: 3;
+  -webkit-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
+  -moz-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
+  box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
 }

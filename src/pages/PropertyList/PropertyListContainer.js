@@ -18,8 +18,6 @@ const PropertyListContainer = ({
     fetchAllPropertiesListRequest();
   }, []);
 
-  console.log(propertyData);
-
   const history = useHistory();
 
   const propertyClickThrough = property => {

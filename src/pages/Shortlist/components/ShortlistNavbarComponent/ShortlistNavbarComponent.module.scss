@@ -1,17 +1,45 @@
 .shortlistComponentNavbar {
   display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  border: 1px solid red;
-  text-align: center;
-  position: relative;
+  width: 100%;
+  height: 65px;
+  margin-bottom: 20px;
+  background-color: rgba(89, 22, 212, 1);
+  background-image: url('../../../../assets/img/dark-matter.png');
+  border-radius: 6px;
+  padding: 0 10px;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+  box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+  border: 1px solid #4D13B5;
 
-  svg {
-    position: relative;
-    font-size: 24px;
-    left: 10px;
-    bottom: 2px;
+  .titleSpan {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    h1 {
+      font-size: 36px;
+      color: white;
+    }
+
+    svg {
+      font-size: 26px;
+      color: white;
+      position: relative;
+      bottom: 3px;
+      margin-left: 8px;
+    }
+  }
+
+  .imageSpan {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    height: 100%;
+
+    img {
+      height: 80%;
+      width: auto;
+    }
   }
 }
