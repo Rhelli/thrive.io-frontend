@@ -7,8 +7,9 @@
   padding: 10px 20px;
   
   h2 {
+    font-size: 26px;
     width: 100%;
-    text-align: left;
+    text-align: center;
     margin-bottom: 20px;
   }
 
@@ -18,13 +19,15 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    background-color: #6619F2;
+    border-radius: 4px;
 
     div {
       display: flex;
       flex-flow: row nowrap;
       justify-content: center;
       width: 100%;
-      border: 1px solid blue;
+      border-radius: 4px;
 
       span {
         display: flex;
@@ -33,19 +36,24 @@
         justify-content: center;
         width: 50%;
         height: 100px;
-        border: 1px solid red;
+        background-color: #8C53F5;
+        border-radius: 4px;
+        margin: 1px;
 
         svg {
           font-size: 32px;
+          color: white;
         }
 
         h4 {
           margin: 10px 0 2px 0;
           font-size: 16px;
+          color: white;
         }
 
         p {
           font-size: 14px;
+          color: white;
         }
 
         .greenText,

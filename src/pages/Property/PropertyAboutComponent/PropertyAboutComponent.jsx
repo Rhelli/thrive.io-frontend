@@ -7,15 +7,17 @@ const PropertyAboutComponent = ({ singleProperty }) => {
 
   return (
     <div className={styles.propertyAboutContainer}>
-      <h2>About</h2>
-      <div className={styles.propertyAboutTitleBlurb}>
-        <h3>
-          {title}
-        </h3>
-        <div className={styles.propertyAboutBlurb}>
-          <p>
-            {blurb}
-          </p>
+      <div className={styles.propertyAboutInnerContainer}>
+        <h2>About</h2>
+        <div className={styles.propertyAboutTitleBlurb}>
+          <h3>
+            {title}
+          </h3>
+          <div className={styles.propertyAboutBlurb}>
+            <p>
+              {blurb}
+            </p>
+          </div>
         </div>
       </div>
     </div>

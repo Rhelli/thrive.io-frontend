@@ -5,6 +5,9 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  background-color: #ECE2FD;
+  background-image: url('../../../assets/img/inspiration-geometry.png');
+  border-bottom: 3px solid #C6A9FA;
 }
 
 .shortlistButton,
@@ -25,6 +28,7 @@
 
   svg {
     font-size: 20px;
+    color: white;
   }
 
   p {
@@ -53,7 +57,7 @@
   p {
     display: inline-block;
   }
-  background-color: rgba(200, 200, 250, 0.4);
+  background-color: rgba(200, 200, 250, 0.8);
 }
 
 .propertyImageInnerContainer {
@@ -63,5 +67,4 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  border: 1px solid red;
 }
