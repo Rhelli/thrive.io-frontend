@@ -5,7 +5,7 @@ import styles from './ManagePropertiesLandlordInfoComponent.module.scss';
 
 const ManagePropertiesLandlordInfoComponent = ({ managedProperties }) => (
   <div className={styles.managedPropertiesInfoContainer}>
-    <span>
+    <span className={styles.managedProperties}>
       <h4>{managedProperties.length}</h4>
       <p>Properties</p>
     </span>
@@ -20,7 +20,7 @@ const ManagePropertiesLandlordInfoComponent = ({ managedProperties }) => (
       <h4>{managedProperties.length ? availableRooms(managedProperties) : 0}</h4>
       <p>Free Rooms</p>
     </span>
-    <span>
+    <span className={styles.likesInfo}>
       <h4>{propertyLikesGen(managedProperties)}</h4>
       <p>New Likes</p>
     </span>

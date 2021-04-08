@@ -43,7 +43,7 @@ const HomePageContainer = ({
   if (userType === 'Looking') {
     const { userProfile } = profileStore;
     return profileStore.loading ? (
-      <h2>Homepage Looking - Loading. Please Wait...</h2>
+      null
     ) : profileStore.error ? (
       <h2>An Error Occurred. Please try again later.</h2>
     ) : userProfile.userType === 'Looking' ? (
@@ -59,7 +59,7 @@ const HomePageContainer = ({
         />
       </div>
     ) : (
-      <h2>No user profile detected.</h2>
+      null
     );
   }
   if (userType === 'Advertising') {
