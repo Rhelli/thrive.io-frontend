@@ -25,8 +25,6 @@ const HomePageContainer = ({
   const { user } = authStore;
   const history = useHistory();
 
-  console.log(propertyStore);
-
   useLayoutEffect(() => {
     if (userType === 'Looking') {
       fetchUserProfileApiRequest();

@@ -18,7 +18,7 @@ const LandlordHomepageStatsComponent = ({ managedProperties }) => {
   return (
     <div className={styles.landlordHomepageContainer}>
       <div className={styles.freeRoomsRow}>
-        <span className={styles.rowIcon}>
+        <span className={styles.roomsIcon}>
           <FontAwesomeIcon icon={faBed} />
         </span>
         {
@@ -51,7 +51,7 @@ const LandlordHomepageStatsComponent = ({ managedProperties }) => {
         }
       </div>
       <div className={styles.monthlyEarningsRow}>
-        <span className={styles.rowIcon}>
+        <span className={styles.incomeIcon}>
           <FontAwesomeIcon icon={faMoneyBillWaveAlt} />
         </span>
         {
@@ -92,7 +92,7 @@ const LandlordHomepageStatsComponent = ({ managedProperties }) => {
         }
       </div>
       <div className={styles.likesRow}>
-        <span className={styles.rowIcon}>
+        <span className={styles.likesIcon}>
           <FontAwesomeIcon icon={faStar} />
         </span>
         {
