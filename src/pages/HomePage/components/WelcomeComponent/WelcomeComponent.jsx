@@ -8,7 +8,7 @@ const WelcomeComponent = ({ userProfile }) => {
   const { name } = userProfile;
 
   return (
-    <div className={styles.welcomeComponentContainer}>
+    <header className={styles.welcomeComponentContainer}>
       <div className={styles.welcomeBackMessage}>
         <h3>
           {timeOfDayGreeting()}
@@ -20,7 +20,7 @@ const WelcomeComponent = ({ userProfile }) => {
       <div className={styles.welcomeLogoContainer}>
         <img alt="logo" src={tLogo} />
       </div>
-    </div>
+    </header>
   );
 };
 

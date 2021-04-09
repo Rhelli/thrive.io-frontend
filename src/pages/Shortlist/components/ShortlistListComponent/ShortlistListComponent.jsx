@@ -1,16 +1,15 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faTrashAlt, faMapMarkerAlt, faBed, faUsers, faBriefcase,
+  faTrashAlt, faBed, faUsers, faBriefcase,
 } from '@fortawesome/free-solid-svg-icons';
 import { occupationShorthand } from '../../../../utils/managePropertiesUtils';
 import styles from './ShortlistListComponent.module.scss';
 
 const ShortlistListComponent = ({ property, removeShortlistedPropertyClick }) => {
   const {
-    title, address, town, price, roomCount, occupantCount, occupations,
+    title, price, roomCount, occupantCount, occupations,
   } = property;
 
   return (

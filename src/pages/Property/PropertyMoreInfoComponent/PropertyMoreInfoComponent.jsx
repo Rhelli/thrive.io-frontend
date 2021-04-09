@@ -1,19 +1,16 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faMapMarkerAlt, faBox, faInfoCircle, faUsers, faTimesCircle,
+  faMapMarkerAlt, faInfoCircle, faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import PropertyMoreInfoGrid from '../../../common/PropertyMoreInfoGrid/PropertyMoreInfoGrid';
 import styles from './PropertyMoreInfoComponent.module.scss';
 
 const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) => {
   const {
-    address, town, postcode, bills, furnished, internet,
-    outsideArea, pets, smoking, disabledAccess,
+    address, town, postcode,
   } = singleProperty;
 
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
@@ -28,7 +25,6 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
   };
 
   const [locationModal, setLocationModal] = useState(false);
-  const [includedModal, setIncludedModal] = useState(false);
   const [moreInfoModal, setMoreInfoModal] = useState(false);
 
   return (
@@ -128,18 +124,8 @@ PropertyMoreInfoComponent.propTypes = {
     disabledAccess: PropTypes.string,
   }).isRequired,
   singlePropertyLocation: PropTypes.shape({
-    results: PropTypes.shape([
-      PropTypes.shape({
-        locations: PropTypes.shape([
-          PropTypes.shape({
-            displayLatLng: PropTypes.shape({
-              lat: PropTypes.number.isRequired,
-              lng: PropTypes.number.isRequired,
-            }),
-          }),
-        ]),
-      }),
-    ]),
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
   }).isRequired,
 };
 

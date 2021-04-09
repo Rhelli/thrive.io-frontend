@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -110,6 +108,9 @@ PropertyContainer.propTypes = {
   }).isRequired,
   userProfile: PropTypes.shape({
     userType: PropTypes.string.isRequired,
+    shortlistedProperties: PropTypes.arrayOf(
+      PropTypes.object,
+    ).isRequired,
   }).isRequired,
   fetchSingleProperty: PropTypes.func.isRequired,
   createShortlistedProperty: PropTypes.func.isRequired,

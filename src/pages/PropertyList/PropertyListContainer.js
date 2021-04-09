@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import React, { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';

@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import { useHistory } from 'react-router-dom';
 import styles from './LookingHomepageSuggestedComponent.module.scss';
 
 const LookingHomepageSuggestedComponent = ({ userProfile, handlePropertyNavigation }) => {
@@ -71,6 +68,15 @@ const LookingHomepageSuggestedComponent = ({ userProfile, handlePropertyNavigati
       </div>
     </div>
   );
+};
+
+LookingHomepageSuggestedComponent.propTypes = {
+  userProfile: PropTypes.shape({
+    suggestedProperties: PropTypes.arrayOf(
+      PropTypes.object,
+    ).isRequired,
+  }).isRequired,
+  handlePropertyNavigation: PropTypes.func.isRequired,
 };
 
 export default LookingHomepageSuggestedComponent;
