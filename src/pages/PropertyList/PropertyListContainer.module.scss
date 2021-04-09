@@ -10,9 +10,9 @@
   background-color: #fefafe;
   border-radius: 4px;
   z-index: 3;
-  -webkit-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
-  -moz-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
-  box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
+  -webkit-box-shadow: inset 0 0 3px 0 rgba(48, 48, 48, 1);
+  -moz-box-shadow: inset 0 0 3px 0 rgba(48, 48, 48, 1);
+  box-shadow: inset 0 0 3px 0 rgba(48, 48, 48, 1);
 
   .brandingHeader {
     display: flex;
@@ -23,10 +23,10 @@
     background-image: url('../../assets/img/dark-matter.png');
     border-radius: 6px;
     padding: 0 10px;
-    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-    -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-    box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-    border: 1px solid #4D13B5;
+    -webkit-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+    -moz-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+    box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+    border: 1px solid #4d13b5;
 
     .titleSpan {
       display: flex;
@@ -35,7 +35,7 @@
 
       h1 {
         font-size: 36px;
-        color: #ECE2FD;
+        color: #ece2fd;
       }
     }
 

@@ -2,7 +2,6 @@
   width: 100%;
   padding: 40px 0 80px 0;
   display: flex;
-  width: 100%;
   justify-content: center;
   align-items: center;
   background-image: url('../../../../assets/img/inspiration-geometry.png');
@@ -10,7 +9,7 @@
 
   button {
     width: 180px;
-    background-color: #B71C1C;
+    background-color: #b71c1c;
     height: 60px;
     border: none;
     border-radius: 6px;
@@ -54,10 +53,11 @@
 
       .modalMessage {
         margin-bottom: 20px;
-        background-color: #FAC6A9;
+        background-color: #fac6a9;
         padding: 10px;
         border-radius: 6px;
-        border: 1px solid #F58C53;
+        border: 1px solid #f58c53;
+
         p {
           font-size: 18px;
           line-height: 120%;
@@ -76,18 +76,19 @@
           width: 200px;
           outline: none;
           border: none;
-          background-color: #B71C1C;
+          background-color: #b71c1c;
           font-size: 18px;
           border-radius: 6px;
         }
       }
     }
+
     .modalClose {
       color: #aaa;
       position: absolute;
       top: 10px;
       right: 10px;
-    
+
       svg {
         font-size: 28px;
       }

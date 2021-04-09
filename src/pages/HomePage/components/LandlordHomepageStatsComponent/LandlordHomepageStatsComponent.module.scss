@@ -13,7 +13,7 @@
     height: 80px;
     width: 100%;
     margin-bottom: 12px;
-    background-color: #D9C6FC;
+    background-color: #d9c6fc;
     border-radius: 6px;
 
     .roomsIcon,
@@ -26,9 +26,9 @@
       height: 80px;
       margin-right: 10px;
       background-image: url('../../../../assets/img/dark-matter.png');
-      -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-      -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-      box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+      -webkit-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+      -moz-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+      box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
       border-radius: 6px;
 
       svg {
@@ -38,18 +38,18 @@
     }
 
     .roomsIcon {
-      background-color: #B5132A;
-      border: 1px solid #880E1F;
+      background-color: #b5132a;
+      border: 1px solid #880e1f;
     }
 
     .incomeIcon {
-      background-color: #66BB6A;
-      border: 1px solid #59A45D;
+      background-color: #66bb6a;
+      border: 1px solid #59a45d;
     }
 
     .likesIcon {
-      background-color: #26E4C9;
-      border: 1px solid #21C8B0;
+      background-color: #26e4c9;
+      border: 1px solid #21c8b0;
     }
 
     .rowInfo {

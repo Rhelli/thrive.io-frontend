@@ -12,15 +12,15 @@
   p {
     font-size: 18px;
     text-align: center;
-    border-bottom: 2px solid #F58C53;
+    border-bottom: 2px solid #f58c53;
     padding: 20px 0 10px 0;
   }
 
   .textInput {
     width: 100%;
-    background-color: #FDECE2;
+    background-color: #fdece2;
     border-radius: 4px;
-    border-bottom: 6px solid #F58C53;
+    border-bottom: 6px solid #f58c53;
     margin-bottom: 14px;
 
     label {
@@ -40,7 +40,7 @@
         height: 40px;
         border-radius: 6px;
         outline: none;
-        border: 1px solid #F26619;
+        border: 1px solid #f26619;
         padding: 10px;
       }
 
@@ -57,9 +57,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    background-color: #FDECE2;
+    background-color: #fdece2;
     border-radius: 4px;
-    border-bottom: 6px solid #F58C53;
+    border-bottom: 6px solid #f58c53;
     margin-bottom: 14px;
 
     h3 {
@@ -75,18 +75,18 @@
 
       input[type="radio"]:checked ~ label {
         color: #fff;
-      
-        &:before {
+
+        &::before {
           transform: translate(-50%, -50%) scale3d(56, 56, 1);
           opacity: 1;
         }
-      
-        &:after {
-          background-color: #54E0C7;
-          border-color: #54E0C7;
+
+        &::after {
+          background-color: #54e0c7;
+          border-color: #54e0c7;
         }
       }
-    
+
       input[type="radio"] {
         width: 32px;
         height: 32px;
@@ -105,17 +105,16 @@
         display: block;
         padding: 12px 30px;
         width: 100%;
-        display: block;
         text-align: left;
-        color: #3C454C;
+        color: #3c454c;
         cursor: pointer;
         position: relative;
         z-index: 2;
         transition: color 200ms ease-in;
         overflow: hidden;
         border-radius: 4px;
-      
-        &:before {
+
+        &::before {
           width: 10px;
           height: 10px;
           border-radius: 50%;
@@ -125,16 +124,16 @@
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%) scale3d(1, 1, 1);
-          transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+          transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
           opacity: 0;
           z-index: -1;
         }
-      
-        &:after {
+
+        &::after {
           width: 32px;
           height: 32px;
           content: '';
-          border: 2px solid #D1D7DC;
+          border: 2px solid #d1d7dc;
           background-color: #fff;
           background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
           background-repeat: no-repeat;
@@ -164,8 +163,8 @@
       width: 230px;
       border: none;
       outline: none;
-      background-color: #8C53F5;
-      border-bottom: 6px solid #7936F4;
+      background-color: #8c53f5;
+      border-bottom: 6px solid #7936f4;
       border-radius: 4px;
       font-size: 20px;
       color: white;
@@ -174,7 +173,7 @@
       &:focus,
       &:active {
         border: none;
-        background-color: #7936F4;
+        background-color: #7936f4;
         transition-duration: 0.15s;
       }
     }

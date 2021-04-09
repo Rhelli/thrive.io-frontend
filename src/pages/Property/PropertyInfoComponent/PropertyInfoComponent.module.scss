@@ -6,7 +6,7 @@
 }
 
 .propertyInfoInnerContainer {
-  background-color: #C6A9FA;
+  background-color: #c6a9fa;
   border-radius: 4px;
 }
 
@@ -21,6 +21,7 @@
     position: relative;
     top: 2px;
     margin-left: 5px;
+
     p {
       font-size: 12px;
     }
@@ -44,8 +45,8 @@
   .roomCount {
     font-size: 14px;
     padding: 10px 8px;
-    background-color: #F4C6FC;
-    border-left: 3px solid #D936F4;
+    background-color: #f4c6fc;
+    border-left: 3px solid #d936f4;
     border-radius: 4px;
     margin-bottom: 10px;
   }
@@ -53,14 +54,14 @@
 
 .propertyInfoOccupations {
   padding: 10px;
-  background-color: #B38CF8;
-  border-top: 2px solid #9F6FF7;
+  background-color: #b38cf8;
+  border-top: 2px solid #9f6ff7;
 }
 
 .propertyInfoGenders {
   padding: 10px 10px 20px 10px;
-  background-color: #B38CF8;
-  border-bottom: 6px solid #8C53F5;
+  background-color: #b38cf8;
+  border-bottom: 6px solid #8c53f5;
 
   .propertyInfoGendersInnerContainer {
     display: flex;

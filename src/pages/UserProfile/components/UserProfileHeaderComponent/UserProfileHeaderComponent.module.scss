@@ -6,14 +6,14 @@
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  border-bottom: 1px solid #F76F83;
+  border-bottom: 1px solid #f76f83;
   background-image: url('../../../../assets/img/inspiration-geometry.png');
 
   .userProfileSettings {
     position: absolute;
     top: 5px;
     right: 5px;
-    
+
     button {
       border: none;
       outline: none;
@@ -37,11 +37,11 @@
     position: relative;
     bottom: -20%;
     border-radius: 50%;
-    background-color: #B38CF8;
+    background-color: #b38cf8;
     z-index: 3;
-    border: 1px solid #9F6FF7;
-    -webkit-box-shadow: 0px 1px 3px 1px rgba(48,48,48,1);
-    -moz-box-shadow: 0px 1px 3px 1px rgba(48,48,48,1);
-    box-shadow: 0px 1px 3px 1px rgba(48,48,48,1);
+    border: 1px solid #9f6ff7;
+    -webkit-box-shadow: 0 1px 3px 1px rgba(48, 48, 48, 1);
+    -moz-box-shadow: 0 1px 3px 1px rgba(48, 48, 48, 1);
+    box-shadow: 0 1px 3px 1px rgba(48, 48, 48, 1);
   }
 }

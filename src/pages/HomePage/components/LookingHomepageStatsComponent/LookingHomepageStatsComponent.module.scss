@@ -17,12 +17,12 @@
       width: 80px;
       justify-content: center;
       align-items: center;
-      background-color: #26E4C9;
+      background-color: #26e4c9;
       background-image: url('../../../../assets/img/dark-matter.png');
-      -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-      -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-      box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-      border: 1px solid #33D5BE;
+      -webkit-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+      -moz-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+      box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+      border: 1px solid #33d5be;
       border-radius: 6px;
       margin-right: 10px;
       margin-bottom: auto;
@@ -39,9 +39,9 @@
       flex-flow: column nowrap;
       width: 75%;
 
-
       .shortlistTitle {
         padding: 10px 0;
+
         h3 {
           font-size: 18px;
         }
@@ -64,10 +64,10 @@
             font-size: 16px;
             text-align: center;
             padding: 4px 8px;
-            background-color: #ECE2FD;
+            background-color: #ece2fd;
             border-top-left-radius: 6px;
             border-top-right-radius: 6px;
-            border-top: 1px solid #FAE2FD;
+            border-top: 1px solid #fae2fd;
             outline: none;
 
             button {
@@ -93,13 +93,13 @@
             }
 
             .shortlistItemTown {
-              background-color: #C6A9FA;
+              background-color: #c6a9fa;
               border-bottom-left-radius: 2px;
             }
 
             .shortlistItemDate {
-              background-color: #D9C6FC;
-              border-bottom-left-radius: 2px;;
+              background-color: #d9c6fc;
+              border-bottom-left-radius: 2px;
             }
           }
         }
@@ -121,16 +121,16 @@
         width: 80px;
         justify-content: center;
         align-items: center;
-        background-color: #B5132A;
+        background-color: #b5132a;
         background-image: url('../../../../assets/img/dark-matter.png');
-        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-        -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
-        box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+        -webkit-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+        -moz-box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
+        box-shadow: inset 0 0 5px 0 rgba(48, 48, 48, 1);
         border: 1px solid #971023;
         border-radius: 6px;
         margin-right: 10px;
         margin-bottom: auto;
-  
+
         svg {
           color: white;
           font-size: 48px;
@@ -149,11 +149,11 @@
           line-height: 20px;
           margin-bottom: 4px;
         }
-  
+
         p {
           text-align: center;
           font-size: 14px;
-          background-color: #ECE2FD;
+          background-color: #ece2fd;
           border-top-right-radius: 6px;
           border-top-left-radius: 6px;
         }
@@ -170,12 +170,12 @@
         }
 
         .toComplete {
-          background-color: #C6A9FA;
+          background-color: #c6a9fa;
           border-bottom-left-radius: 2px;
         }
 
         .completionList {
-          background-color: #D9C6FC;
+          background-color: #d9c6fc;
           border-bottom-right-radius: 2px;
         }
       }
