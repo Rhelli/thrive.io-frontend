@@ -1,24 +1,30 @@
 .profileSettingsButtonsContainer {
-  border: 1px solid red;
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
   align-items: flex-start;
 
-  h3 {
-    border: 1px solid yellow;
+  h2 {
     padding: 15px 0;
     width: 100%;
+    margin-bottom: 20px;
   }
 
   button {
     display: flex;
     flex-flow: row nowrap;
-    padding: 15px 5px;
+    align-items: center;
+    padding: 15px 20px;
+    height: 50px;
     width: 100%;
     outline: none;
     border: none;
-    border-bottom: 1px solid grey;
+    margin-bottom: 15px;
+    background-color: #FAC6A9;
+    border-radius: 4px;
+    border-bottom: 5px solid #F79F6F;
+    font-size: 16px;
+    transition-duration: 0.2s;
 
     span:last-child {
       margin-left: auto;
@@ -32,7 +38,14 @@
 
     .emailPlaceholder {
       margin-left: auto;
-      color: grey;
+      color: #B54D13;
+    }
+
+    &:focus,
+    &:active {
+      background-color: #F79F6F;
+      border: none;
+      transition-duration: 0.15s;
     }
   }
 }

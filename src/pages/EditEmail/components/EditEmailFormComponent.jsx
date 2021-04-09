@@ -10,7 +10,7 @@ const EditEmailFormComponent = ({
   return (
     <div className={styles.editEmailFormContainer}>
       <form onSubmit={event => handleEmailUpdate(event)}>
-        <div className={styles.editEmailRow}>
+        <div className={styles.textInput}>
           <label htmlFor="email">
             <h3>Your Email Address</h3>
             <input id="email" type="email" defaultValue={email} />

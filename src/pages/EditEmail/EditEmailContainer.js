@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
 import { updateCurrentUserEmailApiRequest } from '../../api/profileSettingsApi';
 import EditEmailFormComponent from './components/EditEmailFormComponent';
+import styles from './EditEmailContainer.module.scss';
 
 const EditEmailContainer = ({ userProfile, updateCurrentUserEmailApiRequest }) => {
   const history = useHistory();
@@ -17,7 +18,7 @@ const EditEmailContainer = ({ userProfile, updateCurrentUserEmailApiRequest }) =
   };
 
   return (
-    <div>
+    <div className={styles.editEmailContainer}>
       <ProfileSettingsNavbar handleBackButtonClick={handleBackButtonClick} />
       <EditEmailFormComponent
         userProfile={userProfile}
