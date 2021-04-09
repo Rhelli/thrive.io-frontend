@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -23,7 +22,6 @@ const HomePageContainer = ({
   propertyStore, authStore, fetchSingleProperty, fetchPropertyLocation,
 }) => {
   const { userType } = authStore.user;
-  const { advertiserType } = authStore.user;
   const { managedProperties } = propertyStore;
   const { user } = authStore;
   const history = useHistory();
@@ -73,14 +71,16 @@ const HomePageContainer = ({
   }
   if (userType === 'Advertising') {
     return propertyStore.loading ? (
-      <h2>Homepage  Advertising - Loading. Please Wait...</h2>
+      <Loader
+        type="ThreeDots"
+        color="white"
+        height={80}
+        width={80}
+        className={styles.loader}
+      />
     ) : propertyStore.error ? (
-      <h2>An Error Occurred. Please try again later.</h2>
-    ) : userType === 'Advertising' && advertiserType === 'Flatmate' ? (
-      <div>
-        <WelcomeComponent userProfile={user} />
-      </div>
-    ) : userType === 'Advertising' && advertiserType === 'Landlord' ? (
+      <LoadingErrorMessageComponent message={profileStore.error} />
+    ) : userType === 'Advertising' ? (
       <div className={styles.landlordHomepageContainer}>
         <WelcomeComponent userProfile={user} />
         <LandlordHomepageComponent managedProperties={managedProperties} />

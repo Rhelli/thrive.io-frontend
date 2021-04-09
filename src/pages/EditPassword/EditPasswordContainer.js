@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
-import EditPasswordFormComponent from './components/EditPasswordFormComponent';
+import EditPasswordFormComponent from './components/EditPasswordFormComponent/EditPasswordFormComponent';
 import { updateCurrentUserPasswordApiRequest } from '../../api/profileSettingsApi';
 import styles from './EditPasswordContainer.module.scss';
 

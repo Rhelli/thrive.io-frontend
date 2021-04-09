@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import EditPasswordConfirmationModal from './EditPasswordConfirmationModal';
+import EditPasswordConfirmationModal from '../EditPasswordConfirmationModal/EditPasswordConfirmationModal';
 import styles from './EditPasswordFormComponent.module.scss';
 
 const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
@@ -9,8 +8,6 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [newPassword, setNewPassword] = useState(null);
   const [newPasswordConfirm, setNewPasswordConfirm] = useState(null);
-  console.log(newPassword);
-  console.log(newPasswordConfirm);
 
   const changePassword = event => setNewPassword(event.target.value);
   const changePasswordConfirm = event => setNewPasswordConfirm(event.target.value);

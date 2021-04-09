@@ -2,13 +2,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const PublicRoute = ({
   component: Component, restricted, authInfo, ...rest
 }) => {
   const { signedIn, loading } = authInfo;
 
-  return !loading ? (
+  return loading ? (
+    <Loader
+      type="ThreeDots"
+      color="white"
+      height={80}
+      width={80}
+    />
+  ) : (
     <Route
       {...rest}
       render={props => (
@@ -19,8 +28,6 @@ const PublicRoute = ({
         )
       )}
     />
-  ) : (
-    <h2>Please wait.</h2>
   );
 };
 

@@ -2,16 +2,14 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import {
-  navbarReducer, userProfileReducer, profileSettingsReducer, propertyReducer,
-  quizReducer, flatmatesReducer, authReducer, shortlistReducer,
+  userProfileReducer, profileSettingsReducer, propertyReducer,
+  flatmatesReducer, authReducer, shortlistReducer,
 } from './index';
 
 const rootReducer = combineReducers({
-  navbarStore: navbarReducer,
   profileStore: userProfileReducer,
   profileSettingsStore: profileSettingsReducer,
   propertyStore: propertyReducer,
-  quizStore: quizReducer,
   shortlistStore: shortlistReducer,
   flatmateStore: flatmatesReducer,
   authStore: authReducer,

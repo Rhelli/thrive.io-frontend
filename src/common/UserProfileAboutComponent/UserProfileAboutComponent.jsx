@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { userGenderDisplay, arrayDisplay } from '../../utils/userProfileUtils';
 import styles from './UserProfileAboutComponent.module.scss';

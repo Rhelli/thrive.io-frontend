@@ -28,7 +28,7 @@ const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => (
       </p>
     </span>
     <span>
-      <h4>{propertyLikesGen(managedProperties[0])}</h4>
+      <h4>{propertyLikesGen(managedProperties)}</h4>
       <p>New Likes</p>
     </span>
   </div>

@@ -3,12 +3,12 @@
   flex-flow: column nowrap;
   width: 95%;
   height: auto;
-  overflow: hidden;
+  align-self: flex-start;
+  margin-top: 10px;
   padding: 20px 20px 0 20px;
   background-color: #fefafe;
   border-radius: 4px;
   z-index: 3;
-  margin-top: 10px;
   padding-bottom: 80px;
   -webkit-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);
   -moz-box-shadow: inset 0px 0px 3px 0px rgba(48,48,48,1);

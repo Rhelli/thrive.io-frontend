@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
-import EditProfileFormComponent from './components/EditProfileFormComponent';
+import EditProfileFormComponent from './components/EditProfileFormComponent/EditProfileFormComponent';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import {
   updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest,

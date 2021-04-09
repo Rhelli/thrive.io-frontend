@@ -1,10 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCaretUp, faCaretDown, faMars, faTransgender, faVenus, faTransgenderAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { flatmateDisplay, gendersDisplay } from '../../../utils/propertyProfileUtils';
 import styles from './PropertyInfoComponent.module.scss';
 

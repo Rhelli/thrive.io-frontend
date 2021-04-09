@@ -18,6 +18,7 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "no-nested-ternary": "off",
     "no-plusplus": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "no-shadow": "off",

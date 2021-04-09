@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './MobileNavbarContainer.module.scss';
-import SignInOutComponent from './components/SignInOutComponent';
-import MobileNavbarLinksComponent from './components/MobileNavbarLinksComponent';
+import SignInOutComponent from './components/SignInOutComponent/SignInOutComponent';
+import MobileNavbarLinksComponent from './components/MobileNavbarLinksComponent/MobileNavbarLinksComponent';
 
 const MobileNavbarContainer = ({ authInfo }) => (
   <div className={styles.mobileNavbarContainer}>

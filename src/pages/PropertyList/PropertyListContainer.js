@@ -1,11 +1,10 @@
-/* eslint-disable no-nested-ternary */
 import React, { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Loader from 'react-loader-spinner';
-import PropertyListItemComponent from './components/PropertyListItemComponent';
+import PropertyListItemComponent from './components/PropertyListItemComponent/PropertyListItemComponent';
 import LoadingErrorMessageComponent from '../../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { fetchAllPropertiesListRequest } from '../../api/propertiesApi';

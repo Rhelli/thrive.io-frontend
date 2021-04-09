@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-unused-vars */
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,7 +6,7 @@ import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import {
   selectInputDefaultGen, reactSelectOutputFormatter,
-} from '../../../utils/profileSettingsUtils';
+} from '../../../../utils/profileSettingsUtils';
 import styles from './EditProfileFormComponent.module.scss';
 
 const EditProfileFormComponent = ({
@@ -91,7 +87,7 @@ const EditProfileFormComponent = ({
     }
   };
 
-  const handleUserChangeWarningModalClose = event => {
+  const handleUserChangeWarningModalClose = () => {
     userTypeRef.current.click();
     setChangeUserWarningModal(false);
   };

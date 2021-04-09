@@ -55,6 +55,7 @@ export const deleteShortlistedProperty = property => dispatch => {
     .then(data => {
       if (!data.errors) {
         dispatch(deleteShortlistItemSuccess(data));
+        window.location.reload();
       } else {
         dispatch(deleteShortlistItemError(data));
       }
