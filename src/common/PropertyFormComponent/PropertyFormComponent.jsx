@@ -228,7 +228,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
           </label>
         </div>
 
-        <div className={styles.reactSelectInput}>
+        <div className={styles.reactSelectInputContainer}>
           <h3>Are There Any Outside Areas?</h3>
           <Select
             defaultValue={selectInputDefaultGen(singleProperty.outsideArea)}
@@ -304,7 +304,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
             <label htmlFor="anySmoking">Any</label>
           </span>
         </div>
-        <div className={styles.reactSelectInput}>
+        <div className={styles.reactSelectInputContainer}>
           <h3>Are There Any Pets?</h3>
           <Select
             defaultValue={selectInputDefaultGen(singleProperty.pets)}

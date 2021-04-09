@@ -3,24 +3,28 @@
   flex-flow: column nowrap;
   width: 100%;
   padding: 0 20px;
+}
+
+.propertyAboutInnerContainer {
+  background-color: #C6A9FA;
+  border-top: 6px solid #8C53F5;
 
   h2 {
     font-size: 26px;
     padding: 10px 0;
-    border: 1px solid red;
+    padding: 10px;
   }
 }
 
 .propertyAboutTitleBlurb {
+  background-color: #B38CF8;
   h3 {
     font-size: 20px;
     font-weight: 300;
-    padding: 10px 0;
-    border: 1px solid green;
+    padding: 10px;
   }
 
   .propertyAboutBlurb {
-    border: 1px solid magenta;
-    padding: 20px 0;
+    padding: 10px 10px 20px 10px;
   }
 }

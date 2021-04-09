@@ -4,12 +4,15 @@ import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import { createShortlistedProperty, deleteShortlistedProperty } from '../../api/shortlistApi';
 import { shortlistedPropertyIdGen } from '../../utils/propertyProfileUtils';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import PropertyInfoComponent from './PropertyInfoComponent/PropertyInfoComponent';
 import PropertyImageComponent from './PropertyImageComponent/PropertyImageComponent';
 import PropertyAboutComponent from './PropertyAboutComponent/PropertyAboutComponent';
 import PropertyMoreInfoComponent from './PropertyMoreInfoComponent/PropertyMoreInfoComponent';
+import LoadingErrorMessageComponent from '../../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
 import styles from './PropertyContainer.module.scss';
 
@@ -40,9 +43,15 @@ const PropertyContainer = ({
 
   return (
     propertyData.loading || Object.keys(propertyData.singlePropertyLocation).length === 0 ? (
-      <p>Wait a sec.</p>
+      <Loader
+        type="ThreeDots"
+        color="white"
+        height={80}
+        width={80}
+        className={styles.loader}
+      />
     ) : propertyData.error ? (
-      <p>Wait a million years</p>
+      <LoadingErrorMessageComponent message={propertyData.error} />
     ) : (
       <div className={styles.propertyContainer}>
         {

@@ -4,7 +4,10 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import Loader from 'react-loader-spinner';
 import PropertyListItemComponent from './components/PropertyListItemComponent';
+import LoadingErrorMessageComponent from '../../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { fetchAllPropertiesListRequest } from '../../api/propertiesApi';
 import fetchPropertyLocation from '../../api/locationApi';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
@@ -18,8 +21,6 @@ const PropertyListContainer = ({
     fetchAllPropertiesListRequest();
   }, []);
 
-  console.log(propertyData);
-
   const history = useHistory();
 
   const propertyClickThrough = property => {
@@ -31,12 +32,16 @@ const PropertyListContainer = ({
 
   return propertyData.loading ? (
     <div>
-      <h1>Data Loading...</h1>
+      <Loader
+        type="ThreeDots"
+        color="white"
+        height={80}
+        width={80}
+        className={styles.loader}
+      />
     </div>
   ) : propertyData.error ? (
-    <div>
-      <h1>{propertyData.error}</h1>
-    </div>
+    <LoadingErrorMessageComponent message={propertyData.error.message} />
   ) : (
     <div className={styles.propertyListContainer}>
       <div className={styles.brandingHeader}>

@@ -1,7 +1,6 @@
 export { default as UserListContainer } from './Flatmates/FlatmatesListContainer';
 export { default as SignUpContainer } from './SignUp/SignUpContainer';
 export { default as SignInContainer } from './SignIn/SignInContainer';
-export { default as QuizContainer } from './Quiz/QuizContainer';
 export { default as PropertyListContainer } from './PropertyList/PropertyListContainer';
 export { default as PropertyContainer } from './Property/PropertyContainer';
 export { default as ProfileSettingsContainer } from './ProfileSettings/ProfileSettingsContainer';

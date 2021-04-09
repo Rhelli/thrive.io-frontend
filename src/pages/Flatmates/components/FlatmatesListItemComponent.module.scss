@@ -85,24 +85,10 @@
       }
     }
 
-    .occupation {
-      border-top: 1px solid #FAA9B4;
-      background-color: #F88C9B;
-    }
-
-    .gender {
-      border-top: 1px solid #F88C9B;
-      background-color: #F76F83;
-    }
-
-    .budget {
-      border-top: 1px solid #F76F83;
-      background-color: #F5536A;
-    }
-
+    .gender,
+    .budget,
     .couple {
-      border-top: 1px solid #F5536A;
-      background-color: #F43651;
+      background-color: #F88192;
     }
   }
 }

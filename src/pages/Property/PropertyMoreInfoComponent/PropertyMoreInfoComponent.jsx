@@ -46,12 +46,6 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
           </button>
           <p>More Info</p>
         </div>
-        <div className={styles.matchButton}>
-          <button type="button">
-            <FontAwesomeIcon icon={faUsers} />
-          </button>
-          <p>Match</p>
-        </div>
       </div>
       <div className={styles.propertyMoreInfoModalsContainer}>
         {
@@ -77,17 +71,19 @@ const PropertyMoreInfoComponent = ({ singleProperty, singlePropertyLocation }) =
                 <div className={styles.locationAddressContainer}>
                   <div>
                     <h3>Address</h3>
-                    <p>
-                      {address}
-                      ,
-                    </p>
-                    <p>
-                      {town}
-                      ,
-                    </p>
-                    <p>
-                      {postcode}
-                    </p>
+                    <div className={styles.address}>
+                      <p>
+                        {address}
+                        ,
+                      </p>
+                      <p>
+                        {town}
+                        ,
+                      </p>
+                      <p>
+                        {postcode}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

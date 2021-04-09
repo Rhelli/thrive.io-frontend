@@ -8,7 +8,7 @@ const ProfileSettingsButtonsComponent = ({
   handleEditProfileClick, handleChangePasswordClick, handleChangeEmailClick, email,
 }) => (
   <div className={styles.profileSettingsButtonsContainer}>
-    <h3>Account Settings</h3>
+    <h2>Account Settings</h2>
     <button type="button" onClick={handleEditProfileClick} onKeyUp={handleEditProfileClick}>
       <span>
         <p>Edit Profile</p>

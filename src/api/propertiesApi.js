@@ -23,10 +23,12 @@ export const fetchAllPropertiesListRequest = () => dispatch => {
     .then(data => {
       if (!data.error) {
         dispatch(fetchAllPropertiesSuccess(data));
+      } else {
+        dispatch(fetchAllPropertiesError(data.error));
       }
     })
     .catch(error => {
-      dispatch(fetchAllPropertiesError(error.messages));
+      dispatch(fetchAllPropertiesError(error));
     });
 };
 

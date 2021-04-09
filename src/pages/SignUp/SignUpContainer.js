@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createUserRequest } from '../../api/authApi';
-import SignUpQuizComponent from './components/SignUpQuizComponent';
+import SignUpFormComponent from './components/SignUpFormComponent/SignUpFormComponent';
+import SignInUpBrandingHeaderComponent from '../../common/SignInUpBrandingHeaderComponent/SignInBrandingHeaderComponent';
+import styles from './SignUpContainer.module.scss';
 
 const SignUpContainer = ({ createUserRequest, authInfo }) => {
   const { signedIn } = authInfo;
@@ -21,8 +23,9 @@ const SignUpContainer = ({ createUserRequest, authInfo }) => {
   };
 
   return (
-    <div>
-      <SignUpQuizComponent handleUserCreation={handleUserCreation} />
+    <div className={styles.signUpContainer}>
+      <SignInUpBrandingHeaderComponent />
+      <SignUpFormComponent handleUserCreation={handleUserCreation} />
     </div>
   );
 };

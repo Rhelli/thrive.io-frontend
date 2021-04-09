@@ -1,8 +1,9 @@
 .profileSettingsContainer {
   display: flex;
-  width: 100%;
+  width: 95%;
   flex-flow: column nowrap;
   align-items: center;
   padding: 20px;
-  border: 1px solid red;
+  background-color: white;
+  z-index: 4;
 }

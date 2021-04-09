@@ -1,11 +1,13 @@
 .userProfileImageContainer {
   display: flex;
+  flex-flow: row nowrap;
   width: 100%;
   height: 200px;
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  border: 1px solid red;
+  border-bottom: 1px solid #F76F83;
+  background-image: url('../../../../assets/img/inspiration-geometry.png');
 
   .userProfileSettings {
     position: absolute;
@@ -35,8 +37,11 @@
     position: relative;
     bottom: -20%;
     border-radius: 50%;
-    border: 1px solid green;
-    background-color: green;
-    z-index: 1;
+    background-color: #B38CF8;
+    z-index: 3;
+    border: 1px solid #9F6FF7;
+    -webkit-box-shadow: 0px 1px 3px 1px rgba(48,48,48,1);
+    -moz-box-shadow: 0px 1px 3px 1px rgba(48,48,48,1);
+    box-shadow: 0px 1px 3px 1px rgba(48,48,48,1);
   }
 }

@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import SignInFormComponent from './components/SignInFormComponent';
+import SignInFormComponent from './components/SignInFormComponent/SignInFormComponent';
+import SignInBrandingHeaderComponent from '../../common/SignInUpBrandingHeaderComponent/SignInBrandingHeaderComponent';
 import { signInRequest } from '../../api/authApi';
+import styles from './SignInContainer.module.scss';
 
 const SignInContainer = ({ authInfo, signInRequest }) => (
-  <div>
+  <div className={styles.signInContainer}>
+    <SignInBrandingHeaderComponent />
     <SignInFormComponent
       signInRequest={signInRequest}
       authInfo={authInfo}

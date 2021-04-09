@@ -15,92 +15,93 @@ const PropertyInfoComponent = ({ singleProperty }) => {
 
   return (
     <div className={styles.propertyInfoContainer}>
-      <div className={styles.propertyInfoPrice}>
-        <span>
-          <h3>
-            £
-            {price}
-            {' '}
-            per Month
-          </h3>
-        </span>
-        <span>
-          <p>
-            (
-            +£
-            {deposit}
-            {' '}
-            deposit
+      <div className={styles.propertyInfoInnerContainer}>
+        <div className={styles.propertyInfoPrice}>
+          <span>
+            <h3>
+              £
+              {price}
+              {' '}
+              per Month
+            </h3>
+          </span>
+          <span>
+            <p>
+              (
+              +£
+              {deposit}
+              {' '}
+              deposit
+              )
+            </p>
+          </span>
+        </div>
+        <div className={styles.propertyInfoFirstRow}>
+          <span className={styles.ages}>
+            {
+            minAge === maxAge ? (
+              <p>
+                Ages:
+                {' '}
+                {minAge}
+                {' '}
+              </p>
+            ) : (
+              <p>
+                Ages:
+                {' '}
+                <FontAwesomeIcon icon={faCaretDown} />
+                {' '}
+                {minAge}
+                {' '}
+                -
+                {' '}
+                {maxAge}
+                {' '}
+                <FontAwesomeIcon icon={faCaretUp} />
+                {' '}
+              </p>
             )
-          </p>
-        </span>
-
-      </div>
-      <div className={styles.propertyInfoFirstRow}>
-        <span className={styles.ages}>
+          }
+          </span>
+          <span className={styles.flatmateCount}>
+            <p>
+              Flatmates:
+              {' '}
+              {occupantCount}
+            </p>
+          </span>
+          <span className={styles.roomCount}>
+            <p>
+              Rooms:
+              {' '}
+              {roomCount}
+            </p>
+          </span>
+        </div>
+        <div className={styles.propertyInfoOccupations}>
+          <p>{flatmateDisplay(occupations) }</p>
+        </div>
+        <div className={styles.propertyInfoGenders}>
           {
-          minAge === maxAge ? (
-            <p>
-              Ages:
-              {' '}
-              {minAge}
-              {' '}
-            </p>
+          gendersDisplay(genders)[1] ? (
+            <div className={styles.propertyInfoGendersInnerContainer}>
+              <span>
+                <FontAwesomeIcon icon={gendersDisplay(genders)[1]} />
+              </span>
+              <span>
+                <p>
+                  {gendersDisplay(genders)[0]}
+                </p>
+              </span>
+            </div>
           ) : (
-            <p>
-              Ages:
-              {' '}
-              <FontAwesomeIcon icon={faCaretDown} />
-              {' '}
-              {minAge}
-              {' '}
-              -
-              {' '}
-              {maxAge}
-              {' '}
-              <FontAwesomeIcon icon={faCaretUp} />
-              {' '}
-            </p>
+            <div>
+              <p>{gendersDisplay(genders)[0]}</p>
+            </div>
           )
         }
-        </span>
-        <span className={styles.flatmateCount}>
-          <p>
-            Flatmates:
-            {' '}
-            {occupantCount}
-          </p>
-        </span>
-        <span className={styles.roomCount}>
-          <p>
-            Rooms:
-            {' '}
-            {roomCount}
-          </p>
-        </span>
-      </div>
-      <div className={styles.propertyInfoOccupations}>
-        <p>{flatmateDisplay(occupations) }</p>
-      </div>
-      <div className={styles.propertyInfoGenders}>
-        {
-        gendersDisplay(genders)[1] ? (
-          <div className={styles.propertyInfoGendersInnerContainer}>
-            <span>
-              <FontAwesomeIcon icon={gendersDisplay(genders)[1]} />
-            </span>
-            <span>
-              <p>
-                {gendersDisplay(genders)[0]}
-              </p>
-            </span>
-          </div>
-        ) : (
-          <div>
-            <p>{gendersDisplay(genders)[0]}</p>
-          </div>
-        )
-      }
+        </div>
       </div>
     </div>
   );

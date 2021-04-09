@@ -2,8 +2,7 @@
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  padding: 20px;
-  border: 1px solid blue;
+  margin-top: 10px;
 
   .freeRoomsRow,
   .monthlyEarningsRow,
@@ -11,22 +10,46 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    height: 100px;
+    height: 80px;
     width: 100%;
-    border: 1px solid green;
+    margin-bottom: 12px;
+    background-color: #D9C6FC;
+    border-radius: 6px;
 
-    .rowIcon {
+    .roomsIcon,
+    .incomeIcon,
+    .likesIcon {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 20%;
-      height: 100%;
+      width: 80px;
+      height: 80px;
       margin-right: 10px;
+      background-image: url('../../../../assets/img/dark-matter.png');
+      -webkit-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+      -moz-box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+      box-shadow: inset 0px 0px 5px 0px rgba(48,48,48,1);
+      border-radius: 6px;
 
       svg {
         font-size: 42px;
+        color: white;
       }
-      
+    }
+
+    .roomsIcon {
+      background-color: #B5132A;
+      border: 1px solid #880E1F;
+    }
+
+    .incomeIcon {
+      background-color: #66BB6A;
+      border: 1px solid #59A45D;
+    }
+
+    .likesIcon {
+      background-color: #26E4C9;
+      border: 1px solid #21C8B0;
     }
 
     .rowInfo {

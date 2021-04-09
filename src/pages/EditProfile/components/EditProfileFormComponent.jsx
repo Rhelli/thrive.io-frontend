@@ -59,8 +59,6 @@ const EditProfileFormComponent = ({
   const [areasOption, setAreasOption] = useState(areasLooking);
   const [dobOption, setDobOption] = useState(dob);
 
-  console.log(advertiserTypeOption);
-
   const changeName = event => setNameOption(event.target.value);
   const changeUserType = event => setUserTypeOption(event.target.value);
   const changeAdvertiserType = event => setAdvertiserTypeOption(event.target.value);
@@ -134,19 +132,19 @@ const EditProfileFormComponent = ({
         className={styles.editProfileForm}
         onSubmit={handleFormSubmission}
       >
-        <div className={styles.editProfileName}>
+        <div className={styles.textInput}>
           <label htmlFor="name">
             <h3>Your Name *</h3>
             <input id="name" type="text" defaultValue={name} onChange={event => changeName(event)} required />
           </label>
         </div>
-        <div className={styles.editProfileDob}>
+        <div className={styles.textInput}>
           <label htmlFor="age">
             <h3>Date Of Birth *</h3>
             <input id="dob" type="date" max="2003-03-03" defaultValue={dob} onChange={event => changeDob(event)} />
           </label>
         </div>
-        <div className={styles.editProfileAbout}>
+        <div className={`${styles.textInput} ${styles.aboutInput}`}>
           <label htmlFor="about">
             <h3>About You</h3>
             <textarea id="about" type="text" defaultValue={about} onChange={event => changeAbout(event)} />
@@ -155,7 +153,7 @@ const EditProfileFormComponent = ({
         {
           advertiserTypeOption === 'Looking' ? (
             <>
-              <div className={styles.editProfileBudget}>
+              <div className={styles.radioInput}>
                 <h3>Your Budget *</h3>
                 <span>
                   <label htmlFor="minBudget">Minimum</label>
@@ -166,7 +164,7 @@ const EditProfileFormComponent = ({
                   <input id="maxBudget" type="number" defaultValue={maxBudget} min={minBudgetOption} onChange={event => changeMaxBudget(event)} />
                 </span>
               </div>
-              <div className={styles.editProfileBudget}>
+              <div className={styles.radioInput}>
                 <h3>Your Budget *</h3>
                 <span>
                   <label htmlFor="minBudget">Minimum</label>
@@ -183,7 +181,7 @@ const EditProfileFormComponent = ({
           )
         }
         <div
-          className={styles.editProfileUserType}
+          className={styles.radioInput}
           onChange={event => handleUserChangeWarningModal(event)}
           value={userTypeOption}
           id="userTypeControl"
@@ -201,7 +199,7 @@ const EditProfileFormComponent = ({
         {
           userTypeOption === 'Advertising' ? (
             <div
-              className={styles.editProfileAdvertiserType}
+              className={styles.radioInput}
               onChange={event => changeAdvertiserType(event)}
             >
               {
@@ -277,7 +275,7 @@ const EditProfileFormComponent = ({
           )
         }
         <div
-          className={styles.editProfileGender}
+          className={styles.radioInput}
           onChange={event => changeGender(event)}
         >
           <h3>Your Gender</h3>
@@ -306,7 +304,7 @@ const EditProfileFormComponent = ({
           advertiserTypeOption !== 'Landlord' ? (
             <>
               <div
-                className={styles.editProfileOccupation}
+                className={styles.radioInput}
                 onChange={event => changeOccupation(event)}
               >
                 <h3>Your Occupation</h3>
@@ -324,7 +322,7 @@ const EditProfileFormComponent = ({
                 </span>
               </div>
               <div
-                className={styles.editProfileCouple}
+                className={styles.radioInput}
                 onChange={event => changeCouple(event)}
               >
                 <h3>Couple Or Non-Couple</h3>
@@ -342,7 +340,7 @@ const EditProfileFormComponent = ({
                 </span>
               </div>
               <div
-                className={styles.editProfileSmoking}
+                className={styles.radioInput}
                 onChange={event => changeSmoking(event)}
               >
                 <h3>Smoking Status</h3>
@@ -363,7 +361,7 @@ const EditProfileFormComponent = ({
                   <label htmlFor="no smoking">Prefer Not To Say</label>
                 </span>
               </div>
-              <div className={styles.editProfilePets}>
+              <div className={styles.reactSelectInputContainer}>
                 <h3>Your Pets</h3>
                 <Select
                   defaultValue={selectInputDefaultGen(pets)}
@@ -373,7 +371,7 @@ const EditProfileFormComponent = ({
                   name="pets"
                 />
               </div>
-              <div className={styles.editProfileAreas}>
+              <div className={styles.reactSelectInputContainer}>
                 <h3>Areas You Are Interested In</h3>
                 <CreatableSelect
                   defaultValue={selectInputDefaultGen(areasLooking)}

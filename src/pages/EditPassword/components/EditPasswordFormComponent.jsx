@@ -9,6 +9,8 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [newPassword, setNewPassword] = useState(null);
   const [newPasswordConfirm, setNewPasswordConfirm] = useState(null);
+  console.log(newPassword);
+  console.log(newPasswordConfirm);
 
   const changePassword = event => setNewPassword(event.target.value);
   const changePasswordConfirm = event => setNewPasswordConfirm(event.target.value);
@@ -29,7 +31,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
     <div className={styles.editPasswordFormContainer}>
       <form>
         <div
-          className={styles.editPasswordRow}
+          className={styles.textInput}
           onChange={event => changePassword(event)}
         >
           <label htmlFor="password">
@@ -38,7 +40,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
           </label>
         </div>
         <div
-          className={styles.editPasswordConfirmationRow}
+          className={styles.textInput}
           onChange={event => changePasswordConfirm(event)}
         >
           <label htmlFor="passwordConfirm">
@@ -55,6 +57,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
       {
         passwordConfirmModal ? (
           <EditPasswordConfirmationModal
+            className={styles.editPasswordConfirmModal}
             handlePasswordChange={handlePasswordChange}
             newPassword={newPassword}
             newPasswordConfirm={newPasswordConfirm}

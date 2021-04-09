@@ -2,7 +2,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import { userGenderDisplay, arrayDisplay } from '../../../../utils/userProfileUtils';
+import { userGenderDisplay, arrayDisplay } from '../../utils/userProfileUtils';
 import styles from './UserProfileAboutComponent.module.scss';
 
 const UserProfileAboutComponent = ({ userProfile }) => {
@@ -19,7 +19,7 @@ const UserProfileAboutComponent = ({ userProfile }) => {
             <p>{about}</p>
           </div>
           <div className={styles.userProfileAreas}>
-            <h4>Areas Looking</h4>
+            <h2>Areas Looking</h2>
             <p>{arrayDisplay(areasLooking)}</p>
           </div>
         </div>

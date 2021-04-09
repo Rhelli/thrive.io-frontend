@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import FlatmateProfileImageComponent from './components/FlatmateProfileImageComponent';
-import FlatmateProfileAboutComponent from './components/FlatmateProfileAboutComponent';
-import FlatmateProfileInfoComponent from './components/FlatmateProfileInfoComponent';
+import FlatmateProfileImageComponent from './components/FlatmateProfileImageComponent/FlatmateProfileImageComponent';
+import UserProfileBasicInfoComponent from '../../common/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
+import UserProfileAboutComponent from '../../common/UserProfileAboutComponent/UserProfileAboutComponent';
 import styles from './FlatmateProfileContainer.module.scss';
 
 const FlatmateProfileContainer = ({ flatmatesInfo }) => {
-  const {
-    name, email, userType, avatar, about, areasLooking, couple, gender, maxBudget, minBudget,
-    occupation, pets, smoking,
-  } = flatmatesInfo;
+  const { email, avatar } = flatmatesInfo;
 
   return (
     <div className={styles.profileContainer}>
@@ -18,21 +15,8 @@ const FlatmateProfileContainer = ({ flatmatesInfo }) => {
         email={email}
         avatar={avatar}
       />
-      <FlatmateProfileAboutComponent
-        name={name}
-        userType={userType}
-        occupation={occupation}
-        about={about}
-      />
-      <FlatmateProfileInfoComponent
-        minBudget={minBudget}
-        maxBudget={maxBudget}
-        areasLooking={areasLooking}
-        couple={couple}
-        gender={gender}
-        smoking={smoking}
-        pets={pets}
-      />
+      <UserProfileBasicInfoComponent userProfile={flatmatesInfo} />
+      <UserProfileAboutComponent userProfile={flatmatesInfo} />
     </div>
   );
 };

@@ -2,11 +2,14 @@ import React, { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import { signOut } from '../../state/auth/authActions';
 import UserProfileHeaderComponent from './components/UserProfileHeaderComponent/UserProfileHeaderComponent';
-import UserProfileBasicInfoComponent from './components/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
-import UserProfileAboutComponent from './components/UserProfileAboutComponent/UserProfileAboutComponent';
+import LoadingErrorMessageComponent from '../../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
+import UserProfileBasicInfoComponent from '../../common/UserProfileBasicInfoComponent/UserProfileBasicInfoComponent';
+import UserProfileAboutComponent from '../../common/UserProfileAboutComponent/UserProfileAboutComponent';
 import styles from './UserProfileContainer.module.scss';
 
 const UserProfileContainer = ({
@@ -31,12 +34,16 @@ const UserProfileContainer = ({
 
   return profileInfo.loading ? (
     <div>
-      <h3>Loading Profile, Please Wait.</h3>
+      <Loader
+        type="ThreeDots"
+        color="white"
+        height={80}
+        width={80}
+        className={styles.loader}
+      />
     </div>
   ) : profileInfo.error ? (
-    <div>
-      <h3>{profileInfo.error}</h3>
-    </div>
+    <LoadingErrorMessageComponent message={profileInfo.error} />
   ) : (
     <div className={styles.userProfileContainer}>
       <UserProfileHeaderComponent

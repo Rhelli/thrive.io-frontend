@@ -5,13 +5,14 @@
   align-items: center;
   width: 100%;
   padding: 20px;
-  margin-top: 40px;
-  border: 1px solid purple;
+  padding-top: 40px;
+  background-color: #FDE2E6;
+  border-bottom: 4px solid #FAA9B4;
 }
 
 .userProfileName {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin: 20px 10px 14px 10px;
 }
 
 .userProfileOccupationType {
@@ -19,6 +20,7 @@
   flex-flow: row nowrap;
   justify-content: space-evenly;
   align-items: center;
+  font-size: 18px;
 
   .userProfileBasicMidSpan {
     margin: 0 5px;

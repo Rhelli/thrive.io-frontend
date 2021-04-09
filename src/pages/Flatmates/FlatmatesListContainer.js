@@ -3,10 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import fetchFlatmatesApiRequest from '../../api/flatmatesApi';
 import { fetchSingleFlatmate } from '../../state/flatmates/flatmatesActions';
 import thriveLogo from '../../assets/img/thrive-t-transparent.png';
 import FlatmatesListItemComponent from './components/FlatmatesListItemComponent';
+import LoadingErrorMessageComponent from '../../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import styles from './FlatmatesListContainer.module.scss';
 
 const FlatmatesListContainer = ({
@@ -24,13 +27,16 @@ const FlatmatesListContainer = ({
   };
 
   return flatmateData.loading ? (
-    <h2>Loading flatmate data...</h2>
+    <Loader
+      type="ThreeDots"
+      color="white"
+      height={80}
+      width={80}
+      className={styles.loader}
+    />
   ) : flatmateData.error ? (
-    <h2>
-      Error!
-      {flatmateData.error}
-    </h2>
-  ) : (
+    <LoadingErrorMessageComponent message={flatmateData.error} />
+  ) : !flatmateData.loading ? (
     <div className={styles.flatmatesListContainer}>
       <div className={styles.brandingHeader}>
         <span className={styles.titleSpan}>
@@ -57,6 +63,8 @@ const FlatmatesListContainer = ({
         ))
       }
     </div>
+  ) : (
+    null
   );
 };
 
