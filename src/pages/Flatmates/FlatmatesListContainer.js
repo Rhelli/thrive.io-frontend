@@ -25,7 +25,7 @@ const FlatmatesListContainer = ({
     history.push(`/flatmates/${flatmate.id}`);
   };
 
-  return !flatmateData.loading ? (
+  return flatmateData.loading ? (
     <Loader
       type="ThreeDots"
       color="#B3BDC2"

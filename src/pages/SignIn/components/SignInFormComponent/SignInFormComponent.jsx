@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styles from './SignInFormComponent.module.scss';
 
 const SignInFormComponent = ({ signInRequest, authInfo }) => {
   const { signedIn } = authInfo;
@@ -18,22 +19,26 @@ const SignInFormComponent = ({ signInRequest, authInfo }) => {
   };
 
   return (
-    <div>
+    <div className={styles.signInFormContainer}>
       <form onSubmit={event => fireSignInRequest(event)}>
-        <div>
+        <div className={styles.formContainer}>
           <h1>Sign In</h1>
 
-          <label htmlFor="email">
-            Email
-            <input id="email" type="text" required />
-          </label>
+          <div className={styles.textInput}>
+            <label htmlFor="email">
+              <h3>Email</h3>
+              <input id="email" type="text" required />
+            </label>
+          </div>
 
-          <label htmlFor="password">
-            Password
-            <input id="password" type="password" required />
-          </label>
+          <div className={styles.textInput}>
+            <label htmlFor="password">
+              <h3>Password</h3>
+              <input id="password" type="password" required />
+            </label>
+          </div>
 
-          <div>
+          <div className={styles.formSubmitButton}>
             <button type="submit">Sign In</button>
           </div>
         </div>

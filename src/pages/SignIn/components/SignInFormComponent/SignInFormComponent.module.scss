@@ -1,0 +1,78 @@
+.signInFormContainer {
+  width: 100%;
+
+  form {
+    .formContainer {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      width: 100%;
+      padding: 20px 0;
+      
+      h1 {
+        font-size: 28px;
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #26095B;
+      }
+
+      .textInput{
+        width: 100%;
+        background-color: #FDECE2;
+        border-radius: 4px;
+        border-bottom: 6px solid #F58C53;
+        margin-bottom: 15px;
+    
+        label {
+          display: flex;
+          flex-flow: column nowrap;
+          width: 100%;
+          padding: 10px;
+    
+          h3 {
+            font-size: 18px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+          }
+    
+          input {
+            height: 40px;
+            border-radius: 6px;
+            outline: none;
+            border: 1px solid #F26619;
+            padding: 10px;
+          }
+        }
+      }
+
+      .formSubmitButton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+
+        button {
+          height: 50px;
+          width: 200px;
+          border: none;
+          outline: none;;
+          background-color: #8C53F5;
+          font-size: 20px;
+          border-radius: 4px;
+          border-bottom: 5px solid #7936F4;
+          color: white;
+          transition-duration: 0.2s;
+
+          &:focus,
+          &:active {
+            border: none;
+            background-color: #7936F4;
+            transition-duration: 0.15s;
+          }
+        }
+      }
+    }
+  }
+}
