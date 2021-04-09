@@ -10,7 +10,7 @@ import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import {
   selectInputDefaultGen, reactSelectOutputFormatter,
-} from '../../../utils/profileSettingsUtils';
+} from '../../../../utils/profileSettingsUtils';
 import styles from './EditProfileFormComponent.module.scss';
 
 const EditProfileFormComponent = ({

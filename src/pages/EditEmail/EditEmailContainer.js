@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
 import { updateCurrentUserEmailApiRequest } from '../../api/profileSettingsApi';
-import EditEmailFormComponent from './components/EditEmailFormComponent';
+import EditEmailFormComponent from './components/EditEmailFormComponent/EditEmailFormComponent';
 import styles from './EditEmailContainer.module.scss';
 
 const EditEmailContainer = ({ userProfile, updateCurrentUserEmailApiRequest }) => {

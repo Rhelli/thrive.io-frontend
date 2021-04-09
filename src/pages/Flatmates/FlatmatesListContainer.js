@@ -7,7 +7,7 @@ import Loader from 'react-loader-spinner';
 import fetchFlatmatesApiRequest from '../../api/flatmatesApi';
 import { fetchSingleFlatmate } from '../../state/flatmates/flatmatesActions';
 import thriveLogo from '../../assets/img/thrive-t-transparent.png';
-import FlatmatesListItemComponent from './components/FlatmatesListItemComponent';
+import FlatmatesListItemComponent from './components/FlatmatesListItemComponent/FlatmatesListItemComponent';
 import LoadingErrorMessageComponent from '../../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import styles from './FlatmatesListContainer.module.scss';
