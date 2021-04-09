@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
 import {
-  UserListContainer, SignUpContainer, SignInContainer, QuizContainer, PropertyListContainer,
+  UserListContainer, SignUpContainer, SignInContainer, PropertyListContainer,
   PropertyContainer, ProfileSettingsContainer, FlatmateProfileContainer, HomePageContainer,
   UserProfileContainer, EditProfileContainer, EditEmailContainer, EditPasswordContainer,
   ManagePropertiesContainer, NewPropertyContainer, EditPropertyContainer, ShortlistContainer,
@@ -33,7 +33,6 @@ const Routes = ({ authInfo }) => (
         <PrivateRoute authInfo={authInfo} component={NewPropertyContainer} path="/manage-properties/new" exact />
         <PrivateRoute authInfo={authInfo} component={EditPropertyContainer} path="/edit-property/:id" exact />
         <PrivateRoute authInfo={authInfo} component={ManagePropertiesContainer} path="/manage-properties" exact />
-        <PrivateRoute authInfo={authInfo} component={QuizContainer} path="/personality-assessment" />
       </Switch>
     </BrowserRouter>
   </>

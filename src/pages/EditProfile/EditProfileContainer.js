@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
 import ProfileSettingsNavbar from '../../common/ProfileSettingsNavbar/ProfileSettingsNavbar';
 import EditProfileFormComponent from './components/EditProfileFormComponent';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import {
   updateCurrentUserProfileApiRequest, deleteCurrentUserProfileApiRequest,
   updateCurrentUserTypeApiRequest,
@@ -23,20 +25,6 @@ const EditProfileContainer = ({
   const [profileUpdateType, setProfileUpdateType] = useState('profileUpdate');
 
   const handleBackButtonClick = () => history.push('/myaccount/settings');
-
-  // const handleAccountUpdate = (event, updatedDetails) => {
-  //   event.preventDefault();
-  //   updateCurrentUserProfileApiRequest(updatedDetails);
-  //   history.push('/myaccount');
-  //   window.location.reload();
-  // };
-
-  // const handleAccountTypeChange = (event, updatedDetails) => {
-  //   event.preventDefault();
-  //   updateCurrentUserTypeApiRequest(updatedDetails, getPropertyIds(userProfile.properties));
-  //   history.push('/myaccount');
-  //   window.location.reload();
-  // };
 
   const handleAccountUpdate = updatedDetails => {
     switch (profileUpdateType) {
@@ -61,7 +49,13 @@ const EditProfileContainer = ({
   };
 
   return !userProfile ? (
-    <h2>Loading. Please Wait</h2>
+    <Loader
+      type="ThreeDots"
+      color="white"
+      height={80}
+      width={80}
+      className={styles.loader}
+    />
   ) : (
     <div className={styles.editProfileContainer}>
       <ProfileSettingsNavbar handleBackButtonClick={handleBackButtonClick} />

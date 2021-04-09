@@ -2,10 +2,12 @@ import React, { useLayoutEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
 import fetchPropertyLocation from '../../api/locationApi';
 import { deleteShortlistedProperty } from '../../api/shortlistApi';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import ShortlistNavbarComponent from './components/ShortlistNavbarComponent/ShortlistNavbarComponent';
 import PropertyListItemComponent from '../../common/PropertyListItemComponent/PropertyListItemComponent';
 import styles from './ShortlistContainer.module.scss';
@@ -32,7 +34,13 @@ const ShortlistContainer = ({
   };
 
   return profileStore.loading ? (
-    <h2>Loading. Please wait...</h2>
+    <Loader
+      type="ThreeDots"
+      color="white"
+      height={80}
+      width={80}
+      className={styles.loader}
+    />
   ) : (
     <div className={styles.shortlistMainContainer}>
       <ShortlistNavbarComponent />

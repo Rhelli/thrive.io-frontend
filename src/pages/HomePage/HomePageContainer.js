@@ -3,10 +3,13 @@ import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import { fetchManagedPropertiesListRequest } from '../../api/propertiesApi';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
 import fetchPropertyLocation from '../../api/locationApi';
+import LoadingErrorMessageComponent from '../../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import WelcomeComponent from './components/WelcomeComponent/WelcomeComponent';
 import LandlordHomepageComponent from './components/LandlordHomepageStatsComponent/LandlordHomepageStatsComponent';
 import HomepageFeedComponent from './components/HomepageFeedComponent/HomepageFeedComponent';
@@ -43,9 +46,15 @@ const HomePageContainer = ({
   if (userType === 'Looking') {
     const { userProfile } = profileStore;
     return profileStore.loading ? (
-      null
+      <Loader
+        type="ThreeDots"
+        color="white"
+        height={80}
+        width={80}
+        className={styles.loader}
+      />
     ) : profileStore.error ? (
-      <h2>An Error Occurred. Please try again later.</h2>
+      <LoadingErrorMessageComponent message={profileStore.error} />
     ) : userProfile.userType === 'Looking' ? (
       <div className={styles.lookingHomepageContainer}>
         <WelcomeComponent userProfile={userProfile} />

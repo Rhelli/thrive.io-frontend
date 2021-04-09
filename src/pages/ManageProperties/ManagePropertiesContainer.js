@@ -3,11 +3,13 @@ import React, { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 import fetchUserProfileApiRequest from '../../api/userProfileApi';
 import { fetchSingleProperty } from '../../state/property/propertyActions';
 import { fetchManagedPropertiesListRequest } from '../../api/propertiesApi';
 import fetchPropertyLocation from '../../api/locationApi';
 import styles from './ManagePropertiesContainer.module.scss';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import ManagePropertiesNavbarComponent from './components/ManagePropertiesNavbarComponent/ManagePropertiesNavbarComponent';
 import ManagePropertiesFlatmateInfoComponent from './components/ManagePropertiesFlatmateInfoComponent/ManagePropertiesFlatmateInfoComponent';
 import ManagePropertiesLandlordInfoComponent from './components/ManagePropertiesLandlordInfoComponent/ManagePropertiesLandlordInfoComponent';
@@ -40,10 +42,14 @@ const ManagePropertiesContainer = ({
     history.push(`/edit-property/${property.id}`);
   };
 
-  console.log(managedProperties);
-
   return !managedProperties ? (
-    <h2>Loading. One Minute Please.</h2>
+    <Loader
+      type="ThreeDots"
+      color="white"
+      height={80}
+      width={80}
+      className={styles.loader}
+    />
   ) : managedProperties && advertiserType === 'Landlord' ? (
     <div className={styles.managePropertiesContainer}>
       <ManagePropertiesNavbarComponent
