@@ -80,7 +80,7 @@ export const profileCompleter = userProfile => {
   const unfinished = [];
   if (userProfile) {
     Object.keys(userProfile).map(keyName => {
-      if (keyName !== 'advertiserType' && keyName !== 'properties' && userProfile[keyName].length < 1) {
+      if (keyName !== 'advertiserType' && keyName !== 'properties' && userProfile[keyName] && userProfile[keyName].length < 1) {
         unfinished.push(keyName);
       }
       return unfinished;

@@ -55,6 +55,7 @@ PropertyImageComponent.defaultProps = {
   handlePropertySettingsClick: null,
   addPropertyToShortlistClick: null,
   deleteShortlistedPropertyClick: null,
+  shortlistedIds: null,
 };
 
 PropertyImageComponent.propTypes = {
@@ -71,7 +72,7 @@ PropertyImageComponent.propTypes = {
   }).isRequired,
   handlePropertySettingsClick: PropTypes.func,
   addPropertyToShortlistClick: PropTypes.func,
-  shortlistedIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+  shortlistedIds: PropTypes.arrayOf(PropTypes.number),
   deleteShortlistedPropertyClick: PropTypes.func,
 };
 
