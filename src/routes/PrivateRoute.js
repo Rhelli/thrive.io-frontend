@@ -4,7 +4,6 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { Route, Redirect } from 'react-router-dom';
-import LoadingErrorMessageComponent from '../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
 
 const PrivateRoute = ({ component: Component, authInfo, ...rest }) => {
   const { signedIn, loading } = authInfo;
@@ -16,8 +15,6 @@ const PrivateRoute = ({ component: Component, authInfo, ...rest }) => {
       height={80}
       width={80}
     />
-  ) : authInfo.error ? (
-    <LoadingErrorMessageComponent message={authInfo.error.message} />
   ) : (
     <Route
       {...rest}

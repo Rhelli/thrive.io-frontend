@@ -3,7 +3,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-import LoadingErrorMessageComponent from '../common/LoadingErrorMessageComponent/LoadingErrorMessageComponent';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const PublicRoute = ({
@@ -18,8 +17,6 @@ const PublicRoute = ({
       height={80}
       width={80}
     />
-  ) : authInfo.error ? (
-    <LoadingErrorMessageComponent message={authInfo.error.message} />
   ) : (
     <Route
       {...rest}
