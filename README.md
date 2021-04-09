@@ -1,7 +1,7 @@
 <p align="center">
   <img src="./screens/looking-homepage.png" alt="Thrive Homepage" width="400" height="auto">
 
-  <h1 align="center">🏚️👫 Thrive</h1>
+  <h1 align="center">🏚️👫 Thrive - Frontend</h1>
 
 
 <h3 align='center'>
