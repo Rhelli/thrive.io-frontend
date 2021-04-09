@@ -1,0 +1,6 @@
+Copyright (C) 2021 Rory Hellier - rory.hellier@hellier.org.uk
+
+This file is part of the Thrive project.
+
+The Thrive project can not be copied and/or distributed without the express
+permission of Rory Hellier - rory.hellier@hellier.org.uk.
