@@ -1,8 +1,6 @@
-/* eslint-disable import/no-named-as-default-member */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import getAge from 'get-age';
 import { createUserRequest } from '../../api/authApi';
 import SignUpFormComponent from './components/SignUpFormComponent/SignUpFormComponent';
 import SignInUpBrandingHeaderComponent from '../../common/SignInUpBrandingHeaderComponent/SignInBrandingHeaderComponent';
@@ -23,15 +21,13 @@ const SignUpContainer = ({ createUserRequest }) => {
   const [advertiserType, setAdvertiserType] = useState(null);
   const [advertiserTypeError, setAdvertiserTypeError] = useState(null);
 
-  console.log(getAge(dob));
-
   const validateForm = () => {
     setNameError(formValidator(userName, 'name'));
     setEmailError(formValidator(email, 'email'));
     setDobError(formValidator(dob, 'dob'));
     setPasswordError(formValidator(password, 'password'));
     setUserTypeError(formValidator(userType, 'userType'));
-    if (userType === 'Advertiser') {
+    if (userType === 'Advertising') {
       setAdvertiserTypeError(formValidator(advertiserType, 'advertiserType'));
     }
   };

@@ -12,22 +12,18 @@ const SignUpFormComponent = ({
     <form onSubmit={event => handleUserCreation(event)}>
       <div className={styles.signUpFormContainer}>
         <h1>Sign Up</h1>
-        <p>Please complete this form to create a Thrive account</p>
+        <p className={styles.subtitle}>Please complete this form to create a Thrive account</p>
         <hr />
         <div
           className={styles.textInput}
           onChange={event => setName(event.target.value)}
         >
           <label htmlFor="name">
-            <div>
-              <span>
-                <h3>Name</h3>
-              </span>
-              <span>
-                <FormErrorComponent errorMessage={nameError} />
-              </span>
+            <div className={styles.inputTopContainer}>
+              <h3>Name</h3>
+              <FormErrorComponent errorMessage={nameError} />
             </div>
-            <div>
+            <div className={styles.inputContainer}>
               <input id="name" type="text" placeholder="Enter either your name or a chosen username..." required />
             </div>
           </label>
@@ -37,15 +33,11 @@ const SignUpFormComponent = ({
           onChange={event => setEmail(event.target.value)}
         >
           <label htmlFor="email">
-            <div>
-              <span>
-                <h3>Email</h3>
-              </span>
-              <span>
-                <FormErrorComponent errorMessage={emailError} />
-              </span>
+            <div className={styles.inputTopContainer}>
+              <h3>Email</h3>
+              <FormErrorComponent errorMessage={emailError} />
             </div>
-            <div>
+            <div className={styles.inputContainer}>
               <input id="email" type="text" placeholder="Enter your email address..." required />
             </div>
           </label>
@@ -55,15 +47,11 @@ const SignUpFormComponent = ({
           onChange={event => setDob(event.target.value)}
         >
           <label htmlFor="dob">
-            <div>
-              <span>
-                <h3>Date Of Birth</h3>
-              </span>
-              <span>
-                <FormErrorComponent errorMessage={dobError} />
-              </span>
+            <div className={styles.inputTopContainer}>
+              <h3>Date Of Birth</h3>
+              <FormErrorComponent errorMessage={dobError} />
             </div>
-            <div>
+            <div className={styles.inputContainer}>
               <input id="dob" type="date" min="1900-01-01" max="2100-01-01" required />
             </div>
           </label>
@@ -73,26 +61,22 @@ const SignUpFormComponent = ({
           onChange={event => setPassword(event.target.value)}
         >
           <label htmlFor="password">
-            <div>
-              <span>
-                <h3>Password</h3>
-              </span>
-              <span>
-                <FormErrorComponent errorMessage={passwordError} />
-              </span>
+            <div className={styles.inputTopContainer}>
+              <h3>Password</h3>
+              <FormErrorComponent errorMessage={passwordError} />
             </div>
-            <div>
+            <div className={styles.inputContainer}>
               <input id="password" type="password" placeholder="Choose a password (min 8 characters)..." required />
             </div>
           </label>
         </div>
         <hr />
-        <h3>Are you looking or advertising for a place?</h3>
         <div
           className={styles.radioField}
           onChange={event => setUserType(event.target.value)}
         >
-          <div>
+          <div className={styles.inputTopContainer}>
+            <h3>Are you looking or advertising for a place?</h3>
             <FormErrorComponent errorMessage={userTypeError} />
           </div>
           <div>
@@ -112,7 +96,8 @@ const SignUpFormComponent = ({
               className={styles.radioField}
               onChange={event => setAdvertiserType(event.target.value)}
             >
-              <div>
+              <div className={styles.inputTopContainer}>
+                <h3>Are you a flatmate or landlord?</h3>
                 <FormErrorComponent errorMessage={advertiserTypeError} />
               </div>
               <div>
