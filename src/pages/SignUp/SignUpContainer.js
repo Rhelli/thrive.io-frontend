@@ -1,76 +1,73 @@
 /* eslint-disable import/no-named-as-default-member */
-import React, { useLayoutEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import getAge from 'get-age';
 import { createUserRequest } from '../../api/authApi';
 import SignUpFormComponent from './components/SignUpFormComponent/SignUpFormComponent';
 import SignInUpBrandingHeaderComponent from '../../common/SignInUpBrandingHeaderComponent/SignInBrandingHeaderComponent';
 import formValidator from '../../utils/FormUtils';
 import styles from './SignUpContainer.module.scss';
 
-const SignUpContainer = ({ createUserRequest, authInfo }) => {
-  const { signedIn } = authInfo;
-  const history = useHistory();
+const SignUpContainer = ({ createUserRequest }) => {
+  const [userName, setName] = useState(null);
+  const [nameError, setNameError] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [emailError, setEmailError] = useState(null);
+  const [dob, setDob] = useState(null);
+  const [dobError, setDobError] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [passwordError, setPasswordError] = useState(null);
+  const [userType, setUserType] = useState(null);
+  const [userTypeError, setUserTypeError] = useState(null);
+  const [advertiserType, setAdvertiserType] = useState(null);
+  const [advertiserTypeError, setAdvertiserTypeError] = useState(null);
 
-  const formInitialState = {
-    name: '',
-    nameError: '',
-    email: '',
-    emailError: '',
-    dob: '',
-    dobError: '',
-    password: '',
-    passwordError: '',
-    userType: '',
-    userTypeError: '',
-    advertiserType: '',
-    advertiserTypeError: '',
-  };
-
-  const [formState, setFormState] = useState(formInitialState);
-
-  console.log(`${formState.name}, ${formState.email}, ${formState.dob}, ${formState.password}, ${formState.userType}. ${formState.advertiserType}`);
+  console.log(getAge(dob));
 
   const validateForm = () => {
-    if (formValidator(formState.name, 'name')) {
-      setFormState({ nameError: formValidator(formState.name, 'name') });
-    }
-    if (formValidator(formState.email, 'email')) {
-      setFormState({ emailError: formValidator(formState.email, 'email') });
-    }
-    if (formValidator(formState.dob, 'dob')) {
-      setFormState({ dobError: formValidator(formState.dob, 'dob') });
-    }
-    if (formValidator(formState.password, 'password')) {
-      setFormState({ passwordError: formValidator(formState.password, 'password') });
-    }
-    if (formValidator(formState.userType, 'userType')) {
-      setFormState({ userTypeError: formValidator(formState.userType, 'userType') });
-    }
-    if (formState.userType === 'Advertising' && formValidator(formState.advertiserType, 'advertiserType')) {
-      setFormState({ advertiserTypeError: formValidator(formState.advertiserType, 'advertiserType') });
+    setNameError(formValidator(userName, 'name'));
+    setEmailError(formValidator(email, 'email'));
+    setDobError(formValidator(dob, 'dob'));
+    setPasswordError(formValidator(password, 'password'));
+    setUserTypeError(formValidator(userType, 'userType'));
+    if (userType === 'Advertiser') {
+      setAdvertiserTypeError(formValidator(advertiserType, 'advertiserType'));
     }
   };
 
-  useLayoutEffect(() => {
-    if (signedIn === true) {
-      history.push('/');
-    }
-  }, [signedIn]);
+  const newUser = {
+    userName, email, dob, password, userType, advertiserType,
+  };
 
-  const handleUserCreation = (event, formState) => {
+  const handleUserCreation = event => {
     event.preventDefault();
     validateForm();
-    createUserRequest(formState);
+    createUserRequest(newUser);
   };
 
   return (
     <div className={styles.signUpContainer}>
       <SignInUpBrandingHeaderComponent />
       <SignUpFormComponent
-        setFormState={setFormState}
-        formState={formState}
+        userName={userName}
+        setName={setName}
+        nameError={nameError}
+        email={email}
+        setEmail={setEmail}
+        emailError={emailError}
+        dob={dob}
+        setDob={setDob}
+        dobError={dobError}
+        password={password}
+        setPassword={setPassword}
+        passwordError={passwordError}
+        userType={userType}
+        setUserType={setUserType}
+        userTypeError={userTypeError}
+        advertiserType={advertiserType}
+        setAdvertiserType={setAdvertiserType}
+        advertiserTypeError={advertiserTypeError}
         handleUserCreation={handleUserCreation}
       />
     </div>

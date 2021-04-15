@@ -8,7 +8,7 @@ const formValidator = (data, dataName) => {
 
   switch (dataName) {
     case 'name': {
-      if (nameRegex.test(data)) {
+      if (!nameRegex.test(data)) {
         errorMessage = 'Name is invalid. Please ensure it does not contain numbers or unusual symbols.';
       }
       if (!data) {
@@ -32,11 +32,11 @@ const formValidator = (data, dataName) => {
       if (!data) {
         errorMessage = 'Please enter your date of birth.';
       }
-      if (data && getAge(data) < 18) {
+      if (getAge(data) < 18) {
         errorMessage = 'You must be 18 years old to register.';
       }
-      if (data && getAge(data > 125)) {
-        errorMessage = "You're too old for this sh*t. Please lower your age.";
+      if (getAge(data) > 125) {
+        errorMessage = 'Please enter a valid age. Unless you are really over 125 years old. In that case, congratulations. I guess...';
       }
 
       return errorMessage;
