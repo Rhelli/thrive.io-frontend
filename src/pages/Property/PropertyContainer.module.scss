@@ -1,7 +1,8 @@
 .propertyContainer {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-self: flex-start;
   width: 95%;
   height: auto;
   margin-top: 10px;

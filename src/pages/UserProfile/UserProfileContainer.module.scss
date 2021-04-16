@@ -1,9 +1,10 @@
 .userProfileContainer {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-self: flex-start;
   width: 95%;
-  height: auto;
+  min-height: 90vh;
   margin-top: 10px;
   overflow: hidden;
   padding-bottom: 80px;

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './FormErrorComponent.module.scss';
 
 const FormErrorComponent = ({ errorMessage }) => (
   <>
-    <p>{errorMessage}</p>
+    <p className={styles.errorMessage}>{errorMessage}</p>
   </>
 );
 

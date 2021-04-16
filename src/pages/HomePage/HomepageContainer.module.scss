@@ -1,6 +1,7 @@
 .landlordHomepageContainer {
   display: flex;
   flex-flow: column nowrap;
+  align-self: flex-start;
   width: 95%;
   height: 100vh;
   padding: 20px 20px 0 20px;
@@ -23,8 +24,9 @@
 .lookingHomepageContainer {
   display: flex;
   flex-flow: column nowrap;
+  align-self: flex-start;
   width: 95%;
-  height: auto;
+  min-height: 90vh;
   overflow: hidden;
   padding: 20px;
   background-color: #fefafe;

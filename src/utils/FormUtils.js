@@ -8,34 +8,25 @@ const formValidator = (data, dataName) => {
 
   switch (dataName) {
     case 'name': {
-      if (!nameRegex.test(data)) {
+      if (data && !nameRegex.test(data)) {
         errorMessage = 'Name is invalid. Please ensure it does not contain numbers or unusual symbols.';
-      }
-      if (!data) {
-        errorMessage = 'Please enter a name.';
       }
 
       return errorMessage;
     }
 
     case 'email': {
-      if (!emailRegex.test(data)) {
+      if (data && !emailRegex.test(data)) {
         errorMessage = 'Email is invalid. Please check your email before continuing.';
-      }
-      if (!data) {
-        errorMessage = 'Please enter your email.';
       }
       return errorMessage;
     }
 
     case 'dob': {
-      if (!data) {
-        errorMessage = 'Please enter your date of birth.';
-      }
-      if (getAge(data) < 18) {
+      if (data && getAge(data) < 18) {
         errorMessage = 'You must be 18 years old to register.';
       }
-      if (getAge(data) > 125) {
+      if (data && getAge(data) > 125) {
         errorMessage = 'Please enter a valid age. Unless you are really over 125 years old. In that case, congratulations. I guess...';
       }
 
@@ -43,9 +34,6 @@ const formValidator = (data, dataName) => {
     }
 
     case 'password': {
-      if (!data) {
-        errorMessage = 'Please enter a password.';
-      }
       if (!passwordRegex.test(data)) {
         errorMessage = 'Your password must be 8 characters long, containing letters and numbers.';
       }

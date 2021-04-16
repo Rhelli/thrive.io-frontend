@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createUserRequest } from '../../api/authApi';
@@ -7,8 +8,17 @@ import SignInUpBrandingHeaderComponent from '../../common/SignInUpBrandingHeader
 import formValidator from '../../utils/FormUtils';
 import styles from './SignUpContainer.module.scss';
 
-const SignUpContainer = ({ createUserRequest }) => {
-  const [userName, setName] = useState(null);
+const SignUpContainer = ({ createUserRequest, authInfo }) => {
+  const { signedIn } = authInfo;
+  const history = useHistory();
+
+  useLayoutEffect(() => {
+    if (signedIn === true) {
+      history.push('/');
+    }
+  }, [signedIn]);
+
+  const [name, setName] = useState(null);
   const [nameError, setNameError] = useState(null);
   const [email, setEmail] = useState(null);
   const [emailError, setEmailError] = useState(null);
@@ -22,7 +32,7 @@ const SignUpContainer = ({ createUserRequest }) => {
   const [advertiserTypeError, setAdvertiserTypeError] = useState(null);
 
   const validateForm = () => {
-    setNameError(formValidator(userName, 'name'));
+    setNameError(formValidator(name, 'name'));
     setEmailError(formValidator(email, 'email'));
     setDobError(formValidator(dob, 'dob'));
     setPasswordError(formValidator(password, 'password'));
@@ -33,20 +43,22 @@ const SignUpContainer = ({ createUserRequest }) => {
   };
 
   const newUser = {
-    userName, email, dob, password, userType, advertiserType,
+    name, email, dob, password, userType, advertiserType,
   };
 
   const handleUserCreation = event => {
     event.preventDefault();
-    validateForm();
-    createUserRequest(newUser);
+    console.log(newUser);
+    if (!validateForm()) {
+      createUserRequest(newUser);
+    }
   };
 
   return (
     <div className={styles.signUpContainer}>
       <SignInUpBrandingHeaderComponent />
       <SignUpFormComponent
-        userName={userName}
+        name={name}
         setName={setName}
         nameError={nameError}
         email={email}

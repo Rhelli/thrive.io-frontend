@@ -9,10 +9,16 @@
   border-bottom: 1px solid #f76f83;
   background-image: url('../../../../assets/img/inspiration-geometry.png');
 
+  .userProfileSignOut,
   .userProfileSettings {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    background-color: rgba(198, 169, 250, 0.8);
+    border-radius: 20px;
+    color: #6619F2;
 
     button {
       border: none;
@@ -20,11 +26,35 @@
       background-color: transparent;
       border-radius: 50%;
       padding: 4px;
-      margin-left: 10px;
 
       svg {
         font-size: 22px;
+        color: white;
       }
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .userProfileSignOut {
+    left: 5px;
+    top: 5px;
+    padding: 0 12px 0 4px;
+
+    button {
+      margin-right: 2px;
+    }
+  }
+
+  .userProfileSettings {
+    top: 5px;
+    right: 5px;
+    padding: 0 4px 0 12px;
+
+    button {
+      margin-left: 2px;
     }
   }
 
