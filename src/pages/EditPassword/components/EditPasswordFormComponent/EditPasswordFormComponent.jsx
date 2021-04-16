@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import formValidator from '../../../../utils/FormUtils';
+import FormErrorComponent from '../../../../common/FormErrorComponent/FormErrorComponent';
 import EditPasswordConfirmationModal from '../EditPasswordConfirmationModal/EditPasswordConfirmationModal';
 import styles from './EditPasswordFormComponent.module.scss';
 
@@ -7,13 +9,17 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
   const { email, id } = userProfile;
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [newPassword, setNewPassword] = useState(null);
+  const [newPasswordError, setNewPasswordError] = useState(null);
   const [newPasswordConfirm, setNewPasswordConfirm] = useState(null);
+  const [newPasswordConfirmError, setNewPasswordConfirmError] = useState(null);
 
   const changePassword = event => setNewPassword(event.target.value);
   const changePasswordConfirm = event => setNewPasswordConfirm(event.target.value);
 
   const openPasswordConfirmationModal = () => {
-    if (!newPassword || !newPasswordConfirm) {
+    if (formValidator(newPassword, 'password') || formValidator(newPasswordConfirm, 'password')) {
+      setNewPasswordError(formValidator(newPassword, 'password'));
+      setNewPasswordConfirmError(formValidator(newPasswordConfirm, 'password'));
       return;
     }
     if (newPassword === newPasswordConfirm) {
@@ -33,6 +39,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
         >
           <label htmlFor="password">
             <h3>New Password</h3>
+            <FormErrorComponent errorMessage={newPasswordError} />
             <input id="password" type="password" required />
           </label>
         </div>
@@ -42,6 +49,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
         >
           <label htmlFor="passwordConfirm">
             <h3>Password Confirmation</h3>
+            <FormErrorComponent errorMessage={newPasswordConfirmError} />
             <input id="passwordConfirm" type="password" required />
           </label>
         </div>

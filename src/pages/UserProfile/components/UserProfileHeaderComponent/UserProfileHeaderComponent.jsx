@@ -9,12 +9,12 @@ const UserProfileHeaderComponent = ({ handleSignOut, handleSettingsClick }) => (
     <div className={styles.userProfileSignOut}>
       <button type="button" onClick={handleSignOut}>
         <FontAwesomeIcon icon={faSignOutAlt} />
+        <p>Sign Out</p>
       </button>
-      <p>Sign Out</p>
     </div>
     <div className={styles.userProfileSettings}>
-      <p>Settings</p>
       <button type="button" onClick={handleSettingsClick} onKeyUp={handleSettingsClick}>
+        <p>Settings</p>
         <FontAwesomeIcon icon={faCog} />
       </button>
     </div>

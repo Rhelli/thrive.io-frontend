@@ -11,30 +11,30 @@
 
   .userProfileSignOut,
   .userProfileSettings {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     background-color: rgba(198, 169, 250, 0.8);
     border-radius: 20px;
-    color: #6619F2;
 
     button {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
       border: none;
       outline: none;
       background-color: transparent;
       border-radius: 50%;
       padding: 4px;
+      color: #6619F2;
 
       svg {
         font-size: 22px;
         color: white;
       }
-    }
 
-    p {
-      font-size: 14px;
+      p {
+        font-size: 14px;
+      }
     }
   }
 
@@ -43,8 +43,8 @@
     top: 5px;
     padding: 0 12px 0 4px;
 
-    button {
-      margin-right: 2px;
+    svg {
+      margin-right: 4px;
     }
   }
 
@@ -53,8 +53,8 @@
     right: 5px;
     padding: 0 4px 0 12px;
 
-    button {
-      margin-left: 2px;
+    svg {
+      margin-left: 4px;
     }
   }
 

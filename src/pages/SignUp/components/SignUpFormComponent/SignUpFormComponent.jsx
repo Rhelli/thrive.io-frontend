@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import FormErrorComponent from '../../../../common/FormErrrorComponent/FormErrorComponent';
+import FormErrorComponent from '../../../../common/FormErrorComponent/FormErrorComponent';
 import styles from './SignUpFormComponent.module.scss';
 
 const SignUpFormComponent = ({
