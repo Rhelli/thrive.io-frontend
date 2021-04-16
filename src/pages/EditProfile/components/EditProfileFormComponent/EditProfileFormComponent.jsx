@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
+import { arrayToString } from '../../../../utils/managePropertiesUtils';
+import formValidator from '../../../../utils/FormUtils';
 import FormErrorComponent from '../../../../common/FormErrorComponent/FormErrorComponent';
 import {
   selectInputDefaultGen, reactSelectOutputFormatter,
@@ -52,23 +54,17 @@ const EditProfileFormComponent = ({
   const [aboutOption, setAboutOption] = useState(about);
   const [aboutOptionError, setAboutOptionError] = useState(null);
   const [occupationOption, setOccupationOption] = useState(occupation);
-  const [occupationOptionError, setOccupationOptionError] = useState(null);
   const [genderOption, setGenderOption] = useState(gender);
-  const [genderOptionError, setGenderOptionError] = useState(null);
   const [coupleOption, setCoupleOption] = useState(couple);
-  const [coupleOptionError, setCoupleOptionError] = useState(null);
   const [smokingOption, setSmokingOption] = useState(smoking);
-  const [smokingOptionError, setSmokingOptionError] = useState(null);
   const [minBudgetOption, setMinBudgetOption] = useState(minBudget);
-  const [minBudgetOptionError, setMinBudgetOptionError] = useState(null);
   const [maxBudgetOption, setMaxBudgetOption] = useState(maxBudget);
-  const [maxBudgetOptionError, setMaxBudgetOptionError] = useState(null);
   const [petsOption, setPetsOption] = useState(pets);
-  const [petsOptionError, setPetsOptionError] = useState(null);
   const [areasOption, setAreasOption] = useState(areasLooking);
   const [areasOptionError, setAreasOptionError] = useState(null);
   const [dobOption, setDobOption] = useState(dob);
   const [dobOptionError, setDobOptionError] = useState(null);
+  const [errorAlert, setErrorAlert] = useState(null);
 
   const changeName = event => setNameOption(event.target.value);
   const changeUserType = event => setUserTypeOption(event.target.value);
@@ -114,6 +110,39 @@ const EditProfileFormComponent = ({
     setChangeUserWarningModal(false);
   };
 
+  const validateForm = () => {
+    const errors = [];
+    if (formValidator(nameOption, 'name')) {
+      setNameOptionError(formValidator(nameOption, 'name'));
+      errors.push('name');
+    }
+    if (formValidator(aboutOption, 'about')) {
+      setAboutOptionError(formValidator(aboutOption, 'about'));
+      errors.push('about');
+    }
+    if (formValidator(userTypeOption, 'userType')) {
+      setUserTypeOptionError(formValidator(userTypeOption, 'userType'));
+      errors.push('userType');
+    }
+    if (userTypeOption === 'Advertising') {
+      if (formValidator(advertiserTypeOption, 'advertiserType')) {
+        setAdvertiserTypeOptionError(formValidator(advertiserTypeOption, 'advertiserType'));
+        errors.push('advertiserType');
+      }
+    }
+    if (formValidator(dobOption, 'dob')) {
+      setDobOptionError(formValidator(dobOption, 'dob'));
+      errors.push('dob');
+    }
+    if (areasOption.length) {
+      if (formValidator(arrayToString(areasOption), 'areasLooking')) {
+        setAreasOptionError(formValidator(arrayToString(areasOption), 'areasLooking'));
+        errors.push('areas');
+      }
+    }
+    return errors;
+  };
+
   const updatedDetails = {
     name: nameOption,
     email,
@@ -134,7 +163,13 @@ const EditProfileFormComponent = ({
 
   const handleFormSubmission = event => {
     event.preventDefault();
-    handleAccountUpdate(updatedDetails);
+    const validation = validateForm();
+    if (validation.length === 0) {
+      setErrorAlert(null);
+      handleAccountUpdate(updatedDetails);
+    } else {
+      setErrorAlert('Please check the form for errors.');
+    }
   };
 
   return (
@@ -145,8 +180,8 @@ const EditProfileFormComponent = ({
       >
         <div className={styles.textInput}>
           <label htmlFor="name">
-            <FormErrorComponent errorMessage={nameOptionError} />
             <h3>Your Name *</h3>
+            <FormErrorComponent errorMessage={nameOptionError} />
             <input id="name" type="text" defaultValue={name} onChange={event => changeName(event)} required />
           </label>
         </div>
@@ -154,13 +189,13 @@ const EditProfileFormComponent = ({
           <label htmlFor="age">
             <h3>Date Of Birth *</h3>
             <FormErrorComponent errorMessage={dobOptionError} />
-            <input id="dob" type="date" max="2003-03-03" defaultValue={dob} onChange={event => changeDob(event)} />
+            <input id="dob" type="date" defaultValue={dob} onChange={event => changeDob(event)} />
           </label>
         </div>
         <div className={`${styles.textInput} ${styles.aboutInput}`}>
           <label htmlFor="about">
-            <FormErrorComponent errorMessage={aboutOptionError} />
             <h3>About You</h3>
+            <FormErrorComponent errorMessage={aboutOptionError} />
             <textarea id="about" type="text" defaultValue={about} onChange={event => changeAbout(event)} />
           </label>
         </div>
@@ -190,6 +225,7 @@ const EditProfileFormComponent = ({
           id="userTypeControl"
         >
           <h3>User Type *</h3>
+          <FormErrorComponent errorMessage={userTypeOptionError} />
           <span className={styles.looking}>
             <input type="radio" id="looking" name="userType" value="Looking" defaultChecked={userType === 'Looking'} />
             <label htmlFor="looking">Looking</label>
@@ -209,6 +245,7 @@ const EditProfileFormComponent = ({
               managedPropertyCount <= 1 ? (
                 <>
                   <h3>Advertiser Type</h3>
+                  <FormErrorComponent errorMessage={advertiserTypeOptionError} />
                   <span>
                     <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" defaultChecked={advertiserType === 'Flatmate'} ref={advertiserTypeRef} />
                     <label htmlFor="flatmate">Flatmate</label>
@@ -221,6 +258,7 @@ const EditProfileFormComponent = ({
               ) : (
                 <>
                   <h3>Advertiser Type</h3>
+                  <FormErrorComponent errorMessage={advertiserTypeOptionError} />
                   <span className={styles.disabledRadio}>
                     <input type="radio" id="flatmate" name="advertiserType" value="Flatmate" disabled defaultChecked={advertiserType === 'Flatmate'} />
                     <label htmlFor="flatmate">Flatmate</label>
@@ -376,6 +414,7 @@ const EditProfileFormComponent = ({
               </div>
               <div className={styles.reactSelectInputContainer}>
                 <h3>Areas You Are Interested In</h3>
+                <FormErrorComponent errorMessage={areasOptionError} />
                 <CreatableSelect
                   defaultValue={selectInputDefaultGen(areasLooking)}
                   isMulti
@@ -388,6 +427,9 @@ const EditProfileFormComponent = ({
             null
           )
         }
+        <div className={styles.submitErrorContainer}>
+          <FormErrorComponent errorMessage={errorAlert} />
+        </div>
         <div className={styles.editProfileSubmitButton}>
           <button type="submit">
             Update Account

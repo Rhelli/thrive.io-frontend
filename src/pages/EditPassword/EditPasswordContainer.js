@@ -16,8 +16,6 @@ const EditPasswordContainer = ({
   const [passwordChangeError, setPasswordChangeError] = useState(null);
   const handleBackButtonClick = () => history.push('/myaccount/settings');
 
-  console.log(error);
-
   const handlePasswordChange = (event, passwordData) => {
     event.preventDefault();
     updateCurrentUserPasswordApiRequest(passwordData);
@@ -25,7 +23,6 @@ const EditPasswordContainer = ({
       setPasswordChangeError(null);
       history.push('/myaccount');
     } else {
-      console.log('error');
       setPasswordChangeError(error);
     }
   };

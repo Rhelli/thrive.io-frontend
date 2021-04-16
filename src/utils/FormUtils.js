@@ -56,6 +56,20 @@ const formValidator = (data, dataName) => {
       return errorMessage;
     }
 
+    case 'about': {
+      if (data && data.length > 5000) {
+        errorMessage = 'The maximum amount of characters is 5000.';
+      }
+      return errorMessage;
+    }
+
+    case 'areasLooking': {
+      if (data && !nameRegex.test(data)) {
+        errorMessage = 'Please enter a valid location name.';
+      }
+      return errorMessage;
+    }
+
     default: return errorMessage;
   }
 };

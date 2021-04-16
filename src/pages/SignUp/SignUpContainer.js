@@ -48,7 +48,6 @@ const SignUpContainer = ({ createUserRequest, authInfo }) => {
 
   const handleUserCreation = event => {
     event.preventDefault();
-    console.log(newUser);
     if (!validateForm()) {
       createUserRequest(newUser);
     }
