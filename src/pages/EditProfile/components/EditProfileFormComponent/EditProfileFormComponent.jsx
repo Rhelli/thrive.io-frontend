@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
+import FormErrorComponent from '../../../../common/FormErrorComponent/FormErrorComponent';
 import {
   selectInputDefaultGen, reactSelectOutputFormatter,
 } from '../../../../utils/profileSettingsUtils';
@@ -42,18 +44,31 @@ const EditProfileFormComponent = ({
   const advertiserTypeRef = useRef(null);
 
   const [nameOption, setNameOption] = useState(name);
+  const [nameOptionError, setNameOptionError] = useState(null);
   const [userTypeOption, setUserTypeOption] = useState(userType);
+  const [userTypeOptionError, setUserTypeOptionError] = useState(null);
   const [advertiserTypeOption, setAdvertiserTypeOption] = useState(advertiserType);
+  const [advertiserTypeOptionError, setAdvertiserTypeOptionError] = useState(null);
   const [aboutOption, setAboutOption] = useState(about);
+  const [aboutOptionError, setAboutOptionError] = useState(null);
   const [occupationOption, setOccupationOption] = useState(occupation);
+  const [occupationOptionError, setOccupationOptionError] = useState(null);
   const [genderOption, setGenderOption] = useState(gender);
+  const [genderOptionError, setGenderOptionError] = useState(null);
   const [coupleOption, setCoupleOption] = useState(couple);
+  const [coupleOptionError, setCoupleOptionError] = useState(null);
   const [smokingOption, setSmokingOption] = useState(smoking);
+  const [smokingOptionError, setSmokingOptionError] = useState(null);
   const [minBudgetOption, setMinBudgetOption] = useState(minBudget);
+  const [minBudgetOptionError, setMinBudgetOptionError] = useState(null);
   const [maxBudgetOption, setMaxBudgetOption] = useState(maxBudget);
+  const [maxBudgetOptionError, setMaxBudgetOptionError] = useState(null);
   const [petsOption, setPetsOption] = useState(pets);
+  const [petsOptionError, setPetsOptionError] = useState(null);
   const [areasOption, setAreasOption] = useState(areasLooking);
+  const [areasOptionError, setAreasOptionError] = useState(null);
   const [dobOption, setDobOption] = useState(dob);
+  const [dobOptionError, setDobOptionError] = useState(null);
 
   const changeName = event => setNameOption(event.target.value);
   const changeUserType = event => setUserTypeOption(event.target.value);
@@ -130,6 +145,7 @@ const EditProfileFormComponent = ({
       >
         <div className={styles.textInput}>
           <label htmlFor="name">
+            <FormErrorComponent errorMessage={nameOptionError} />
             <h3>Your Name *</h3>
             <input id="name" type="text" defaultValue={name} onChange={event => changeName(event)} required />
           </label>
@@ -137,20 +153,22 @@ const EditProfileFormComponent = ({
         <div className={styles.textInput}>
           <label htmlFor="age">
             <h3>Date Of Birth *</h3>
+            <FormErrorComponent errorMessage={dobOptionError} />
             <input id="dob" type="date" max="2003-03-03" defaultValue={dob} onChange={event => changeDob(event)} />
           </label>
         </div>
         <div className={`${styles.textInput} ${styles.aboutInput}`}>
           <label htmlFor="about">
+            <FormErrorComponent errorMessage={aboutOptionError} />
             <h3>About You</h3>
             <textarea id="about" type="text" defaultValue={about} onChange={event => changeAbout(event)} />
           </label>
         </div>
         {
-          advertiserTypeOption === 'Looking' ? (
-            <>
-              <div className={styles.radioInput}>
-                <h3>Your Budget *</h3>
+          userTypeOption === 'Looking' ? (
+            <div className={styles.budgetInput}>
+              <h3>Your Budget *</h3>
+              <div>
                 <span>
                   <label htmlFor="minBudget">Minimum</label>
                   <input id="minBudget" type="number" min="0" max={maxBudgetOption} defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
@@ -160,18 +178,7 @@ const EditProfileFormComponent = ({
                   <input id="maxBudget" type="number" defaultValue={maxBudget} min={minBudgetOption} onChange={event => changeMaxBudget(event)} />
                 </span>
               </div>
-              <div className={styles.radioInput}>
-                <h3>Your Budget *</h3>
-                <span>
-                  <label htmlFor="minBudget">Minimum</label>
-                  <input id="minBudget" type="number" min="0" max={maxBudgetOption} defaultValue={minBudget} onChange={event => changeMinBudget(event)} />
-                </span>
-                <span>
-                  <label htmlFor="maxBudget">Maximum</label>
-                  <input id="maxBudget" type="number" defaultValue={maxBudget} min={minBudgetOption} onChange={event => changeMaxBudget(event)} />
-                </span>
-              </div>
-            </>
+            </div>
           ) : (
             null
           )

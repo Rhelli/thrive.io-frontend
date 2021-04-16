@@ -10,6 +10,40 @@
       margin-bottom: 20px;
     }
 
+    .budgetInput {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 100%;
+      background-color: #fdece2;
+      border-radius: 4px;
+      border-bottom: 6px solid #f58c53;
+      padding: 10px 10px 0 10px;
+
+      div {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        margin-top: 20px;
+
+        span {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: center;
+          align-items: center;
+          width: 50%;
+
+          input {
+            width: 80%;
+            height: 40px;
+            border-radius: 6px;
+            outline: none;
+            border: 1px solid #f26619;
+            padding: 10px;
+          }
+        }
+      }
+    }
+
     .textInput {
       width: 100%;
       background-color: #fdece2;
