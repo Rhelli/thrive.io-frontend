@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,15 +8,26 @@ import { updateCurrentUserPasswordApiRequest } from '../../api/profileSettingsAp
 import styles from './EditPasswordContainer.module.scss';
 
 const EditPasswordContainer = ({
-  updateCurrentUserPasswordApiRequest, userProfile,
+  updateCurrentUserPasswordApiRequest, profileStore, profileSettingsStore,
 }) => {
   const history = useHistory();
+  const { userProfile } = profileStore;
+  const { loading, error } = profileSettingsStore;
+  const [passwordChangeError, setPasswordChangeError] = useState(null);
   const handleBackButtonClick = () => history.push('/myaccount/settings');
+
+  console.log(error);
 
   const handlePasswordChange = (event, passwordData) => {
     event.preventDefault();
     updateCurrentUserPasswordApiRequest(passwordData);
-    history.push('/myaccount');
+    if (!loading && !error) {
+      setPasswordChangeError(null);
+      history.push('/myaccount');
+    } else {
+      console.log('error');
+      setPasswordChangeError(error);
+    }
   };
 
   return (
@@ -25,6 +36,7 @@ const EditPasswordContainer = ({
       <EditPasswordFormComponent
         handlePasswordChange={handlePasswordChange}
         userProfile={userProfile}
+        error={passwordChangeError}
       />
     </div>
   );
@@ -32,13 +44,20 @@ const EditPasswordContainer = ({
 
 EditPasswordContainer.propTypes = {
   updateCurrentUserPasswordApiRequest: PropTypes.func.isRequired,
-  userProfile: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+  profileStore: PropTypes.shape({
+    userProfile: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+  profileSettingsStore: PropTypes.shape({
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
 const mapStateToProps = state => ({
-  userProfile: state.profileStore.userProfile,
+  profileStore: state.profileStore,
+  profileSettingsStore: state.profileSettingsStore,
 });
 
 const mapDispatchToProps = dispatch => ({

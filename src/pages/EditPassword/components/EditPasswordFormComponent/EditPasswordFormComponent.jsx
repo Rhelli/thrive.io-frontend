@@ -5,7 +5,7 @@ import FormErrorComponent from '../../../../common/FormErrorComponent/FormErrorC
 import EditPasswordConfirmationModal from '../EditPasswordConfirmationModal/EditPasswordConfirmationModal';
 import styles from './EditPasswordFormComponent.module.scss';
 
-const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
+const EditPasswordFormComponent = ({ userProfile, handlePasswordChange, error }) => {
   const { email, id } = userProfile;
   const [passwordConfirmModal, setPasswordConfirmModal] = useState(false);
   const [newPassword, setNewPassword] = useState(null);
@@ -17,22 +17,27 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
   const changePasswordConfirm = event => setNewPasswordConfirm(event.target.value);
 
   const openPasswordConfirmationModal = () => {
-    if (formValidator(newPassword, 'password') || formValidator(newPasswordConfirm, 'password')) {
+    if (formValidator(newPassword, 'password')) {
       setNewPasswordError(formValidator(newPassword, 'password'));
-      setNewPasswordConfirmError(formValidator(newPasswordConfirm, 'password'));
       return;
     }
+    setNewPasswordError(null);
+
+    if (newPassword !== newPasswordConfirm) {
+      setNewPasswordConfirmError('Passwords do not match. Please try again.');
+      return;
+    }
+    setNewPasswordConfirmError(null);
+
     if (newPassword === newPasswordConfirm) {
       setPasswordConfirmModal(true);
-    }
-    if (newPassword !== newPasswordConfirm) {
-      setPasswordConfirmModal(false);
     }
   };
 
   return (
     <div className={styles.editPasswordFormContainer}>
       <form>
+        <FormErrorComponent errorMessage={error} />
         <div
           className={styles.textInput}
           onChange={event => changePassword(event)}
@@ -69,6 +74,7 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
             setPasswordConfirmModal={setPasswordConfirmModal}
             email={email}
             id={id}
+            error={error}
           />
         ) : (
           null
@@ -78,12 +84,17 @@ const EditPasswordFormComponent = ({ userProfile, handlePasswordChange }) => {
   );
 };
 
+EditPasswordFormComponent.defaultProps = {
+  error: '',
+};
+
 EditPasswordFormComponent.propTypes = {
   handlePasswordChange: PropTypes.func.isRequired,
   userProfile: PropTypes.shape({
     email: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }).isRequired,
+  error: PropTypes.string,
 };
 
 export default EditPasswordFormComponent;
