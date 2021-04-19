@@ -7,7 +7,7 @@ const { REACT_APP_MAP_QUEST_KEY } = process.env;
 
 const fetchPropertyLocation = propertyAddress => dispatch => {
   dispatch(fetchSinglePropertyLocationRequest);
-  fetch(`http://www.mapquestapi.com/geocoding/v1/address/?key=${REACT_APP_MAP_QUEST_KEY}&location=${propertyAddress}`)
+  fetch(`https://www.mapquestapi.com/geocoding/v1/address/?key=${REACT_APP_MAP_QUEST_KEY}&location=${propertyAddress}`)
     .then(data => data.json())
     .then(data => {
       if (!data.error) {
