@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import renderer from 'react-test-renderer';
 import Enzyme, { mount } from 'enzyme';
@@ -91,15 +90,6 @@ const managePropertyListItemComponent = (
   />
 );
 
-const emptyManagePropertyListItemComponent = (
-  <PropertyListItemComponent
-    properties={noProperties}
-    propertyClickThrough={propertyClickThrough}
-    handlePropertyOptionButton={handlePropertyOptionButton}
-    listItemType={manageListItemType}
-  />
-);
-
 describe('The appearance and functionality of the PropertyListItemComponent when it is in shortlist mode', () => {
   const container = mount(shortlistPropertyListItemComponent);
   const propertyList = container.find('.propertyList');
@@ -182,3 +172,4 @@ describe('The appearance and functionality of the PropertyListItem component whe
     expect(handlePropertyOptionButton).toHaveBeenCalledTimes(1);
   });
 });
+
