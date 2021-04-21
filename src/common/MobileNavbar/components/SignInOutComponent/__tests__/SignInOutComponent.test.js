@@ -45,19 +45,6 @@ const landlordSignInOut = (
   <SignInOutComponent authInfo={landlordAuthInfo} />
 );
 
-const unsignedAuthInfo = {
-  signedIn: false,
-  userType: '',
-  authInfo: 'Unauthorized',
-  user: {},
-};
-
-const unsignedSignInOut = (
-  <SignInOutComponent authInfo={unsignedAuthInfo} />
-);
-
-
-
 describe("The appearance and functionality of the SignInOut component when the user is a 'looking' type", () => {
   it("Matches the snapshot of the SignInOut component in the 'looking' state", () => {
     const tree = renderer.create(lookingSignInOut).toJSON();

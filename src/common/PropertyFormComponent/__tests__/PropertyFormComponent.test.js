@@ -477,4 +477,3 @@ describe('The appearance and functionality of the PropertyForm components radio 
     expect(anySmokingField.childAt(0).instance().checked).toBe(true);
   });
 });
-

@@ -134,22 +134,30 @@ describe('The appearance and functionality of the PropertyListItemComponent when
   it('Displays the property address and town correctly', () => {
     expect(firstProperty.childAt(1).childAt(1).hasClass('propertyLocation')).toBe(true);
     expect(firstProperty.childAt(1).childAt(1).childAt(0).hasClass('propertyLocationIcon'));
-    expect(firstProperty.childAt(1).childAt(1).childAt(0).childAt(0).name()).toBe('FontAwesomeIcon');
+    expect(firstProperty.childAt(1).childAt(1).childAt(0).childAt(0)
+      .name()).toBe('FontAwesomeIcon');
     expect(firstProperty.childAt(1).childAt(1).childAt(1).hasClass('propertyAddress')).toBe(true);
-    expect(firstProperty.childAt(1).childAt(1).childAt(1).childAt(0).text()).toBe('152 Chanelle Villages, Brixton');
+    expect(firstProperty.childAt(1).childAt(1).childAt(1).childAt(0)
+      .text()).toBe('152 Chanelle Villages, Brixton');
   });
 
   it('Displays the property room and flatmate count correctly', () => {
     expect(firstProperty.childAt(1).childAt(2).hasClass('propertyDetails')).toBe(true);
-    expect(firstProperty.childAt(1).childAt(2).childAt(0).childAt(0).name()).toBe('FontAwesomeIcon');
-    expect(firstProperty.childAt(1).childAt(2).childAt(0).childAt(1).text()).toBe('8 Rooms');
-    expect(firstProperty.childAt(1).childAt(2).childAt(1).childAt(0).name()).toBe('FontAwesomeIcon');
-    expect(firstProperty.childAt(1).childAt(2).childAt(1).childAt(1).text()).toBe('7 Flatmates');
+    expect(firstProperty.childAt(1).childAt(2).childAt(0).childAt(0)
+      .name()).toBe('FontAwesomeIcon');
+    expect(firstProperty.childAt(1).childAt(2).childAt(0).childAt(1)
+      .text()).toBe('8 Rooms');
+    expect(firstProperty.childAt(1).childAt(2).childAt(1).childAt(0)
+      .name()).toBe('FontAwesomeIcon');
+    expect(firstProperty.childAt(1).childAt(2).childAt(1).childAt(1)
+      .text()).toBe('7 Flatmates');
   });
 
   it('Formats and displays the occupations of the flatmates correctly', () => {
-    expect(firstProperty.childAt(1).childAt(2).childAt(2).childAt(0).name()).toBe('FontAwesomeIcon');
-    expect(firstProperty.childAt(1).childAt(2).childAt(2).childAt(1).text()).toBe('Student');
+    expect(firstProperty.childAt(1).childAt(2).childAt(2).childAt(0)
+      .name()).toBe('FontAwesomeIcon');
+    expect(firstProperty.childAt(1).childAt(2).childAt(2).childAt(1)
+      .text()).toBe('Student');
   });
 
   it('Displays a functioning shortlist delete button', () => {
@@ -172,4 +180,3 @@ describe('The appearance and functionality of the PropertyListItem component whe
     expect(handlePropertyOptionButton).toHaveBeenCalledTimes(1);
   });
 });
-

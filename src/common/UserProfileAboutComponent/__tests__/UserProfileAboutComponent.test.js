@@ -86,7 +86,8 @@ describe('The appearance and functionality of the UserProfileAbout component', (
     expect(bottomSection.childAt(0).childAt(1).text()).toBe('£1075');
     expect(bottomSection.childAt(0).childAt(3).text()).toBe('£1400');
     expect(bottomSection.childAt(1).childAt(0).text()).toBe('Gender:');
-    expect(bottomSection.childAt(1).childAt(1).childAt(0).childAt(0).name()).toBe('FontAwesomeIcon');
+    expect(bottomSection.childAt(1).childAt(1).childAt(0).childAt(0)
+      .name()).toBe('FontAwesomeIcon');
     expect(bottomSection.childAt(1).childAt(1).childAt(1).text()).toBe('Male');
   });
 
