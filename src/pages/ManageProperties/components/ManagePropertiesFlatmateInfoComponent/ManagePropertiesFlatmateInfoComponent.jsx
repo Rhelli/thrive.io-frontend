@@ -6,26 +6,50 @@ import styles from '../ManagePropertiesLandlordInfoComponent/ManagePropertiesLan
 const ManagePropertiesFlatmateListComponent = ({ managedProperties }) => (
   <div className={styles.managedPropertiesInfoContainer}>
     <span>
-      <h4>{managedProperties[0].occupantCount}</h4>
+      {
+        managedProperties[0] ? (
+          <h4>{managedProperties[0].occupantCount}</h4>
+        ) : (
+          <h4>0</h4>
+        )
+      }
       <p>Current</p>
       <p>Flatmates</p>
     </span>
     <span>
-      <h4>{managedProperties[0].roomCount}</h4>
+      {
+        managedProperties[0] ? (
+          <h4>{managedProperties[0].roomCount}</h4>
+        ) : (
+          <h4>0</h4>
+        )
+      }
       <p>Free rooms</p>
     </span>
     <span className={styles.earningsInfo}>
-      <h4>
-        £
-        {rentShareCalc(managedProperties[0])}
-      </h4>
-      <p>Current Rent Share</p>
-      <p>
-        £
-        {managedProperties[0].price}
-        {' '}
-        per room
-      </p>
+      {
+        managedProperties[0] ? (
+          <>
+            <h4>
+              £
+              {rentShareCalc(managedProperties[0])}
+            </h4>
+            <p>Current Rent Share</p>
+            <p>
+              £
+              {managedProperties[0].price}
+              {' '}
+              per room
+            </p>
+          </>
+        ) : (
+          <>
+            <h4>0</h4>
+            <p>Current Rent Share</p>
+            <p>£0 per room</p>
+          </>
+        )
+      }
     </span>
     <span>
       <h4>{propertyLikesGen(managedProperties)}</h4>

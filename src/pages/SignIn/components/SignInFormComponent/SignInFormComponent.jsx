@@ -1,17 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import FormErrorComponent from '../../../../common/FormErrorComponent/FormErrorComponent';
 import styles from './SignInFormComponent.module.scss';
 
 const SignInFormComponent = ({ signInRequest, authInfo }) => {
-  const { signedIn } = authInfo;
+  const { signedIn, error } = authInfo;
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     if (signedIn === true) {
       history.push('/');
     }
-  }, [signedIn]);
+    if (error && error !== 'Please log in.') {
+      setErrorMessage(error);
+    }
+  }, [signedIn, error]);
 
   const fireSignInRequest = event => {
     signInRequest(event);
@@ -22,7 +27,7 @@ const SignInFormComponent = ({ signInRequest, authInfo }) => {
       <form onSubmit={event => fireSignInRequest(event)}>
         <div className={styles.formContainer}>
           <h1>Sign In</h1>
-
+          <FormErrorComponent errorMessage={errorMessage} />
           <div className={styles.textInput}>
             <label htmlFor="email">
               <h3>Email</h3>
