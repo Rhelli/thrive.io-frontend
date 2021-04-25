@@ -57,6 +57,7 @@ Additional technical specifications (in relation to the front-end) are as follow
  - The project must utilise Redux as a means of state management, ideally acting as an intermediatory between the back-end and the front-end.
 
 ## The App
+This is the front end solution for the project. To see the backend, please [follow this link](https://github.com/Rhelli/thrive.io-backend)
 The application was initially designed to adhere to the specifications of the project however, the final application is a substantially more feature rich experience.
 
 ### How Does It Work?
