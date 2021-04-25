@@ -9,10 +9,10 @@
 </h3>
 <p align="center">
     <br />
-    <a href=""><strong>Visit The Site »</strong></a>
+    <a href="https://thrive-living.herokuapp.com/"><strong>Visit The Site »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Rhelli/thrive.io-frontend/archive/refs/heads/release/0.1.0.zip">Download this repository</a>
+    <a href="https://github.com/Rhelli/thrive.io-frontend/archive/refs/heads/master.zip">Download this repository</a>
     |
     <a href="https://github.com/Rhelli/thrive.io-frontend/issues">Report A Bug</a>
     |
@@ -22,17 +22,17 @@
 
 
 ## 📑 Table of Contents
-  - [The Project Brief](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-the-project-brief)
-  - [The Technical Requirements](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-the-technical-requirements)
-  - [The App](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#the-app)
-  - [Application Architecture](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-application-architecture)
-  - [Tools & Technology Used](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-tools--technology-used)
-  - [Setup & Use](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-setup--use)
-  - [Feature Previews](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-feature-previews)
-  - [Contributions, Issues and Forking](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-contributions-issues-and-forking)
-  - [Creator](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-creator)
-  - [Show Your Support!](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-show-your-support))
-  - [Licensing](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-licensing)
+  - [The Project Brief](https://github.com/Rhelli/thrive.io-frontend#-the-project-brief)
+  - [The Technical Requirements](https://github.com/Rhelli/thrive.io-frontend#-the-technical-requirements)
+  - [The App](https://github.com/Rhelli/thrive.io-frontend#the-app)
+  - [Application Architecture](https://github.com/Rhelli/thrive.io-frontend#%EF%B8%8F-application-architecture)
+  - [Tools & Technology Used](https://github.com/Rhelli/thrive.io-frontend#-tools--technology-used)
+  - [Setup & Use](https://github.com/Rhelli/thrive.io-frontend#-setup--use)
+  - [Feature Previews](https://github.com/Rhelli/thrive.io-frontend#%EF%B8%8F-feature-previews)
+  - [Contributions, Issues and Forking](https://github.com/Rhelli/thrive.io-frontend#%EF%B8%8F-contributions-issues-and-forking)
+  - [Creator](https://github.com/Rhelli/thrive.io-frontend#-creator)
+  - [Show Your Support!](https://github.com/Rhelli/thrive.io-frontend#-show-your-support))
+  - [Licensing](https://github.com/Rhelli/thrive.io-frontend#%EF%B8%8F-licensing)
 
 
 ## 🔰 The Project Brief
@@ -201,7 +201,7 @@ Contributions, issues and feature requests are not just welcome, but encouraged!
 First and foremost, if you have any problems running or setting this project up, please submit it as a bug on the [issues page.](https://github.com/Rhelli/thrive.io-frontend/issues) right away!
 
 If you want to make your own changes, modifications or improvements, go ahead and Fork it!
-1. [Fork it](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/fork)
+1. [Fork it](https://github.com/Rhelli/thrive.io-frontend/fork)
 2. Create your working branch (git checkout -b [choose-a-name])
 3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
 4. Push to the branch (git push origin [chosen-name])
@@ -215,4 +215,4 @@ Rory Hellier - [Github](https://github.com/Rhelli)
 If enjoyed this project, thought the implementation was good or even liked the colour scheme, please do give the project a 🌟. It makes a huge difference!
 
 ## ⚖️ Licensing
-This project is [Privately](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/blob/feature/readMe/LICENSE.txt) licensed, Copyrighted and is not intended for free distribution or monetisation without prior permission being obtained from the creator.
+This project is [Privately](https://github.com/Rhelli/thrive.io-frontend/blob/master/README.md) licensed, Copyrighted and is not intended for free distribution or monetisation without prior permission being obtained from the creator.
