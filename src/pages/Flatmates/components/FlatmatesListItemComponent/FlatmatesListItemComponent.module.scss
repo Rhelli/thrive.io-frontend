@@ -4,7 +4,7 @@
   height: auto;
   flex-flow: column nowrap;
   margin: 10px 0;
-  background-color: #FCC6CD;
+  background-color: #fcc6cd;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 2px;
@@ -31,13 +31,12 @@
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  border-top: 1px solid #F43651;
-  background-color: #FAA9B4;
+  border-top: 1px solid #f43651;
+  background-color: #faa9b4;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
-  
-  .flatmatesInfoInnerContainer {
 
+  .flatmatesInfoInnerContainer {
     div {
       display: flex;
       flex-flow: row nowrap;
@@ -52,7 +51,7 @@
         margin-left: auto;
         position: relative;
         bottom: 2px;
-        background-color: #6619F2;
+        background-color: #6619f2;
         background-image: url('../../../../assets/img/dark-matter.png');
         color: white;
         border-radius: 20px;
@@ -71,7 +70,7 @@
           font-size: 24px;
           line-height: 24px;
         }
-  
+
         p {
           font-size: 14px;
           line-height: 24px;
@@ -88,7 +87,7 @@
     .gender,
     .budget,
     .couple {
-      background-color: #F88192;
+      background-color: #f88192;
     }
   }
 }

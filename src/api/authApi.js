@@ -57,6 +57,8 @@ const signInRequest = user => dispatch => {
       if (!data.error) {
         localStorage.setItem('token', data.jwt);
         dispatch(setUser(data.user));
+      } else {
+        dispatch(authError(data.error));
       }
     })
     .catch(error => {

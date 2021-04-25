@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The appearance and functionality of the LoadingErrorMessage component Matches the LoadingErrorMessage snapshot 1`] = `
+<div
+  className="loadingErrorContainer"
+>
+  <h2>
+    Oops!
+  </h2>
+  <div>
+    <p>
+      Error!
+       
+      this is the message
+    </p>
+  </div>
+</div>
+`;

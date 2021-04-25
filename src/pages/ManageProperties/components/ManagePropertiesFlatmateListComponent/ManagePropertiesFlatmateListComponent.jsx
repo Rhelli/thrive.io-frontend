@@ -12,7 +12,7 @@ const ManagePropertiesFlatmateListComponent = ({
 }) => {
   const property = managedProperties[0];
 
-  return (
+  return property ? (
     <div className={styles.managePropertiesFlatmatesListContainer}>
       <div className={styles.mpFlatmatesImage}>
         <button
@@ -33,6 +33,13 @@ const ManagePropertiesFlatmateListComponent = ({
       <PropertyInfoComponent singleProperty={property} />
       <PropertyAboutComponent singleProperty={property} />
       <PropertyMoreInfoGrid property={property} />
+    </div>
+  ) : (
+    <div className={styles.noPropertyMessage}>
+      <div>
+        <h2>No Properties Managed Yet!</h2>
+        <h4>Go and create a property!</h4>
+      </div>
     </div>
   );
 };

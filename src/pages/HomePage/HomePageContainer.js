@@ -103,8 +103,8 @@ const HomePageContainer = ({
 HomePageContainer.propTypes = {
   profileStore: PropTypes.shape({
     userProfile: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      userType: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      userType: PropTypes.string,
       advertiserType: PropTypes.string,
     }).isRequired,
     loading: PropTypes.bool,
@@ -118,7 +118,7 @@ HomePageContainer.propTypes = {
   authStore: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
     user: PropTypes.shape({
-      userType: PropTypes.string.isRequired,
+      userType: PropTypes.string,
       advertiserType: PropTypes.string,
     }).isRequired,
   }).isRequired,

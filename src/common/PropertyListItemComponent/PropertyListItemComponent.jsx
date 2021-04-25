@@ -17,7 +17,7 @@ const PropertyListItemComponent = ({
     {
       properties.length ? (
         properties.map(property => (
-          <div key={uuidv4()}>
+          <div className={styles.propertyList} key={uuidv4()}>
             <div
               className={styles.propertyContainer}
               onClick={() => propertyClickThrough(property)}
@@ -27,7 +27,7 @@ const PropertyListItemComponent = ({
             >
               <div className={styles.propertyImage}>
                 {
-                  listItemType === 'manage' ? (
+                  listItemType === 'Manage' ? (
                     <button
                       type="button"
                       className={styles.propertySettingsButton}
@@ -120,29 +120,29 @@ const PropertyListItemComponent = ({
 PropertyListItemComponent.propTypes = {
   properties: PropTypes.arrayOf(
     PropTypes.shape({
-      address: PropTypes.string.isRequired,
-      bills: PropTypes.string.isRequired,
-      blurb: PropTypes.string.isRequired,
-      deposit: PropTypes.number.isRequired,
+      address: PropTypes.string,
+      bills: PropTypes.string,
+      blurb: PropTypes.string,
+      deposit: PropTypes.number,
       disabledAccess: PropTypes.string,
-      furnished: PropTypes.string.isRequired,
+      furnished: PropTypes.string,
       genders: PropTypes.arrayOf(PropTypes.string),
       id: PropTypes.number,
       internet: PropTypes.string,
       maxAge: PropTypes.number,
       minAge: PropTypes.number,
-      occupantCount: PropTypes.number.isRequired,
+      occupantCount: PropTypes.number,
       occupations: PropTypes.arrayOf(PropTypes.string),
       outsideArea: PropTypes.arrayOf(PropTypes.string),
-      parking: PropTypes.string.isRequired,
+      parking: PropTypes.string,
       pets: PropTypes.arrayOf(PropTypes.string),
-      postcode: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      roomCount: PropTypes.number.isRequired,
+      postcode: PropTypes.string,
+      price: PropTypes.number,
+      roomCount: PropTypes.number,
       smoking: PropTypes.string,
-      title: PropTypes.string.isRequired,
-      town: PropTypes.string.isRequired,
-    }).isRequired,
+      title: PropTypes.string,
+      town: PropTypes.string,
+    }),
   ).isRequired,
   propertyClickThrough: PropTypes.func.isRequired,
   handlePropertyOptionButton: PropTypes.func.isRequired,

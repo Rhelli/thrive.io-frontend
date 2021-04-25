@@ -8,39 +8,39 @@
       justify-content: center;
       width: 100%;
       padding: 20px 0;
-      
+
       h1 {
         font-size: 28px;
         width: 100%;
         margin-bottom: 20px;
         text-align: center;
-        color: #26095B;
+        color: #26095b;
       }
 
-      .textInput{
+      .textInput {
         width: 100%;
-        background-color: #FDECE2;
+        background-color: #fdece2;
         border-radius: 4px;
-        border-bottom: 6px solid #F58C53;
+        border-bottom: 6px solid #f58c53;
         margin-bottom: 15px;
-    
+
         label {
           display: flex;
           flex-flow: column nowrap;
           width: 100%;
           padding: 10px;
-    
+
           h3 {
             font-size: 18px;
             line-height: 1.2;
             margin-bottom: 10px;
           }
-    
+
           input {
             height: 40px;
             border-radius: 6px;
             outline: none;
-            border: 1px solid #F26619;
+            border: 1px solid #f26619;
             padding: 10px;
           }
         }
@@ -57,18 +57,18 @@
           height: 50px;
           width: 200px;
           border: none;
-          outline: none;;
-          background-color: #8C53F5;
+          outline: none;
+          background-color: #8c53f5;
           font-size: 20px;
           border-radius: 4px;
-          border-bottom: 5px solid #7936F4;
+          border-bottom: 5px solid #7936f4;
           color: white;
           transition-duration: 0.2s;
 
           &:focus,
           &:active {
             border: none;
-            background-color: #7936F4;
+            background-color: #7936f4;
             transition-duration: 0.15s;
           }
         }

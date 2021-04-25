@@ -76,7 +76,7 @@ SignInOutComponent.propTypes = {
       userType: PropTypes.string,
       advertiserType: PropTypes.string,
     }),
-    error: PropTypes.string.isRequired,
+    error: PropTypes.string,
   }).isRequired,
 };
 

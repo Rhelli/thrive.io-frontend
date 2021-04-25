@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The appearance and functionality of the FormErrorComponent Matches the FormErrorComponent snapshot 1`] = `
+<p
+  className="errorMessage"
+>
+  error!
+</p>
+`;

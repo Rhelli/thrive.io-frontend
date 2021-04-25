@@ -4,7 +4,7 @@
 }
 
 .userProfileAboutTopSection {
-  background-color: #ECE2FD;
+  background-color: #ece2fd;
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 6px;
@@ -16,11 +16,10 @@
   .userProfileAbout {
     padding: 10px 0;
     line-height: 120%;
-    border-bottom: 3px solid #D9C6FC;
+    border-bottom: 3px solid #d9c6fc;
   }
 
   .userProfileAreas {
-
     h2 {
       font-size: 18px;
       margin-bottom: 6px;
@@ -40,8 +39,8 @@
   div {
     display: flex;
     flex-flow: row nowrap;
-    background-color: #FCC6CD;
-    border-left: 4px solid #F43651;
+    background-color: #fcc6cd;
+    border-left: 4px solid #f43651;
     border-radius: 4px;
     padding: 12px 12px;
     font-size: 14px;
@@ -60,4 +59,8 @@
       margin-right: 4px;
     }
   }
+}
+
+.tbd {
+  color: #909090;
 }

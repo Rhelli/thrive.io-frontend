@@ -14,30 +14,62 @@ const UserProfileAboutComponent = ({ userProfile }) => {
         <div className={styles.userProfileAboutTopSection}>
           <h2>About</h2>
           <div className={styles.userProfileAbout}>
-            <p>{about}</p>
+            {
+              about ? (
+                <p>{about}</p>
+              ) : (
+                <p className={styles.tbd}>This user hasn&apos;t added any information yet!</p>
+              )
+            }
           </div>
           <div className={styles.userProfileAreas}>
             <h2>Areas Looking</h2>
-            <p>{arrayDisplay(areasLooking)}</p>
+            {
+              areasLooking.length ? (
+                <p>{arrayDisplay(areasLooking)}</p>
+              ) : (
+                <p className={styles.tbd}>No areas added yet.</p>
+              )
+            }
           </div>
         </div>
         <div className={styles.userProfileAboutBottomSection}>
           <div>
             <span>Budget:</span>
             <span>
+              {
+                minBudget ? (
+                  <p>
+                    £
+                    {minBudget}
+                  </p>
+                ) : (
+                  <p className={styles.tbd}>
+                    £tbd
+                  </p>
+                )
+              }
+            </span>
+            <span>
               <p>
-                £
-                {minBudget}
+                {' '}
+                -
+                {' '}
               </p>
             </span>
             <span>
-              <p> - </p>
-            </span>
-            <span>
-              <p>
-                £
-                {maxBudget}
-              </p>
+              {
+                maxBudget ? (
+                  <p>
+                    £
+                    {maxBudget}
+                  </p>
+                ) : (
+                  <p className={styles.tbd}>
+                    £tbd
+                  </p>
+                )
+              }
             </span>
           </div>
           <div>
@@ -45,8 +77,16 @@ const UserProfileAboutComponent = ({ userProfile }) => {
               <p>Gender:</p>
             </span>
             <span className={styles.userProfileGenderBox}>
-              <p>{userGenderDisplay(gender)[0]}</p>
-              <p>{userGenderDisplay(gender)[1]}</p>
+              {
+                gender ? (
+                  <>
+                    <p>{userGenderDisplay(gender)[0]}</p>
+                    <p>{userGenderDisplay(gender)[1]}</p>
+                  </>
+                ) : (
+                  <p className={styles.tbd}>tbd</p>
+                )
+              }
             </span>
           </div>
           <div>
@@ -54,7 +94,13 @@ const UserProfileAboutComponent = ({ userProfile }) => {
               <p>Couple?</p>
             </span>
             <span>
-              <p>{couple}</p>
+              {
+                couple ? (
+                  <p>{couple}</p>
+                ) : (
+                  <p className={styles.tbd}>tbd</p>
+                )
+              }
             </span>
           </div>
           <div>
@@ -62,7 +108,13 @@ const UserProfileAboutComponent = ({ userProfile }) => {
               <p>Smoking?</p>
             </span>
             <span>
-              <p>{smoking}</p>
+              {
+                smoking ? (
+                  <p>{smoking}</p>
+                ) : (
+                  <p className={styles.tbd}>tbd</p>
+                )
+              }
             </span>
           </div>
           <div>
@@ -70,9 +122,15 @@ const UserProfileAboutComponent = ({ userProfile }) => {
               <p>Pets?</p>
             </span>
             <span>
-              <p>
-                {arrayDisplay(pets)}
-              </p>
+              {
+                pets.length ? (
+                  <p>
+                    {arrayDisplay(pets)}
+                  </p>
+                ) : (
+                  <p className={styles.tbd}>tbd</p>
+                )
+              }
             </span>
           </div>
         </div>

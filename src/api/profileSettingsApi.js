@@ -154,11 +154,15 @@ export const updateCurrentUserPasswordApiRequest = passwordData => dispatch => {
           .then(data => {
             if (!data.error) {
               dispatch(updateCurrentUserPasswordSuccess(data));
+            } else {
+              dispatch(updateCurrentUserPasswordError(data.error));
             }
           })
           .catch(error => {
             dispatch(updateCurrentUserPasswordError(error));
           });
+      } else {
+        dispatch(updateCurrentUserPasswordError(data.error));
       }
     })
     .catch(error => {

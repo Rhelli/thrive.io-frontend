@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The appreance and functionality of the EditEmailForm component Matches the previous snapshot 1`] = `
+<div
+  className="editEmailFormContainer"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="textInput"
+    >
+      <label
+        htmlFor="email"
+      >
+        <h3>
+          Your Email Address
+        </h3>
+        <p
+          className="errorMessage"
+        />
+        <input
+          defaultValue="steve@email.com"
+          id="email"
+          onChange={[Function]}
+          type="email"
+        />
+      </label>
+    </div>
+    <input
+      id="id"
+      type="hidden"
+      value={1}
+    />
+    <div
+      className="editEmailSubmitButton"
+    >
+      <button
+        type="submit"
+      >
+        Change Email
+      </button>
+    </div>
+  </form>
+</div>
+`;

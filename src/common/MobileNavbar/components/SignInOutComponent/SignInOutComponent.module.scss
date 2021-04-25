@@ -14,7 +14,7 @@
     svg {
       font-size: 24px;
       margin-bottom: 4px;
-      transition-duration: 0.2;
+      transition-duration: 0.2s;
     }
 
     .userName {
@@ -42,7 +42,7 @@
   a {
     svg {
       &:focus {
-        color: #6619F2;
+        color: #6619f2;
       }
     }
   }

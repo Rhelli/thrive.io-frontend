@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The appearance and functionality of the UserProfileAbout component Matches the previous snapshot 1`] = `
+<div
+  className="userProfileAboutContainer"
+>
+  <div>
+    <div
+      className="userProfileAboutTopSection"
+    >
+      <h2>
+        About
+      </h2>
+      <div
+        className="userProfileAbout"
+      >
+        <p>
+          Sequi esse nesciunt ab.
+        </p>
+      </div>
+      <div
+        className="userProfileAreas"
+      >
+        <h2>
+          Areas Looking
+        </h2>
+        <p>
+          Dulwich, Camden.
+        </p>
+      </div>
+    </div>
+    <div
+      className="userProfileAboutBottomSection"
+    >
+      <div>
+        <span>
+          Budget:
+        </span>
+        <span>
+          <p>
+            £
+            1075
+          </p>
+        </span>
+        <span>
+          <p>
+             
+            -
+             
+          </p>
+        </span>
+        <span>
+          <p>
+            £
+            1400
+          </p>
+        </span>
+      </div>
+      <div>
+        <span>
+          <p>
+            Gender:
+          </p>
+        </span>
+        <span
+          className="userProfileGenderBox"
+        >
+          <p>
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-mars fa-w-12 "
+              data-icon="mars"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 384 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M372 64h-79c-10.7 0-16 12.9-8.5 20.5l16.9 16.9-80.7 80.7c-22.2-14-48.5-22.1-76.7-22.1C64.5 160 0 224.5 0 304s64.5 144 144 144 144-64.5 144-144c0-28.2-8.1-54.5-22.1-76.7l80.7-80.7 16.9 16.9c7.6 7.6 20.5 2.2 20.5-8.5V76c0-6.6-5.4-12-12-12zM144 384c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </p>
+          <p>
+            Male
+          </p>
+        </span>
+      </div>
+      <div>
+        <span>
+          <p>
+            Couple?
+          </p>
+        </span>
+        <span>
+          <p>
+            Non-Couple
+          </p>
+        </span>
+      </div>
+      <div>
+        <span>
+          <p>
+            Smoking?
+          </p>
+        </span>
+        <span>
+          <p>
+            Smoking
+          </p>
+        </span>
+      </div>
+      <div>
+        <span>
+          <p>
+            Pets?
+          </p>
+        </span>
+        <span>
+          <p>
+            Cats.
+          </p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

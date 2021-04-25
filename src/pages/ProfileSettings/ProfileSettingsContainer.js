@@ -17,7 +17,10 @@ const ProfileSettingsContainer = ({ userProfile }) => {
 
   return (
     <div className={styles.profileSettingsContainer}>
-      <ProfileSettingsNavbar handleBackButtonClick={handleBackButtonClick} />
+      <ProfileSettingsNavbar
+        handleBackButtonClick={handleBackButtonClick}
+        className={styles.navbar}
+      />
       <ProfileSettingsButtonsComponent
         handleEditProfileClick={handleEditProfileClick}
         handleChangePasswordClick={handleChangePasswordClick}

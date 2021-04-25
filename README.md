@@ -12,27 +12,27 @@
     <a href=""><strong>Visit The Site »</strong></a>
     <br />
     <br />
-    <a href="">Download this repository</a>
+    <a href="https://github.com/Rhelli/thrive.io-frontend/archive/refs/heads/release/0.1.0.zip">Download this repository</a>
     |
-    <a href="">Report A Bug</a>
+    <a href="https://github.com/Rhelli/thrive.io-frontend/issues">Report A Bug</a>
     |
-    <a href="">Fork It</a>
+    <a href="https://github.com/Rhelli/thrive.io-frontend/fork">Fork It</a>
   </p>
 </p>
 
 
 ## 📑 Table of Contents
-  - [The Project Brief](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-the-project-brief)
-  - [The Technical Requirements](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-the-technical-requirements)
-  - [Architecture](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#%EF%B8%8F-architecture)
-  - [Tools & Technology Used](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-tools--technology-used)
+  - [The Project Brief](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-the-project-brief)
+  - [The Technical Requirements](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-the-technical-requirements)
+  - [The App](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#the-app)
+  - [Application Architecture](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-application-architecture)
+  - [Tools & Technology Used](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-tools--technology-used)
   - [Setup & Use](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-setup--use)
-  - [Feature Previews](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#%EF%B8%8F-feature-previews)
-  - [Contributions, Issues and Forking](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#%EF%B8%8F-contributions-issues-and-forking)
-  - [Creator](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-creator)
-  - [Show Your Support!](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-show-your-support)
-  - [Credit & Acknowledgements](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#-credits--acknowledgements)
-  - [Licensing](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/tree/main#%EF%B8%8F-licensing)
+  - [Feature Previews](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-feature-previews)
+  - [Contributions, Issues and Forking](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-contributions-issues-and-forking)
+  - [Creator](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-creator)
+  - [Show Your Support!](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-show-your-support))
+  - [Licensing](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-licensing)
 
 
 ## 🔰 The Project Brief
@@ -198,7 +198,7 @@ Whilst this project has been predominantly built for use as a web page, there ar
 
 Contributions, issues and feature requests are not just welcome, but encouraged!
 
-First and foremost, if you have any problems running or setting this project up, please submit it as a bug on the [issues page.]() right away!
+First and foremost, if you have any problems running or setting this project up, please submit it as a bug on the [issues page.](https://github.com/Rhelli/thrive.io-frontend/issues) right away!
 
 If you want to make your own changes, modifications or improvements, go ahead and Fork it!
 1. [Fork it](https://github.com/Rhelli/react-redux-capstone---clothes-catalogue-store/fork)

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The appearance and functionality of the component Matches the previous snapshot 1`] = `
+<header
+  className="brandingHeader"
+>
+  <img
+    alt="Thrive"
+    src="thrive-full-transparent-alt.png"
+  />
+</header>
+`;

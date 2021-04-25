@@ -1,22 +1,13 @@
-.propertyListItemContainer {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 100%;
-  height: auto;
-  padding-bottom: 80px;
-  z-index: 1;
-}
-
 .propertyContainer {
   display: flex;
   width: 100%;
   flex-flow: column nowrap;
   z-index: 3;
-  background-color: #ECE2FD;
+  background-color: #ece2fd;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
   transition: 0.2s;
-  border-bottom: 6px solid #EFA9FA;
+  border-bottom: 6px solid #efa9fa;
   margin-bottom: 2px;
 
   &:hover,
@@ -43,7 +34,7 @@
       padding: 8px 9px;
       outline: none;
       border: none;
-      background-color: rgba(0, 100 , 230, 0.5); 
+      background-color: rgba(0, 100, 230, 0.5);
       border-radius: 50%;
       z-index: 10;
 
@@ -58,20 +49,27 @@
   }
 
   .propertyInfoContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: auto;
+    padding-bottom: 80px;
+    z-index: 1;
+
     .propertyTitle {
       display: flex;
       flex-flow: row nowrap;
       width: 100%;
-      background-color: #C6A9FA;
-      border-bottom: 1px solid #9F6FF7;
+      background-color: #c6a9fa;
+      border-bottom: 1px solid #9f6ff7;
 
       h3 {
         width: 80%;
         font-size: 18px;
         line-height: 1.2;
         padding: 10px;
-        background-color: #C6A9FA;
-        border-top: 1px solid #B38CF8;
+        background-color: #c6a9fa;
+        border-top: 1px solid #b38cf8;
       }
 
       span {
@@ -82,8 +80,8 @@
         padding: 10px 0;
         width: 20%;
         font-size: 18px;
-        background-color: #B38CF8;
-        border-left: 1px solid #9F6FF7;
+        background-color: #b38cf8;
+        border-left: 1px solid #9f6ff7;
         border-bottom-left-radius: 10px;
       }
     }
@@ -98,6 +96,7 @@
         svg {
           font-size: 18px;
         }
+
         margin-right: 5px;
       }
 
@@ -142,7 +141,9 @@
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    
+    background-color: #d9c6fc;
+    border-radius: 4px;
+
     h2,
     h4 {
       width: 100%;
@@ -161,7 +162,6 @@
       font-weight: 200;
       font-style: italic;
     }
-  
   }
 }
 
@@ -182,7 +182,7 @@
     border: none;
     outline: none;
     border-radius: 4px 4px 25px 25px;
-    background-color: #F21938;
+    background-color: #f21938;
     margin-bottom: 20px;
     transition-duration: 0.2s;
 
@@ -203,7 +203,7 @@
     &:focus,
     &:active {
       opacity: 0.7;
-      transition-duration: 0.12s;  
+      transition-duration: 0.12s;
     }
   }
 }

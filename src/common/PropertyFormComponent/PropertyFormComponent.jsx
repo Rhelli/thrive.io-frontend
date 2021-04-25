@@ -94,6 +94,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setTitleOption(event.target.value)}
           className={styles.textInputContainer}
+          id="titleInput"
         >
           <label htmlFor="title">
             <h3>Title *</h3>
@@ -104,6 +105,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setBlurbOption(event.target.value)}
           className={styles.textInputContainer}
+          id="descInput"
         >
           <label htmlFor="blurb">
             <h3>Description *</h3>
@@ -114,6 +116,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setAddressOption(event.target.value)}
           className={styles.textInputContainer}
+          id="addressInput"
         >
           <label htmlFor="address">
             <h3>Address *</h3>
@@ -124,6 +127,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setTownOption(event.target.value)}
           className={styles.textInputContainer}
+          id="townInput"
         >
           <label htmlFor="town">
             <h3>Town *</h3>
@@ -134,6 +138,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setPostcodeOption(event.target.value)}
           className={styles.textInputContainer}
+          id="postcodeInput"
         >
           <label htmlFor="postcode">
             <h3>Postcode / ZipCode *</h3>
@@ -144,6 +149,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setPriceOption(event.target.value)}
           className={styles.textInputContainer}
+          id="priceInput"
         >
           <label htmlFor="price">
             <h3>Rent *</h3>
@@ -154,6 +160,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setBillsOption(event.target.value)}
           className={styles.radioField}
+          id="billsInput"
         >
           <h3>Are Bills Included? *</h3>
           <span>
@@ -169,6 +176,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setDepositOption(event.target.value)}
           className={styles.textInputContainer}
+          id="depositInput"
         >
           <label htmlFor="deposit">
             <h3>How Much Is The Deposit? *</h3>
@@ -179,6 +187,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setFurnishedOption(event.target.value)}
           className={styles.radioField}
+          id="furnishedInput"
         >
           <h3>Is The Space For Rent Furnished? *</h3>
           <span>
@@ -194,6 +203,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setParkingOption(event.target.value)}
           className={styles.radioField}
+          id="parkingInput"
         >
           <h3>Is There Parking? *</h3>
           <span>
@@ -209,6 +219,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setOccupantCountOption(event.target.value)}
           className={styles.textInputContainer}
+          id="occupantInput"
         >
           <label htmlFor="occupantCount">
             <h3>How Many People Live Here Currently? *</h3>
@@ -219,6 +230,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setRoomCountOption(event.target.value)}
           className={styles.textInputContainer}
+          id="roomInput"
         >
           <label htmlFor="roomCount">
             <h3>How Many Rooms Are Available? *</h3>
@@ -226,7 +238,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
           </label>
         </div>
 
-        <div className={styles.reactSelectInputContainer}>
+        <div className={styles.reactSelectInputContainer} id="outsideInput">
           <h3>Are There Any Outside Areas?</h3>
           <Select
             defaultValue={selectInputDefaultGen(singleProperty.outsideArea)}
@@ -241,6 +253,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setDisabledAccessOption(event.target.value)}
           className={styles.radioField}
+          id="disabledInput"
         >
           <h3>Is There Disabled Access?</h3>
           <span>
@@ -256,6 +269,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setInternetOption(event.target.value)}
           className={styles.radioField}
+          id="internetInput"
         >
           <h3>Is Internet Provided?</h3>
           <span>
@@ -268,7 +282,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
           </span>
         </div>
 
-        <div className={styles.propertyAges}>
+        <div className={styles.propertyAges} id="agesInput">
           <div onChange={event => setMinAgeOption(event.target.value)}>
             <label htmlFor="minAge">
               <h3>Lowest Age</h3>
@@ -287,6 +301,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
         <div
           onChange={event => setSmokingOption(event.target.value)}
           className={styles.radioField}
+          id="smokingInput"
         >
           <h3>Is Smoking Allowed?</h3>
           <span>
@@ -302,7 +317,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
             <label htmlFor="anySmoking">Any</label>
           </span>
         </div>
-        <div className={styles.reactSelectInputContainer}>
+        <div className={styles.reactSelectInputContainer} id="petsInput">
           <h3>Are There Any Pets?</h3>
           <Select
             defaultValue={selectInputDefaultGen(singleProperty.pets)}
@@ -314,7 +329,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
           />
         </div>
 
-        <div className={styles.genderInputContainer}>
+        <div className={styles.genderInputContainer} id="genderInput">
           <h3>How Many Of Each Gender Is There?</h3>
           <div>
             <span>
@@ -344,7 +359,7 @@ const PropertyFormComponent = ({ handleFormSubmission, ownerId, singleProperty =
           </div>
         </div>
 
-        <div className={styles.occupationsInputContainer}>
+        <div className={styles.occupationsInputContainer} id="occupationsInput">
           <h3>How Many Professionals & Students Are There?</h3>
           <div>
             <span>
