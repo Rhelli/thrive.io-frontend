@@ -1,0 +1,55 @@
+.feedContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 25%;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-bottom: 8px solid #8c53f5;
+  border-radius: 6px;
+
+  div {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 6px;
+
+    .userInfo,
+    .timeInfo {
+      padding: 6px 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .userInfo {
+      background-color: #d9c6fc;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      font-size: 14px;
+      width: 75%;
+
+      button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        width: 60%;
+
+        p {
+          font-size: inherit;
+          text-decoration: underline;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    .timeInfo {
+      background-color: #b38cf8;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      width: 25%;
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.shortlistListContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  border: 1px solid red;
+}
+
+.shortlistListImage {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 1px solid green;
+
+  button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    padding: 8px 10px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background-color: rgba(250, 0, 0, 0.6);
+
+    svg {
+      font-size: 18px;
+      bottom: 2px;
+    }
+
+    p {
+      display: none;
+    }
+
+    &:focus {
+      p {
+        display: inline-block;
+        font-size: 16px;
+        margin-left: 4px;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.profileImageContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 200px;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  border-bottom: 1px solid #f76f83;
+  background-image: url('../../../../assets/img/inspiration-geometry.png');
+
+  .profileImageContact {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(244, 54, 81, 0.8);
+    border: 1px solid #f21938;
+    padding: 6px 12px;
+    border-radius: 25px;
+    z-index: 4;
+    color: white;
+
+    svg {
+      font-size: 28px;
+    }
+
+    p {
+      display: none;
+      margin-left: 8px;
+    }
+
+    &:focus,
+    &:active {
+      p {
+        display: inline-block;
+      }
+    }
+  }
+
+  .profileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    bottom: -20%;
+    border-radius: 50%;
+    background-color: #b38cf8;
+    z-index: 3;
+    border: 1px solid #9f6ff7;
+    -webkit-box-shadow: 0 1px 3px 1px rgba(48, 48, 48, 1);
+    -moz-box-shadow: 0 1px 3px 1px rgba(48, 48, 48, 1);
+    box-shadow: 0 1px 3px 1px rgba(48, 48, 48, 1);
+  }
+}

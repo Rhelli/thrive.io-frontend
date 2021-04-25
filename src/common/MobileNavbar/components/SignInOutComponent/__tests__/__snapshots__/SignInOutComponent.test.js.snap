@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The appearance and functionality of the SignInOut component when the user is a 'looking' type Matches the snapshot of the SignInOut component in the 'looking' state 1`] = `
+<div
+  className="signInOutContainer"
+>
+  <a
+    className="shortlistNav"
+    href="/shortlist"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-star fa-w-18 "
+      data-icon="star"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 576 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <p>
+      Shortlist
+    </p>
+  </a>
+  <a
+    className="accountNav"
+    href="/myaccount"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-user-circle fa-w-16 "
+      data-icon="user-circle"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 496 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <p>
+      Steve
+    </p>
+  </a>
+</div>
+`;
+
+exports[`The appearance and functionality of the SignInOut component when the user is an 'advertising flatmate' type Matches the snapshot of the SignInOut component in the 'advertising flatmate' state 1`] = `
+<div
+  className="signInOutContainer"
+>
+  <a
+    className="managePropertiesButton"
+    href="/manage-properties"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-house-user fa-w-18 "
+      data-icon="house-user"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 576 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M570.69,236.27,512,184.44V48a16,16,0,0,0-16-16H432a16,16,0,0,0-16,16V99.67L314.78,10.3C308.5,4.61,296.53,0,288,0s-20.46,4.61-26.74,10.3l-256,226A18.27,18.27,0,0,0,0,248.2a18.64,18.64,0,0,0,4.09,10.71L25.5,282.7a21.14,21.14,0,0,0,12,5.3,21.67,21.67,0,0,0,10.69-4.11l15.9-14V480a32,32,0,0,0,32,32H480a32,32,0,0,0,32-32V269.88l15.91,14A21.94,21.94,0,0,0,538.63,288a20.89,20.89,0,0,0,11.87-5.31l21.41-23.81A21.64,21.64,0,0,0,576,248.19,21,21,0,0,0,570.69,236.27ZM288,176a64,64,0,1,1-64,64A64,64,0,0,1,288,176ZM400,448H176a16,16,0,0,1-16-16,96,96,0,0,1,96-96h64a96,96,0,0,1,96,96A16,16,0,0,1,400,448Z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <p>
+      Manage
+    </p>
+  </a>
+  <a
+    className="accountNav"
+    href="/myaccount"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-user-circle fa-w-16 "
+      data-icon="user-circle"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 496 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <p
+      className="userName"
+    >
+      Kyle
+    </p>
+  </a>
+</div>
+`;
+
+exports[`The appearance and functionality of the SignInOut component when the user is the 'advertising landlord' type Matches the previous snapshot of the SignInOut component when the user is a landlord 1`] = `
+<div
+  className="signInOutContainer"
+>
+  <a
+    className="managePropertiesButton"
+    href="/manage-properties"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-layer-group fa-w-16 "
+      data-icon="layer-group"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 512 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.41 148.02l232.94 105.67c6.8 3.09 14.49 3.09 21.29 0l232.94-105.67c16.55-7.51 16.55-32.52 0-40.03L266.65 2.31a25.607 25.607 0 0 0-21.29 0L12.41 107.98c-16.55 7.51-16.55 32.53 0 40.04zm487.18 88.28l-58.09-26.33-161.64 73.27c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.51 209.97l-58.1 26.33c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 276.3c16.55-7.5 16.55-32.5 0-40zm0 127.8l-57.87-26.23-161.86 73.37c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.29 337.87 12.41 364.1c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 404.1c16.55-7.5 16.55-32.5 0-40z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <p>
+      Manage
+    </p>
+  </a>
+  <a
+    className="accountNav"
+    href="/myaccount"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-user-circle fa-w-16 "
+      data-icon="user-circle"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 496 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+    <p
+      className="userName"
+    >
+      Paul
+    </p>
+  </a>
+</div>
+`;

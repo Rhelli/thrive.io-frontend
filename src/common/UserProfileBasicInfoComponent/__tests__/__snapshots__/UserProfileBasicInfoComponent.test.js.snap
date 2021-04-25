@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The appearance and functionality of the userProfileBasicInfo component Matches the previous snapshot 1`] = `
+<div
+  className="userProfileBasicContainer"
+>
+  <div
+    className="userProfileName"
+  >
+    <h2>
+      Tonita
+    </h2>
+  </div>
+  <div
+    className="userProfileOccupationType"
+  >
+    <span>
+      <p>
+        Student
+      </p>
+    </span>
+    <span
+      className="userProfileBasicMidSpan"
+    >
+      <p>
+        |
+      </p>
+    </span>
+    <span>
+      <p>
+        Looking
+      </p>
+    </span>
+  </div>
+</div>
+`;

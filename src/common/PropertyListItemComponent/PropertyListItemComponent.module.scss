@@ -1,0 +1,209 @@
+.propertyContainer {
+  display: flex;
+  width: 100%;
+  flex-flow: column nowrap;
+  z-index: 3;
+  background-color: #ece2fd;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  transition: 0.2s;
+  border-bottom: 6px solid #efa9fa;
+  margin-bottom: 2px;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+    transition: 0.15s;
+  }
+
+  .propertyImage {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+
+    .propertySettingsButton,
+    .propertyDeleteButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      padding: 8px 9px;
+      outline: none;
+      border: none;
+      background-color: rgba(0, 100, 230, 0.5);
+      border-radius: 50%;
+      z-index: 10;
+
+      svg {
+        font-size: 18px;
+      }
+    }
+
+    .propertyDeleteButton {
+      background-color: rgba(230, 0, 0, 0.5);
+    }
+  }
+
+  .propertyInfoContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: auto;
+    padding-bottom: 80px;
+    z-index: 1;
+
+    .propertyTitle {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+      background-color: #c6a9fa;
+      border-bottom: 1px solid #9f6ff7;
+
+      h3 {
+        width: 80%;
+        font-size: 18px;
+        line-height: 1.2;
+        padding: 10px;
+        background-color: #c6a9fa;
+        border-top: 1px solid #b38cf8;
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        padding: 10px 0;
+        width: 20%;
+        font-size: 18px;
+        background-color: #b38cf8;
+        border-left: 1px solid #9f6ff7;
+        border-bottom-left-radius: 10px;
+      }
+    }
+
+    .propertyLocation {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      padding: 10px;
+
+      .propertyLocationIcon {
+        svg {
+          font-size: 18px;
+        }
+
+        margin-right: 5px;
+      }
+
+      .propertyAddress {
+        font-size: 16px;
+      }
+
+      .propertyPrice {
+        margin-left: auto;
+      }
+    }
+
+    .propertyDetails {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 10px;
+
+      span {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        margin-right: 10px;
+
+        svg {
+          position: relative;
+          bottom: 3px;
+          font-size: 14px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.propertyListItemContainer {
+  .noPropertiesMessages {
+    display: flex;
+    width: 100%;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #d9c6fc;
+    border-radius: 4px;
+
+    h2,
+    h4 {
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 200;
+      font-style: italic;
+    }
+  }
+}
+
+.shortlistDeleteButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px 0 15px 0;
+
+  button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 4px 4px 25px 25px;
+    background-color: #f21938;
+    margin-bottom: 20px;
+    transition-duration: 0.2s;
+
+    p {
+      margin-right: 8px;
+      font-size: 18px;
+      color: white;
+      font-weight: 700;
+    }
+
+    svg {
+      position: relative;
+      font-size: 18px;
+      bottom: 2px;
+      color: white;
+    }
+
+    &:focus,
+    &:active {
+      opacity: 0.7;
+      transition-duration: 0.12s;
+    }
+  }
+}
