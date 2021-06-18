@@ -1,9 +1,10 @@
 .unsignedHomepageContainer {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   width: 95%;
-  height: auto;
+  height: 100%;
   overflow: hidden;
   padding: 20px 20px 80px 20px;
   background-color: #fefafe;
@@ -15,7 +16,8 @@
 
   .brandingLogo {
     display: flex;
-    height: 20%;
+    height: 15%;
+    max-width: 400px;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
@@ -29,7 +31,8 @@
     padding: 10px 0;
 
     img {
-      width: 70%;
+      width: 60%;
+      max-height: 100%;
     }
   }
 
@@ -45,7 +48,8 @@
   .adSection {
     display: flex;
     justify-content: center;
-    height: 40%;
+    height: auto;
+    width: 100%;
 
     .swiperImageContainer {
       display: flex;
@@ -69,12 +73,19 @@
       color: #fafafa;
       padding: 20px;
     }
+
+    .swiperWrapper {
+      .swiperSlide {
+        width: 100%;
+      }
+    }
   }
 
   .ctoButtons {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    width: 100%;
     padding: 20px;
     background-color: #ece2fd;
     border-bottom-left-radius: 6px;
