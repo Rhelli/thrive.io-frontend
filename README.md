@@ -31,7 +31,7 @@
   - [Feature Previews](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-feature-previews)
   - [Contributions, Issues and Forking](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-contributions-issues-and-forking)
   - [Creator](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-creator)
-  - [Show Your Support!](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-show-your-support))
+  - [Show Your Support!](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#-show-your-support)
   - [Licensing](https://github.com/Rhelli/thrive.io-frontend/tree/release/0.1.0#%EF%B8%8F-licensing)
 
 
