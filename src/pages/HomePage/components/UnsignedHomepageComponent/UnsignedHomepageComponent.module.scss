@@ -1,8 +1,8 @@
 .unsignedHomepageContainer {
   display: flex;
   flex-flow: column nowrap;
+  justify-content: center;
   width: 95%;
-  min-height: 100vh;
   height: auto;
   overflow: hidden;
   padding: 20px 20px 80px 20px;
@@ -15,6 +15,7 @@
 
   .brandingLogo {
     display: flex;
+    height: 20%;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
@@ -44,6 +45,7 @@
   .adSection {
     display: flex;
     justify-content: center;
+    height: 40%;
 
     .swiperImageContainer {
       display: flex;
@@ -54,12 +56,12 @@
 
     .swiperImage,
     .findHousesImage {
-      width: 100%;
+      width: 80%;
       height: auto;
     }
 
     .swiperText {
-      font-size: 20px;
+      font-size: 16px;
       line-height: 20px;
       text-align: center;
       background-color: rgba(102, 25, 242, 1);

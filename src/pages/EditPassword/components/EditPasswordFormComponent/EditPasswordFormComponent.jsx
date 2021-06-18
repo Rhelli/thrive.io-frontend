@@ -93,7 +93,6 @@ EditPasswordFormComponent.propTypes = {
   userProfile: PropTypes.shape({
     email: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
-    
   }).isRequired,
   error: PropTypes.string,
 };
