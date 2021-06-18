@@ -1,7 +1,7 @@
 .unsignedHomepageContainer {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
   width: 95%;
   height: 100%;
@@ -129,3 +129,4 @@
     }
   }
 }
+

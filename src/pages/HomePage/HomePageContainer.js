@@ -69,6 +69,7 @@ const HomePageContainer = ({
       null
     );
   }
+
   if (userType === 'Advertising') {
     return propertyStore.loading ? (
       <Loader

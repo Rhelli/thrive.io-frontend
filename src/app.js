@@ -1,8 +1,8 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Routes from './routes';
-import NavbarContainer from './common/MobileNavbar/MobileNavbarContainer';
+import MobileNavbarContainer from './common/MobileNavbar/MobileNavbarContainer';
 import { autoLoginRequest } from './api/authApi';
 import thriveLogo from './assets/img/thrive-full-transparent-alt.png';
 import styles from './app.module.scss';
@@ -12,11 +12,26 @@ const App = ({ autoLoginRequest }) => {
     autoLoginRequest();
   }, []);
 
+  const windowSizeAccess = () => {
+    const [screenWidth, setScreenWidth] = useState(0);
+    useEffect(() => {
+      const updateWidth = () => {
+        setScreenWidth(window.innerWidth);
+      };
+      window.addEventListener('resize', updateWidth);
+      updateWidth();
+      return () => window.removeEventListener('resize', updateWidth);
+    }, []);
+    return screenWidth;
+  };
+
   return (
     <div className={styles.appContainer}>
       <Routes />
       <img className={styles.appLogo} src={thriveLogo} alt="Thrive" />
-      <NavbarContainer />
+      {
+        windowSizeAccess() < 768 && <MobileNavbarContainer />
+      }
     </div>
   );
 };
